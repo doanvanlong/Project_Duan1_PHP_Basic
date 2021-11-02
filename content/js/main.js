@@ -1,9 +1,11 @@
 $(document).ready(function(){
+  
     //owlcarousel tab menu product
-      $('.owl-carousel').owlCarousel({
+      $('.owl-tab_menu_product').owlCarousel({
         loop:true,
         margin:10,
         nav:true,
+        navText:['<i class="fas fa-chevron-left"></i>','<i class="fas fa-chevron-right"></i>'],
         // autoplay:true,
         responsive:{
             0:{

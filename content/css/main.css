@@ -176,6 +176,7 @@ cursor: pointer;
 /* tab menu product */
 .tab__menu-product{
   background-color: #ffffff;
+  position: relative;
 }
 .tab__menu-product-list {
   border-bottom:1px solid #eaeaea;
@@ -210,6 +211,31 @@ strike.tab__menu-product-newproduct-oldprice {
   font-size: 1.4rem;
   padding-left: 4px;
 }
+
+/* owl tab menu product */
+/* .owl-tab_menu_product{
+  position: relative;
+} */
+.owl-tab_menu_product .owl-nav{
+  display: block !important;
+  /* position: absolute;
+  top: 40%;
+  left: 0; */
+  
+}
+.owl-tab_menu_product .owl-nav .owl-next{
+  position: absolute;
+  right: 0;
+  top: 40%;
+}
+.owl-tab_menu_product .owl-nav .owl-prev{
+  position: absolute;
+  left: 0;
+  top: 40%;
+}
+/* .owl-tab_menu_product .owl-nav button.owl-next{
+font-size: 5rem;
+} */
 /* end tab menu product  */
 /* end main */
 /* end nav menu */
