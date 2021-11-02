@@ -455,7 +455,8 @@ font-size: 5rem;
   width: 23%;
   font-size: 1.6rem;
   height: 40px;
-  padding: 10px 0;
+  /* padding: 10px 0px; */
+  padding-bottom: 5px;
   border-radius: 40px;
   outline: none;
   border: 1px solid #efefef;
