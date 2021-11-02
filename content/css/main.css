@@ -134,9 +134,40 @@ cursor: pointer;
     font-weight: 500;
     margin-top:3px;
 }
+
 /* end  menu */
 .main{
     padding:1.4% 0;
+}
+/* banner right promotion  */
+.banner__right-promotion-title{
+  border-bottom: 1px solid var(--primary-color);
+}
+.banner__right-promotion-body{
+  background-color: white;
+  margin-bottom: 3%;
+  padding:5px;
+}
+.banner__right-promotion-body-text{
+  font-size: 1.4rem;
+  padding-left: 5px;
+}
+.banner__right-promotion-body-img {
+  width: 40%;
+}
+.banner__right-promotion-body-img img{
+  border-radius:4px;
+}
+.banner__right-promotion-heading{
+  text-transform: uppercase;
+  background-color:var(--primary-color);
+  color: white;
+  padding:8px 10px;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+.banner__right-promotion-body-content{
+  margin: 7px 0;
 }
 /* end main */
 /* end nav menu */
