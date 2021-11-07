@@ -1,0 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 62.5%;
+  line-height: 1.4rem;
+}
+body {
+  font-size: 1.4rem;
+}
+a:hover {
+  text-decoration: none;
+}
+.wrapper {
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+/* navigation */
+.navigation {
+  /* background-color: #003147; */
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  transition: all 0.4s;
+  overflow: hidden;
+  box-shadow: 0px 0px 28px 0px rgb(82 63 105 / 8%);
+}
+.navigation.active {
+  width: 60px;
+}
+
+.navigation li:nth-child(1) .navigation__link {
+  padding-left: 20px;
+}
+.navigation.active.navigation li:nth-child(1) .navigation__link {
+  padding-left: 10px;
+}
+.navigation.active .navigation__link span:nth-child(2) {
+  display: none;
+}
+
+.navigation__items {
+  padding: 0 20px;
+}
+.navigation.active .navigation__items {
+  padding: 0 16px;
+}
+/* .navigation__items:nth-child(2){
+    background-color:#03a9f4;
+
+} */
+.navigation__link {
+  color: var(--dark);
+  display: block;
+  padding: 14px 0;
+}
+.navigation__link span:nth-child(1) {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+.navigation__link span i {
+  padding-right: 14px;
+  font-size: 2rem;
+}
+
+/* .navigation__items:hover {
+  background-color: #03a9f4;
+}
+.navigation__items.active {
+  background-color: #03a9f4;
+} */
+.logo {
+  font-size: 3rem;
+  padding-left: 10px;
+}
+/* main */
+.main {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  min-height: 100vh;
+  background-color: #f2f3f8;
+  transition: all 0.3s;
+}
+.main.active {
+  width: calc(100% - 60px);
+  margin-left: 60px;
+}
+.top__bar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0 5%;
+}
+.toggle {
+  font-size: 2rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.search {
+}
+.search input {
+  line-height: 2rem;
+  font-size: 1.4rem;
+}
+.search ::placeholder {
+  font-size: 1.4rem;
+}
+.search button {
+  line-height: 2rem;
+  padding: 4px 14px;
+  font-size: 1.4rem;
+}
+.user__dropdown {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url("../img/user.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+.dropdown-item {
+  font-size: 1.4rem;
+}

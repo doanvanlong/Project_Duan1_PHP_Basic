@@ -233,12 +233,16 @@ strike.tab__menu-product-newproduct-oldprice {
   left: 0;
   top: 40%;
 }
-/* .owl-tab_menu_product .owl-nav button.owl-next{
-font-size: 5rem;
-} */
+.owl-tab_menu_product .owl-nav button.owl-next i,.owl-tab_menu_product .owl-nav button.owl-prev i{
+font-size: 3rem;
+padding:10px;
+color:var(--secondary);
+}
 /* end tab menu product  */
 /* end main */
 /* end nav menu */
+
+/* .footer */
 .footer {
   background-color: #ffffff;
 }
@@ -478,3 +482,4 @@ font-size: 5rem;
 .footer__form-btn:hover {
   transform: rotate(360deg);
 }
+/* end footer */
