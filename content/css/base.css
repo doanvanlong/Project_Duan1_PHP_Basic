@@ -24,6 +24,7 @@ ul {
 a:hover {
   text-decoration: none;
 }
+/* giới hạn 2 dòng nội dung */
 .text-overflow{
   overflow: hidden;
   line-height:2rem;
