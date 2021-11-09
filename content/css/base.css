@@ -1,7 +1,9 @@
 :root {
   --primary-color: #f15a29;
-  --bg-star: #ffdc41cc;
+  --bg-star: #ea9d02;
+  --code-label:#f69113;
   --primary-strong:#f62901;
+  --foreign-color:#ff0000e3;
 }
 * {
   padding: 0;
@@ -13,6 +15,7 @@ html {
 }
 body {
   font-size: 1.5rem;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 }
 button{
   outline:none !important;
@@ -28,7 +31,7 @@ a:hover {
 .text-overflow{
   overflow: hidden;
   line-height:2rem;
-  height:4rem;
+  /* height:4rem; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

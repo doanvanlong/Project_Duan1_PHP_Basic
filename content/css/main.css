@@ -199,9 +199,11 @@ cursor: pointer;
 padding-top: 100%;
 background-repeat: no-repeat;
 background-size:contain;
+position: relative;
 }
 .tab__menu-product-newproduct-rate i{
   color:var(--bg-star);
+  font-size: 1rem;
 }
 .tab__menu-product-newproduct-newprice{
   color:var(--primary-strong);
@@ -211,6 +213,96 @@ strike.tab__menu-product-newproduct-oldprice {
   font-size: 1.4rem;
   padding-left: 4px;
 }
+/* .tab__menu-product-content-newproduct-sale-label */
+/* nhãn giảm giá */
+.tab__menu-product-content-newproduct-sale-label{
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  background-color: var(--foreign-color);
+  color:#ffffff;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size:1.2rem;
+  padding:6px 5px;
+  line-height: 1.3rem;
+  border-radius:4px;
+}
+/* Nhãn trả góp */
+/* tab__menu-product-content-newproduct-installment-label */
+.tab__menu-product-content-newproduct-installment-label{
+  position: absolute;
+  bottom: 14%;
+  left: 5%;
+  background-color: #fbda00;
+  /* color:#ffffff; */
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size:1.2rem;
+  padding:6px 5px;
+  line-height: 1.1rem;
+  border-radius:4px;
+}
+/* nếu ko có nhãn giảm giá thì sẽ add class và đưa nhãn trả góp xuống  */
+.tab__menu-product-content-newproduct-installment-label.tab__menu-product-content-newproduct-sale-label{
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  background-color: #fbda00;
+  color:#333;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size:1.2rem;
+  padding:6px 5px;
+  line-height: 1.1rem;
+  border-radius:4px;
+}
+/* Nhãn check in */
+/* .tab__menu-product-content-newproduct-checkin-label */
+.tab__menu-product-content-newproduct-checkin-label{
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  background-color: var(--foreign-color);
+  color:#ffffff;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size:1.2rem;
+  padding:6px 5px;
+  line-height: 1.3rem;
+  border-radius:4px;
+}
+/* Nhãn mã giảm giá */
+/* tab__menu-product-newproduct-code-label */
+.tab__menu-product-newproduct-code-label{
+  background-color: var(--code-label);
+  color:#ffffff;
+  font-weight: 500;
+  /* text-transform: uppercase; */
+  font-size:1rem;
+  padding:4px 3px;
+  line-height: 1.3rem;
+  border-radius:1px;
+  border-width:1px ;
+  border-style:dashed;
+  border-top:  white;
+  border-bottom: white;
+}
+
+/* Nhãn deal sốc */
+/* .tab__menu-product-newproduct-deal-label */
+.tab__menu-product-newproduct-deal-label{
+  /* background-color: var(--code-label); */
+  color:var(--foreign-color);
+  font-weight: 500;
+  /* text-transform: uppercase; */
+  font-size:1rem;
+  padding:4px 5px;
+  line-height: 1.3rem;
+  border-radius:2px;
+  border:1px solid var(--foreign-color);
+}
+
 
 /* owl tab menu product */
 /* .owl-tab_menu_product{
@@ -233,14 +325,38 @@ strike.tab__menu-product-newproduct-oldprice {
   left: 0;
   top: 40%;
 }
-.owl-tab_menu_product .owl-nav button.owl-next i,.owl-tab_menu_product .owl-nav button.owl-prev i{
+.owl-tab_menu_product  .owl-nav button i{
 font-size: 3rem;
 padding:10px;
 color:var(--secondary);
+opacity: 0;
 }
+.tab__menu-product:hover .owl-tab_menu_product  .owl-nav button i{
+  opacity: 1;
+}
+.owl-tab_menu_product  .owl-nav button:hover i{
+  color:white !important;
+  opacity: 1;
+}
+
 /* end tab menu product  */
 /* end main */
 /* end nav menu */
+
+/* product features  */
+.phone-features-heading{
+  text-transform: uppercase;
+  font-family: "Arial", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color:var(--dark);
+  padding:20px 0 5px 0;
+  line-height:2.2rem;
+}
+.phone-features-product{
+  background-color: white;
+  padding:1% 1% 2% 1% ;
+}
 
 /* .footer */
 .footer {
