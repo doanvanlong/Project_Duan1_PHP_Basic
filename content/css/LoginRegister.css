@@ -1,0 +1,125 @@
+.navigation {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.75em 0em;
+}
+.logo {
+  display: flex;
+  color: var(--primary-color);
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+a,
+a:hover {
+  color: var(--primary-color);
+}
+.logo__content {
+  color: black;
+  font-size: 2em;
+}
+.support {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.container__body {
+  height: 62rem;
+  width: 98rem;
+  margin: 0 auto;
+  background-image: url("../img/88e9cc95389600adb8d95bc1e3330788.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.form {
+  padding: 2em 2em !important;
+  width: 30em;
+  background-color: whitesmoke;
+  border: 2px solid rgb(163, 163, 163);
+  border-radius: 0.3em 0.3em;
+  padding: 1rem 1rem;
+  transform: translate(0%, -0%);
+}
+::placeholder {
+  font-size: 1.5rem;
+  color: deeppink;
+}
+.form input[type="text"],
+input[type="password"],input[type="email"] {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  font-size: 1.5rem;
+}
+.form label {
+  font-size: 2em;
+}
+.login {
+  border: 0;
+  border-radius: 0.5em;
+  outline: none !important;
+  padding: 0.7em 1em !important;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.2em 0.2em;
+  opacity: 1;
+  width: 100%;
+  color: white;
+  background-color: var(--primary-color);
+}
+.forgetPass {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.or {
+  margin-top: 1em;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.or::before {
+  content: "";
+  width: 10.5em;
+  height: 0.1em;
+  background-color: gray;
+}
+.or::after {
+  content: "";
+  width: 10.5em;
+  height: 0.1em;
+  background-color: gray;
+}
+.loginWidthSocial {
+  margin-top: 1em;
+  display: flex;
+  gap: 0.8em;
+}
+.loginWidthSocial__inline {
+  display: flex;
+  gap: 0.5em;
+  text-align: center;
+}
+.facebook {
+  background-color: #1877f2 !important;
+}
+.google {
+  background-color: #4285f4 !important;
+}
+.apple {
+  padding-left: 25px !important;
+  background-color: black !important;
+}
