@@ -7,6 +7,13 @@
   align-items: center;
   padding: 1.75em 0em;
 }
+.logo__content:before {
+  content: "";
+  width: 0px;
+  height: 30px;
+  margin-right: .1em;
+  background: black;
+}
 .logo {
   display: flex;
   color: var(--primary-color);
@@ -30,7 +37,7 @@ a:hover {
   height: 62rem;
   width: 98rem;
   margin: 0 auto;
-  background-image: url("../img/88e9cc95389600adb8d95bc1e3330788.png");
+  background-image: url("../img/background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -42,7 +49,7 @@ a:hover {
   padding: 2em 2em !important;
   width: 30em;
   background-color: whitesmoke;
-  border: 2px solid rgb(163, 163, 163);
+  border: none;
   border-radius: 0.3em 0.3em;
   padding: 1rem 1rem;
   transform: translate(0%, -0%);
@@ -52,7 +59,8 @@ a:hover {
   color: deeppink;
 }
 .form input[type="text"],
-input[type="password"],input[type="email"] {
+input[type="password"],
+input[type="email"] {
   margin-top: 1em;
   margin-bottom: 1.5em;
   font-size: 1.5rem;
@@ -110,8 +118,9 @@ input[type="password"],input[type="email"] {
 }
 .loginWidthSocial__inline {
   display: flex;
-  gap: 0.5em;
+  gap: 1em;
   text-align: center;
+  text-transform: capitalize;
 }
 .facebook {
   background-color: #1877f2 !important;
@@ -120,6 +129,5 @@ input[type="password"],input[type="email"] {
   background-color: #4285f4 !important;
 }
 .apple {
-  padding-left: 25px !important;
   background-color: black !important;
 }
