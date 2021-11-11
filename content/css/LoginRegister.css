@@ -7,13 +7,6 @@
   align-items: center;
   padding: 1.75em 0em;
 }
-.logo__content:before {
-  content: "";
-  width: 0px;
-  height: 30px;
-  margin-right: .1em;
-  background: black;
-}
 .logo {
   display: flex;
   color: var(--primary-color);
