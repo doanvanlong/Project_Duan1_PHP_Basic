@@ -27,6 +27,10 @@ ul {
 a:hover {
   text-decoration: none;
 }
+/* class cursor pointer */
+.cursor-pointer {
+  cursor: pointer;
+}
 /* giới hạn 2 dòng nội dung */
 .text-overflow{
   overflow: hidden;

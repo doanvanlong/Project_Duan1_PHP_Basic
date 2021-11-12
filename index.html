@@ -44,7 +44,8 @@
       <div class="container">
         <div class="row">
           <div class="col-12 d-flex align-items-center">
-            <div class="header__logo d-flex"><span class="text__logo">LT SMART</span><img src="#" alt=""></div>
+            <a href="#" class="header__logo d-flex align-items-center"><span class="text__logo">LT SMART</span><img
+                style="width:20%" src="content/img/logo ltsmart.PNG" alt=""></a>
             <div class="header__search ">
               <form class="form-inline my-2 my-lg-0 ">
                 <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm tại đây...">
@@ -73,15 +74,33 @@
 
             </div>
             <div class="header__right pl-2 d-flex justify-content-around align-items-center">
-              <div class="header__right-user text-dark"><i class="icofont-user"></i></div>
-              <div class="header__right-cart "><i class="icofont-cart-alt"></i>
+              <!-- <a href="#" class="header__right-user text-dark"><i class="icofont-user"></i></a> -->
+              <div class="header__right-user-login d-flex align-items-center cursor-pointer">
+                <div class="header__right-user-avatar mr-2"
+                  style="background-image: url('admin/content/img/user.jpg');">
+                </div>
+                <div class="header__right-user-login-text ">
+                  <span class="header__right-user-login-title">
+                    Tài khoản
+                  </span>
+                  <p class="header__right-user-login-name">Long Đoàn <i class="fas fa-caret-down"></i></p>
+                </div>
+              </div>
+              <a href="#" class="header__right-notification"><i class="far fa-bell"></i>
+                <!-- đếm thông báo dùng chung với đếm cart -->
                 <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
                   2</div>
-              </div>
+              </a>
+              <a href="#" class="header__right-cart "><i class="icofont-cart-alt"></i>
+                <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
+                  2</div>
+              </a>
             </div>
+
           </div>
         </div>
       </div>
+
     </header>
     <!-- end header -->
     <!-- nav menu  -->
@@ -122,14 +141,7 @@
                   Phụ kiện
                 </div>
               </div>
-              <div class="menu__items">
-                <div class="menu__items-img">
-                  <img src="content/img/watch.svg" alt="">
-                </div>
-                <div class="menu__items-text">
-                  Đồng hồ
-                </div>
-              </div>
+             
               <div class="menu__items">
                 <div class="menu__items-img">
                   <img src="content/img/tragop.svg" alt="">
@@ -457,6 +469,211 @@
         <!-- banner check in -->
         <div class="banner-checkin">
           <img style="width: 100%; " src="content/img/baner_ngan_web.jpg" alt="Check in nhận quà">
+        </div>
+        <!-- product flash sale -->
+        <!-- sản phẩm dùng chung tab menu product -->
+        <div class="product__flash-sale mt-5 mb-2">
+          <div class="row">
+            <div class="col-3">
+              <div class="product__flash-sale-countdown">
+                <img style="width: 100%; " src="content/img/fs.gif" alt="">
+                <div class="product__flash-sale-countdown-content d-flex justify-content-center">
+                  <span class="product__flash-sale-countdown-items">
+                    <div class="product__flash-sale-countdown-count-items product__flash-sale-countdown-count-items-hours">
+                      3
+                    </div>
+                    <div class="product__flash-sale-countdown-text-items">
+                      Giờ
+                    </div>
+                  </span>
+                  <span class="product__flash-sale-countdown-items">
+                    <div class="product__flash-sale-countdown-count-items product__flash-sale-countdown-count-items-mins">
+                      3
+                    </div>
+                    <div class="product__flash-sale-countdown-text-items">
+                      Phút
+                    </div>
+                  </span>
+                  <span class="product__flash-sale-countdown-items">
+                    <div class="product__flash-sale-countdown-count-items product__flash-sale-countdown-count-items-secs">
+                      3
+                    </div>
+                    <div class="product__flash-sale-countdown-text-items">
+                      Giây
+                    </div>
+                  </span>
+                </div>
+                <a href="#" class="product__flash-sale-countdown-view-all">Xem tất cả</a>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="product__flash-sale-content">
+                <div class="owl-carousel owl-theme owl-product__flash-sale">
+                  <div class="item">
+                    <div class="tab__menu-product-content-newproduct">
+                      <div class="tab__menu-product-content-newproduct-img"
+                        style="background-image:url('content/img/\(600x600\)_crop_iphone_7_plus_gold_xtsmart.jpg')">
+                        <!-- Nhãn giảm giá -->
+                        <span class="tab__menu-product-content-newproduct-sale-label">
+                          Giảm đến 10%
+                        </span>
+                        <!-- Nhãn check in -->
+                        <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
+
+                        <!-- Nhãn trả góp -->
+                        <!-- <span class="tab__menu-product-content-newproduct-installment-label ">Trả góp 0%</span> -->
+                      </div>
+                      <div class="px-2 pt-1 ">
+                        <!-- <div class="tab__menu-product-newproduct-rate">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div> -->
+                        <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                          iPhone 7 Plus 256GB Quốc Tế (Likenew)
+                        </p>
+                        <!-- Nhãn Mã giảm giá -->
+                        <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
+                        <!-- Nhãn deal sốc -->
+                        <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                        <div class="tab__menu-product-newproduct-price d-flex">
+                          <b class="tab__menu-product-newproduct-newprice pt-2">
+                            6.380.000 đ
+                          </b>
+                          <strike class="tab__menu-product-newproduct-oldprice pt-2">
+                            7.580.000 đ
+                          </strike>
+                        </div>
+                        <div class="product__flash-sale-sold my-2">
+                          Đã bán 12
+                          <span class="product__flash-sale-sold-count" style="width:90%;"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="tab__menu-product-content-newproduct">
+                      <div class="tab__menu-product-content-newproduct-img"
+                        style="background-image:url('content/img/\(600x600\)_crop_600_iphone_xs_max_vang_xtsmart_4.jpg')">
+                        <span class="tab__menu-product-content-newproduct-sale-label">
+                          Giảm đến 10%
+                        </span>
+                        <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
+                        <!-- Nếu ko có Nhãn giảm giá thì sẻ có thêm class tab__menu-product-content-newproduct-sale-label và đưa Nhãn trả góp xuống Nhãn giảm giá -->
+                        <!-- <span class="tab__menu-product-content-newproduct-installment-label  ">Trả góp 0%</span> -->
+                      </div>
+                      <div class="px-2 pt-1 ">
+                        <!-- <div class="tab__menu-product-newproduct-rate">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div> -->
+                        <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                          iPhone XS 256GB Quốc Tế (Likenew)
+                        </p>
+                        <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
+                        <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                        <div class="tab__menu-product-newproduct-price d-flex">
+                          <b class="tab__menu-product-newproduct-newprice pt-2">
+                            9.780.000 đ
+                          </b>
+                          <strike class="tab__menu-product-newproduct-oldprice pt-2">
+                            10.700.000 đ
+                          </strike>
+                        </div>
+                        <div class="product__flash-sale-sold my-2">
+                          Đã bán 12
+                          <span class="product__flash-sale-sold-count" style="width:90%;"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="tab__menu-product-content-newproduct">
+                      <div class="tab__menu-product-content-newproduct-img"
+                        style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                        <span class="tab__menu-product-content-newproduct-sale-label">
+                          Giảm đến 10%
+                        </span>
+                        <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
+                        <!-- <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span> -->
+                      </div>
+                      <div class="px-2 pt-1 ">
+                        <!-- <div class="tab__menu-product-newproduct-rate">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div> -->
+                        <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                          Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                        </p>
+                        <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
+                        <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                        <div class="tab__menu-product-newproduct-price d-flex">
+                          <b class="tab__menu-product-newproduct-newprice pt-2">
+                            8.980.000 đ
+                          </b>
+                          <strike class="tab__menu-product-newproduct-oldprice pt-2">
+                            9.890.000 đ
+                          </strike>
+                        </div>
+                        <div class="product__flash-sale-sold my-2">
+                          Đã bán 12
+                          <span class="product__flash-sale-sold-count" style="width:90%;"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="tab__menu-product-content-newproduct">
+                      <div class="tab__menu-product-content-newproduct-img"
+                        style="background-image:url('content/img/\(600x600\)_crop_sam_sung_s10_5g_xtsmart.jpg')">
+                        <span class="tab__menu-product-content-newproduct-sale-label">
+                          Giảm đến 10%
+                        </span>
+                        <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
+                        <!-- <span class="tab__menu-product-content-newproduct-installment-label ">Trả góp 0%</span> -->
+                      </div>
+                      <div class="px-2 pt-1 ">
+                        <!-- <div class="tab__menu-product-newproduct-rate">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </div> -->
+                        <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                          Galaxy S10 5G (8GB|256GB) Hàn Quốc (New Nobox)
+                        </p>
+                        <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
+                        <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                        <div class="tab__menu-product-newproduct-price d-flex">
+                          <b class="tab__menu-product-newproduct-newprice pt-2">
+                            9.200.000 đ
+                          </b>
+                          <strike class="tab__menu-product-newproduct-oldprice pt-2">
+                            10.080.000 đ
+                          </strike>
+                        </div>
+                        <div class="product__flash-sale-sold my-2">
+                          Đã bán 12
+                          <span class="product__flash-sale-sold-count" style="width:90%;"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- Điện thoại nổi bật  lượt xem nhiều -->
         <div class="phone-features">
@@ -919,170 +1136,291 @@
 
           </div>
         </div>
+        <!-- Sản phẩm đã xem -->
+        <!-- Lấy title của phone... dùng chung -->
+        <h3 class="phone-features-heading">Sản phẩm bạn vừa xem</h3>
+        <div class="viewed__product">
+          <!-- sản phẩm dùng chung tab__menu-product- -->
+          <div class="row">
+            <div class="col-2">
+              <div class="tab__menu-product-content-newproduct">
+                <div class="tab__menu-product-content-newproduct-img"
+                  style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                </div>
+                <div class="px-4 pt-1 pb-2">
+
+                  <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                    Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                  </p>
+                  <div class="tab__menu-product-newproduct-price d-flex">
+                    <b class="tab__menu-product-newproduct-newprice pt-2">
+                      8.980.000 đ
+                    </b>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="tab__menu-product-content-newproduct">
+                <div class="tab__menu-product-content-newproduct-img"
+                  style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                </div>
+                <div class="px-4 pt-1 pb-2">
+
+                  <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                    Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                  </p>
+                  <div class="tab__menu-product-newproduct-price d-flex">
+                    <b class="tab__menu-product-newproduct-newprice pt-2">
+                      8.980.000 đ
+                    </b>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="tab__menu-product-content-newproduct">
+                <div class="tab__menu-product-content-newproduct-img"
+                  style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                </div>
+                <div class="px-4 pt-1 pb-2">
+
+                  <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                    Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                  </p>
+                  <div class="tab__menu-product-newproduct-price d-flex">
+                    <b class="tab__menu-product-newproduct-newprice pt-2">
+                      8.980.000 đ
+                    </b>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="tab__menu-product-content-newproduct">
+                <div class="tab__menu-product-content-newproduct-img"
+                  style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                </div>
+                <div class="px-4 pt-1 pb-2">
+
+                  <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                    Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                  </p>
+                  <div class="tab__menu-product-newproduct-price d-flex">
+                    <b class="tab__menu-product-newproduct-newprice pt-2">
+                      8.980.000 đ
+                    </b>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="tab__menu-product-content-newproduct">
+                <div class="tab__menu-product-content-newproduct-img"
+                  style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                </div>
+                <div class="px-4 pt-1 pb-2">
+
+                  <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                    Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                  </p>
+                  <div class="tab__menu-product-newproduct-price d-flex">
+                    <b class="tab__menu-product-newproduct-newprice pt-2">
+                      8.980.000 đ
+                    </b>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="tab__menu-product-content-newproduct">
+                <div class="tab__menu-product-content-newproduct-img"
+                  style="background-image: url('content/img/\(600x600\)_crop_sam-sung-not9.jpg')">
+                </div>
+                <div class="px-4 pt-1 pb-2">
+
+                  <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
+                    Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)
+                  </p>
+                  <div class="tab__menu-product-newproduct-price d-flex">
+                    <b class="tab__menu-product-newproduct-newprice pt-2">
+                      8.980.000 đ
+                    </b>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
-  </main>
-  <!-- end main -->
-  <!-- footer -->
-  <footer class="footer">
-    <div class="footer__social-form">
+    </main>
+    <!-- end main -->
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footer__social-form">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 d-flex">
+              <div class="footer__socical">
+                <a href="" class="footer__socical-link">
+                  <div class="footer__socical-btn">
+                    <i class="icofont-facebook"></i>
+                  </div>
+                  <span>Facebook</span>
+                </a>
+                <a href="" class="footer__socical-link">
+                  <div class="footer__socical-btn">
+                    <i class="icofont-twitter"></i>
+                  </div>
+                  <span>Twitter</span>
+                </a>
+                <a href="" class="footer__socical-link">
+                  <div class="footer__socical-btn">
+                    <i class="icofont-google-plus"></i>
+                  </div>
+                  <span>Google++</span>
+                </a>
+                <a href="" class="footer__socical-link">
+                  <div class="footer__socical-btn">
+                    <i class="icofont-instagram"></i>
+                  </div>
+                  <span>Instagram</span>
+                </a>
+                <a href="" class="footer__socical-link">
+                  <div class="footer__socical-btn">
+                    <i class="icofont-youtube-play"></i>
+                  </div>
+                  <span>Youtube</span>
+                </a>
+              </div>
+              <form action="" method="post" class="footer__form">
+                <h2 class="footer__form-heading">
+                  Đăng ký nhận khuyến mãi <span>20%</span>
+                </h2>
+                <input autocomplete="off" class="footer__form-input" type="text" name="tenkh"
+                  placeholder="Nhập Họ Tên...">
+                <input autocomplete="off" class="footer__form-input" type="email" name="emailkh"
+                  placeholder="Nhập Email...">
+                <button type="" name="phanhoi" class="footer__form-btn">
+                  <i class="icofont-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <div class="row">
-          <div class="col-12 d-flex">
-            <div class="footer__socical">
-              <a href="" class="footer__socical-link">
-                <div class="footer__socical-btn">
-                  <i class="icofont-facebook"></i>
-                </div>
-                <span>Facebook</span>
-              </a>
-              <a href="" class="footer__socical-link">
-                <div class="footer__socical-btn">
-                  <i class="icofont-twitter"></i>
-                </div>
-                <span>Twitter</span>
-              </a>
-              <a href="" class="footer__socical-link">
-                <div class="footer__socical-btn">
-                  <i class="icofont-google-plus"></i>
-                </div>
-                <span>Google++</span>
-              </a>
-              <a href="" class="footer__socical-link">
-                <div class="footer__socical-btn">
-                  <i class="icofont-instagram"></i>
-                </div>
-                <span>Instagram</span>
-              </a>
-              <a href="" class="footer__socical-link">
-                <div class="footer__socical-btn">
-                  <i class="icofont-youtube-play"></i>
-                </div>
-                <span>Youtube</span>
-              </a>
-            </div>
-            <form action="" method="post" class="footer__form">
-              <h2 class="footer__form-heading">
-                Đăng ký nhận khuyến mãi <span>20%</span>
-              </h2>
-              <input autocomplete="off" class="footer__form-input" type="text" name="tenkh"
-                placeholder="Nhập Họ Tên...">
-              <input autocomplete="off" class="footer__form-input" type="email" name="emailkh"
-                placeholder="Nhập Email...">
-              <button type="" name="phanhoi" class="footer__form-btn">
-                <i class="icofont-paper-plane"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="footer__info">
-            <div class="footer__contact">
-              <h3 class="footer__contact-heading footer__heading">
-                Liên hệ chúng tôi
-              </h3>
-              <ul class="footer__contact-list">
-                <li class="footer__contact-items">
-                  <a href=""><i class="icofont-home"></i>137 Nguyễn Thị Thập, Liên Chiểu ,Tp Đà Nẵng</a>
-                </li>
-                <li class="footer__contact-items">
-                  <a href=""><i class="icofont-phone"></i>0888999888</a>
-                </li>
-                <li class="footer__contact-items">
-                  <a href=""><i class="icofont-email"></i>contact.ltsmart@gmail.com</a>
-                </li>
-                <li class="footer__contact-items">
-                  <a href=""><i class="icofont-clock-time"></i>7 ngày trong tuần từ 8:00 sáng đến 9:00 tối</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer__local">
-              <h3 class="footer__local-heading footer__heading">
-                Vị trí cửa hàng
-              </h3>
-              <ul class="footer__local-list">
-                <li class="footer__local-items">
-                  <a href=""> Đà Nẵng - Việt Nam</a>
-                </li>
-                <li class="footer__local-items">
-                  <a href="">Cần Thơ - Việt Nam</a>
-                </li>
-                <li class="footer__local-items">
-                  <a href="">HCM - Việt Nam</a>
-                </li>
-                <li class="footer__local-items">
-                  <a href="">Hà Nội - Việt Nam</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer__service">
-              <h3 class="footer__service-heading footer__heading">
-                Dịch vụ khách hàng
-              </h3>
-              <ul class="footer__service-list">
-                <li class="footer__service-items">
-                  <a href=""> Về chúng tôi</a>
-                </li>
-                <li class="footer__service-items">
-                  <a href="">Dịch vụ khách hàng</a>
-                </li>
-                <li class="footer__service-items">
-                  <a href="">Chính sách bảo mật</a>
-                </li>
-                <li class="footer__service-items">
-                  <a href="">Tìm kiếm nâng cao</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer__tag">
-              <h3 class="footer__tag-heading footer__heading">
-                Tag
-              </h3>
-              <ul class="footer__tag-list">
-                <li class="footer__tag-items">
-                  <a href="index.php?page_layout=danhmucsanpham&id=8" class="footer__tag-link">
-                    Iphone
-                  </a>
-                </li>
-                <li class="footer__tag-items">
-                  <a href="index.php?page_layout=danhmucsanpham&id=5" class="footer__tag-link">
-                    Samsung
-                  </a>
-                </li>
-                <li class="footer__tag-items">
-                  <a href="index.php?page_layout=danhmucsanpham&id=13" class="footer__tag-link">
-                    Oppo
-                  </a>
-                </li>
-                <li class="footer__tag-items">
-                  <a href="index.php?page_layout=nhucau&id=1" class="footer__tag-link">
-                    Vivo
-                  </a>
-                </li>
-                <li class="footer__tag-items">
-                  <a href="#" class="footer__tag-link">
-                    Realme
-                  </a>
-                </li>
-                <li class="footer__tag-items">
-                  <a href="index.php?page_layout=danhmucsanpham&id=12" class="footer__tag-link">
-                    Xiaomi
-                  </a>
-                </li>
+          <div class="col-12">
+            <div class="footer__info">
+              <div class="footer__contact">
+                <h3 class="footer__contact-heading footer__heading">
+                  Liên hệ chúng tôi
+                </h3>
+                <ul class="footer__contact-list">
+                  <li class="footer__contact-items">
+                    <a href=""><i class="icofont-home"></i>137 Nguyễn Thị Thập, Liên Chiểu ,Tp Đà Nẵng</a>
+                  </li>
+                  <li class="footer__contact-items">
+                    <a href=""><i class="icofont-phone"></i>0888999888</a>
+                  </li>
+                  <li class="footer__contact-items">
+                    <a href=""><i class="icofont-email"></i>contact.ltsmart@gmail.com</a>
+                  </li>
+                  <li class="footer__contact-items">
+                    <a href=""><i class="icofont-clock-time"></i>7 ngày trong tuần từ 8:00 sáng đến 9:00 tối</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__local">
+                <h3 class="footer__local-heading footer__heading">
+                  Vị trí cửa hàng
+                </h3>
+                <ul class="footer__local-list">
+                  <li class="footer__local-items">
+                    <a href=""> Đà Nẵng - Việt Nam</a>
+                  </li>
+                  <li class="footer__local-items">
+                    <a href="">Cần Thơ - Việt Nam</a>
+                  </li>
+                  <li class="footer__local-items">
+                    <a href="">HCM - Việt Nam</a>
+                  </li>
+                  <li class="footer__local-items">
+                    <a href="">Hà Nội - Việt Nam</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__service">
+                <h3 class="footer__service-heading footer__heading">
+                  Dịch vụ khách hàng
+                </h3>
+                <ul class="footer__service-list">
+                  <li class="footer__service-items">
+                    <a href=""> Về chúng tôi</a>
+                  </li>
+                  <li class="footer__service-items">
+                    <a href="">Dịch vụ khách hàng</a>
+                  </li>
+                  <li class="footer__service-items">
+                    <a href="">Chính sách bảo mật</a>
+                  </li>
+                  <li class="footer__service-items">
+                    <a href="">Tìm kiếm nâng cao</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="footer__tag">
+                <h3 class="footer__tag-heading footer__heading">
+                  Tag
+                </h3>
+                <ul class="footer__tag-list">
+                  <li class="footer__tag-items">
+                    <a href="index.php?page_layout=danhmucsanpham&id=8" class="footer__tag-link">
+                      Iphone
+                    </a>
+                  </li>
+                  <li class="footer__tag-items">
+                    <a href="index.php?page_layout=danhmucsanpham&id=5" class="footer__tag-link">
+                      Samsung
+                    </a>
+                  </li>
+                  <li class="footer__tag-items">
+                    <a href="index.php?page_layout=danhmucsanpham&id=13" class="footer__tag-link">
+                      Oppo
+                    </a>
+                  </li>
+                  <li class="footer__tag-items">
+                    <a href="index.php?page_layout=nhucau&id=1" class="footer__tag-link">
+                      Vivo
+                    </a>
+                  </li>
+                  <li class="footer__tag-items">
+                    <a href="#" class="footer__tag-link">
+                      Realme
+                    </a>
+                  </li>
+                  <li class="footer__tag-items">
+                    <a href="index.php?page_layout=danhmucsanpham&id=12" class="footer__tag-link">
+                      Xiaomi
+                    </a>
+                  </li>
 
 
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
-  <!-- end footer -->
+    </footer>
+    <!-- end footer -->
   </div>
 
   <script src="content/js/main.js"> </script>
