@@ -167,7 +167,7 @@ a:hover {
 .search {
 }
 .search input {
-  line-height: 2.2rem;
+  line-height: 2rem !important;
   font-size: 1.4rem;
   width: 300px !important;
 }
@@ -175,9 +175,12 @@ a:hover {
   font-size: 1.4rem;
 }
 .search button {
-  line-height: 2.2rem;
+  line-height: 2rem;
   padding: 4px 14px;
   font-size: 1.4rem;
+}
+.search .btn{
+  padding: 0.8rem 1.4rem !important;
 }
 .user__dropdown {
   width: 35px;
