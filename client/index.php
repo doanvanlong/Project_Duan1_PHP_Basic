@@ -3,6 +3,8 @@
 require_once '../global.php';
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
+    case 'admin':
+        header('Location:'.$ADMIN_URL);
     case 'sanpham':
         $view = "views/san-pham/index.php";
         break;

@@ -23,7 +23,7 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- favi icon -->
-    <link rel="shortcut icon" href="<?= $CONTENT_ADMIN_URL ?>/img/avatar_xt.gif" type="image/x-icon">
+    <link rel="SHORTCUT ICON" href="<?= $CONTENT_ADMIN_URL ?>/img/avatar_xt.gif" type="image/x-icon">
     <!-- css  -->
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/base.css">
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/main.css">
@@ -36,7 +36,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 d-flex align-items-center">
-                        <a href="#" class="header__logo d-flex align-items-center"><span class="text__logo">LT SMART</span><img style="width:20%" src="content/img/logo ltsmart.PNG" alt=""></a>
+                        <a href="<?=$ROOT_URL?>/" class="header__logo d-flex align-items-center"><span class="text__logo">LT SMART</span><img style="width:20%" src="<?= $CONTENT_CLIENT_URL ?>/img/logo ltsmart.PNG" alt=""></a>
                         <div class="header__search ">
                             <form class="form-inline my-2 my-lg-0 ">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm tại đây...">
@@ -67,7 +67,7 @@
                         <div class="header__right pl-2 d-flex justify-content-around align-items-center">
                             <!-- <a href="#" class="header__right-user text-dark"><i class="icofont-user"></i></a> -->
                             <div class="header__right-user-login d-flex align-items-center cursor-pointer">
-                                <div class="header__right-user-avatar mr-2" style="background-image: url('admin/content/img/user.jpg');">
+                                <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_ADMIN_URL ?>/img/user.jpg');">
                                 </div>
                                 <div class="header__right-user-login-text ">
                                     <span class="header__right-user-login-title">
@@ -101,7 +101,7 @@
                         <div class="menu d-flex  justify-content-around">
                             <div class="menu__items active">
                                 <div class="menu__items-img">
-                                    <img src="content/img/phone2.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/phone2.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Điện thoại
@@ -109,7 +109,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/apple.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/apple.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Iphone
@@ -117,7 +117,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/phone2.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/phone2.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Samsung
@@ -125,7 +125,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/phukien.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/phukien.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Phụ kiện
@@ -134,7 +134,7 @@
 
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/tragop.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/tragop.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Mua trả góp
@@ -142,7 +142,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/gift.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/gift.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Khuyến mãi
@@ -150,7 +150,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/revodich-01.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/revodich-01.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Rẻ vô địch
@@ -158,7 +158,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/renewphone.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/renewphone.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Bán máy cũ đổi máy mới
@@ -166,7 +166,7 @@
                             </div>
                             <div class="menu__items">
                                 <div class="menu__items-img">
-                                    <img src="content/img/newspaper.svg" alt="">
+                                    <img src="<?= $CONTENT_CLIENT_URL ?>/img/newspaper.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Tin mới
@@ -181,7 +181,9 @@
         <!-- end nav menu -->
         <!-- main -->
         <main class="main">
-            <?php include $view; ?>
+            <div class="container">
+                <?php include $view; ?>
+            </div>
         </main>
         <!-- end main -->
         <!-- footer -->
@@ -343,6 +345,8 @@
         </footer>
         <!-- end footer -->
     </div>
+    <script src="<?= $CONTENT_CLIENT_URL ?>/js/main.js"> </script>
+
 </body>
 
 </html>
