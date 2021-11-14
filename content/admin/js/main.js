@@ -137,4 +137,21 @@ $(document).ready(function () {
     }
   });
 
+  //thêm danh mục
+
+  $('[name*="ten-danh-muc"]').change(function () {
+    if($(this).val() == "a") {
+      $("#error-danh-muc").text("Tên danh mục đã tồn tại");
+    }else{
+      $("#error-danh-muc").text("");
+    }
+  });
+  $('#add-danh-muc').submit(function (e) {
+    e.preventDefault();
+    if ($('[name*="ten-danh-muc"]').val() == "") {
+      $("#error-danh-muc").text("Tên danh mục không được trống");
+    }else{
+      
+    }
+  });
 });
