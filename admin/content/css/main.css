@@ -37,38 +37,37 @@ a:hover {
 }
 
 /* .sub menu */
-.sub-menu-items{
-display: block;
-padding:5px 0 5px 40px;
-color:inherit;
+.sub-menu-items {
+  display: block;
+  padding: 5px 0 5px 40px;
+  color: inherit;
 }
-.sub-menu-items i{
-  font-size: .6rem;
+.sub-menu-items i {
+  font-size: 0.6rem;
   padding-right: 10px;
 }
 /* .sub -menu */
-.sub-menu{
+.sub-menu {
   display: none;
 }
 /* tạo thanh cuộn nav */
-.navigation ul{
+.navigation ul {
   width: 100%;
   height: 100%;
-   overflow-y: scroll; 
-   overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   transition: all 0.3s;
- } 
- .navigation ul::-webkit-scrollbar {
+}
+.navigation ul::-webkit-scrollbar {
   width: 6px;
- 
-} 
+}
 .navigation ul::-webkit-scrollbar-thumb {
   background-color: #acacac;
   border-radius: 50px;
-  display:none;
+  display: none;
 }
-.navigation ul:hover::-webkit-scrollbar-thumb{
-display:block;
+.navigation ul:hover::-webkit-scrollbar-thumb {
+  display: block;
 }
 /* end scrollbar nav */
 .navigation li:nth-child(1) .navigation__link {
@@ -97,8 +96,10 @@ display:block;
   padding: 14px 0;
   position: relative;
 }
-.navigation__link:hover { color:var(--blue);}
-.navigation__link span:nth-child(2) i{
+.navigation__link:hover {
+  color: var(--blue);
+}
+.navigation__link span:nth-child(2) i {
   position: absolute;
   top: 13%;
   right: 0;
@@ -114,7 +115,6 @@ display:block;
   padding-right: 14px;
   font-size: 2rem;
 }
-
 
 /* .navigation__items:hover {
   background-color: #03a9f4;
@@ -154,7 +154,7 @@ display:block;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow:0 4px 4px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
 }
 .toggle {
   font-size: 2rem;
@@ -190,82 +190,92 @@ display:block;
 .dropdown-item {
   font-size: 1.4rem;
 }
-.content{
-  padding:2% 2% 8% 2%;
+.content {
+  padding: 2% 2% 8% 2%;
 }
 
 /* overview */
-.title{
+.title {
   font-size: 1.5rem;
 }
-.overview__box{
+.overview__box {
   min-width: 20%;
 }
-.overview__icon{
-  padding:1%;
-  width:30%;
+
+.overview__icon {
+  padding: 1%;
+  width: 30%;
   font-size: 3rem;
-  color:var(--white-color);
-  display:flex;
+  color: var(--white-color);
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.overview__content{
+.overview__content {
   padding: 5%;
-  flex:1;
+  flex: 1;
+  position: relative;
 }
-.overview__text{
-color:var(--white-color);
-text-transform: uppercase;
+.overview__text {
+  color: var(--white-color);
+  text-transform: uppercase;
 }
-.overview__box:nth-child(1) .overview__icon{
+.overview__box:nth-child(1) .overview__icon {
   background-color: rgb(205 26 87);
-
 }
-.overview__box:nth-child(2) .overview__icon{
+.overview__box:nth-child(2) .overview__icon {
   background-color: #00a5ba;
 }
-.overview__box:nth-child(3) .overview__icon{
+.overview__box:nth-child(3) .overview__icon {
   background-color: #7aab41;
 }
-.overview__box:nth-child(4) .overview__icon{
+.overview__box:nth-child(4) .overview__icon {
   background-color: #e08600;
 }
-.overview__box:nth-child(1) .overview__content{
-  background-color:#e91e63 ;
-
+.overview__box:nth-child(1) .overview__content {
+  background-color: #e91e63;
 }
-.overview__box:nth-child(2) .overview__content{
-  background-color:#00bcd4 ;
-
+.overview__box:nth-child(2) .overview__content {
+  background-color: #00bcd4;
 }
-.overview__box:nth-child(3) .overview__content{
-  background-color:#8bc34a ;
-
+.overview__box:nth-child(3) .overview__content {
+  background-color: #8bc34a;
 }
-.overview__box:nth-child(4) .overview__content{
-  background-color:#ff9800 ;
-
+.overview__box:nth-child(4) .overview__content {
+  background-color: #ff9800;
 }
-.overview__count{
-color:var(--white-color);
-font-size: 3rem;
+.overview__count {
+  color: var(--white-color);
+  font-size: 3rem;
+}
+.overview__content:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(0,0,0,0.04);
+  transition: all 0.8s;
+}
+.overview__box:hover .overview__content:before {
+  width: 100%;
 }
 
 /* end overview */
 .chart__monthl-revenu {
-  background-color:white;
+  background-color: white;
 }
-.chart__monthl-revenu svg{
-  padding:10px;
+.chart__monthl-revenu svg {
+  padding: 10px;
 }
 
 /* comment new */
-.user__comment{
+.user__comment {
   background-repeat: no-repeat;
   background-size: cover;
-  width:30px;
-  height:30px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 
@@ -276,7 +286,7 @@ font-size: 3rem;
   font-weight: 500;
   padding: 20px 0;
   text-align: center;
-  width:100%;
-  position:absolute;
+  width: 100%;
+  position: absolute;
   bottom: 0;
 }

@@ -29,6 +29,7 @@
     <link rel="shortcut icon" href="content/img/avatar_xt.gif" type="image/x-icon">
     <link rel="stylesheet" href="content/css/main.css">
     <link rel="stylesheet" href="content/css/base.css">
+    <link rel="stylesheet" href="content/css/toastMessage.css">
 </head>
 
 <body>
@@ -276,21 +277,27 @@
                                             <tr>
                                                 <th scope="row">1</th>
                                                 <td>12</td>
-                                                <td><img style="width:50px" src="../content/img/(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg" alt=""></td>
+                                                <td><img style="width:50px"
+                                                        src="../content/img/(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg"
+                                                        alt=""></td>
                                                 <td class="text-overflow">iPhone 7 Plus 256GB Quốc Tế (Likenew)</td>
                                                 <td><a href="#"><i class="far fa-eye"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>13</td>
-                                                <td><img style="width:50px" src="../content/img/(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg" alt=""></td>
+                                                <td><img style="width:50px"
+                                                        src="../content/img/(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg"
+                                                        alt=""></td>
                                                 <td class="text-overflow">iPhone 7 Plus 256GB Quốc Tế (Likenew)</td>
                                                 <td><a href="#"><i class="far fa-eye"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">3</th>
                                                 <td>14</td>
-                                                <td><img style="width:50px" src="../content/img/(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg" alt=""></td>
+                                                <td><img style="width:50px"
+                                                        src="../content/img/(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg"
+                                                        alt=""></td>
                                                 <td class="text-overflow">iPhone 7 Plus 256GB Quốc Tế (Likenew)</td>
                                                 <td><a href="#"><i class="far fa-eye"></i></a></td>
                                             </tr>
@@ -318,35 +325,47 @@
                                             <tr>
                                                 <th scope="row">1</th>
                                                 <td>Iphone 11</td>
-                                                <td class='d-flex '><p class="user__comment mr-2" style="background-image: url('content/img/user.jpg');"></p>Long Đoàn </td>
+                                                <td class='d-flex '>
+                                                    <p class="user__comment mr-2"
+                                                        style="background-image: url('content/img/user.jpg');"></p>Long
+                                                    Đoàn
+                                                </td>
                                                 <td>sản phẩm tốt</td>
                                                 <td>20/11/2021</td>
                                                 <td>
-                                               <a href="#"> <i class="far fa-eye"></i></a>
+                                                    <a href="#"> <i class="far fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">1</th>
                                                 <td>Iphone 11</td>
-                                                <td class='d-flex '><p class="user__comment mr-2" style="background-image: url('content/img/user.jpg');"></p>Long Đoàn </td>
+                                                <td class='d-flex '>
+                                                    <p class="user__comment mr-2"
+                                                        style="background-image: url('content/img/user.jpg');"></p>Long
+                                                    Đoàn
+                                                </td>
                                                 <td>sản phẩm tốt</td>
                                                 <td>20/11/2021</td>
                                                 <td>
-                                               <a href="#"> <i class="far fa-eye"></i></a>
+                                                    <a href="#"> <i class="far fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">1</th>
                                                 <td>Iphone 11</td>
-                                                <td class='d-flex '><p class="user__comment mr-2" style="background-image: url('content/img/user.jpg');"></p>Long Đoàn </td>
+                                                <td class='d-flex '>
+                                                    <p class="user__comment mr-2"
+                                                        style="background-image: url('content/img/user.jpg');"></p>Long
+                                                    Đoàn
+                                                </td>
                                                 <td>sản phẩm tốt</td>
                                                 <td>20/11/2021</td>
                                                 <td>
-                                               <a href="#"> <i class="far fa-eye"></i></a>
+                                                    <a href="#"> <i class="far fa-eye"></i></a>
                                                 </td>
                                             </tr>
-                                            
-                                  
+
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -354,6 +373,9 @@
                         </div>
                     </div>
                 </div>
+                <div id="toast"></div>
+                <div class="show">show</div>
+
             </div>
             <footer class="footer ">
                 Bản quyền thuộc <span class="text-danger">LT SMART</span> Copyright &copy; 2021 . Trang web
@@ -364,33 +386,7 @@
 
     </div>
     <script src="content/js/main.js"></script>
-    <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
 
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-
-    <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "122832829972940");
-        chatbox.setAttribute("attribution", "biz_inbox");
-
-        window.fbAsyncInit = function () {
-            FB.init({
-                xfbml: true,
-                version: 'v12.0'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 </body>
 
 </html>
