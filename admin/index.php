@@ -6,11 +6,17 @@ switch ($url) {
         $view = "views/home.php";
         $title="Admin";
         break;
+
     case 'add-danh-muc':
         $view = 'views/danh-muc/danh-muc.php';
         $title='Thêm danh mục';
         break;
-   
+
+    case 'add-san-pham':
+        $view = 'views/san-pham/add-san-pham.php';
+        $title = "Thêm sản phẩm";
+        break;
+
     case 'ct-san-pham':
         $view = "views/san-pham/san-pham.php";
         $title="Chi tiết sản phẩm";
