@@ -77,7 +77,13 @@ $(document).ready(function () {
     chart.draw(data, google.charts.Bar.convertOptions(options));
   }
   //toast thông báo
-  function toast({ title = "", msg = "", type = "success", duration = 3000 }) {
+  function toast({
+    title = "",
+    msg = "",
+    link = "",
+    type = "success",
+    duration = 3000,
+  }) {
     const main = document.getElementById("toast");
     if (main) {
       const toast = document.createElement("div");
@@ -103,12 +109,15 @@ $(document).ready(function () {
       toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
 
       toast.innerHTML = `
+       
         <div class="toast__icon">
         <i class="${icon}"></i>
     </div>
     <div class="toast__body">
+    <a href="${link}">
         <h4 class="toast__title">${title}</h4>
         <p class="toast__msg">${msg}</p>
+    </a>
     </div>
     <div class="toast__close">
         <i class="fas fa-times"></i>
@@ -136,6 +145,7 @@ $(document).ready(function () {
       });
     }
   });
+  // Trang thêm danh mục
 
   //thêm danh mục chính
   // Kiểm tra có tồn tại trong DB chưa
@@ -143,25 +153,36 @@ $(document).ready(function () {
   $('[name*="ten-danh-muc-chinh"]').keyup(function () {
     if ($(this).val() == "dienthoai") {
       $("#error-danh-muc-chinh").text("Tên danh mục đã tồn tại");
+      //Danh mục đã tồn tại sẻ có border red input
+      $('[name*="ten-danh-muc-chinh"]').css("border", "1px solid #f38291");
       check = false;
     } else {
       $("#error-danh-muc-chinh").text("");
+      // Nếu không trùng danh mục thì xoá border lỗi red input
+      $(this).css("border", "0");
       check = true;
     }
   });
-
+  // khi focus vào lại thì sẻ bỏ border red lỗi
+  $('[name*="ten-danh-muc-chinh"]').focus(function () {
+    $(this).css("border", "0");
+  });
   // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-chinh").submit(function (e) {
     e.preventDefault();
     // nếu tên danh mục trống
     if ($('[name*="ten-danh-muc-chinh"]').val() == "") {
+      //để Trống khi submit sẻ có border red input
+      $('[name*="ten-danh-muc-chinh"]').css("border", "1px solid #f38291");
       $("#error-danh-muc-chinh").text("Tên danh mục không được trống");
+
       // thông báo toast thất bại
       toast({
         title: "Thất bại",
         msg: "Thêm danh mục thất bại!",
         type: "error",
         duration: 5000,
+        link: "#",
       });
     } else {
       // nếu tên danh mục đã tồn tại
@@ -181,6 +202,7 @@ $(document).ready(function () {
                 msg: "Thêm danh mục thành công !",
                 type: "success",
                 duration: 5000,
+                link: "list-danh-muc",
               });
             } else {
               // thông báo toast thất bại
@@ -189,6 +211,7 @@ $(document).ready(function () {
                 msg: "Thêm danh mục thất bại!",
                 type: "error",
                 duration: 5000,
+                link: "#",
               });
             }
           },
@@ -197,32 +220,42 @@ $(document).ready(function () {
     }
   });
 
-  //thêm danh mục conn
-
+  //thêm danh mục con
   // Kiểm tra có tồn tại trong DB chưa
   var check = false;
   $('[name*="ten-danh-muc-con"]').keyup(function () {
     if ($(this).val() == "oppo") {
       $("#error-danh-muc-con").text("Tên danh mục đã tồn tại");
+      //Danh mục đã tồn tại sẻ có border red input
+      $('[name*="ten-danh-muc-con"]').css("border", "1px solid #f38291");
       check = false;
     } else {
       $("#error-danh-muc-con").text("");
+      // Nếu không trùng danh mục thì xoá border lỗi red input
+      $(this).css("border", "0");
       check = true;
     }
   });
-
+  // khi focus vào lại thì sẻ bỏ border red lỗi
+  $('[name*="ten-danh-muc-con"]').focus(function () {
+    $(this).css("border", "0");
+  });
   // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-con").submit(function (e) {
     e.preventDefault();
     // nếu tên danh mục trống
     if ($('[name*="ten-danh-muc-con"]').val() == "") {
+      //để Trống khi submit sẻ có border red input
+      $('[name*="ten-danh-muc-con"]').css("border", "1px solid #f38291");
       $("#error-danh-muc-con").text("Tên danh mục không được trống");
+
       // thông báo toast thất bại
       toast({
         title: "Thất bại",
         msg: "Thêm danh mục thất bại!",
         type: "error",
         duration: 5000,
+        link: "#",
       });
     } else {
       // nếu tên danh mục đã tồn tại
@@ -242,6 +275,7 @@ $(document).ready(function () {
                 msg: "Thêm danh mục thành công !",
                 type: "success",
                 duration: 5000,
+                link: "list-danh-muc",
               });
             } else {
               // thông báo toast thất bại
@@ -250,6 +284,7 @@ $(document).ready(function () {
                 msg: "Thêm danh mục thất bại!",
                 type: "error",
                 duration: 5000,
+                link: "#",
               });
             }
           },
@@ -257,6 +292,8 @@ $(document).ready(function () {
       }
     }
   });
+
+  // Trang danh sách danh mục
 
   //check all  danh mục
 
@@ -302,7 +339,18 @@ $(document).ready(function () {
       url: "../admin/xu-ly/danh-muc/delete-danh-muc.php", //gửi đến thư mục xữ lý
       data: $("#delete-danh-muc-chinh").serializeArray(), //gửi hết dữ liệu trong form theo name
       success: function (data) {
-        console.log(data);
+        //data gửi về từ file php
+        if (data == 1) {
+          //thông báo xoá danh mục thành công
+          toast({
+            title: "Thành công",
+            msg: "Xoá danh mục thành công !",
+            type: "success",
+            duration: 5000,
+            link: "#",
+          });
+        } else {
+        }
       },
     });
   });
@@ -315,7 +363,14 @@ $(document).ready(function () {
       url: "../admin/xu-ly/danh-muc/delete-danh-muc.php", //gửi đến thư mục xữ lý
       data: $("#delete-danh-muc-con").serializeArray(), //gửi hết dữ liệu trong form theo name
       success: function (data) {
-        console.log(data);
+        //thông báo xoá danh mục thành công
+        toast({
+          title: "Thành công",
+          msg: "Xoá danh mục thành công !",
+          type: "success",
+          duration: 5000,
+          link: "#",
+        });
       },
     });
   });

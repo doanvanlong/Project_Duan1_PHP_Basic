@@ -1,6 +1,7 @@
-<div >
-    <div class="danh-muc-chinh ">
-        <h2 class="alert alert-info  heading-cate">Thêm danh mục  </h2>
+<h3 class="alert bg-secondary text-light heading-cate">Thêm danh mục</h3>
+<div class="row">
+    <div class="danh-muc-chinh col-5">
+        <h4 class="alert alert-light  heading-cate">Danh mục  </h4>
         <form action="" id="add-danh-muc-chinh" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tên danh mục</label>
@@ -11,8 +12,8 @@
         </form>
     </div>
 
-    <div class="danh-muc-con my-4">
-        <h2 class="alert alert-info  heading-cate ">Thêm danh mục chi tiết</h2>
+    <div class="danh-muc-con col-7">
+        <h4 class="alert alert-light  heading-cate ">Danh mục chi tiết</h4>
         <form action="" id="add-danh-muc-con" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tên danh mục</label>

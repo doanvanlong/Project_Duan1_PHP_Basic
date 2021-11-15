@@ -15,6 +15,14 @@ switch ($url) {
         $view = 'views/danh-muc/list-danh-muc.php';
         $title = 'Danh sách danh mục';
         break;
+    case 'edit-danh-muc-chinh':
+        $view = 'views/danh-muc/edit-danh-muc-chinh.php';
+        $title = 'Sửa danh mục';
+        break;
+    case 'edit-danh-muc-con':
+        $view = 'views/danh-muc/edit-danh-muc-con.php';
+        $title = 'Sửa danh mục';
+        break;
     case 'add-san-pham':
         $view = 'views/san-pham/add-san-pham.php';
         $title = "Thêm sản phẩm";
