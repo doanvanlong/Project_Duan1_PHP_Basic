@@ -139,56 +139,125 @@ $(document).ready(function () {
 
   //thêm danh mục chính
   // Kiểm tra có tồn tại trong DB chưa
+  var check = false;
   $('[name*="ten-danh-muc-chinh"]').keyup(function () {
     if ($(this).val() == "dienthoai") {
       $("#error-danh-muc-chinh").text("Tên danh mục đã tồn tại");
+      check = false;
     } else {
       $("#error-danh-muc-chinh").text("");
+      check = true;
     }
   });
-  // kiểm lỗi,Gửi dữ liệu đi
+
+  // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-chinh").submit(function (e) {
     e.preventDefault();
+    // nếu tên danh mục trống
     if ($('[name*="ten-danh-muc-chinh"]').val() == "") {
       $("#error-danh-muc-chinh").text("Tên danh mục không được trống");
-    } else {
-      $.ajax({
-        type: "POST",
-        url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
-        data: $("#add-danh-muc-chinh").serializeArray(), //gửi hết dữ liệu trong form theo name
-        success: function (data) {
-          console.log(data);
-        },
+      // thông báo toast thất bại
+      toast({
+        title: "Thất bại",
+        msg: "Thêm danh mục thất bại!",
+        type: "error",
+        duration: 5000,
       });
+    } else {
+      // nếu tên danh mục đã tồn tại
+      if (check == false) {
+      } else {
+        // danh mục chưa có
+        $.ajax({
+          type: "POST",
+          url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
+          data: $("#add-danh-muc-chinh").serializeArray(), //gửi hết dữ liệu trong form theo name
+          success: function (data) {
+            // data được gửi về từ file php
+            if (data == 1) {
+              //thông báo thêm thành công
+              toast({
+                title: "Thành công",
+                msg: "Thêm danh mục thành công !",
+                type: "success",
+                duration: 5000,
+              });
+            } else {
+              // thông báo toast thất bại
+              toast({
+                title: "Thất bại",
+                msg: "Thêm danh mục thất bại!",
+                type: "error",
+                duration: 5000,
+              });
+            }
+          },
+        });
+      }
     }
   });
 
   //thêm danh mục conn
 
   // Kiểm tra có tồn tại trong DB chưa
+  var check = false;
   $('[name*="ten-danh-muc-con"]').keyup(function () {
     if ($(this).val() == "oppo") {
       $("#error-danh-muc-con").text("Tên danh mục đã tồn tại");
+      check = false;
     } else {
       $("#error-danh-muc-con").text("");
+      check = true;
     }
   });
-  // kiểm lỗi,Gửi dữ liệu đi
+
+  // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-con").submit(function (e) {
     e.preventDefault();
+    // nếu tên danh mục trống
     if ($('[name*="ten-danh-muc-con"]').val() == "") {
       $("#error-danh-muc-con").text("Tên danh mục không được trống");
-    } else {
-      $.ajax({
-        type: "POST",
-        url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
-        data: $("#add-danh-muc-con").serializeArray(), //gửi hết dữ liệu trong form theo name
-        success: function (data) {
-          console.log(data);
-        },
+      // thông báo toast thất bại
+      toast({
+        title: "Thất bại",
+        msg: "Thêm danh mục thất bại!",
+        type: "error",
+        duration: 5000,
       });
+    } else {
+      // nếu tên danh mục đã tồn tại
+      if (check == false) {
+      } else {
+        // danh mục chưa có
+        $.ajax({
+          type: "POST",
+          url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
+          data: $("#add-danh-muc-con").serializeArray(), //gửi hết dữ liệu trong form theo name
+          success: function (data) {
+            // data được gửi về từ file php
+            if (data == 1) {
+              //thông báo thêm thành công
+              toast({
+                title: "Thành công",
+                msg: "Thêm danh mục thành công !",
+                type: "success",
+                duration: 5000,
+              });
+            } else {
+              // thông báo toast thất bại
+              toast({
+                title: "Thất bại",
+                msg: "Thêm danh mục thất bại!",
+                type: "error",
+                duration: 5000,
+              });
+            }
+          },
+        });
+      }
     }
   });
+
   //check all  danh mục
 
   // check danh mục chính
@@ -252,11 +321,11 @@ $(document).ready(function () {
   });
 
   // delete danh mục chính theo id  ,dùng thuộc tính data- của html
-  $('.delete-dm-chinh').click(function () {
-    alert($(this).data('id_dm_chinh'));
-  })
-   // delete danh mục con theo id  ,dùng thuộc tính data- của html
-   $('.delete-dm-con').click(function () {
-    alert($(this).data('id_dm_con'));
-  })
+  $(".delete-dm-chinh").click(function () {
+    alert($(this).data("id_dm_chinh"));
+  });
+  // delete danh mục con theo id  ,dùng thuộc tính data- của html
+  $(".delete-dm-con").click(function () {
+    alert($(this).data("id_dm_con"));
+  });
 });
