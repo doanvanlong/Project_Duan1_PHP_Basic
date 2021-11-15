@@ -16,7 +16,7 @@ switch ($url) {
         break;
     default:
         $view = 'views/home.php';
-        $title='LTsmart| Hệ thống bán lẻ điện thoại chính hãng giá rẻ tại Đà Nẵng ';
+        $title='LTsmart | Hệ thống bán lẻ điện thoại chính hãng giá rẻ tại Đà Nẵng ';
         break;
 
 }
