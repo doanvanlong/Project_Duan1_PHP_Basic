@@ -189,5 +189,74 @@ $(document).ready(function () {
       });
     }
   });
+  //check all  danh mục
 
+  // check danh mục chính
+  $("#checkall-dm-chinh").click(function (isChecked) {
+    if (isChecked) {
+      $(".check-dm-chinh").each(function () {
+        this.checked = true;
+      });
+    }
+  });
+  // bỏ mục đã check
+  $("#uncheck-dm-chinh").click(function (notChecked) {
+    if (notChecked) {
+      $(".check-dm-chinh").each(function () {
+        this.checked = false;
+      });
+    }
+  });
+  // check danh mục con
+  $("#checkall-dm-con").click(function (isChecked) {
+    if (isChecked) {
+      $(".check-dm-con").each(function () {
+        this.checked = true;
+      });
+    }
+  });
+  // bỏ mục đã check
+  $("#uncheck-dm-con").click(function (notChecked) {
+    if (notChecked) {
+      $(".check-dm-con").each(function () {
+        this.checked = false;
+      });
+    }
+  });
+
+  //delete checked danh mục chính
+  // php nhận value là id để xoá dm
+  $("#delete-danh-muc-chinh").submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "../admin/xu-ly/danh-muc/delete-danh-muc.php", //gửi đến thư mục xữ lý
+      data: $("#delete-danh-muc-chinh").serializeArray(), //gửi hết dữ liệu trong form theo name
+      success: function (data) {
+        console.log(data);
+      },
+    });
+  });
+  //delete checked danh mục con
+  // php nhận value là id để xoá dm
+  $("#delete-danh-muc-con").submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "../admin/xu-ly/danh-muc/delete-danh-muc.php", //gửi đến thư mục xữ lý
+      data: $("#delete-danh-muc-con").serializeArray(), //gửi hết dữ liệu trong form theo name
+      success: function (data) {
+        console.log(data);
+      },
+    });
+  });
+
+  // delete danh mục chính theo id  ,dùng thuộc tính data- của html
+  $('.delete-dm-chinh').click(function () {
+    alert($(this).data('id_dm_chinh'));
+  })
+   // delete danh mục con theo id  ,dùng thuộc tính data- của html
+   $('.delete-dm-con').click(function () {
+    alert($(this).data('id_dm_con'));
+  })
 });

@@ -30,7 +30,7 @@ select#exampleFormControlSelect1 {
 }
 .btn{
     font-size: 1.4rem !important;
-    padding: .8rem !important;
+    /* padding: .8rem !important; */
 }
 .padding-select{
   padding: .5rem;
