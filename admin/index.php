@@ -8,10 +8,13 @@ switch ($url) {
         break;
 
     case 'add-danh-muc':
-        $view = 'views/danh-muc/danh-muc.php';
+        $view = 'views/danh-muc/add-danh-muc.php';
         $title = 'Thêm danh mục';
         break;
-    
+    case 'list-danh-muc':
+        $view = 'views/danh-muc/list-danh-muc.php';
+        $title = 'Danh sách danh mục';
+        break;
     case 'add-san-pham':
         $view = 'views/san-pham/add-san-pham.php';
         $title = "Thêm sản phẩm";

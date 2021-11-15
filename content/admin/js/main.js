@@ -137,27 +137,52 @@ $(document).ready(function () {
     }
   });
 
-
-  //thêm danh mục
-
+  //thêm danh mục chính
   // Kiểm tra có tồn tại trong DB chưa
-  $('[name*="ten-danh-muc"]').keyup(function () {
-    if ($(this).val() == "a") {
-      $("#error-danh-muc").text("Tên danh mục đã tồn tại");
+  $('[name*="ten-danh-muc-chinh"]').keyup(function () {
+    if ($(this).val() == "dienthoai") {
+      $("#error-danh-muc-chinh").text("Tên danh mục đã tồn tại");
     } else {
-      $("#error-danh-muc").text("");
+      $("#error-danh-muc-chinh").text("");
     }
   });
   // kiểm lỗi,Gửi dữ liệu đi
-  $("#add-danh-muc").submit(function (e) {
+  $("#add-danh-muc-chinh").submit(function (e) {
     e.preventDefault();
-    if ($('[name*="ten-danh-muc"]').val() == "") {
-      $("#error-danh-muc").text("Tên danh mục không được trống");
+    if ($('[name*="ten-danh-muc-chinh"]').val() == "") {
+      $("#error-danh-muc-chinh").text("Tên danh mục không được trống");
     } else {
       $.ajax({
         type: "POST",
         url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
-        data: $("#add-danh-muc").serializeArray(), //gửi hết dữ liệu trong form theo name
+        data: $("#add-danh-muc-chinh").serializeArray(), //gửi hết dữ liệu trong form theo name
+        success: function (data) {
+          console.log(data);
+        },
+      });
+    }
+  });
+
+  //thêm danh mục conn
+
+  // Kiểm tra có tồn tại trong DB chưa
+  $('[name*="ten-danh-muc-con"]').keyup(function () {
+    if ($(this).val() == "oppo") {
+      $("#error-danh-muc-con").text("Tên danh mục đã tồn tại");
+    } else {
+      $("#error-danh-muc-con").text("");
+    }
+  });
+  // kiểm lỗi,Gửi dữ liệu đi
+  $("#add-danh-muc-con").submit(function (e) {
+    e.preventDefault();
+    if ($('[name*="ten-danh-muc-con"]').val() == "") {
+      $("#error-danh-muc-con").text("Tên danh mục không được trống");
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
+        data: $("#add-danh-muc-con").serializeArray(), //gửi hết dữ liệu trong form theo name
         success: function (data) {
           console.log(data);
         },
