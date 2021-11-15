@@ -137,34 +137,32 @@ $(document).ready(function () {
     }
   });
 
+
   //thêm danh mục
 
   // Kiểm tra có tồn tại trong DB chưa
   $('[name*="ten-danh-muc"]').keyup(function () {
-    if($(this).val() == "a") {
+    if ($(this).val() == "a") {
       $("#error-danh-muc").text("Tên danh mục đã tồn tại");
-    }else{
+    } else {
       $("#error-danh-muc").text("");
     }
   });
-  // kiểm lỗi,Gửi dữ liệu đi 
-  $('#add-danh-muc').submit(function (e) {
+  // kiểm lỗi,Gửi dữ liệu đi
+  $("#add-danh-muc").submit(function (e) {
     e.preventDefault();
     if ($('[name*="ten-danh-muc"]').val() == "") {
       $("#error-danh-muc").text("Tên danh mục không được trống");
-    }else{
+    } else {
       $.ajax({
         type: "POST",
-        url:'../admin/xu-ly/danh-muc/insert-danh-muc.php',//gửi đến thư mục xữ lý
-        data:$('#add-danh-muc').serializeArray(),//gửi hết dữ liệu trong form theo name
-        success: function(data){
+        url: "../admin/xu-ly/danh-muc/insert-danh-muc.php", //gửi đến thư mục xữ lý
+        data: $("#add-danh-muc").serializeArray(), //gửi hết dữ liệu trong form theo name
+        success: function (data) {
           console.log(data);
-        }
-      })
+        },
+      });
     }
-    
   });
-
-  // thêm sản phẩm
 
 });

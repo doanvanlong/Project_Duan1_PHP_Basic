@@ -25,6 +25,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <!-- ckeditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+
     <!-- favi icon -->
     <link rel="shortcut icon" href="<?= $CONTENT_ADMIN_URL ?>/img/avatar_xt.gif" type="image/x-icon">
     <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/main.css">
@@ -218,7 +221,7 @@
 
     </div>
     <script src="<?=$CONTENT_ADMIN_URL?>/js/main.js"></script>
-
+    <script src="<?=$CONTENT_ADMIN_URL?>/js/main2.js"></script>
 </body>
 
 </html>
