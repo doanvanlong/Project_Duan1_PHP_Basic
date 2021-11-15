@@ -163,7 +163,7 @@ $(document).ready(function () {
     }
   });
 
-  //thêm danh mục con
+  //thêm danh mục conn
 
   // Kiểm tra có tồn tại trong DB chưa
   $('[name*="ten-danh-muc-con"]').keyup(function () {
