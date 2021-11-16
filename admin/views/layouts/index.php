@@ -209,7 +209,7 @@
                <!-- //nội dung thay đổi -->
                <?php include $view?>
                 <div id="toast"></div>
-                <div class="show">show</div>
+               
 
             </div>
             <footer class="footer ">

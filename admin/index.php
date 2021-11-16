@@ -1,5 +1,7 @@
 <?php
 require_once '../global.php';
+require_once '../model/pdo.php';
+pdo_get_connection();
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
     case '/':
