@@ -17,6 +17,8 @@ switch ($url) {
     case 'list-danh-muc':
         $view = 'views/danh-muc/list-danh-muc.php';
         $title = 'Danh sách danh mục';
+        $list_dm_pro=danh_muc_chinh_QueryAll();
+        $list_sub_dm_pro=danh_muc_con_QueryAll();
         break;
     case 'edit-danh-muc-chinh':
         $view = 'views/danh-muc/edit-danh-muc-chinh.php';

@@ -191,6 +191,7 @@ $(document).ready(function () {
   // khi focus vào lại thì sẻ bỏ border red lỗi
   $('[name*="ten-danh-muc-chinh"]').focus(function () {
     $(this).css("border", "0");
+    $("#error-danh-muc-chinh").text("");
   });
   // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-chinh").submit(function (e) {
@@ -230,7 +231,7 @@ $(document).ready(function () {
                 link: "list-danh-muc",
               });
               // thêm thành công thì reset form
-              $('#add-danh-muc-chinh')[0].reset();
+              $("#add-danh-muc-chinh")[0].reset();
             } else {
               // thông báo toast thất bại
               toast({
@@ -289,6 +290,7 @@ $(document).ready(function () {
   // khi focus vào lại thì sẻ bỏ border red lỗi
   $('[name*="ten-danh-muc-con"]').focus(function () {
     $(this).css("border", "0");
+    $("#error-danh-muc-con").text("");
   });
   // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-con").submit(function (e) {
@@ -328,7 +330,7 @@ $(document).ready(function () {
                 link: "list-danh-muc",
               });
               // thêm thành công thì reset form
-              $('#add-danh-muc-con')[0].reset();
+              $("#add-danh-muc-con")[0].reset();
             } else {
               // thông báo toast thất bại
               toast({
@@ -347,13 +349,18 @@ $(document).ready(function () {
   // Trang danh sách danh mục
 
   //check all  danh mục
-
+  //danh mục chính
+  $("#uncheck-dm-chinh").css("display", "none");
+  // ban đầu thèn bỏ chọn dplay ẩn
   // check danh mục chính
   $("#checkall-dm-chinh").click(function (isChecked) {
     if (isChecked) {
       $(".check-dm-chinh").each(function () {
         this.checked = true;
       });
+      $("#checkall-dm-chinh").css("display", "none");
+      //dplay none btn chọn tất cả sau khi đã click vào btn chọn tất cả
+      $("#uncheck-dm-chinh").css("display", "inline-block");
     }
   });
   // bỏ mục đã check
@@ -362,14 +369,22 @@ $(document).ready(function () {
       $(".check-dm-chinh").each(function () {
         this.checked = false;
       });
+      $("#checkall-dm-chinh").css("display", "inline-block");
+      //dplay block btn chọn tất cả sau khi đã click vào btn bỏ chọn
     }
   });
+
+  $("#uncheck-dm-con").css("display", "none");
+  // ban đầu thèn bỏ chọn dplay ẩn
   // check danh mục con
   $("#checkall-dm-con").click(function (isChecked) {
     if (isChecked) {
       $(".check-dm-con").each(function () {
         this.checked = true;
       });
+      $("#checkall-dm-con").css("display", "none");
+      //dplay none btn chọn tất cả sau khi đã click vào btn chọn tất cả
+      $("#uncheck-dm-con").css("display", "inline-block");
     }
   });
   // bỏ mục đã check
@@ -378,6 +393,8 @@ $(document).ready(function () {
       $(".check-dm-con").each(function () {
         this.checked = false;
       });
+      $("#checkall-dm-con").css("display", "inline-block");
+      //dplay block btn chọn tất cả sau khi đã click vào btn bỏ chọn
     }
   });
 
@@ -400,6 +417,8 @@ $(document).ready(function () {
             duration: 5000,
             link: "#",
           });
+           // reload lại trang sau khi xoá xong
+           setTimeout(location.reload.bind(location), 300);
         } else {
         }
       },
@@ -422,16 +441,82 @@ $(document).ready(function () {
           duration: 5000,
           link: "#",
         });
+        // reload lại trang sau khi xoá xong
+        setTimeout(location.reload.bind(location), 300);
       },
     });
   });
 
   // delete danh mục chính theo id  ,dùng thuộc tính data- của html
   $(".delete-dm-chinh").click(function () {
-    alert($(this).data("id_dm_chinh"));
+    // ${(this).data("ten_dm_chinh")}
+    var isDelete = confirm("Bạn có muốn xoá danh mục này không ?"); //hỏi có muốn xoá ko
+    if (!isDelete) {
+      // ko Ok là ko xoá
+    } else {
+      var id_dm_chinh = $(this).data("delete_id_dm_chinh");
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/delete-danh-muc.php",
+        data: { delete_id_dm_chinh: id_dm_chinh },
+        success: function (data) {
+          if (data == 1) {
+            toast({
+              title: "Thành công",
+              msg: "Xoá danh mục thành công !",
+              type: "success",
+              duration: 5000,
+              link: "#",
+            });
+            // reload lại trang sau khi xoá xong
+            setTimeout(location.reload.bind(location), 300);
+          } else {
+            toast({
+              title: "Thất bại",
+              msg: "Xoá danh mục thất bại !",
+              type: "error",
+              duration: 5000,
+              link: "#",
+            });
+          }
+        },
+      });
+    }
   });
   // delete danh mục con theo id  ,dùng thuộc tính data- của html
   $(".delete-dm-con").click(function () {
-    alert($(this).data("id_dm_con"));
+    // ${(this).data("ten_dm_chinh")}
+    var isDelete = confirm("Bạn có muốn xoá danh mục này không ?"); //hỏi có muốn xoá ko
+    if (!isDelete) {
+      // ko Ok là ko xoá
+    } else {
+      var id_dm_con = $(this).data("delete_id_dm_con");
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/delete-danh-muc.php",
+        data: { delete_id_dm_con: id_dm_con },
+        success: function (data) {
+          if (data == 1) {
+            toast({
+              title: "Thành công",
+              msg: "Xoá danh mục thành công !",
+              type: "success",
+              duration: 5000,
+              link: "#",
+            });
+            // reload lại trang sau khi xoá xong
+            setTimeout(location.reload.bind(location), 300);
+          } else {
+            toast({
+              title: "Thất bại",
+              msg: "Xoá danh mục thất bại !",
+              type: "error",
+              duration: 5000,
+              link: "#",
+            });
+          }
+        },
+      });
+    }
   });
 });
