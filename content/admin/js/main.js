@@ -151,16 +151,41 @@ $(document).ready(function () {
   // Kiểm tra có tồn tại trong DB chưa
   var check = false;
   $('[name*="ten-danh-muc-chinh"]').keyup(function () {
-    if ($(this).val() == "dienthoai") {
-      $("#error-danh-muc-chinh").text("Tên danh mục đã tồn tại");
-      //Danh mục đã tồn tại sẻ có border red input
-      $('[name*="ten-danh-muc-chinh"]').css("border", "1px solid #f38291");
-      check = false;
-    } else {
+    if ($(this).val() == "") {
       $("#error-danh-muc-chinh").text("");
-      // Nếu không trùng danh mục thì xoá border lỗi red input
+      // Nếu value =  rỗng thì xoá border lỗi red input
       $(this).css("border", "0");
       check = true;
+    } else {
+      // Nếu khác rỗng thì xoá border lỗi red input
+      $(this).css("border", "0");
+      check = true;
+      // nếu có dữ liệu khi nhập , thì gửi ajax qua file php với name là keyup
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/insert-danh-muc.php",
+        data: { keyup_dm_chinh: $(this).val() },
+        dataType: "text",
+        success: function (data) {
+          // lấy dữ liệu trở về từ file php kiểm tra keyup DB
+          if (data != 0) {
+            // có record
+            $("#error-danh-muc-chinh").text("Tên danh mục đã tồn tại");
+            //Danh mục đã tồn tại sẻ có border red input
+            $('[name*="ten-danh-muc-chinh"]').css(
+              "border",
+              "1px solid #f38291"
+            );
+            check = false;
+          } else {
+            // ko có record
+            $("#error-danh-muc-chinh").text("");
+            // Nếu không trùng danh mục thì xoá border lỗi red input
+            $(this).css("border", "0");
+            check = true;
+          }
+        },
+      });
     }
   });
   // khi focus vào lại thì sẻ bỏ border red lỗi
@@ -204,6 +229,8 @@ $(document).ready(function () {
                 duration: 5000,
                 link: "list-danh-muc",
               });
+              // thêm thành công thì reset form
+              $('#add-danh-muc-chinh')[0].reset();
             } else {
               // thông báo toast thất bại
               toast({
@@ -221,19 +248,42 @@ $(document).ready(function () {
   });
 
   //thêm danh mục con
+
   // Kiểm tra có tồn tại trong DB chưa
   var check = false;
   $('[name*="ten-danh-muc-con"]').keyup(function () {
-    if ($(this).val() == "oppo") {
-      $("#error-danh-muc-con").text("Tên danh mục đã tồn tại");
-      //Danh mục đã tồn tại sẻ có border red input
-      $('[name*="ten-danh-muc-con"]').css("border", "1px solid #f38291");
-      check = false;
-    } else {
+    if ($(this).val() == "") {
       $("#error-danh-muc-con").text("");
-      // Nếu không trùng danh mục thì xoá border lỗi red input
+      // Nếu value =  rỗng thì xoá border lỗi red input
       $(this).css("border", "0");
       check = true;
+    } else {
+      // Nếu khác rỗng thì xoá border lỗi red input
+      $(this).css("border", "0");
+      check = true;
+      // nếu có dữ liệu khi nhập (keyup) , thì gửi ajax qua file php với name là keyup
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/insert-danh-muc.php",
+        data: { keyup_dm_con: $(this).val() },
+        dataType: "text",
+        success: function (data) {
+          // lấy dữ liệu trở về từ file php kiểm tra keyup DB
+          if (data != 0) {
+            // có record
+            $("#error-danh-muc-con").text("Tên danh mục đã tồn tại");
+            //Danh mục đã tồn tại sẻ có border red input
+            $('[name*="ten-danh-muc-con"]').css("border", "1px solid #f38291");
+            check = false;
+          } else {
+            // ko có record
+            $("#error-danh-muc-con").text("");
+            // Nếu không trùng danh mục thì xoá border lỗi red input
+            $(this).css("border", "0");
+            check = true;
+          }
+        },
+      });
     }
   });
   // khi focus vào lại thì sẻ bỏ border red lỗi
@@ -277,6 +327,8 @@ $(document).ready(function () {
                 duration: 5000,
                 link: "list-danh-muc",
               });
+              // thêm thành công thì reset form
+              $('#add-danh-muc-con')[0].reset();
             } else {
               // thông báo toast thất bại
               toast({
@@ -292,7 +344,6 @@ $(document).ready(function () {
       }
     }
   });
-
   // Trang danh sách danh mục
 
   //check all  danh mục

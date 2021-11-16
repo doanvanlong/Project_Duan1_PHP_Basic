@@ -1,7 +1,7 @@
 <?php
+session_start();
 require_once '../global.php';
-require_once '../model/pdo.php';
-pdo_get_connection();
+require_once '../model/danh-muc.php'; //gọi model hàm xử lý danh mục
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
     case '/':
@@ -12,6 +12,7 @@ switch ($url) {
     case 'add-danh-muc':
         $view = 'views/danh-muc/add-danh-muc.php';
         $title = 'Thêm danh mục';
+        $list_dm_pro=danh_muc_chinh_QueryAll();
         break;
     case 'list-danh-muc':
         $view = 'views/danh-muc/list-danh-muc.php';

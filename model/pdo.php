@@ -9,7 +9,7 @@ function pdo_get_connection()
         $conn = new PDO("mysql:host=$severname;dbname=ltsmart;charset=utf8", $username, $password);
         // khai báo phương thức và kiểu trả về kq lỗi
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "kết nối thành công";
+        // echo "kết nối thành công";
         return $conn;
     } catch (Exception $e) {
         echo "kết nối thất bại" . $e->getMessage();
@@ -76,7 +76,7 @@ function pdo_query_one($sql)
         unset($conn);
     }
 }
-// truy vấn 1 dữ liệu và trả về 1 mảng chứa key là chỉ số index  của mảng
+// truy vấn 1 dữ liệu và trả về 1 mảng chứa key => value, key là chỉ số index  của mảng
 function pdo_query_value($sql)
 {
     $sql_args = array_slice(func_get_args(), 1);
