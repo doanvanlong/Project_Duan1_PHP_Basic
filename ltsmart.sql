@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 14, 2021 lúc 04:51 PM
+-- Thời gian đã tạo: Th10 16, 2021 lúc 03:23 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -104,6 +104,14 @@ CREATE TABLE `danh_muc_pro` (
   `id_dm_pro` int(11) NOT NULL,
   `ten_dm_pro` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `danh_muc_pro`
+--
+
+INSERT INTO `danh_muc_pro` (`id_dm_pro`, `ten_dm_pro`) VALUES
+(42, 'Điện thoại'),
+(43, 'Phụ kiện');
 
 -- --------------------------------------------------------
 
@@ -220,6 +228,14 @@ CREATE TABLE `sub_danh_muc_pro` (
   `ten_sub_dm_pro` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_dm_pro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sub_danh_muc_pro`
+--
+
+INSERT INTO `sub_danh_muc_pro` (`id_sub_dm_pro`, `ten_sub_dm_pro`, `id_dm_pro`) VALUES
+(23, 'Samsung', 42),
+(24, 'Tai nghe', 43);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -363,7 +379,7 @@ ALTER TABLE `danh_muc_news`
 -- AUTO_INCREMENT cho bảng `danh_muc_pro`
 --
 ALTER TABLE `danh_muc_pro`
-  MODIFY `id_dm_pro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT cho bảng `dung_luong_phone`
@@ -405,7 +421,7 @@ ALTER TABLE `san_pham`
 -- AUTO_INCREMENT cho bảng `sub_danh_muc_pro`
 --
 ALTER TABLE `sub_danh_muc_pro`
-  MODIFY `id_sub_dm_pro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sub_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
