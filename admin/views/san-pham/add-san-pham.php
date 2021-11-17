@@ -109,9 +109,9 @@
     <hr>
     <div class="form-floating">
         <label class="form-label">Mô tả sản phẩm</label>
-        <div id="editor">
-            <textarea class="form-control" name="mo-ta" id="txt_noi_dung"></textarea>
-        </div>
+        <div class="panel-body">
+                    <textarea name="content" id="content" class="form-control ckeditor"></textarea>
+                </div>
         <small id="error-mo-ta" class="form-text text-danger "></small>
     </div>
     <div class="form-group" style="margin-top: 1em;">
