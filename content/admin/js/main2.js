@@ -3,6 +3,11 @@ ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
   console.error(error);
 });
 
+// Ckeditor 4
+CKEDITOR.replace("content", {
+  height: 300,
+  filebrowserUploadUrl: "upload.php",
+});
 //Hiển thị dung lượng đã chọn
 function showRadio() {
   var selectRadio = $("input[name='dung-luong']:checked").val();
@@ -117,7 +122,7 @@ $("#them-san-pham").submit(function (e) {
     type: "POST",
     url: "../admin/xu-ly/san-pham/insert-san-pham.php", //send data đến folder xử lý
     data: $("#them-san-pham").serializeArray(), //send all data theo id name
-    success:function(data){
+    success: function (data) {
       // data được gửi về từ file xử lý
       if (data == 1) {
         //Hiển thị thông báo thêm thành công sản phẩm
@@ -140,7 +145,7 @@ $("#them-san-pham").submit(function (e) {
           link: "#",
         });
       }
-    }
+    },
   });
 });
 
