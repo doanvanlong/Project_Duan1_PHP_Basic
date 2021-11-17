@@ -6,7 +6,6 @@
         $dm_chi_tiet = $_POST['danh-muc-chi-tiet-san-pham'];
         $ten_san_pham = $_POST['ten-san-pham'];
         $gia_san_pham = $_POST['gia-san-pham'];
-        $ngay_nhap_hang = $_POST['ngay-nhap-hang'];
         $mau_sac = $_POST['mau-sac'];
         $filename = $_FILES['anh-dai-dien']['name'];
         $targer_dir = "../../../content/uploads";

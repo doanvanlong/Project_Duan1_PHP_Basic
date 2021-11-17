@@ -32,14 +32,14 @@
         </div>
         <div class="col-md-6">
             <label>Đơn giá:</label>
-            <input type="text" class="form-control" name="gia-san-pham">
+            <input type="number" class="form-control" name="gia-san-pham">
             <small id="error-gia-san-pham" class="form-text text-danger "></small>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <label>Ngày nhập hàng:</label>
             <input type="date" class="form-control" name="ngay-nhap-hang">
             <small id="error-ngay-nhap-hang" class="form-text text-danger "></small>
-        </div>
+        </div> -->
         <div class="col-md-6">
             <label>Màu sắc:</label>
             <input type="text" class="form-control" name="mau-sac">
