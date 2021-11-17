@@ -15,7 +15,7 @@
         <div class="col">
             <div class="form-group">
                 <label class="form-label">Danh mục chi tiết: </label>
-                <select class="form-select padding-select" name="danh muc-chi-tiet-san-pham">
+                <select class="form-select padding-select" name="danh-muc-chi-tiet-san-pham">
                     <option selected>Vui lòng chọn danh mục sản phẩm</option>
                     <option value="">One</option>
                     <option value="">Two</option>
@@ -93,14 +93,15 @@
         <div class="col-6">
             <div class="mb-3">
                 <label class="form-label">Ảnh đại diện:</label>
-                <input class="form-control" type="file" id="formFile" name="">
+                <input class="form-control" type="file" id="formFile" name="anh-dai-dien">
                 <small id="error-anh-dai-dien" class="form-text text-danger "></small>
             </div>
         </div>
         <div class="col-6">
             <div class="mb-3">
                 <label class="form-label">Ảnh chi tiết:</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
+                <input class="form-control" type="file" id="formFileMultiple" multiple name="anh-chi-tiet">
+                <small>Có thể tải lên nhiều ảnh</small>
                 <small id="error-anh-chi-tiet" class="form-text text-danger "></small>
             </div>
         </div>
@@ -109,10 +110,11 @@
     <div class="form-floating">
         <label class="form-label">Mô tả sản phẩm</label>
         <div id="editor">
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" name="mo-ta" id="txt_noi_dung"></textarea>
         </div>
+        <small id="error-mo-ta" class="form-text text-danger "></small>
     </div>
     <div class="form-group" style="margin-top: 1em;">
-        <input type="submit" value="Thêm sản phẩm" class="btn btn-success">
+        <input type="submit" value="Thêm sản phẩm" class="btn btn-success" onclick="MoTa()">
     </div>
 </form>
