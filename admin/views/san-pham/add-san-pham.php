@@ -110,8 +110,8 @@
     <div class="form-floating">
         <label class="form-label">Mô tả sản phẩm</label>
         <div class="panel-body">
-                    <textarea name="content" id="content" class="form-control ckeditor"></textarea>
-                </div>
+            <textarea name="content" id="content" class="form-control ckeditor"></textarea>
+        </div>
         <small id="error-mo-ta" class="form-text text-danger "></small>
     </div>
     <div class="form-group" style="margin-top: 1em;">
