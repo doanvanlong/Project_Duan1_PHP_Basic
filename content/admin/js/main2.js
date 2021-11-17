@@ -2,6 +2,14 @@
 ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
   console.error(error);
 });
+//Hiển thị dung lượng đã chọn
+function showRadio() {
+  var selectRadio = $("input[name='dung-luong']:checked").val();
+  var msgDL = document.getElementById("msg-dung-luong");
+  msgDL.innerHTML = "Bạn đã chọn dung lượng: <b>" + selectRadio + "</b>";
+  msgDL.style.color = "red";
+  document.getElementById("error-dung-luong").innerHTML = "";
+}
 //VALIDATE FORM SẢN PHẨM
 //Check sản phẩm đã tồn tại chưa
 var check = false;
@@ -79,27 +87,9 @@ $("#them-san-pham").submit(function (e) {
 
   //Validate dung lượng sản phẩm
   $(document).ready(function () {
-    // $("#them-san-pham p").on("change", function () {
-    //   var selectRadio = $("input[name='inlineRadioOptions']:checked").val();
-    //   if (selectRadio) {
-    //     console.log
-    //       document.getElementById("error-dung-luong").innerHTML =
-    //         "Bạn đã chọn: <b>"  +selectRadio+ "</b>";
-    //       document.getElementById("error-dung-luong").style.color = "black";
-    //       document.getElementById("error-dung-luong").style.fontSize = "1em";
-    //     } else {
-    //       document.getElementById("error-dung-luong").innerHTML =
-    //         "Vui lòng chọn dung lượng.";
-    //       document.getElementById("error-dung-luong").style.color = "red";
-    //       document.getElementById("error-dung-luong").style.fontSize = "1em";
-    //     }
-    // });
-    var selectRadio = $("input[name='inlineRadioOptions']:checked").val();
+    var selectRadio = $("input[name='dung-luong']:checked").val();
     if (selectRadio) {
-      document.getElementById("error-dung-luong").innerHTML =
-        "Bạn đã chọn: <b>"  +selectRadio+ "</b>";
-      document.getElementById("error-dung-luong").style.color = "black";
-      document.getElementById("error-dung-luong").style.fontSize = "1em";
+      document.getElementById("error-dung-luong").innerHTML = "";
     } else {
       document.getElementById("error-dung-luong").innerHTML =
         "Vui lòng chọn dung lượng.";

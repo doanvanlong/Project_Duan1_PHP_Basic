@@ -49,23 +49,23 @@
             <label>Dung lượng:</label>
             <br>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="16GB">
+                <input class="form-check-input" type="radio" name="dung-luong" id="inlineRadio1" value="16 GB" onclick="showRadio()">
                 <label class="form-check-label" for="inlineRadio1">16 GB</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="32GB">
+                <input class="form-check-input" type="radio" name="dung-luong" id="inlineRadio2" value="32 GB" onclick="showRadio()">
                 <label class="form-check-label" for="inlineRadio2">32 GB</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="64GB">
+                <input class="form-check-input" type="radio" name="dung-luong" id="inlineRadio3" value="64 GB" onclick="showRadio()">
                 <label class="form-check-label" for="inlineRadio3">64 GB</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="64GB">
+                <input class="form-check-input" type="radio" name="dung-luong" id="inlineRadio4" value="128 GB" onclick="showRadio()">
                 <label class="form-check-label" for="inlineRadio4">128 GB</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="64GB">
+                <input class="form-check-input" type="radio" name="dung-luong" id="inlineRadio5" value="256 GB" onclick="showRadio()">
                 <label class="form-check-label" for="inlineRadio5">256 GB</label>
             </div>
             <small id="error-dung-luong" class="form-text text-danger "></small>
@@ -93,13 +93,15 @@
         <div class="col-6">
             <div class="mb-3">
                 <label class="form-label">Ảnh đại diện:</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="">
+                <small id="error-anh-dai-dien" class="form-text text-danger "></small>
             </div>
         </div>
         <div class="col-6">
             <div class="mb-3">
                 <label class="form-label">Ảnh chi tiết:</label>
                 <input class="form-control" type="file" id="formFileMultiple" multiple>
+                <small id="error-anh-chi-tiet" class="form-text text-danger "></small>
             </div>
         </div>
     </div>
