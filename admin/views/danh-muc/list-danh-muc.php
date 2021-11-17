@@ -62,8 +62,8 @@
             <th scope="col" style="width:3%"></th>
             <th scope="col">#</th>
             <th scope="col">ID danh mục chi tiết</th>
-            <th scope="col">Tên danh mục</th>
             <th scope="col">Tên danh mục chi tiết</th>
+            <th scope="col">Danh mục</th>
             <th scope="col">Hành động</th>
           </tr>
         </thead>

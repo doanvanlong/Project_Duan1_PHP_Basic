@@ -145,9 +145,11 @@ $(document).ready(function () {
       });
     }
   });
+
   // Trang thêm danh mục
 
   //thêm danh mục chính
+
   // Kiểm tra có tồn tại trong DB chưa
   var check = false;
   $('[name*="ten-danh-muc-chinh"]').keyup(function () {
@@ -193,6 +195,7 @@ $(document).ready(function () {
     $(this).css("border", "0");
     $("#error-danh-muc-chinh").text("");
   });
+
   // click submit thêm mới  => kiểm lỗi,Gửi dữ liệu đi
   $("#add-danh-muc-chinh").submit(function (e) {
     e.preventDefault();
@@ -213,7 +216,9 @@ $(document).ready(function () {
     } else {
       // nếu tên danh mục đã tồn tại
       if (check == false) {
+        // nếu danh mục đã tồn tại
       } else {
+        //check = true
         // danh mục chưa có
         $.ajax({
           type: "POST",
@@ -346,6 +351,7 @@ $(document).ready(function () {
       }
     }
   });
+
   // Trang danh sách danh mục
 
   //check all  danh mục
@@ -417,8 +423,8 @@ $(document).ready(function () {
             duration: 5000,
             link: "#",
           });
-           // reload lại trang sau khi xoá xong
-           setTimeout(location.reload.bind(location), 300);
+          // reload lại trang sau khi xoá xong
+          setTimeout(location.reload.bind(location), 300);
         } else {
         }
       },
@@ -519,4 +525,254 @@ $(document).ready(function () {
       });
     }
   });
+
+  //trang Update Edit danh mục Chính
+
+  // Lấy từ value gán cho hằng số cố định
+  // Dùng check =true flase hơi fail , hên có Unique DB
+  var check = 'false';
+  const data_DB = $('[name*="ten-danh-muc-chinh-update"]').val();
+  // new RegExp($(this).val(), "i").test(data_DB);//kiểu bool : kiểm tra chuổi này có tồn tại trong chuổi kia
+  //khai báo hằng để value DB ko thay đổi
+  // Nếu value từ DB mà = value keyup thì KO thông báo lỗi như lúc thêm danh mục
+  $('[name*="ten-danh-muc-chinh-update"]').keyup(function () {
+    if (
+      new RegExp($(this).val(), "i").test(data_DB) &&
+      $(this).val().length == data_DB.length
+    ) {
+      // nó search con chuỗi nằm trong chuỗi mẹ ko phân biệt hoa thường => Nên thêm dk độ dài có bằng nhau ko
+      // Mà vẫn cho update bt
+      $('[name*="ten-danh-muc-chinh-update"]').css("border", "0 !important");
+      $("#error-danh-muc-chinh-update").text("");
+      check = 'true';
+    } else {
+      // Khác thì kiểm tra DB tiếp
+      // nếu có dữ liệu khi nhập , thì gửi ajax qua file php với name là keyup
+      $('[name*="ten-danh-muc-chinh-update"]').css("border", "0 !important");
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/update-danh-muc.php",
+        data: { keyup_dm_chinh_update: $(this).val() },
+        dataType: "text",
+        success: function (data) {
+          // lấy dữ liệu trở về từ file php kiểm tra keyup DB
+          if (data != 0) {
+            // có record
+            $("#error-danh-muc-chinh-update").text("Tên danh mục đã tồn tại");
+            //Danh mục đã tồn tại sẻ có border red input
+            $('[name*="ten-danh-muc-chinh-update"]').css(
+              "border",
+              "1px solid #f38291"
+            );
+            check = 'false';
+          } else {
+            // ko có record
+            $("#error-danh-muc-chinh-update").text("");
+            // Nếu không trùng danh mục thì xoá border lỗi red input
+            $('[name*="ten-danh-muc-chinh-update"]').css(
+              "border",
+              "0 !important"
+            );
+            check = 'true';
+          }
+        },
+      });
+    }
+  });
+
+  // khi focus vào lại thì sẻ bỏ border red lỗi
+  $('[name*="ten-danh-muc-chinh-update"]').focus(function () {
+    $(this).css("border", "0 !important");
+    $("#error-danh-muc-chinh-update").text("");
+  });
+
+  // click submit cập nhật  => kiểm lỗi,Gửi dữ liệu đi
+  $("#update-danh-muc-chinh").submit(function (e) {
+    e.preventDefault();
+    // nếu tên danh mục trống
+    if ($('[name*="ten-danh-muc-chinh-update"]').val() == "") {
+      //để Trống khi submit sẻ có border red input
+      $('[name*="ten-danh-muc-chinh-update"]').css(
+        "border",
+        "1px solid #f38291"
+      );
+      $("#error-danh-muc-chinh-update").text("Tên danh mục không được trống");
+
+      // thông báo toast thất bại
+      toast({
+        title: "Thất bại",
+        msg: "Thêm danh mục thất bại!",
+        type: "error",
+        duration: 5000,
+        link: "#",
+      });
+    } else {
+      // nếu tên danh mục đã tồn tại
+      if (check === 'false') {
+        // nếu danh mục đã tồn tại
+      } else {
+        //check = true
+        // danh mục chưa có
+        const id_dm_chinh_update = $(
+          '[name*="ten-danh-muc-chinh-update"]'
+        ).data("id_dm_chinh_update");
+        // id dm chính update
+        $.ajax({
+          type: "POST",
+          url: "../admin/xu-ly/danh-muc/update-danh-muc.php", //gửi đến thư mục xữ lý
+          data: $("#update-danh-muc-chinh").serializeArray(), //gửi hết dữ liệu trong form theo name
+          success: function (data) {
+            // data được gửi về từ file php
+            if (data == 1) {
+              //thông báo thêm thành công
+              toast({
+                title: "Thành công",
+                msg: "Thêm danh mục thành công !",
+                type: "success",
+                duration: 5000,
+                link: "list-danh-muc",
+              });
+              // reload lại trang sau khi xoá xong
+              setTimeout(location.reload.bind(location), 300);
+            } else {
+              // thông báo toast thất bại
+              toast({
+                title: "Thất bại",
+                msg: "Thêm danh mục thất bại!",
+                type: "error",
+                duration: 5000,
+                link: "#",
+              });
+            }
+          },
+        });
+      }
+    }
+  });
+  // Dùng check =true flase hơi fail , hên có Unique DB
+  //trang Update Edit danh mục con
+
+  // Lấy từ value gán cho hằng số cố định
+  var check_dm_con = 'flase';
+  const data_dm_con_DB = $('[name*="ten-danh-muc-con-update"]').val();
+  // new RegExp($(this).val(), "i").test(data_DB);//kiểu bool : kiểm tra chuổi này có tồn tại trong chuổi kia
+  //khai báo hằng để value DB ko thay đổi
+  // Nếu value từ DB mà = value keyup thì KO thông báo lỗi như lúc thêm danh mục
+  $('[name*="danh-muc-con-update"]').change(function () {
+    check_dm_con = 'true';
+  });
+  $('[name*="ten-danh-muc-con-update"]').keyup(function () {
+    if (
+      new RegExp($(this).val(), "i").test(data_dm_con_DB) &&
+      $(this).val().length == data_dm_con_DB.length
+    ) {
+      // nó search con chuỗi nằm trong chuỗi mẹ ko phân biệt hoa thường => Nên thêm dk độ dài có bằng nhau ko
+      // Mà vẫn cho update bt
+      $('[name*="ten-danh-muc-con-update"]').css("border", "0 !important");
+      $("#error-danh-muc-con-update").text("");
+      check_dm_con = 'true';
+    } else {
+      // Khác thì kiểm tra DB tiếp
+      // nếu có dữ liệu khi nhập , thì gửi ajax qua file php với name là keyup
+      $('[name*="ten-danh-muc-con-update"]').css("border", "0 !important");
+      $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/danh-muc/update-danh-muc.php",
+        data: { keyup_dm_con_update: $(this).val() },
+        dataType: "text",
+        success: function (data) {
+          // lấy dữ liệu trở về từ file php kiểm tra keyup DB
+          if (data != 0) {
+            // có record
+            $("#error-danh-muc-con-update").text("Tên danh mục đã tồn tại");
+            //Danh mục đã tồn tại sẻ có border red input
+            $('[name*="ten-danh-muc-con-update"]').css(
+              "border",
+              "1px solid #f38291"
+            );
+            check_dm_con = 'false';
+          } else {
+            // ko có record
+            $("#error-danh-muc-con-update").text("");
+            // Nếu không trùng danh mục thì xoá border lỗi red input
+            $('[name*="ten-danh-muc-con-update"]').css(
+              "border",
+              "0 !important"
+            );
+            check_dm_con = 'true';
+          }
+        },
+      });
+    }
+  });
+
+  // khi focus vào lại thì sẻ bỏ border red lỗi
+  $('[name*="ten-danh-muc-con-update"]').focus(function () {
+    $(this).css("border", "0 !important");
+    $("#error-danh-muc-con-update").text("");
+  });
+
+  // check xem danh mục chính có thay đổi k
+
+  // click submit cập nhật  => kiểm lỗi,Gửi dữ liệu đi
+  $("#update-danh-muc-con").submit(function (e) {
+    e.preventDefault();
+    // nếu tên danh mục trống
+    if ($('[name*="ten-danh-muc-con-update"]').val() == "") {
+      //để Trống khi submit sẻ có border red input
+      $('[name*="ten-danh-muc-con-update"]').css(
+        "border",
+        "1px solid #f38291"
+      );
+      $("#error-danh-muc-con-update").text("Tên danh mục không được trống");
+
+      // thông báo toast thất bại
+      toast({
+        title: "Thất bại",
+        msg: "Thêm danh mục thất bại!",
+        type: "error",
+        duration: 5000,
+        link: "#",
+      });
+    } else  {
+      // nếu tên danh mục đã tồn tại
+      if (check_dm_con === 'false' ) {
+      } else {
+        //check = true
+        // danh mục chưa có
+        // id dm chính update
+        $.ajax({
+          type: "POST",
+          url: "../admin/xu-ly/danh-muc/update-danh-muc.php", //gửi đến thư mục xữ lý
+          data: $("#update-danh-muc-con").serializeArray(), //gửi hết dữ liệu trong form theo name
+          success: function (data) {
+            // data được gửi về từ file php
+            if (data == 1) {
+              //thông báo thêm thành công
+              toast({
+                title: "Thành công",
+                msg: "Thêm danh mục thành công !",
+                type: "success",
+                duration: 5000,
+                link: "list-danh-muc",
+              });
+              // reload lại trang sau khi xoá xong
+            setTimeout(location.reload.bind(location), 300);
+            } else {
+              // thông báo toast thất bại
+              toast({
+                title: "Thất bại",
+                msg: "Thêm danh mục thất bại!",
+                type: "error",
+                duration: 5000,
+                link: "#",
+              });
+            }
+          },
+        });
+      }
+    }
+  });
+
+  
 });
