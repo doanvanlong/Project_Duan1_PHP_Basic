@@ -22,6 +22,20 @@ function danh_muc_chinh_QueryAll()
     return pdo_query($sql);
 }
 
+// hàm truy vấn 1 danh mục chính
+function danh_muc_chinh_QueryOne($id_dm_pro)
+{
+    $sql = "SELECT * FROM danh_muc_pro where id_dm_pro = ?";
+    return pdo_query_one($sql,$id_dm_pro);
+}
+
+// hàm truy vấn 1 danh mục con
+function danh_muc_con_QueryOne($id_sub_dm_pro)
+{
+    $sql = "SELECT * FROM sub_danh_muc_pro where id_sub_dm_pro = ?";
+    return pdo_query_one($sql,$id_sub_dm_pro);
+}
+
 // hàm thêm mới danh mục con
 function danh_muc_con_Insert($ten_sub_dm_pro, $id_dm_pro)
 {
@@ -51,6 +65,7 @@ function danh_muc_pro_Delete($id_dm_pro)
     return pdo_execute($sql, $id_dm_pro);
 }
 
+
 //hàm delete danh mục con
 function sub_danh_muc_pro_Delete($id_sub_dm_pro)
 {
@@ -62,5 +77,17 @@ function danh_muc_pro_Select_by_id_dm_pro($id_dm_pro)
 {
     $sql="SELECT * FROM danh_muc_pro where id_dm_pro =?";
     return pdo_query_one($sql,$id_dm_pro);
+}
+
+//hàm update danh mục chính 
+function danh_muc_chinh_Update($id_dm_pro,$ten_dm_pro){
+    $sql="UPDATE danh_muc_pro SET ten_dm_pro = ? where id_dm_pro =? ";
+    return pdo_query($sql, $ten_dm_pro,$id_dm_pro);
+}
+
+//hàm update danh mục con
+function danh_muc_con_Update($id_sub_dm_pro,$ten_sub_dm_pro,$id_dm_pro){
+    $sql="UPDATE sub_danh_muc_pro SET ten_sub_dm_pro = ?,id_dm_pro =? where id_sub_dm_pro =? ";
+    return pdo_query($sql, $ten_sub_dm_pro,$id_dm_pro,$id_sub_dm_pro);
 }
 ?>
