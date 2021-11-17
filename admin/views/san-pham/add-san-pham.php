@@ -69,6 +69,7 @@
                 <label class="form-check-label" for="inlineRadio5">256 GB</label>
             </div>
             <small id="error-dung-luong" class="form-text text-danger "></small>
+            <p id="msg-dung-luong"></p>
         </div>
         <!-- <div class="col-md-6">
                 <label for="">Dung lượng 2:</label>

@@ -79,6 +79,21 @@ $("#them-san-pham").submit(function (e) {
 
   //Validate dung lượng sản phẩm
   $(document).ready(function () {
+    // $("#them-san-pham p").on("change", function () {
+    //   var selectRadio = $("input[name='inlineRadioOptions']:checked").val();
+    //   if (selectRadio) {
+    //     console.log
+    //       document.getElementById("error-dung-luong").innerHTML =
+    //         "Bạn đã chọn: <b>"  +selectRadio+ "</b>";
+    //       document.getElementById("error-dung-luong").style.color = "black";
+    //       document.getElementById("error-dung-luong").style.fontSize = "1em";
+    //     } else {
+    //       document.getElementById("error-dung-luong").innerHTML =
+    //         "Vui lòng chọn dung lượng.";
+    //       document.getElementById("error-dung-luong").style.color = "red";
+    //       document.getElementById("error-dung-luong").style.fontSize = "1em";
+    //     }
+    // });
     var selectRadio = $("input[name='inlineRadioOptions']:checked").val();
     if (selectRadio) {
       document.getElementById("error-dung-luong").innerHTML =
