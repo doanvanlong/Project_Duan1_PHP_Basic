@@ -1,7 +1,7 @@
 // CK Editor
-// ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
-//   console.error(error);
-// });
+ClassicEditor.create(document.querySelector("#editor")).catch((error) => {
+  console.error(error);
+});
 //VALIDATE FORM SẢN PHẨM
 //Check sản phẩm đã tồn tại chưa
 var check = false;
