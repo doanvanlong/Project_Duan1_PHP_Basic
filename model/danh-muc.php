@@ -90,4 +90,10 @@ function danh_muc_con_Update($id_sub_dm_pro,$ten_sub_dm_pro,$id_dm_pro){
     $sql="UPDATE sub_danh_muc_pro SET ten_sub_dm_pro = ?,id_dm_pro =? where id_sub_dm_pro =? ";
     return pdo_query($sql, $ten_sub_dm_pro,$id_dm_pro,$id_sub_dm_pro);
 }
+
+// Hàm liệt kê danh mục con theo danh mục chính
+function danh_muc_con_Select_by_id_dm_chinh($id_dm_pro){
+    $sql="SELECT * FROM sub_danh_muc_pro where id_dm_pro =?";
+    return pdo_query($sql, $id_dm_pro); 
+}
 ?>

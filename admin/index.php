@@ -36,6 +36,8 @@ switch ($url) {
     case 'add-san-pham':
         $view = 'views/san-pham/add-san-pham.php';
         $title = "Thêm sản phẩm";
+        $list_dm_pro=danh_muc_chinh_QueryAll();
+        $list_sub_dm_pro=danh_muc_con_QueryAll();
         break;
 
     case 'ct-san-pham':
