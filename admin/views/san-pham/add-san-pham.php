@@ -4,7 +4,7 @@
         <div class="col">
             <div class="form-group">
                 <label>Danh mục: </label>
-                <select class="form-select padding-select" name="danh-muc-chinh-san-pham">
+                <select class="form-select padding-select" name="danh-muc-chinh-san-pham" id="dm_chinh">
                     <option selected>Vui lòng chọn danh mục</option>
                     <option value="">Điện thoại</option>
                     <option value="">Phụ kiện</option>
