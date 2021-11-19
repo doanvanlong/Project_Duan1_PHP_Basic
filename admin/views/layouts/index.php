@@ -221,7 +221,7 @@
 
     </div>
     <script src="<?=$CONTENT_ADMIN_URL?>/js/main.js"></script>
-    <script src="<?=$CONTENT_ADMIN_URL?>/js/main2.js"></script>
+    <script src="<?=$CONTENT_ADMIN_URL?>/js/san-pham.js"></script>
 </body>
 
 </html>

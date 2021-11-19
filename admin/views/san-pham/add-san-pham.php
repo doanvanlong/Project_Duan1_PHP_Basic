@@ -5,7 +5,7 @@
             <div class="form-group">
                 <label>Danh mục: </label>
                 <select class="form-select padding-select danh-muc-chinh-san-pham" style="border: 1px solid #ced4da;outline:none;" name="danh-muc-chinh-san-pham">
-                    <option value="0">---Chọn danh mục---</option>
+                    <!-- <option value="">---Chọn danh mục---</option> -->
                     <?php
                     if (isset($list_dm_pro)) {
                         foreach ($list_dm_pro as $dm_pro) { ?>
@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label class="form-label">Danh mục chi tiết: </label>
                 <select class="form-select padding-select" name="danh-muc-chi-tiet-san-pham">
-                    <option selected value="0">---Chọn danh mục chi tiết---</option>
+                    <!-- <option  value="">---Chọn danh mục chi tiết---</option> -->
 
                 </select>
                 <small id="error-danh-muc-chi-tiet-san-pham" class="form-text text-danger  "></small>
@@ -111,7 +111,7 @@
         <div class="col-6">
             <div class="mb-3">
                 <label class="form-label">Ảnh chi tiết:</label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple name="anh-chi-tiet">
+                <input class="form-control" type="file" id="formFileMultiple" multiple name="anh-chi-tiet[]">
                 <small><i>Có thể tải lên nhiều ảnh</i></small>
                 <small id="error-anh-chi-tiet" class="form-text text-danger "></small>
             </div>
