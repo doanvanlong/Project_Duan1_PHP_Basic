@@ -8,7 +8,7 @@
                 <input type="text" autocomplete="off" class="form-control" name="ten-danh-muc-chinh" id="" aria-describedby="" placeholder="Ví dụ : Điện thoai,Phụ kiện...">
                 <small id="error-danh-muc-chinh" class="form-text text-danger "></small>
             </div>
-            <button type="submit" name="submit-danh-muc-chinh" class="btn btn-primary">Thêm mới</button>
+            <button type="submit" name="submit-danh-muc-chinh" class="btn btn-success">Thêm mới</button>
         </form>
     </div>
 
@@ -31,7 +31,7 @@
                     } ?>
                 </select>
             </div>
-            <button type="submit" name="submit-danh-muc-con" class="btn btn-primary">Thêm mới</button>
+            <button type="submit" name="submit-danh-muc-con" class="btn btn-success">Thêm mới</button>
         </form>
     </div>
 

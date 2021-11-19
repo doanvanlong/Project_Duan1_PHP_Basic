@@ -28,5 +28,5 @@
             ?>
         </select>
     </div>
-    <button type="submit" name="submit-danh-muc-con" class="btn btn-primary">Cập nhật</button>
+    <button type="submit" name="submit-danh-muc-con" class="btn btn-success">Cập nhật</button>
 </form>

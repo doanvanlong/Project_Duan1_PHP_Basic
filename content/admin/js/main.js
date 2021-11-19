@@ -511,7 +511,7 @@ $(document).ready(function () {
               link: "#",
             });
             // reload lại trang sau khi xoá xong
-            setTimeout(location.reload.bind(location), 300);
+            setTimeout(location.reload.bind(location), 400);
           } else {
             toast({
               title: "Thất bại",
@@ -633,7 +633,7 @@ $(document).ready(function () {
                 link: "list-danh-muc",
               });
               // reload lại trang sau khi xoá xong
-              setTimeout(location.reload.bind(location), 300);
+              setTimeout(location.reload.bind(location), 500);
             } else {
               // thông báo toast thất bại
               toast({
@@ -757,7 +757,7 @@ $(document).ready(function () {
                 link: "list-danh-muc",
               });
               // reload lại trang sau khi xoá xong
-            setTimeout(location.reload.bind(location), 300);
+            setTimeout(location.reload.bind(location), 500);
             } else {
               // thông báo toast thất bại
               toast({

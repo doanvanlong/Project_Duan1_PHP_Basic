@@ -38,9 +38,9 @@
         </tbody>
       </table>
       <div class="my-4">
-        <div class="btn btn-outline-primary" id="checkall-dm-chinh">Chọn tất cả</div>
-        <div class="btn btn-outline-primary" id="uncheck-dm-chinh">Bỏ chọn</div>
-        <button type="submit" onclick="return confirm('Bạn có muốn xoá này không?')" class="btn btn-outline-primary">Xoá mục đã chọn</button>
+        <div class="btn btn-success" id="checkall-dm-chinh">Chọn tất cả</div>
+        <div class="btn btn-success" id="uncheck-dm-chinh">Bỏ chọn</div>
+        <button type="submit" onclick="return confirm('Bạn có muốn xoá này không?')" class="btn btn-success">Xoá mục đã chọn</button>
       </div>
     </form>
   <?php
@@ -88,9 +88,9 @@
         </tbody>
       </table>
       <div class="my-4">
-        <div class="btn btn-outline-primary" id="checkall-dm-con">Chọn tất cả</div>
-        <div class="btn btn-outline-primary" id="uncheck-dm-con">Bỏ chọn</div>
-        <button type="submit" onclick="return confirm('Bạn có muốn xoá tất cả mục này không?')" class="btn btn-outline-primary">Xoá mục đã chọn</button>
+        <div class="btn btn-success" id="checkall-dm-con">Chọn tất cả</div>
+        <div class="btn btn-success" id="uncheck-dm-con">Bỏ chọn</div>
+        <button type="submit" onclick="return confirm('Bạn có muốn xoá tất cả mục này không?')" class="btn btn-success">Xoá mục đã chọn</button>
       </div>
     </form>
   <?php
