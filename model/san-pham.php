@@ -32,4 +32,9 @@ function san_pham_Insert_Img_Detail($id_sp,$images){
     $sql="INSERT INTO  images_pro(id_sp,images) values(?,?)";
     return pdo_execute($sql, $id_sp,$images);
 }
+//hàm truy vấn tất cả sản phẩm
+function san_pham_QueryAll(){
+    $sql="SELECT * FROM san_pham";
+    return pdo_query($sql);
+}
 ?>

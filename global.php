@@ -5,6 +5,7 @@ $CLIENT_URL=$ROOT_URL.'/client';
 $CONTENT_URL=$ROOT_URL.'/content';
 $CONTENT_CLIENT_URL=$CONTENT_URL.'/client';
 $CONTENT_ADMIN_URL=$CONTENT_URL.'/admin';
+$CONTENT_UPLOAD=$CONTENT_URL.'/uploads';
 
 // var_dump
 function dd(){
