@@ -21,17 +21,24 @@ body {
 /* bootstrap */
 .form-control {
   font-size: 1.4rem !important;
-  padding: .8rem !important;
+  padding: 0.8rem !important;
 }
 select#exampleFormControlSelect1 {
   padding: 1rem !important;
   font-size: 1.4rem !important;
   height: 40px !important;
 }
-.btn{
-    font-size: 1.4rem !important;
-    /* padding: .8rem !important; */
+.btn {
+  font-size: 1.4rem !important;
+  /* padding: .8rem !important; */
 }
-.padding-select{
-  padding: .5rem;
+.padding-select {
+  padding: 0.5rem;
+}
+.form-select {
+  border: 1px solid #ced4da !important; 
+  outline: none !important;
+}
+.form-select:focus {
+  border-color: #80bdff !important;
 }
