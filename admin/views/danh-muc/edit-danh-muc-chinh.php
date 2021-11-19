@@ -6,5 +6,5 @@
         <input type="text" autocomplete="off" class="form-control"  value="<?=$info_dm_pro['ten_dm_pro'];?>" name="ten-danh-muc-chinh-update"  id="" data-id_dm_chinh_update="<?=$info_dm_pro['id_dm_pro'];?>" placeholder="">
         <small id="error-danh-muc-chinh-update" class="form-text text-danger "></small>
     </div>
-    <button type="submit" name="submit-danh-muc-chinh" class="btn btn-primary">Cập nhật</button>
+    <button type="submit" name="submit-danh-muc-chinh" class="btn btn-success">Cập nhật</button>
 </form>

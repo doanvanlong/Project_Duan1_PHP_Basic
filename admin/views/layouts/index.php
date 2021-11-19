@@ -77,7 +77,7 @@
                     <div class="sub-menu">
                         <a class="sub-menu-items d-flex align-items-center" href="add-san-pham"><i class="fas fa-circle"></i>Thêm
                             mới </a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Danh
+                        <a class="sub-menu-items d-flex align-items-center" href="list-san-pham"><i class="fas fa-circle"></i>Danh
                             sách</a>
                     </div>
                 </li>
