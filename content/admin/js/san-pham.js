@@ -345,8 +345,8 @@ $("#them-san-pham").submit(function (e) {
             });
             //Insert sản phẩm thành công thì reset form
             $("#them-san-pham")[0].reset();
-              // reload lại trang sau khi xoá xong
-        setTimeout(location.reload.bind(location), 1300);
+            // reload lại trang sau khi xoá xong
+            setTimeout(location.reload.bind(location), 1300);
           } else {
             // Thông báo thêm sản phẩm thất bại
             toast({
@@ -441,9 +441,9 @@ $("#them-san-pham").submit(function (e) {
             });
             //Insert sản phẩm thành công thì reset form
             $("#them-san-pham")[0].reset();
-              // reload lại trang sau khi xoá xong
-        setTimeout(location.reload.bind(location), 1300);
-          } else if(data == 0) {
+            // reload lại trang sau khi xoá xong
+            setTimeout(location.reload.bind(location), 1300);
+          } else if (data == 0) {
             // Thông báo thêm sản phẩm thất bại
             toast({
               title: "Thất bại",
@@ -452,9 +452,9 @@ $("#them-san-pham").submit(function (e) {
               duration: 5000,
               link: "#",
             });
-          }else{
-             // Thông báo thêm sản phẩm thất bại
-             toast({
+          } else {
+            // Thông báo thêm sản phẩm thất bại
+            toast({
               title: "Thất bại",
               msg: "Vui lòng thử submit lại!",
               type: "error",
@@ -467,3 +467,40 @@ $("#them-san-pham").submit(function (e) {
     }
   }
 });
+
+//DELETE SẢN PHẨM
+// $(".delete-san-pham").click(function () {
+//   console.log("OK");
+//   var isDelSanPham = confirm("Bạn có muốn xoá sản phẩm này không?");
+  // if (isDelSanPham) {
+  //   let id_san_pham = $(this).data("delete_id_sp");
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "../admin/xu-ly/san-pham/delete-san-pham.php",
+  //     data: { delete_id_sp: id_san_pham },
+  //     success: function (data) {
+  //       if (data == 1) {
+  //         toast({
+  //           title: "Thành công",
+  //           msg: "Xoá sản phẩm thành công !",
+  //           type: "success",
+  //           duration: 5000,
+  //           link: "#",
+  //         });
+  //         // reload lại trang sau khi xoá xong
+  //         setTimeout(location.reload.bind(location), 300);
+  //       } else {
+  //         toast({
+  //           title: "Thất bại",
+  //           msg: "Xoá sản phẩm thất bại !",
+  //           type: "error",
+  //           duration: 5000,
+  //           link: "#",
+  //         });
+  //       }
+  //     },
+  //   });
+  // } else {
+  //   console.log(hello);
+  // }
+// })
