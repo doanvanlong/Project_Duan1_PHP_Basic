@@ -37,4 +37,14 @@ function san_pham_QueryAll(){
     $sql="SELECT * FROM san_pham";
     return pdo_query($sql);
 }
-?>
+
+//Hàm xoá sản phẩm theo id sản phẩm
+function del_san_pham($id_sp){
+    $sql = "DELETE FROM `san_pham` WHERE id_sp = ?";
+    return pdo_execute($sql, $id_sp);
+}
+
+function del_multi_san_pham($list_san_pham){
+    $sql = "DELETE FROM `san_pham` WHERE id_sp = ?";
+    return pdo_query($sql, $list_san_pham);
+}

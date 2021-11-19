@@ -468,39 +468,3 @@ $("#them-san-pham").submit(function (e) {
   }
 });
 
-//DELETE SẢN PHẨM
-// $(".delete-san-pham").click(function () {
-//   console.log("OK");
-//   var isDelSanPham = confirm("Bạn có muốn xoá sản phẩm này không?");
-  // if (isDelSanPham) {
-  //   let id_san_pham = $(this).data("delete_id_sp");
-  //   $.ajax({
-  //     type: "POST",
-  //     url: "../admin/xu-ly/san-pham/delete-san-pham.php",
-  //     data: { delete_id_sp: id_san_pham },
-  //     success: function (data) {
-  //       if (data == 1) {
-  //         toast({
-  //           title: "Thành công",
-  //           msg: "Xoá sản phẩm thành công !",
-  //           type: "success",
-  //           duration: 5000,
-  //           link: "#",
-  //         });
-  //         // reload lại trang sau khi xoá xong
-  //         setTimeout(location.reload.bind(location), 300);
-  //       } else {
-  //         toast({
-  //           title: "Thất bại",
-  //           msg: "Xoá sản phẩm thất bại !",
-  //           type: "error",
-  //           duration: 5000,
-  //           link: "#",
-  //         });
-  //       }
-  //     },
-  //   });
-  // } else {
-  //   console.log(hello);
-  // }
-// })

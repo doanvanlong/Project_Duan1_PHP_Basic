@@ -530,7 +530,7 @@ $(document).ready(function () {
 
   // Lấy từ value gán cho hằng số cố định
   // Dùng check =true flase hơi fail , hên có Unique DB
-  var check = 'false';
+  var check = "false";
   const data_DB = $('[name*="ten-danh-muc-chinh-update"]').val();
   // new RegExp($(this).val(), "i").test(data_DB);//kiểu bool : kiểm tra chuổi này có tồn tại trong chuổi kia
   //khai báo hằng để value DB ko thay đổi
@@ -544,7 +544,7 @@ $(document).ready(function () {
       // Mà vẫn cho update bt
       $('[name*="ten-danh-muc-chinh-update"]').css("border", "0 !important");
       $("#error-danh-muc-chinh-update").text("");
-      check = 'true';
+      check = "true";
     } else {
       // Khác thì kiểm tra DB tiếp
       // nếu có dữ liệu khi nhập , thì gửi ajax qua file php với name là keyup
@@ -564,7 +564,7 @@ $(document).ready(function () {
               "border",
               "1px solid #f38291"
             );
-            check = 'false';
+            check = "false";
           } else {
             // ko có record
             $("#error-danh-muc-chinh-update").text("");
@@ -573,7 +573,7 @@ $(document).ready(function () {
               "border",
               "0 !important"
             );
-            check = 'true';
+            check = "true";
           }
         },
       });
@@ -608,7 +608,7 @@ $(document).ready(function () {
       });
     } else {
       // nếu tên danh mục đã tồn tại
-      if (check === 'false') {
+      if (check === "false") {
         // nếu danh mục đã tồn tại
       } else {
         //check = true
@@ -653,13 +653,13 @@ $(document).ready(function () {
   //trang Update Edit danh mục con
 
   // Lấy từ value gán cho hằng số cố định
-  var check_dm_con = 'flase';
+  var check_dm_con = "flase";
   const data_dm_con_DB = $('[name*="ten-danh-muc-con-update"]').val();
   // new RegExp($(this).val(), "i").test(data_DB);//kiểu bool : kiểm tra chuổi này có tồn tại trong chuổi kia
   //khai báo hằng để value DB ko thay đổi
   // Nếu value từ DB mà = value keyup thì KO thông báo lỗi như lúc thêm danh mục
   $('[name*="danh-muc-con-update"]').change(function () {
-    check_dm_con = 'true';
+    check_dm_con = "true";
   });
   $('[name*="ten-danh-muc-con-update"]').keyup(function () {
     if (
@@ -670,7 +670,7 @@ $(document).ready(function () {
       // Mà vẫn cho update bt
       $('[name*="ten-danh-muc-con-update"]').css("border", "0 !important");
       $("#error-danh-muc-con-update").text("");
-      check_dm_con = 'true';
+      check_dm_con = "true";
     } else {
       // Khác thì kiểm tra DB tiếp
       // nếu có dữ liệu khi nhập , thì gửi ajax qua file php với name là keyup
@@ -690,7 +690,7 @@ $(document).ready(function () {
               "border",
               "1px solid #f38291"
             );
-            check_dm_con = 'false';
+            check_dm_con = "false";
           } else {
             // ko có record
             $("#error-danh-muc-con-update").text("");
@@ -699,7 +699,7 @@ $(document).ready(function () {
               "border",
               "0 !important"
             );
-            check_dm_con = 'true';
+            check_dm_con = "true";
           }
         },
       });
@@ -720,10 +720,7 @@ $(document).ready(function () {
     // nếu tên danh mục trống
     if ($('[name*="ten-danh-muc-con-update"]').val() == "") {
       //để Trống khi submit sẻ có border red input
-      $('[name*="ten-danh-muc-con-update"]').css(
-        "border",
-        "1px solid #f38291"
-      );
+      $('[name*="ten-danh-muc-con-update"]').css("border", "1px solid #f38291");
       $("#error-danh-muc-con-update").text("Tên danh mục không được trống");
 
       // thông báo toast thất bại
@@ -734,9 +731,9 @@ $(document).ready(function () {
         duration: 5000,
         link: "#",
       });
-    } else  {
+    } else {
       // nếu tên danh mục đã tồn tại
-      if (check_dm_con === 'false' ) {
+      if (check_dm_con === "false") {
       } else {
         //check = true
         // danh mục chưa có
@@ -757,7 +754,7 @@ $(document).ready(function () {
                 link: "list-danh-muc",
               });
               // reload lại trang sau khi xoá xong
-            setTimeout(location.reload.bind(location), 500);
+              setTimeout(location.reload.bind(location), 500);
             } else {
               // thông báo toast thất bại
               toast({
@@ -773,6 +770,100 @@ $(document).ready(function () {
       }
     }
   });
+});
 
-  
+//DELETE MỘT SẢN PHẨM
+$(".delete-san-pham").click(function () {
+  var isDelSanPham = confirm("Bạn có muốn xoá sản phẩm này không?");
+  if (isDelSanPham) {
+    let id_san_pham = $(this).data("delete_id_sp");
+    $.ajax({
+      type: "POST",
+      url: "../admin/xu-ly/san-pham/delete-san-pham.php",
+      data: { delete_id_sp: id_san_pham },
+      success: function (data) {
+        if (data == 1) {
+          toast({
+            title: "Thành công",
+            msg: "Xoá sản phẩm thành công !",
+            type: "success",
+            duration: 5000,
+            link: "#",
+          });
+          // reload lại trang sau khi xoá xong
+          setTimeout(location.reload.bind(location), 1000);
+        } else {
+          toast({
+            title: "Thất bại",
+            msg: "Xoá sản phẩm thất bại !",
+            type: "error",
+            duration: 5000,
+            link: "#",
+          });
+        }
+      },
+    });
+  } else {
+  }
+});
+
+//DELETE NHIỀU SẢN PHẨM
+//Ẩn nút bỏ chọn khi chưa chọn tất cả
+$("#uncheck-san-pham").css("display", "none");
+//Check all sản phẩm
+$("#checkall-san-pham").click(function (isChecked) {
+  if (isChecked){
+    $(".check-san-pham").each(function () {
+      this.checked = true;
+      //Hiển thị nút bỏ chọn sau khi đã check all sản phẩm
+      $("#uncheck-san-pham").css("display", "inline-block");
+      //Ẩn nút chọn tất cả
+      $("#checkall-san-pham").css("display", "none");
+    });
+  }
+});
+
+//Bỏ các mục đã check
+$("#uncheck-san-pham").click(function(notChecked) {
+  console.log(notChecked);
+  if (notChecked) {
+    $(".check-san-pham").each(function() {
+      this.checked = false;
+      //Ẩn nút bỏ chọn sau khi click
+      $("#uncheck-san-pham").css("display", "none");
+      //Hiển thị lại nút chọn tất cả
+      $("#checkall-san-pham").css("display", "inline-block");
+    })
+  }
+})
+
+//GửI ajax xoá nhiều sản phẩm
+$("#delete-san-pham").submit(function(e) {
+  e.preventDefault();
+  $.ajax({
+    type: "POST",
+    url: "../admin/xu-ly/san-pham/delete-san-pham.php",
+    data: $("#delete-san-pham").serializeArray(),
+    success: function (data) {
+      if (data == 1) {
+          toast({
+            title: "Thành công",
+            msg: "Xoá sản phẩm thành công !",
+            type: "success",
+            duration: 5000,
+            link: "#",
+          });
+          // reload lại trang sau khi xoá xong
+          setTimeout(location.reload.bind(location), 1000);
+        } else {
+          toast({
+            title: "Thất bại",
+            msg: "Xoá sản phẩm thất bại !",
+            type: "error",
+            duration: 5000,
+            link: "#",
+          });
+        }
+    },
+  });
 });
