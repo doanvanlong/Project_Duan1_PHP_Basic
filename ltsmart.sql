@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 16, 2021 lúc 03:23 PM
+-- Thời gian đã tạo: Th10 19, 2021 lúc 02:37 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -83,6 +83,13 @@ CREATE TABLE `cau_hinh_phone` (
   `xuat_xu` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `cau_hinh_phone`
+--
+
+INSERT INTO `cau_hinh_phone` (`id_ch_phone`, `id_sp`, `man_hinh`, `camera_sau`, `camera_selfie`, `ram`, `rom`, `cpu`, `dung_luong_pin`, `the_sim`, `he_dieu_hanh`, `xuat_xu`) VALUES
+(16, 66, 'Ok', 'Ok', 'Ram', 21, 16, '', 0, '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -110,8 +117,9 @@ CREATE TABLE `danh_muc_pro` (
 --
 
 INSERT INTO `danh_muc_pro` (`id_dm_pro`, `ten_dm_pro`) VALUES
-(42, 'Điện thoại'),
-(43, 'Phụ kiện');
+(47, 'Điện thoại'),
+(49, 'Oppo'),
+(48, 'Phụ kiện');
 
 -- --------------------------------------------------------
 
@@ -122,9 +130,17 @@ INSERT INTO `danh_muc_pro` (`id_dm_pro`, `ten_dm_pro`) VALUES
 CREATE TABLE `dung_luong_phone` (
   `id_dl_phone` int(11) NOT NULL,
   `id_sp` int(11) NOT NULL,
-  `ram` int(11) NOT NULL,
+  `rom` int(11) NOT NULL,
   `don_gia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dung_luong_phone`
+--
+
+INSERT INTO `dung_luong_phone` (`id_dl_phone`, `id_sp`, `rom`, `don_gia`) VALUES
+(19, 66, 16, 80),
+(20, 66, 12, 21);
 
 -- --------------------------------------------------------
 
@@ -169,6 +185,16 @@ CREATE TABLE `images_pro` (
   `images` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `images_pro`
+--
+
+INSERT INTO `images_pro` (`id_images_pro`, `id_sp`, `images`) VALUES
+(5, 66, '(600x600)_crop_iPhone_6s_16GB_Quoc_Te_Likenew_XTsmart.jpg'),
+(6, 66, '(600x600)_crop_iphone_7_plus_gold_xtsmart.jpg'),
+(7, 66, '(600x600)_crop_iphone_13_pro_max_1.png'),
+(8, 66, '(600x600)_crop_iphone_xr_gray_xtsmart.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -199,6 +225,14 @@ CREATE TABLE `mau_sac_phone` (
   `hinh_anh` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `mau_sac_phone`
+--
+
+INSERT INTO `mau_sac_phone` (`id_ms_phone`, `id_sp`, `ten_mau`, `hinh_anh`) VALUES
+(50, 66, 'ĐỎ', '565736971.jpg'),
+(51, 66, 'vàng', '80_iphone_xs_max_den_xtsmart.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -210,12 +244,20 @@ CREATE TABLE `san_pham` (
   `id_dm_pro` int(11) NOT NULL,
   `id_sub_dm_pro` int(11) NOT NULL,
   `ten_sp` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `don_gia` int(11) NOT NULL,
   `hinh_anh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `don_gia` int(11) NOT NULL,
+  `so_luong` int(20) NOT NULL,
   `ngay_nhap` date NOT NULL,
   `mo_ta` text COLLATE utf8_unicode_ci NOT NULL,
   `so_luot_xem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `san_pham`
+--
+
+INSERT INTO `san_pham` (`id_sp`, `id_dm_pro`, `id_sub_dm_pro`, `ten_sp`, `hinh_anh`, `don_gia`, `so_luong`, `ngay_nhap`, `mo_ta`, `so_luot_xem`) VALUES
+(66, 47, 45, 'Long12', '565736971.jpg', 80, 21, '2021-11-18', '<p>dsad</p>\r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -234,8 +276,10 @@ CREATE TABLE `sub_danh_muc_pro` (
 --
 
 INSERT INTO `sub_danh_muc_pro` (`id_sub_dm_pro`, `ten_sub_dm_pro`, `id_dm_pro`) VALUES
-(23, 'Samsung', 42),
-(24, 'Tai nghe', 43);
+(45, 'Oppo', 47),
+(46, 'Samsung', 47),
+(47, 'Iphone', 47),
+(48, 'Tai nghe', 48);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -309,6 +353,7 @@ ALTER TABLE `hoa_don_chi_tiet`
 -- Chỉ mục cho bảng `images_pro`
 --
 ALTER TABLE `images_pro`
+  ADD PRIMARY KEY (`id_images_pro`),
   ADD KEY `id_sp` (`id_sp`);
 
 --
@@ -331,6 +376,7 @@ ALTER TABLE `mau_sac_phone`
 --
 ALTER TABLE `san_pham`
   ADD PRIMARY KEY (`id_sp`),
+  ADD UNIQUE KEY `ten_sp` (`ten_sp`),
   ADD KEY `id_dm_pro` (`id_dm_pro`),
   ADD KEY `id_sub_dm_pro` (`id_sub_dm_pro`);
 
@@ -339,6 +385,7 @@ ALTER TABLE `san_pham`
 --
 ALTER TABLE `sub_danh_muc_pro`
   ADD PRIMARY KEY (`id_sub_dm_pro`),
+  ADD UNIQUE KEY `ten_sub_dm_pro` (`ten_sub_dm_pro`),
   ADD KEY `id_dm_pro` (`id_dm_pro`);
 
 --
@@ -367,7 +414,7 @@ ALTER TABLE `binh_luan_pro`
 -- AUTO_INCREMENT cho bảng `cau_hinh_phone`
 --
 ALTER TABLE `cau_hinh_phone`
-  MODIFY `id_ch_phone` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ch_phone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `danh_muc_news`
@@ -379,13 +426,13 @@ ALTER TABLE `danh_muc_news`
 -- AUTO_INCREMENT cho bảng `danh_muc_pro`
 --
 ALTER TABLE `danh_muc_pro`
-  MODIFY `id_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT cho bảng `dung_luong_phone`
 --
 ALTER TABLE `dung_luong_phone`
-  MODIFY `id_dl_phone` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dl_phone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `hoa_don`
@@ -400,6 +447,12 @@ ALTER TABLE `hoa_don_chi_tiet`
   MODIFY `id_hoa_don_chi_tiet` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `images_pro`
+--
+ALTER TABLE `images_pro`
+  MODIFY `id_images_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT cho bảng `khach_hang`
 --
 ALTER TABLE `khach_hang`
@@ -409,19 +462,19 @@ ALTER TABLE `khach_hang`
 -- AUTO_INCREMENT cho bảng `mau_sac_phone`
 --
 ALTER TABLE `mau_sac_phone`
-  MODIFY `id_ms_phone` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ms_phone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT cho bảng `sub_danh_muc_pro`
 --
 ALTER TABLE `sub_danh_muc_pro`
-  MODIFY `id_sub_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_sub_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
