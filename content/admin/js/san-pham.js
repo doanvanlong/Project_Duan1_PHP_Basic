@@ -31,25 +31,26 @@ function toast({
         toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
 
         toast.innerHTML = `
-     
-      <div class="toast__icon">
-      <i class="${icon}"></i>
-  </div>
-  <div class="toast__body">
-  <a href="${link}">
-      <h4 class="toast__title">${title}</h4>
-      <p class="toast__msg">${msg}</p>
-  </a>
-  </div>
-  <div class="toast__close">
-      <i class="fas fa-times"></i>
-  </div>
-      `;
+       
+        <div class="toast__icon">
+        <i class="${icon}"></i>
+    </div>
+    <div class="toast__body">
+    <a href="${link}">
+        <h4 class="toast__title">${title}</h4>
+        <p class="toast__msg">${msg}</p>
+    </a>
+    </div>
+    <div class="toast__close">
+        <i class="fas fa-times"></i>
+    </div>
+        `;
 
         main.appendChild(toast);
     }
 }
 //VALIDATE FORM SẢN PHẨM
+
 //Check tên sản phẩm đã tồn tại chưa
 var check = false;
 $('[name*="ten-san-pham"]').keyup(function() {
@@ -156,25 +157,25 @@ $(".click-mau-sac-more").click(function() {
 //Create 1 element khi muốn thêm màu sắc tiếp
 $(".click-nhap-them-mau-sac").click(function() {
     $(".mau-sac-more").append(`
-    <div class="row ">
-    <div class="col-5">
-        <div class="mau-sac-more-add">
-            <div class="mb-3">
-                <input type="text" class="form-control" name="mau-sac-more-add[]" placeholder="Xanh ,Đỏ...">
-                <small id="error-mau-sac-more-add" class="form-text text-danger "></small>
-            </div>
-        </div>
-    </div>
-    <div class="col-7">
-        <div class="hinh-anh-more-add">
-            <div class="mb-3">
-                <input class="form-control" type="file" id="formFileMultiple" multiple name="anh-mau-sac-more-add[]">
-                <small id="error-anh-mau-sac-more-add" class="form-text text-danger "></small>
-            </div>
-        </div>
-    </div>
-</div>
-    `);
+      <div class="row ">
+      <div class="col-5">
+          <div class="mau-sac-more-add">
+              <div class="mb-3">
+                  <input type="text" class="form-control" name="mau-sac-more-add[]" placeholder="Xanh ,Đỏ...">
+                  <small id="error-mau-sac-more-add" class="form-text text-danger "></small>
+              </div>
+          </div>
+      </div>
+      <div class="col-7">
+          <div class="hinh-anh-more-add">
+              <div class="mb-3">
+                  <input class="form-control" type="file" id="formFileMultiple" multiple name="anh-mau-sac-more-add[]">
+                  <small id="error-anh-mau-sac-more-add" class="form-text text-danger "></small>
+              </div>
+          </div>
+      </div>
+  </div>
+      `);
 });
 
 //check dung lượng more : thêm nhiều dung lượng
@@ -186,23 +187,23 @@ $(".click-dung-luong-more").click(function() {
 //Create 1 element khi muốn thêm dung lượng  tiếp
 $(".click-nhap-them-dung-luong").click(function() {
     $(".dung-luong-more").append(`
-  <div class="row ">
-  <div class="col-6 ">
-      <div class="dung-luong-more-add">
-          <label class="my-3">Dung lượng:</label>
-          <input type="text" class="form-control" name="dung-luong-more-add[]" placeholder="64,128... ">
-          <small id="error-dung-luong-more-add" class="form-text text-danger "></small>
-      </div>
+    <div class="row ">
+    <div class="col-6 ">
+        <div class="dung-luong-more-add">
+            <label class="my-3">Dung lượng:</label>
+            <input type="text" class="form-control" name="dung-luong-more-add[]" placeholder="64,128... ">
+            <small id="error-dung-luong-more-add" class="form-text text-danger "></small>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="don-gia-more-add">
+            <label class="my-3">Đơn giá:</label>
+            <input type="number" class="form-control" placeholder="VND" name="gia-san-pham-more-add[]">
+            <small id="error-gia-san-pham" class="form-text text-danger "></small>
+        </div>
+    </div>
   </div>
-  <div class="col-6">
-      <div class="don-gia-more-add">
-          <label class="my-3">Đơn giá:</label>
-          <input type="number" class="form-control" placeholder="VND" name="gia-san-pham-more-add[]">
-          <small id="error-gia-san-pham" class="form-text text-danger "></small>
-      </div>
-  </div>
-</div>
-  `);
+    `);
 });
 
 //click add cấu hình
@@ -447,6 +448,276 @@ $("#them-san-pham").submit(function(e) {
                         toast({
                             title: "Thất bại",
                             msg: "Vui lòng thử submit lại!",
+                            type: "error",
+                            duration: 5000,
+                            link: "#",
+                        });
+                    }
+                },
+            });
+        }
+    }
+});
+
+
+
+
+
+
+/// Cập nhật sản phẩm
+
+// Load danh mục con theo danh mục mẹ value
+// Gửi data để biết danh mục mẹ
+$(".danh-muc-chinh-san-pham-update").change(function() {
+    var id_dm_chinh_update = $(".danh-muc-chinh-san-pham-update").val(); //lấy option value trực tiếp từ thẻ select .value
+    $.post(
+        "../admin/xu-ly/san-pham/update-san-pham.php", { id_dm_chinh_update: id_dm_chinh_update },
+        function(data) {
+            $('[name*="danh-muc-chi-tiet-update"]').html(data);
+        }
+    );
+});
+
+
+//Kiểm tra danh mục chính có phải là điện thoại ko
+$(".danh-muc-chinh-san-pham-update").change(function() {
+    if ($(this).children("option:selected").text() == "Điện thoại") {
+        // Nếu là điện thoại thì hiện những thứ cần nhập và ngược lại
+        $(".hide-mau-sac").show();
+        $(".hide-dung-luong").show();
+        $(".hide-them-mau-sac-dung-luong").show();
+        $(".hide-cau-hinh").show();
+    } else {
+        // Nếu ko phải là điện thoại thì ẩn Màu sắc ,Dung lượng,THêm màu sắc, thêm dung lượng ,cấu hình
+        $(".hide-mau-sac").hide();
+        $(".hide-dung-luong").hide();
+        $(".hide-them-mau-sac-dung-luong").hide();
+        $(".hide-cau-hinh").hide();
+    }
+    // Gửi data để biết danh mục mẹ
+    var id_dm_chinh = $(".danh-muc-chinh-san-pham").val(); //lấy option value trực tiếp từ thẻ select .value
+    $.post(
+        "../admin/xu-ly/san-pham/insert-san-pham.php", { id_dm_chinh: id_dm_chinh },
+        function(data) {
+            $('[name*="danh-muc-chi-tiet-san-pham"]').html(data);
+        }
+    );
+});
+
+
+//check dung lượng radio button
+// Nếu có dung lượng thì lấy value của nó đem so sánh mấy thèn dưới ,nếu data- của thèn dưới mà = thì remove
+
+if ($(".check_remove_dung_luong")) {
+    var dung_luong_DB = $(".check_remove_dung_luong").val();
+    //  if($('.check-dung-luong').data('check_dung_luong') != dung_luong_DB){
+
+    //  }
+    var dung_luongs = $(".check-dung-luong");
+
+    for (let i = 0; i < dung_luongs.length; i++) {
+        const element = dung_luongs[i];
+        // console.log(element.getAttribute('data-check_dung_luong'));
+        if (element.getAttribute("data-check_dung_luong") == dung_luong_DB) {
+            //lặp tất cả dung lượng có sẳn ,nếu trùng DB thì xoá
+            element.children[0].checked = true; //thuôc HTML collection kiểu Object
+            // children thứ 0 là thẻ input
+
+            // truy cập vào thuộc tính checked trong HTML collection và gán giá trị
+        }
+    }
+}
+
+// Click submit thêm sản phẩm mới => kiểm lỗi, gửi data đi
+$("#update-san-pham").submit(function(e) {
+    e.preventDefault();
+    if (
+        $(".danh-muc-chinh-san-pham-update").children("option:selected").text() ==
+        "Điện thoại"
+    ) {
+        if (
+            $('[name*="ten-san-pham"]') &&
+            $('[name*="gia-san-pham"]') &&
+            $('[name*="so-luong-san-pham"]') &&
+            $('[name*="gia-san-pham"]') &&
+            $('[name*="mau-sac"]').val() == ""
+
+        ) {
+            if ($('[name*="ten-san-pham"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="ten-san-pham"]').css("border", "1px solid #f38291");
+                $("#error-ten-san-pham").text("Tên sản phẩm không được để trống.");
+            }
+            if ($('[name*="gia-san-pham"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="gia-san-pham"]').css("border", "1px solid #f38291");
+                $("#error-gia-san-pham").text("Giá sản phẩm không được để trống.");
+            }
+            if ($('[name*="so-luong-san-pham"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="so-luong-san-pham"]').css("border", "1px solid #f38291");
+                $("#error-so-luong-san-pham").text(
+                    "Số lượng sản phẩm không được để trống."
+                );
+            }
+            if ($('[name*="mau-sac"]').val() == "") {
+                // border input và hiển thị lỗi
+                $("#error-mau-sac").text("Vui lòng nhập màu sắc sản phẩm.");
+                $('[name*="mau-sac"]').css("border", "1px solid #f38291");
+            }
+
+            // Thông báo thêm sản phẩm thất bại
+            toast({
+                title: "Thất bại",
+                msg: "Cập nhật sản phẩm thất bại!",
+                type: "error",
+                duration: 5000,
+                link: "#",
+            });
+            //màu sắc more add
+            $('[name*="mau-sac-more-add"]').css("border", "0 ");
+            //giá sản phẩm  more add
+            $('[name*="gia-san-pham-more-add"]').css("border", "0 ");
+        } else {
+            // remove error lỗi
+            // border input và hiển thị lỗi
+            $('[name*="ten-san-pham"]').css("border", "0");
+            $("#error-ten-san-pham").text("");
+            // border input và hiển thị lỗi
+            $('[name*="gia-san-pham"]').css("border", "0");
+            $("#error-gia-san-pham").text("");
+            // border input và hiển thị lỗi
+            $('[name*="so-luong-san-pham"]').css("border", "0");
+            $("#error-so-luong-san-pham").text("");
+            // border input và hiển thị lỗi
+            $('[name*="mau-sac"]').css("border", "0");
+            $("#error-mau-sac").text("");
+            // border input và hiển thị lỗi
+            $('[name*="anh-dai-dien"]').css("border", "0");
+            $("#error-anh-dai-dien").text("");
+
+            // khác rỗng
+            //
+            // Gửi ajax cho phần dnah mục điện thoại
+            //Tiến hành gửi data qua file xử lí, insert vào DB
+            $.ajax({
+                type: "POST",
+                url: "../admin/xu-ly/san-pham/update-san-pham.php", //send data đến folder xử lý
+                data: new FormData(this), //send all data theo id name
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    // data được gửi về từ file xử lý
+
+                    if (data == 1) {
+                        //Hiển thị thông báo thêm thành công sản phẩm
+                        toast({
+                            title: "Thành công",
+                            msg: "Cập nhật sản phẩm  thành công !",
+                            type: "success",
+                            duration: 5000,
+                            link: "list-san-pham",
+                        });
+                        //Insert sản phẩm thành công thì reset form
+                        $("#update-san-pham")[0].reset();
+                        // reload lại trang sau khi xoá xong
+                        setTimeout(location.reload.bind(location), 1300);
+                    } else {
+                        // Thông báo thêm sản phẩm thất bại
+                        toast({
+                            title: "Thất bại",
+                            msg: "Cập nhật sản phẩm thất bại!",
+                            type: "error",
+                            duration: 5000,
+                            link: "#",
+                        });
+                    }
+                },
+            });
+        }
+    } else {
+        //là khác điện thoại
+        if (
+            $('[name*="ten-san-pham"]') &&
+            $('[name*="gia-san-pham"]') &&
+            $('[name*="so-luong-san-pham"]').val() == ""
+        ) {
+            if ($('[name*="ten-san-pham"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="ten-san-pham"]').css("border", "1px solid #f38291");
+                $("#error-ten-san-pham").text("Tên sản phẩm không được để trống.");
+            }
+            if ($('[name*="gia-san-pham"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="gia-san-pham"]').css("border", "1px solid #f38291");
+                $("#error-gia-san-pham").text("Giá sản phẩm không được để trống.");
+            }
+            if ($('[name*="so-luong-san-pham"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="so-luong-san-pham"]').css("border", "1px solid #f38291");
+                $("#error-so-luong-san-pham").text(
+                    "Số lượng sản phẩm không được để trống."
+                );
+            }
+
+            if ($('[name*="mau-sac"]').val() == "") {
+                $("#error-mau-sac").text("Vui lòng nhập màu sắc sản phẩm.");
+                // border input và hiển thị lỗi
+
+            }
+            // Thông báo thêm sản phẩm thất bại
+            toast({
+                title: "Thất bại",
+                msg: "Cập nhật sản phẩm thất bại!",
+                type: "error",
+                duration: 5000,
+                link: "#",
+            });
+        } else {
+            // remove error lỗi
+            // border input và hiển thị lỗi
+            $('[name*="ten-san-pham"]').css("border", "0");
+            $("#error-ten-san-pham").text("");
+            // border input và hiển thị lỗi
+            $('[name*="gia-san-pham"]').css("border", "0");
+            $("#error-gia-san-pham").text("");
+            // border input và hiển thị lỗi
+            $('[name*="so-luong-san-pham"]').css("border", "0");
+            $("#error-so-luong-san-pham").text("");
+            // border input và hiển thị lỗi
+            $('[name*="anh-dai-dien"]').css("border", "0");
+            $("#error-anh-dai-dien").text("");
+
+            // khác rỗng
+            //
+            // Gửi ajax cho phần dnah mục điện thoại
+            //Tiến hành gửi data qua file xử lí, insert vào DB
+            $.ajax({
+                type: "POST",
+                url: "../admin/xu-ly/san-pham/update-san-pham.php", //send data đến folder xử lý
+                data: new FormData(this), //send all data theo id name
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    // data được gửi về từ file xử lý
+                    if (data != 0) {
+                        //Hiển thị thông báo thêm thành công sản phẩm
+                        toast({
+                            title: "Thành công",
+                            msg: "Cập nhật sản phẩm thành công !",
+                            type: "success",
+                            duration: 5000,
+                            link: "list-san-pham",
+                        });
+                        //Insert sản phẩm thành công thì reset form
+                        $("#update-san-pham")[0].reset();
+                        // reload lại trang sau khi xoá xong
+                        setTimeout(location.reload.bind(location), 1300);
+                    } else {
+                        // Thông báo thêm sản phẩm thất bại
+                        toast({
+                            title: "Thất bại",
+                            msg: "Cập nhật sản phẩm thất bại!",
                             type: "error",
                             duration: 5000,
                             link: "#",
