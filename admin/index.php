@@ -10,7 +10,7 @@ switch ($url) {
         $view = "views/home.php";
         $title = "Admin";
         break;
-
+        
     case 'add-danh-muc':
         $view = 'views/danh-muc/add-danh-muc.php';
         $title = 'Thêm danh mục';

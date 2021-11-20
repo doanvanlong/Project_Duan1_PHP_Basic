@@ -179,7 +179,7 @@
                         <div class="user__name pl-2 dropdown-toggle" style="cursor: pointer;font-weight: 600;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Cài đặt</a>
-                            <a class="dropdown-item" href="#">Đăng xuất</a>
+                            <a class="dropdown-item" href="">Đăng xuất</a>
                         </div>
                     </div>
 
