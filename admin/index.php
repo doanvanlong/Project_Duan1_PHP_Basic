@@ -52,6 +52,10 @@ switch ($url) {
         $view = "views/san-pham/san-pham.php";
         $title = "Chi tiết sản phẩm";
         break;
+    case 'add-news-category':
+        $view = "views/tin-tuc/them-danh-muc-tin-tuc.php";
+        $title = "Thêm danh mục tin tức";
+        break;
     default:
         $view = 'views/home.php';
         $title = 'Admin';

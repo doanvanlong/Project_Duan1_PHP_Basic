@@ -99,12 +99,12 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
                     }
                 }
                 //nếu có thêm ảnh chi tiết
-                if(isset($_FILES['anh-chi-tiet'])){
-                    foreach($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet){
-                        san_pham_Insert_Img_Detail($id_sp,$anh_chi_tiet);
+                if (isset($_FILES['anh-chi-tiet'])) {
+                    foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                        san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
                     }
-                    $i=0;
-                    foreach($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet){
+                    $i = 0;
+                    foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
                         move_uploaded_file($_FILES['anh-chi-tiet']['tmp_name'][$i], '../../../content/uploads/' . $anh_chi_tiet);
                         $i++;
                     }

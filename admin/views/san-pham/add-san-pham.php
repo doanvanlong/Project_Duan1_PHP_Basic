@@ -80,23 +80,6 @@
             <small id="error-dung-luong" class="form-text text-danger "></small>
             <p id="msg-dung-luong"></p>
         </div>
-
-        <!-- <div class="col-md-6">
-                <label for="">Dung lượng 2:</label>
-                <br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">1</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                    <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
-                </div>
-            </div> -->
     </div>
     <hr>
     <div class="row">
@@ -241,14 +224,14 @@
                 <label class="form-label">Mô tả sản phẩm</label>
                 <div class="panel-body">
                     <textarea name="content" id="content" class="form-control ckeditor"></textarea>
+                    <!-- <textarea cols="10" id="editor1" name="editor1" rows="10" data-sample-short></textarea> -->
                 </div>
                 <small id="error-mo-ta" class="form-text text-danger "></small>
             </div>
         </div>
     </div>
-
-
     <div class="form-group" style="margin-top: 1em;">
         <input type="submit" value="Thêm sản phẩm" class="btn btn-success">
     </div>
 </form>
+<script src="<?= $CONTENT_ADMIN_URL ?>/js/ckeditor.js"></script>
