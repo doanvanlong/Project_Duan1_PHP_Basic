@@ -772,7 +772,18 @@ $(document).ready(function () {
   });
 });
 
+
+
+
+
+
+
+
+
+
+
 //DELETE MỘT SẢN PHẨM
+
 $(".delete-san-pham").click(function () {
   var isDelSanPham = confirm("Bạn có muốn xoá sản phẩm này không?");
   if (isDelSanPham) {
@@ -808,6 +819,7 @@ $(".delete-san-pham").click(function () {
 });
 
 //DELETE NHIỀU SẢN PHẨM
+
 //Ẩn nút bỏ chọn khi chưa chọn tất cả
 $("#uncheck-san-pham").css("display", "none");
 //Check all sản phẩm
