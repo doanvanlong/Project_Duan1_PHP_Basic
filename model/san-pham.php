@@ -143,3 +143,17 @@ function san_pham_Update_Dung_Luong_More_Update($id_sp,$rom,$don_gia,$id_dl_phon
     $sql="UPDATE dung_luong_phone SET rom=?,don_gia=? where id_sp =? and id_dl_phone=?";
     return pdo_execute($sql, $rom, $don_gia,$id_sp,$id_dl_phone);
 }
+
+
+
+
+//Hàm xoá sản phẩm theo id sản phẩm
+function del_san_pham($id_sp){
+    $sql = "DELETE FROM `san_pham` WHERE id_sp = ?";
+    return pdo_execute($sql, $id_sp);
+}
+
+function del_multi_san_pham($list_san_pham){
+    $sql = "DELETE FROM `san_pham` WHERE id_sp = ?";
+    return pdo_query($sql, $list_san_pham);
+}
