@@ -3,7 +3,7 @@
   <?php
   if (count($list_san_pham) == 0) {
   ?>
-    <h5 class="alert alert-light">Chưa có danh mục</h5>
+    <h5 class="alert alert-light">Chưa có sản phẩm</h5>
   <?php
   } else {
 

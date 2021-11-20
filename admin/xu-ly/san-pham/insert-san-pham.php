@@ -118,11 +118,12 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
             echo 0;
         }
     } else {
-        echo 2; //vui lòng submit lại
+       
     }
 }
 
 //Xử lý ckeditor 
+
 //upload.php
 // Xử lý tải lên máy chủ ,và move vào thư mục UPLOAD qua lấy từ $ FILES
 if (isset($_FILES['upload']['name'])) {
