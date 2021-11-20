@@ -43,7 +43,7 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
     // Nhận ckeditor
     // mô tả sản phẩm
     if (isset($_POST['content']) && $_POST['content'] != "") {
-        // hình ảnh
+        // hình ảnh đại diện
         if (isset($_FILES['anh-dai-dien']['name'])) {
             $extension = explode('.', $_FILES['anh-dai-dien']['name']); //cắt thành mảng cách nhau bởi dấu .
             $file_extension = end($extension); //lấy đuôi file
@@ -161,5 +161,6 @@ if (isset($_POST['id_dm_chinh'])) {
 
 <?php
 }
+
 
 ?>

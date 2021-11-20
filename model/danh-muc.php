@@ -96,4 +96,6 @@ function danh_muc_con_Select_by_id_dm_chinh($id_dm_pro){
     $sql="SELECT * FROM sub_danh_muc_pro where id_dm_pro =?";
     return pdo_query($sql, $id_dm_pro); 
 }
+
+
 ?>

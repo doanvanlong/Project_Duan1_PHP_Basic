@@ -44,7 +44,17 @@ switch ($url) {
     case 'list-san-pham':
         $view = 'views/san-pham/list-san-pham.php';
         $title = "Danh sách sản phẩm";
-        $list_san_pham=san_pham_QueryAll();
+        $list_san_pham = san_pham_QueryAll();
+        $list_dm_pro = danh_muc_chinh_QueryAll();
+        $list_sub_dm_pro = danh_muc_con_QueryAll();
+        break;
+    case 'edit-san-pham':
+        $view = 'views/san-pham/edit-san-pham.php';
+        $title = "Sửa sản phẩm";
+        $id_sp=$_GET["id"];
+        $info_sp = san_pham_QueryOne($id_sp);
+
+        $list_san_pham = san_pham_QueryAll();
         $list_dm_pro = danh_muc_chinh_QueryAll();
         $list_sub_dm_pro = danh_muc_con_QueryAll();
         break;
