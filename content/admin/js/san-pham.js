@@ -728,3 +728,97 @@ $("#update-san-pham").submit(function(e) {
         }
     }
 });
+
+//DELETE MỘT SẢN PHẨM
+$(".delete-san-pham").click(function() {
+    var isDelSanPham = confirm("Bạn có muốn xoá sản phẩm này không?");
+    if (isDelSanPham) {
+        let id_san_pham = $(this).data("delete_id_sp");
+        $.ajax({
+            type: "POST",
+            url: "../admin/xu-ly/san-pham/delete-san-pham.php",
+            data: { delete_id_sp: id_san_pham },
+            success: function(data) {
+                if (data == 1) {
+                    toast({
+                        title: "Thành công",
+                        msg: "Xoá sản phẩm thành công !",
+                        type: "success",
+                        duration: 5000,
+                        link: "#",
+                    });
+                    // reload lại trang sau khi xoá xong
+                    setTimeout(location.reload.bind(location), 1000);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Xoá sản phẩm thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
+                }
+            },
+        });
+    } else {}
+});
+
+//DELETE NHIỀU SẢN PHẨM
+//Ẩn nút bỏ chọn khi chưa chọn tất cả
+$("#uncheck-san-pham").css("display", "none");
+//Check all sản phẩm
+$("#checkall-san-pham").click(function(isChecked) {
+    if (isChecked) {
+        $(".check-san-pham").each(function() {
+            this.checked = true;
+            //Hiển thị nút bỏ chọn sau khi đã check all sản phẩm
+            $("#uncheck-san-pham").css("display", "inline-block");
+            //Ẩn nút chọn tất cả
+            $("#checkall-san-pham").css("display", "none");
+        });
+    }
+});
+
+//Bỏ các mục đã check
+$("#uncheck-san-pham").click(function(notChecked) {
+    if (notChecked) {
+        $(".check-san-pham").each(function() {
+            this.checked = false;
+            //Ẩn nút bỏ chọn sau khi click
+            $("#uncheck-san-pham").css("display", "none");
+            //Hiển thị lại nút chọn tất cả
+            $("#checkall-san-pham").css("display", "inline-block");
+        })
+    }
+})
+
+//GửI ajax xoá nhiều sản phẩm
+$("#delete-san-pham").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/san-pham/delete-san-pham.php",
+        data: $("#delete-san-pham").serializeArray(),
+        success: function(data) {
+            if (data == 1) {
+                toast({
+                    title: "Thành công",
+                    msg: "Xoá sản phẩm thành công !",
+                    type: "success",
+                    duration: 5000,
+                    link: "#",
+                });
+                // reload lại trang sau khi xoá xong
+                setTimeout(location.reload.bind(location), 1000);
+            } else {
+                toast({
+                    title: "Thất bại",
+                    msg: "Xoá sản phẩm thất bại !",
+                    type: "error",
+                    duration: 5000,
+                    link: "#",
+                });
+            }
+        },
+    });
+});

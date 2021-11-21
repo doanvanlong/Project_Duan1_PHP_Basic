@@ -2,7 +2,7 @@
 //gọi model xử lý data của sản phẩm
 require_once '../../../model/san-pham.php';
 require_once '../../../model/danh-muc.php';
-require_once '../../../model/san-pham.php';
+
 if (isset($_POST['keyup_ten_san_pham'])) {
     $keyup_ten_san_pham = $_POST['keyup_ten_san_pham'];
     echo (san_pham_Isset_DB($keyup_ten_san_pham));
