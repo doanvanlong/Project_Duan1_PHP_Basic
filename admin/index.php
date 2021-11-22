@@ -94,6 +94,7 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                 case 'add-news':
                     $view = "views/tin-tuc/add-news.php";
                     $title = "Thêm bài viết mới";
+                    $list_news_category = list_news_category();
                     break;
                 case 'client':
                     header('location:../client');

@@ -31,4 +31,8 @@
         $sql = "DELETE FROM `danh_muc_news` WHERE `id_dm_news` = ?";
         pdo_execute($sql, $list);
     }
+    function insert_news($name_news_category,$name_news,$img_news,$mo_ta_news){
+        $sql = "INSERT INTO `bai_viet`(`id_dm_news`, `tieu_de_news`, `img_news`, `noi_dung`) VALUES (?,?,?,?)";
+        pdo_execute($sql,$name_news_category,$name_news,$img_news,$mo_ta_news);
+    }
 ?>

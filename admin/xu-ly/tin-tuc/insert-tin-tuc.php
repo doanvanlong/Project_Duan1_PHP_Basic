@@ -42,9 +42,8 @@ if (isset($_FILES['upload']['name'])) {
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
     }
 }
-
-if (isset($_POST['editor1'])) {
-    //Xử lí avt tin tức
+if (isset($_POST['content-news']) && $_POST['content-news'] != "") {
+    //Xử lí ảnh đại diện bài viết
     if (isset($_FILES['avt-news']['name'])) {
         $extension = explode('.', $_FILES['avt-news']['name']); //cắt thành mảng cách nhau bởi dấu .
         $file_extension = end($extension); //lấy đuôi file
@@ -53,12 +52,28 @@ if (isset($_POST['editor1'])) {
             // nếu đuôi file nằm trong mảng cho chép định dạng thì ok
             $new_name = rand() . "." . $file_extension; //random số + với đuôi file 
             $path = "../../../content/uploads/" . $new_name; //đường dẫn hình ảnh đưa vào
-            if (move_uploaded_file($_FILES["avt-news"]['tmp_name'], $path)) {
+            if (move_uploaded_file($_FILES['avt-news']['tmp_name'], $path)) {
                 //    upload hình từ đường dẫn tmp name vào đường dẫn đã khai báo path
-                var_dump($path);
             }
         }
     }
-    var_dump($_POST['editor1']);
+    $img_news = $new_name;
+    //Xử lí data liên quan khác
+    $name_news = $_POST['content-news'];
+    $name_news_category = $_POST['news-category'];
+    $mo_ta_news = $_POST['editor1'];
+    try {
+        insert_news($name_news_category,$name_news,$img_news,$mo_ta_news);
+        //Thành công hiển thị 1
+        echo 1;
+    } catch (exception $e) {
+        //Thất bại hiển thị 0
+        echo 0;
+    }
 }
+
+// if (isset($_POST['editor1'])) {
+    
+//     var_dump($_POST['editor1']);
+// }
 
