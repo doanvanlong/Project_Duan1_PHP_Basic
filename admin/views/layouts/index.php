@@ -79,7 +79,7 @@
                             <span class="box__icon-dropdown"><i class="icon__dropdown fas fa-angle-down"></i></span></span>
                     </div>
                     <div class="sub-menu">
-                        <a class="sub-menu-items d-flex align-items-center" href="add-news-category"><i class="fas fa-circle"></i>Thêm danh mục</a>
+                        <a class="sub-menu-items d-flex align-items-center" href="news-category"><i class="fas fa-circle"></i>Danh mục tin tức</a>
                         <a class="sub-menu-items d-flex align-items-center" href="add-news"><i class="fas fa-circle"></i>Thêm tin tức</a>
                         <a class="sub-menu-items d-flex align-items-center" href="list-news"><i class="fas fa-circle"></i>Danh sách tin tức</a>
                     </div>
@@ -219,6 +219,7 @@
 
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/main.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/san-pham.js"></script>
+    <script src="<?= $CONTENT_ADMIN_URL ?>/js/tin-tuc.js"></script>
 </body>
 
 </html>

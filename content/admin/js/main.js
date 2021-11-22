@@ -602,7 +602,7 @@ $(document).ready(function() {
             // thông báo toast thất bại
             toast({
                 title: "Thất bại",
-                msg: "Thêm danh mục thất bại!",
+                msg: "Cập nhật danh mục thất bại!",
                 type: "error",
                 duration: 5000,
                 link: "#",
@@ -628,7 +628,7 @@ $(document).ready(function() {
                             //thông báo thêm thành công
                             toast({
                                 title: "Thành công",
-                                msg: "Thêm danh mục thành công !",
+                                msg: "Cập nhật danh mục thành công !",
                                 type: "success",
                                 duration: 5000,
                                 link: "list-danh-muc",
@@ -639,7 +639,7 @@ $(document).ready(function() {
                             // thông báo toast thất bại
                             toast({
                                 title: "Thất bại",
-                                msg: "Thêm danh mục thất bại!",
+                                msg: "Cập nhật danh mục thất bại!",
                                 type: "error",
                                 duration: 5000,
                                 link: "#",
@@ -654,7 +654,7 @@ $(document).ready(function() {
     //trang Update Edit danh mục con
 
     // Lấy từ value gán cho hằng số cố định
-    var check_dm_con = "flase";
+    var check_dm_con = "false";
     const data_dm_con_DB = $('[name*="ten-danh-muc-con-update"]').val();
     // new RegExp($(this).val(), "i").test(data_DB);//kiểu bool : kiểm tra chuổi này có tồn tại trong chuổi kia
     //khai báo hằng để value DB ko thay đổi
@@ -727,7 +727,7 @@ $(document).ready(function() {
             // thông báo toast thất bại
             toast({
                 title: "Thất bại",
-                msg: "Thêm danh mục thất bại!",
+                msg: "Cập nhật danh mục chi tiết thất bại!",
                 type: "error",
                 duration: 5000,
                 link: "#",
@@ -748,7 +748,7 @@ $(document).ready(function() {
                             //thông báo thêm thành công
                             toast({
                                 title: "Thành công",
-                                msg: "Thêm danh mục thành công !",
+                                msg: "Cập nhật danh mục chi tiết thành công!",
                                 type: "success",
                                 duration: 5000,
                                 link: "list-danh-muc",
@@ -759,7 +759,7 @@ $(document).ready(function() {
                             // thông báo toast thất bại
                             toast({
                                 title: "Thất bại",
-                                msg: "Thêm danh mục thất bại!",
+                                msg: "Cập nhật danh mục chi tiết thất bại!",
                                 type: "error",
                                 duration: 5000,
                                 link: "#",
@@ -769,113 +769,5 @@ $(document).ready(function() {
                 });
             }
         }
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
-//DELETE MỘT SẢN PHẨM
-
-$(".delete-san-pham").click(function () {
-  var isDelSanPham = confirm("Bạn có muốn xoá sản phẩm này không?");
-  if (isDelSanPham) {
-    let id_san_pham = $(this).data("delete_id_sp");
-    $.ajax({
-      type: "POST",
-      url: "../admin/xu-ly/san-pham/delete-san-pham.php",
-      data: { delete_id_sp: id_san_pham },
-      success: function (data) {
-        if (data == 1) {
-          toast({
-            title: "Thành công",
-            msg: "Xoá sản phẩm thành công !",
-            type: "success",
-            duration: 5000,
-            link: "#",
-          });
-          // reload lại trang sau khi xoá xong
-          setTimeout(location.reload.bind(location), 1000);
-        } else {
-          toast({
-            title: "Thất bại",
-            msg: "Xoá sản phẩm thất bại !",
-            type: "error",
-            duration: 5000,
-            link: "#",
-          });
-        }
-      },
-    });
-  } else {
-  }
-});
-
-//DELETE NHIỀU SẢN PHẨM
-
-//Ẩn nút bỏ chọn khi chưa chọn tất cả
-$("#uncheck-san-pham").css("display", "none");
-//Check all sản phẩm
-$("#checkall-san-pham").click(function(isChecked) {
-    if (isChecked) {
-        $(".check-san-pham").each(function() {
-            this.checked = true;
-            //Hiển thị nút bỏ chọn sau khi đã check all sản phẩm
-            $("#uncheck-san-pham").css("display", "inline-block");
-            //Ẩn nút chọn tất cả
-            $("#checkall-san-pham").css("display", "none");
-        });
-    }
-});
-
-//Bỏ các mục đã check
-$("#uncheck-san-pham").click(function(notChecked) {
-    console.log(notChecked);
-    if (notChecked) {
-        $(".check-san-pham").each(function() {
-            this.checked = false;
-            //Ẩn nút bỏ chọn sau khi click
-            $("#uncheck-san-pham").css("display", "none");
-            //Hiển thị lại nút chọn tất cả
-            $("#checkall-san-pham").css("display", "inline-block");
-        })
-    }
-})
-
-//GửI ajax xoá nhiều sản phẩm
-$("#delete-san-pham").submit(function(e) {
-    e.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: "../admin/xu-ly/san-pham/delete-san-pham.php",
-        data: $("#delete-san-pham").serializeArray(),
-        success: function(data) {
-            if (data == 1) {
-                toast({
-                    title: "Thành công",
-                    msg: "Xoá sản phẩm thành công !",
-                    type: "success",
-                    duration: 5000,
-                    link: "#",
-                });
-                // reload lại trang sau khi xoá xong
-                setTimeout(location.reload.bind(location), 1000);
-            } else {
-                toast({
-                    title: "Thất bại",
-                    msg: "Xoá sản phẩm thất bại !",
-                    type: "error",
-                    duration: 5000,
-                    link: "#",
-                });
-            }
-        },
     });
 });
