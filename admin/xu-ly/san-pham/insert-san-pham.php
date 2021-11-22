@@ -11,7 +11,6 @@ if (isset($_POST['keyup_ten_san_pham'])) {
     // vì hàm trả về số record
 }
 
-
 if (isset($_POST['danh-muc-chinh-san-pham'])) {
     $dm_chinh = $_POST['danh-muc-chinh-san-pham'];
     $dm_chi_tiet = $_POST['danh-muc-chi-tiet-san-pham'];
@@ -118,7 +117,7 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
             echo 0;
         }
     } else {
-       
+       echo 0;
     }
 }
 
