@@ -270,3 +270,21 @@ $("#dm-tin-tuc").submit(function(e) {
         },
     });
 });
+//VALIDATE FORM TIN TỨC
+
+//THÊM TIN TỨC MỚI
+$('#send').click(function() {
+    var data = CKEDITOR.instances.editor1.getData();
+    $("#add-news").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '../admin/xu-ly/tin-tuc/insert-tin-tuc.php',
+            data: $("#add-news").serializeArray(),
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    });
+
+});

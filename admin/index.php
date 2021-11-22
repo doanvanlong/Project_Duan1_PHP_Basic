@@ -74,6 +74,10 @@ switch ($url) {
         $id_news_category = $_GET["ID"];
         $one_news_category = one_news_category($id_news_category);
         break;
+    case 'add-news':
+        $view = "views/tin-tuc/add-news.php";
+        $title = "Thêm bài viết mới";
+        break;
     case 'client':
         header('location:../client');
         break;
