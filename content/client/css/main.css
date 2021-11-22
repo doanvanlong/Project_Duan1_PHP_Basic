@@ -374,7 +374,9 @@ strike.tab__menu-product-newproduct-oldprice {
     padding-left: 4px;
 }
 
-
+.tab__menu-product-content-newproduct{
+    color:var(--dark);
+}
 /* .tab__menu-product-content-newproduct-sale-label */
 
 
