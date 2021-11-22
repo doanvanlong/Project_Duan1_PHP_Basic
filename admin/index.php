@@ -3,6 +3,7 @@ session_start();
 require_once '../global.php';
 require_once '../model/danh-muc.php'; //gọi model hàm xử lý danh mục
 require_once '../model/san-pham.php'; //gọi model hàm xử lý danh mục
+require_once '../model/tin-tuc.php'; //Gọi model hàm xử lí tin tức
 
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
@@ -62,9 +63,20 @@ switch ($url) {
         $view = "views/san-pham/san-pham.php";
         $title = "Chi tiết sản phẩm";
         break;
-    case 'add-news-category':
-        $view = "views/tin-tuc/them-danh-muc-tin-tuc.php";
+    case 'news-category':
+        $view = "views/tin-tuc/danh-muc-tin-tuc.php";
         $title = "Thêm danh mục tin tức";
+        $list_news_category = list_news_category();
+        break;
+    case 'edit-news-category':
+        $view = "views/tin-tuc/edit-news-category.php";
+        $title = "Cập nhật danh mục tin tức";
+        $id_news_category = $_GET["ID"];
+        $one_news_category = one_news_category($id_news_category);
+        break;
+    case 'add-news':
+        $view = "views/tin-tuc/add-news.php";
+        $title = "Thêm bài viết mới";
         break;
     case 'client':
         header('location:../client');
