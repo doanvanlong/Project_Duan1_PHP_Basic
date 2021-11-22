@@ -82,6 +82,11 @@ function san_pham_Query_Images_Pro($id_sp)
     $sql = "SELECT * FROM  images_pro where id_sp =?";
     return pdo_query($sql, $id_sp);
 }
+// hàm update  images pro 
+function san_pham_Update_Images($id_sp,$id_images_pro,$images){
+    $sql="UPDATE images SET images=? where id_sp=? and id_images_pro=?";
+    return pdo_execute($sql, $images,$id_sp,$id_images_pro);
+}
 // hàm truy vấn cấu Hình
 function san_pham_Query_Cau_Hinh($id_sp)
 {
@@ -114,8 +119,8 @@ function san_pham_Update($id_sp, $id_dm_pro, $id_sub_dm_pro, $ten_sp, $hinh_anh,
 // hàm delete images sản phẩm
 function san_pham_Delete_Images($id_sp)
 {
-    $sql = "DELETE FROM images where id_sp=?";
-    return pdo_execute($sql, $$id_sp);
+    $sql = "DELETE FROM images_pro where id_sp=?";
+    return pdo_execute($sql, $id_sp);
 }
 // hàm Update màu sắc hình ảnh  chính 
 function san_pham_Update_Color_First($id_sp, $ten_mau, $hinh_anh)

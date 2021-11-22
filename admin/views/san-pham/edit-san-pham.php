@@ -170,7 +170,9 @@
                 <small id="error-anh-chi-tiet" class="form-text text-danger "></small>
                 <?php
                 $images = san_pham_Query_Images_Pro($info_sp['id_sp']);
-                foreach ($images as $image) { ?>
+                foreach ($images as $image) { 
+                ?>
+                
                     <img style="width:100px" src="<?= $CONTENT_UPLOAD . '/' . $image['images']; ?>" alt="">
                 <?php
                 }

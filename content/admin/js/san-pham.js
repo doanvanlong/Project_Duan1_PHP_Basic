@@ -590,30 +590,29 @@ $("#update-san-pham").submit(function(e) {
                 processData: false,
                 success: function(data) {
                     // data được gửi về từ file xử lý
-                    console.log(data);
-                    // if (data == 1) {
-                    //     //Hiển thị thông báo thêm thành công sản phẩm
-                    //     toast({
-                    //         title: "Thành công",
-                    //         msg: "Cập nhật sản phẩm  thành công !",
-                    //         type: "success",
-                    //         duration: 5000,
-                    //         link: "list-san-pham",
-                    //     });
-                    //     //Insert sản phẩm thành công thì reset form
-                    //     $("#update-san-pham")[0].reset();
-                    //     // reload lại trang sau khi xoá xong
-                    //     setTimeout(location.reload.bind(location), 1300);
-                    // } else {
-                    //     // Thông báo thêm sản phẩm thất bại
-                    //     toast({
-                    //         title: "Thất bại",
-                    //         msg: "Cập nhật sản phẩm thất bại!",
-                    //         type: "error",
-                    //         duration: 5000,
-                    //         link: "#",
-                    //     });
-                    // }
+                    if (data == 1) {
+                        //Hiển thị thông báo thêm thành công sản phẩm
+                        toast({
+                            title: "Thành công",
+                            msg: "Cập nhật sản phẩm  thành công !",
+                            type: "success",
+                            duration: 5000,
+                            link: "list-san-pham",
+                        });
+                        //Insert sản phẩm thành công thì reset form
+                        $("#update-san-pham")[0].reset();
+                        // reload lại trang sau khi xoá xong
+                        setTimeout(location.reload.bind(location), 1300);
+                    } else {
+                        // Thông báo thêm sản phẩm thất bại
+                        toast({
+                            title: "Thất bại",
+                            msg: "Cập nhật sản phẩm thất bại!",
+                            type: "error",
+                            duration: 5000,
+                            link: "#",
+                        });
+                    }
                 },
             });
         }

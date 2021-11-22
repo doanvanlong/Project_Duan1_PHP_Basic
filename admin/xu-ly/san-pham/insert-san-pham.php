@@ -98,7 +98,7 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
                     }
                 }
                 //nếu có thêm ảnh chi tiết
-                if (isset($_FILES['anh-chi-tiet'])) {
+                if ($_FILES['anh-chi-tiet']['name'][0] != "") {
                     foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
                         san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
                     }
@@ -110,6 +110,17 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
                 }
                 echo 1;
             } else {
+                //nếu có thêm ảnh chi tiết
+                if ($_FILES['anh-chi-tiet']['name'][0] != "") {
+                    foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                        san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
+                    }
+                    $i = 0;
+                    foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                        move_uploaded_file($_FILES['anh-chi-tiet']['tmp_name'][$i], '../../../content/uploads/' . $anh_chi_tiet);
+                        $i++;
+                    }
+                }
                 san_pham_Insert($dm_chinh, $dm_chi_tiet, $ten_san_pham, $new_name, $gia_san_pham, $so_luong_san_pham, $date, $mo_ta);
                 echo 1;
             }
@@ -117,7 +128,7 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
             echo 0;
         }
     } else {
-       echo 0;
+        echo 0;
     }
 }
 

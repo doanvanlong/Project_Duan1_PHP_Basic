@@ -48,7 +48,7 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
 
     //Xữ lý Hình ảnh đại diện  Nếu ko click thay đổi
     try {
-        if ($_FILES['anh-dai-dien']['name'] == '' ||  $_FILES['anh-chi-tiet']['name'] == '') {
+        if ($_FILES['anh-dai-dien']['name'] == '') {
             //là ko chọn ảnh,thì lấy ảnh DB đưa lại nó và ko MOVE_UPLOAD_FILE
             // GỌi hàm truy vấn 1sp để lấy thông tin ảnh trong DB
             $info_sp = san_pham_QueryOne($id_sp);
@@ -56,7 +56,6 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
 
             //ảnh chi Tiết
             //   rỗng thì kệ nó ko làm gì
-
         } else {
             //khác rỗng ,tức là có chọn ảnh mới
             $extension = explode('.', $_FILES['anh-dai-dien']['name']); //cắt thành mảng cách nhau bởi dấu .
@@ -70,19 +69,61 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
                     //    upload hình từ đường dẫn tmp name vào đường dẫn đã khai báo path
                 }
             }
-            // Xoá hết rồi insert lại
-            san_pham_Delete_Images($info_sp['id_sp']);
-            //ảnh chi tiết nhiều
-            foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
-                san_pham_Insert_Img_Detail($info_sp['id_sp'], $anh_chi_tiet);
-            }
-            $i = 0;
-            foreach ($_FILE['anh-chi-tiet']['tmp_name'] as $anh_chi_tiet) {
-                // move upload file
-                move_uploaded_file($_FILE['anh-chi-tiet']['tmp_name'], '../../../content/uploads/' . $anh_chi_tiet);
+        }
+
+        // vì nó là mảng
+
+        if ($_FILES['anh-chi-tiet']['name'][0] == "") {
+            // echo "rỗng ảnh ct";
+            // if DB chưa có thì chỉ insert
+            // $images = san_pham_Query_Images_Pro($id_sp);
+            // if (count($images) > 0) {
+            //     // echo "ok";
+            //     // // update lấy củ up lại
+            //     foreach ($images as $image) {
+            //         san_pham_Update_Images($id_sp, $image['id_images_pro'], $image['images']);
+            //     }
+            // } else {
+            //     // echo "ko có";
+            //     // vừa rỗng và rổng vừa Db ko có thì k làm gì
+            // }
+        } else {
+            //    kiểm tra DB có ko 
+            $images = san_pham_Query_Images_Pro($id_sp);
+            // nếu có
+            if (count($images) > 0) {
+                $i = 0;
+                san_pham_Delete_Images($id_sp);
+                // xoá hết insert lại
+                foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                    san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
+                    $i++;
+                }
+                $j=0;
+                $anhct_names=$_FILES['anh-chi-tiet']['name'];
+                foreach ($_FILES['anh-chi-tiet']['tmp_name'] as $anh_chi_tiet_tmp) {
+                    // move upload file
+                    move_uploaded_file($anh_chi_tiet_tmp, '../../../content/uploads/' .$anhct_names[$j]);
+                    $j++;
+                }
+            } else {
+                // DB ko có thì INsert
+                foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                    san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
+                }
+                $name_acts = $_FILES["anh-chi-tiet"]['name'];
+                $i = 0;
+                foreach ($_FILES['anh-chi-tiet']['tmp_name'] as $anh_chi_tiet_tmp) {
+                    // move upload file
+                    move_uploaded_file($anh_chi_tiet_tmp, '../../../content/uploads/' . $name_acts[$i]);
+                    $i++;
+                }
             }
         }
+
         //update sp
+        $info_sp = san_pham_QueryOne($id_sp);
+
         san_pham_Update($id_sp, $dm_chinh, $dm_chi_tiet, $ten_san_pham, $hinh_anh, $gia_san_pham, $so_luong_san_pham, $mo_ta);
         // update màu sắc  đầu tiên limit 1 ,là chính của sp
         san_pham_Update_Color_First($info_sp['id_sp'], $mau_sac, $hinh_anh);
@@ -129,7 +170,7 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
         //more add ,muốn thêm tiếp dung lượng khi sửa
 
         // nếu có thêm màu sắc
-        if (isset($_POST['mau-sac-more-add']) && $_POST['mau-sac-more-add'] !="") {
+        if (isset($_POST['mau-sac-more-add']) && $_POST['mau-sac-more-add'] != "") {
             //    hình ảnh more adđ là mảng
             // hình ảnh more add nên dùng mau-sac-more-add [i] thứ i
             if (isset($_FILES['anh-mau-sac-more-add'])) {
