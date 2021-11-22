@@ -208,8 +208,6 @@ a:hover {
     color: var(--link);
 }
 
-.search {}
-
 .search input {
     line-height: 2rem !important;
     font-size: 1.4rem;
