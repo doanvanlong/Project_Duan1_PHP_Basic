@@ -30,17 +30,24 @@
 </head>
 
 <body>
+
     <div class="wrapper">
         <!-- header -->
         <header class="header">
             <div class="container">
                 <div class="row">
                     <div class="col-12 d-flex align-items-center">
-                        <a href="<?=$ROOT_URL?>/" class="header__logo d-flex align-items-center"><span class="text__logo">LT SMART</span><img style="width:20%" src="<?= $CONTENT_CLIENT_URL ?>/img/logo ltsmart.PNG" alt=""></a>
+                        <a href="<?= $ROOT_URL ?>/" class="header__logo d-flex align-items-center"><span class="text__logo">LT SMART</span><img style="width:20%" src="<?= $CONTENT_CLIENT_URL ?>/img/logo ltsmart.PNG" alt=""></a>
                         <div class="header__search ">
-                            <form class="form-inline my-2 my-lg-0 ">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm tại đây...">
+                            <form class="form-inline my-2 my-lg-0 " action="<?= $CLIENT_URL ?>/xu-ly/seach.php" method="post">
+                                <input class="form-control mr-sm-2" autocomplete="off" type="search" name="search" placeholder="Tìm kiếm tại đây...">
                                 <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="icofont-search"></i></button>
+                                <ul class="goi-y-search" style="opacity:0;">
+                                    <div class="sp_goi_y_data  py-4">
+
+                                    </div>
+
+                                </ul>
                                 <ul class="header__keyword-search d-flex ">
                                     <li class="header__keyword-search-items">
                                         iPhone 8
@@ -65,31 +72,67 @@
 
                         </div>
                         <div class="header__right pl-2 d-flex justify-content-around align-items-center">
-                            <!-- <a href="#" class="header__right-user text-dark"><i class="icofont-user"></i></a> -->
-                            <div class="header__right-user-login d-flex align-items-center cursor-pointer">
-                                <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_ADMIN_URL ?>/img/user.jpg');">
-                                </div>
-                                <div class="header__right-user-login-text ">
-                                    <span class="header__right-user-login-title">
-                                        Tài khoản
-                                    </span>
-                                    <p class="header__right-user-login-name">Long Đoàn <i class="fas fa-caret-down"></i></p>
-                                </div>
-                            </div>
-                            <a href="#" class="header__right-notification"><i class="far fa-bell"></i>
-                                <!-- đếm thông báo dùng chung với đếm cart -->
-                                <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
-                                    2</div>
-                            </a>
-                            <a href="#" class="header__right-cart "><i class="icofont-cart-alt"></i>
-                                <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
-                                    2</div>
-                            </a>
-                        </div>
 
+                            <?php
+                            if (sessionLogin_Isset()) {
+                                $info_kh = khach_hang_Query_One($_SESSION['login']['id_kh']);
+                            ?>
+                                <!-- đã đăng nhập -->
+                                <div class="header__right-user-login d-flex align-items-center cursor-pointer">
+                                    <div class="header__right-user-dropdown">
+                                        <ul>
+                                            <li><a href="">Đơn hàng của tôi</a></li>
+                                            <li><a href="">Tài khoản của tôi</a></li>
+                                            <li><a href="">Quên mật khẩu</a></li>
+                                            <li><a href="tai-khoan/logout">Đăng xuất</a></li>
+                                            <?php
+                                            if ($info_kh['vai_tro'] == 1) { ?>
+                                                <li><a href="admin">Quản trị</a></li>
+                                            <?php
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                    <?php
+                                    if ($info_kh['hinh_anh'] != "") { ?>
+                                        <!-- lấy ảnh DB ra -->
+                                        <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_ADMIN_URL ?>/img/user.jpg');">
+                                        <?php
+                                    } else { ?>
+                                            <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png');">
+                                            <?php
+                                        }
+                                            ?>
+                                            </div>
+                                            <div class="header__right-user-login-text ">
+                                                <span class="header__right-user-login-title">
+                                                    Tài khoản
+                                                </span>
+                                                <p class="header__right-user-login-name"><?= $info_kh['ho_ten']; ?> <i class="fas fa-caret-down"></i></p>
+                                            </div>
+                                        </div>
+                                    <?php
+                                } else { ?>
+                                        <!-- chưa đăng nhập -->
+                                        <a href="tai-khoan/login" class="header__right-user text-dark"><i class="icofont-user"></i></a>
+                                    <?php
+
+                                }
+                                    ?>
+                                    <a href="#" class="header__right-notification"><i class="far fa-bell"></i>
+                                        <!-- đếm thông báo dùng chung với đếm cart -->
+                                        <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
+                                            2</div>
+                                    </a>
+                                    <a href="#" class="header__right-cart "><i class="icofont-cart-alt"></i>
+                                        <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
+                                            2</div>
+                                    </a>
+                                </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
         </header>
         <!-- end header -->
@@ -98,80 +141,80 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="menu d-flex  justify-content-around">
-                            <div class="menu__items active">
-                                <div class="menu__items-img">
+                        <div class="menu d-flex  justify-content-between">
+                            <a href="dien-thoai" class="menu__items ">
+                                <div class="menu__items-img menu-dien-thoai">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/phone2.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Điện thoại
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="dien-thoai=iphone" class="menu__items">
+                                <div class="menu__items-img menu-iphone">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/apple.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Iphone
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="dien-thoai=samsung" class="menu__items">
+                                <div class="menu__items-img menu-samsung">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/phone2.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Samsung
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="" class="menu__items">
+                                <div class="menu__items-img menu-phu-kien">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/phukien.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Phụ kiện
                                 </div>
-                            </div>
+                            </a>
 
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            <a href="" class="menu__items">
+                                <div class="menu__items-img menu-mua-tra-gop">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/tragop.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Mua trả góp
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="" class="menu__items">
+                                <div class="menu__items-img menu-khuyen-mai">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/gift.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Khuyến mãi
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="" class="menu__items">
+                                <div class="menu__items-img menu-re-vo-dich">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/revodich-01.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Rẻ vô địch
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="" class="menu__items">
+                                <div class="menu__items-img menu-cu-moi">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/renewphone.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Bán máy cũ đổi máy mới
                                 </div>
-                            </div>
-                            <div class="menu__items">
-                                <div class="menu__items-img">
+                            </a>
+                            <a href="" class="menu__items">
+                                <div class="menu__items-img menu-tin-moi">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/newspaper.svg" alt="">
                                 </div>
                                 <div class="menu__items-text">
                                     Tin mới
                                 </div>
-                            </div>
+                            </a>
 
                         </div>
                     </div>
@@ -346,6 +389,8 @@
         <!-- end footer -->
     </div>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/main.js"> </script>
+    <script src="<?= $CONTENT_CLIENT_URL ?>/js/home.js"> </script>
+
 
 </body>
 

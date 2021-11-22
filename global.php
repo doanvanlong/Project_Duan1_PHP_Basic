@@ -15,4 +15,12 @@ function dd(){
     echo '</prev>';
 
 }
+//check session user đăng nhập
+function sessionLogin_Isset(){
+    if(isset($_SESSION['login'])){
+        return true;
+    }else{
+        return false;
+    }
+}
 ?>

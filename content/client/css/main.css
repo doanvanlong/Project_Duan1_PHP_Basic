@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   max-width: 1366px;
-  background-color: #f3f3f3;
+  background-color: #f8f9fa;
   margin: 0 auto;
 }
 .header {
@@ -26,16 +26,42 @@
 }
 .header__search {
   width: 50%;
+  position: relative;
+}
+.goi-y-search {
+  position: absolute;
+  top: 68%;
+  left: 0;
+  width: 90%;
+  background-color: #fff;
+  color: var(--dark);
+  font-size: 1.4rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  z-index: 10000;
+  transition: all 0.3s;
+}
+.sp_goi_y {
+  background-color: #f8f9fa;
+  width: 499px;
+  display: inline-block;
+}
+.sp_goi_y_title {
 }
 .header__search form {
   padding-top: 20px;
 }
 .header__search input {
   width: 90% !important;
-  padding: 1rem 0.7rem;
+  padding: 0.8rem 1.3rem;
+  font-size: 1.4rem;
+  outline: none;
+  border: none;
+  transition: all 0.5s;
 }
 .header__search ::placeholder {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 .header__search button {
   padding: 0.84rem 0.7rem;
@@ -56,6 +82,55 @@
   justify-content: center;
   align-items: center;
 }
+.header__right-user-login{
+  position: relative;
+}
+.header__right-user-login:hover .header__right-user-dropdown{
+  display:block;
+}
+.header__right-user-dropdown {
+  background-color: #fff;
+  position: absolute;
+  top: 120%;
+  left: 0%;
+  width: 230%;
+  z-index: 10000;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px 0;
+  display: none;
+}
+.header__right-user-dropdown:after{
+  content:"";
+  position: absolute;
+  top: -25%;
+  left: 0;
+  background-color:transparent;
+  width: 50%;
+  height: 60px;
+}
+
+.header__right-user-dropdown:before {
+  content: "";
+  position: absolute;
+  top: -16%;
+  left: 20%;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+  border-width: 20px 30px;
+}
+.header__right-user-dropdown ul li {
+  padding: 0px 30px;
+}
+.header__right-user-dropdown ul li:hover {
+  background-color: #edeeef;
+}
+
+.header__right-user-dropdown ul li a {
+  padding: 8px 0;
+  display: block;
+  color: var(--dark);
+}
+
 /* avatar user */
 .header__right-user-avatar {
   width: 34px;
@@ -100,6 +175,7 @@
   border-radius: 50%;
   font-size: 1.3rem;
 }
+
 /* end header */
 .nav {
   background-color: #ffffff;
@@ -158,6 +234,7 @@
   font-size: 1.3rem;
   font-weight: 500;
   margin-top: 3px;
+  color: var(--dark);
 }
 
 /* end  menu */
@@ -337,7 +414,7 @@ strike.tab__menu-product-newproduct-oldprice {
   top: 40%;
   left: 0; */
 }
-.owl-product__flash-sale .owl-nav{
+.owl-product__flash-sale .owl-nav {
   display: block !important;
 }
 .owl-product__flash-sale .owl-nav .owl-next {
@@ -363,8 +440,6 @@ strike.tab__menu-product-newproduct-oldprice {
   color: white !important;
   opacity: 1;
 }
-
-
 
 .owl-tab_menu_product .owl-nav .owl-next {
   position: absolute;
@@ -404,25 +479,26 @@ strike.tab__menu-product-newproduct-oldprice {
 }
 .product__flash-sale {
   background-color: white;
-  padding:3%  2%;
-}.product__flash-sale .tab__menu-product-content-newproduct-img{
-  transition:all .3s;
+  padding: 3% 2%;
 }
-.product__flash-sale .tab__menu-product-content-newproduct-img:hover{
-transform: translateY(-10px);
+.product__flash-sale .tab__menu-product-content-newproduct-img {
+  transition: all 0.3s;
+}
+.product__flash-sale .tab__menu-product-content-newproduct-img:hover {
+  transform: translateY(-10px);
 }
 .product__flash-sale-countdown-items {
   border: 1px solid var(--primary-color);
   width: 70px;
   height: 70px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 .product__flash-sale-countdown-items + .product__flash-sale-countdown-items {
   margin-left: 10px;
 }
-.product__flash-sale-countdown-count-items{
+.product__flash-sale-countdown-count-items {
   font-size: 3rem;
-  color:var(--dark);
+  color: var(--dark);
 }
 .product__flash-sale-countdown-items {
   display: flex;
@@ -430,12 +506,12 @@ transform: translateY(-10px);
   justify-content: center;
   align-items: center;
 }
-.product__flash-sale-countdown-text-items{
+.product__flash-sale-countdown-text-items {
   text-transform: uppercase;
   font-size: 1rem;
 }
-.product__flash-sale-countdown-view-all{
-  color:var(--primary-strong);
+.product__flash-sale-countdown-view-all {
+  color: var(--primary-strong);
   font-weight: 500;
 }
 .product__flash-sale-sold {

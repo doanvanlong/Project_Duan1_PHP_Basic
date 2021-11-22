@@ -1,9 +1,9 @@
 :root {
   --primary-color: #f15a29;
   --bg-star: #ea9d02;
-  --code-label:#f69113;
-  --primary-strong:#f62901;
-  --foreign-color:#ff0000e3;
+  --code-label: #f69113;
+  --primary-strong: #f62901;
+  --foreign-color: #ff0000e3;
 }
 * {
   padding: 0;
@@ -15,10 +15,10 @@ html {
 }
 body {
   font-size: 1.5rem;
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
-button{
-  outline:none !important;
+button {
+  outline: none !important;
 }
 ul {
   margin-bottom: 0;
@@ -32,14 +32,63 @@ a:hover {
   cursor: pointer;
 }
 /* giới hạn 2 dòng nội dung */
-.text-overflow{
+.text-overflow {
   overflow: hidden;
-  line-height:2rem;
-  /* height:4rem; */
+  line-height: 2rem;
+  height: 4rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.owl-carousel{
+.owl-carousel {
   display: block !important;
+}
+.font-size-2-5 {
+  font-size: 2.5rem;
+}
+.font-size-1-8 {
+  font-size: 1.8rem;
+}
+.font-size-1-4 {
+  font-size: 1.4rem;
+}
+/* 2.5 cột */
+/*col-3 3*4=12 */
+.col-2-5 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 20%;
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+.col-2-5 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-2-5 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.icon {
+  font-size: 1.2rem !important;
+  color: var(--bg-star);
+}
+.icon-to {
+  font-size: 1.3rem !important;
+  color: var(--bg-star);
+  padding: 0 2px;
+}
+.form-check {
+  padding-left: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+input[type="checkbox"] {
+  background: var(--primary-color) !important;
 }
