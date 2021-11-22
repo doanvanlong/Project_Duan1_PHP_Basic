@@ -1,14 +1,11 @@
 .wrapper {
-<<<<<<< HEAD
   width: 100%;
   max-width: 1366px;
   background-color: #f8f9fa;
   margin: 0 auto;
-=======
     max-width: 100%;
     background-color: #f3f3f3;
     margin: 0 auto;
->>>>>>> tanthang
 }
 
 .header {
@@ -36,7 +33,6 @@
 }
 
 .header__search {
-<<<<<<< HEAD
   width: 50%;
   position: relative;
 }
@@ -60,9 +56,7 @@
   display: inline-block;
 }
 .sp_goi_y_title {
-=======
     width: 50%;
->>>>>>> tanthang
 }
 
 .header__search form {
@@ -70,25 +64,19 @@
 }
 
 .header__search input {
-<<<<<<< HEAD
   width: 90% !important;
   padding: 0.8rem 1.3rem;
   font-size: 1.4rem;
   outline: none;
   border: none;
   transition: all 0.5s;
-=======
     width: 90% !important;
     padding: 1rem 0.7rem;
->>>>>>> tanthang
 }
 
 .header__search ::placeholder {
-<<<<<<< HEAD
   font-size: 1.4rem;
-=======
     font-size: 1.3rem;
->>>>>>> tanthang
 }
 
 .header__search button {
@@ -113,7 +101,6 @@
     justify-content: center;
     align-items: center;
 }
-<<<<<<< HEAD
 .header__right-user-login{
   position: relative;
 }
@@ -162,9 +149,7 @@
   display: block;
   color: var(--dark);
 }
-=======
 
->>>>>>> tanthang
 
 /* avatar user */
 
@@ -218,11 +203,6 @@
     border-radius: 50%;
     font-size: 1.3rem;
 }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> tanthang
 /* end header */
 
 .nav {
@@ -282,18 +262,15 @@
 }
 
 .menu__items-text {
-<<<<<<< HEAD
   text-transform: uppercase;
   font-size: 1.3rem;
   font-weight: 500;
   margin-top: 3px;
   color: var(--dark);
-=======
     text-transform: uppercase;
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 3px;
->>>>>>> tanthang
 }
 
 
@@ -606,7 +583,6 @@ strike.tab__menu-product-newproduct-oldprice {
 /* product flash sale */
 
 .product__flash-sale-countdown {
-<<<<<<< HEAD
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -682,13 +658,11 @@ strike.tab__menu-product-newproduct-oldprice {
 .phone-features-product {
   background-color: white;
   padding: 1% 1% 2% 1%;
-=======
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
     height: 70%;
->>>>>>> tanthang
 }
 
 .product__flash-sale {
