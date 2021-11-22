@@ -9,7 +9,6 @@
             <div class="form-group">
                 <label>Nội dung:</label>
                 <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
-                
             </div>
             <div class="form-group">
             </div>
@@ -18,4 +17,5 @@
         
     </div>
 </div>
+<h1>hello</h1>
 <script src="<?= $CONTENT_ADMIN_URL ?>/js/ckeditor-news.js"></script>
