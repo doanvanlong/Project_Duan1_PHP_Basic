@@ -504,14 +504,9 @@ strike.tab__menu-product-newproduct-oldprice {
   top: 40%;
   left: 0; */
 }
-<<<<<<< HEAD
-.owl-product__flash-sale .owl-nav {
-  display: block !important;
-=======
 
 .owl-product__flash-sale .owl-nav {
     display: block !important;
->>>>>>> tanthang
 }
 
 .owl-product__flash-sale .owl-nav .owl-next {
