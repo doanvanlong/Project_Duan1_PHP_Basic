@@ -71,7 +71,7 @@
   border: none;
   transition: all 0.5s;
     width: 90% !important;
-    padding: 1rem 0.7rem;
+    padding: .8rem 0.7rem;
 }
 
 .header__search ::placeholder {
