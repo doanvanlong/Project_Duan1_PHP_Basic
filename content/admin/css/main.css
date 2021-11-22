@@ -208,9 +208,12 @@ a:hover {
     color: var(--link);
 }
 
+<<<<<<< HEAD
 
 /* .search {} */
 
+=======
+>>>>>>> tanthang
 .search input {
     line-height: 2rem !important;
     font-size: 1.4rem;
