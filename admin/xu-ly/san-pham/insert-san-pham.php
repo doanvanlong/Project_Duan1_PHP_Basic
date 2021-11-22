@@ -128,7 +128,37 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
             echo 0;
         }
     } else {
-        echo 0;
+        $mo_ta = $_POST['content'];
+        $date = Date("y/m/d");
+        if ($_POST['danh-muc-chinh-san-pham'] != 47) {
+            // hình ảnh đại diện
+            if (isset($_FILES['anh-dai-dien']['name'])) {
+                $extension = explode('.', $_FILES['anh-dai-dien']['name']); //cắt thành mảng cách nhau bởi dấu .
+                $file_extension = end($extension); //lấy đuôi file
+                $allowed_type = array('jpg', 'jpeg', 'png', 'gif'); //cho phép tải file ảnh
+                if (in_array($file_extension, $allowed_type)) {
+                    // nếu đuôi file nằm trong mảng cho chép định dạng thì ok
+                    $new_name = rand() . "." . $file_extension; //random số + với đuôi file 
+                    $path = "../../../content/uploads/" . $new_name; //đường dẫn hình ảnh đưa vào
+                    if (move_uploaded_file($_FILES["anh-dai-dien"]['tmp_name'], $path)) {
+                        //    upload hình từ đường dẫn tmp name vào đường dẫn đã khai báo path
+                    }
+                }
+            }
+            //nếu có thêm ảnh chi tiết
+            if ($_FILES['anh-chi-tiet']['name'][0] != "") {
+                foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                    san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
+                }
+                $i = 0;
+                foreach ($_FILES['anh-chi-tiet']['name'] as $anh_chi_tiet) {
+                    move_uploaded_file($_FILES['anh-chi-tiet']['tmp_name'][$i], '../../../content/uploads/' . $anh_chi_tiet);
+                    $i++;
+                }
+            }
+            san_pham_Insert($dm_chinh, $dm_chi_tiet, $ten_san_pham, $new_name, $gia_san_pham, $so_luong_san_pham, $date, $mo_ta);
+            echo 1;
+        }
     }
 }
 

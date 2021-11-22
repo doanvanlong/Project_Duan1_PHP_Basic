@@ -650,7 +650,7 @@ strike.tab__menu-product-newproduct-oldprice {
   padding: 20px 0 5px 0;
   line-height: 2.2rem;
 }
-.phone-features-product {
+/* .phone-features-product {
   background-color: white;
   padding: 1% 1% 2% 1%;
     display: flex;
@@ -658,7 +658,7 @@ strike.tab__menu-product-newproduct-oldprice {
     flex-direction: column;
     align-items: center;
     height: 70%;
-}
+} */
 
 .product__flash-sale {
     background-color: white;

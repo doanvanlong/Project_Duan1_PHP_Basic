@@ -91,7 +91,7 @@
                     $san_pham_BestSeller = san_pham_Query_All_BestSeller();
                     foreach ($san_pham_BestSeller as $sp_BestSeller) { ?>
                         <div class="item">
-                            <a href="san-pham?id=<?=$sp_BestSeller['id_sp'];?>&name=<?=$sp_BestSeller['ten_sp'];?>" class="tab__menu-product-content-newproduct">
+                            <a href="san-pham?id=<?= $sp_BestSeller['id_sp']; ?>&name=<?= $sp_BestSeller['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
                                 <div class="tab__menu-product-content-newproduct-img" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $sp_BestSeller['hinh_anh'] ?>')">
                                     <!-- Nhãn giảm giá -->
                                     <!-- <span class="tab__menu-product-content-newproduct-sale-label"> Giảm  đến 10%  </span> -->
@@ -184,7 +184,7 @@
                     $sp_flash_sales = san_pham_Query_All_Flash_Sale();
                     foreach ($sp_flash_sales as $sp_flash_sale) { ?>
                         <div class="item">
-                            <a href="san-pham?id=<?=$sp_flash_sale['id_sp'];?>&name=<?=$sp_flash_sale['ten_sp'];?>" class="tab__menu-product-content-newproduct">
+                            <a href="san-pham?id=<?= $sp_flash_sale['id_sp']; ?>&name=<?= $sp_flash_sale['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
                                 <div class="tab__menu-product-content-newproduct-img" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $sp_flash_sale['hinh_anh'] ?>')">
                                     <!-- Nhãn giảm giá -->
                                     <span class="tab__menu-product-content-newproduct-sale-label">
@@ -255,7 +255,7 @@
                         $sp_features = san_pham_Query_All_Feature();
                         foreach ($sp_features as $sp_feature) { ?>
                             <div class="col-4">
-                                <a href="san-pham?id=<?=$sp_feature['id_sp'];?>&name=<?=$sp_feature['ten_sp'];?>" class="tab__menu-product-content-newproduct">
+                                <a href="san-pham?id=<?= $sp_feature['id_sp']; ?>&name=<?= $sp_feature['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
                                     <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $sp_feature['hinh_anh'] ?>')">
                                         <span class="tab__menu-product-content-newproduct-sale-label">
                                             Giảm đến 10%
@@ -322,7 +322,7 @@
                         $phu_kien_feature = san_pham_Phu_kien_Query_All_Feature();
                         foreach ($phu_kien_feature as $phu_kien_feature) { ?>
                             <div class="col-4">
-                                <a href="san-pham?id=<?=$phu_kien_feature['id_sp']?>&name=<?=$phu_kien_feature['ten_sp']?>" class="tab__menu-product-content-newproduct">
+                                <a href="san-pham?id=<?= $phu_kien_feature['id_sp'] ?>&name=<?= $phu_kien_feature['ten_sp'] ?>" class="tab__menu-product-content-newproduct">
                                     <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $phu_kien_feature['hinh_anh'] ?>')">
                                         <span class="tab__menu-product-content-newproduct-sale-label">
                                             Giảm đến 30%
@@ -380,7 +380,7 @@
         $sp_all = san_pham_QueryAll();
         foreach ($sp_all as $sp) { ?>
             <div class="item">
-                <a href="san-pham?id=<?=$sp['id_sp']?>&name=<?=$sp['ten_sp']?>" class="tab__menu-product-content-newproduct">
+                <a href="san-pham?id=<?= $sp['id_sp'] ?>&name=<?= $sp['ten_sp'] ?>" class="tab__menu-product-content-newproduct">
                     <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $sp['hinh_anh'] ?>')">
                     </div>
                     <div class="px-4 pt-1 pb-2">
