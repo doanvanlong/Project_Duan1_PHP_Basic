@@ -22,7 +22,7 @@
 
     <!-- favi icon -->
     <link rel="shortcut icon" href="<?= $CONTENT_ADMIN_URL ?>/img/avatar_xt.gif" type="image/x-icon">
-    <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/main.css">
+    <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/main.css?aaavasvdhqw">
     <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/base.css">
     <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/toastMessage.css">
 </head>
