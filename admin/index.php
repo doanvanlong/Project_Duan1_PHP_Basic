@@ -2,7 +2,9 @@
 session_start();
 require_once '../global.php';
 require_once '../model/danh-muc.php'; //gọi model hàm xử lý danh mục
-require_once '../model/san-pham.php'; //gọi model hàm xử lý danh mục
+require_once '../model/san-pham.php'; //gọi model hàm xử lý san-pham
+require_once '../model/tai-khoan.php'; //gọi model 
+
 
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {

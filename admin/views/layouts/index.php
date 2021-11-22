@@ -33,6 +33,7 @@
             <ul>
                 <li class="py-4">
                     <a href="<?= $ADMIN_URL ?>" class="navigation__link d-flex align-items-center">
+
                         <span><img src="<?= $CONTENT_ADMIN_URL ?>/img/avatar_xt.gif" alt=""></span>
                         <span>
                             <h2 class="logo" style="white-space: nowrap;">LT SMART</h2>
@@ -174,8 +175,22 @@
                 </div>
                 <div class="user ">
                     <div class="dropdown d-flex align-items-center">
-                        <div class="user__dropdown">
-                        </div>
+                        <?php
+                        if (sessionLogin_Isset()) {
+                            $id_kh = $_SESSION['login']['id_kh'];
+                            $info_kh = khach_hang_Query_One($id_kh);
+                            if ($info_kh['hinh_anh'] != '') { ?>
+                                <div class="user__dropdown" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?=$info_kh['hinh_anh']?>')">
+                                </div>
+                            <?php
+                            } else { ?>
+                                <div class="user__dropdown" style="background-image: url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png')">
+                                </div>
+                        <?php
+                            }
+                        }
+                        ?>
+
                         <div class="user__name pl-2 dropdown-toggle" style="cursor: pointer;font-weight: 600;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</div>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Cài đặt</a>
