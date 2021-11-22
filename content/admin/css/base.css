@@ -1,44 +1,52 @@
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
+
 body {
-  font-family: "Helvetica ", Arial, sans-serif;
+    font-family: "Helvetica ", Arial, sans-serif;
 }
+
 .cursor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 :root {
-  --white-color: rgba(255, 255, 255, 0.966);
+    --white-color: rgba(255, 255, 255, 0.966);
 }
+
 .table {
-  background-color: white;
+    background-color: white;
 }
-.table tr:hover {
-}
-.text-overflow {
-}
+
+
 /* bootstrap */
+
 .form-control {
-  font-size: 1.4rem !important;
-  padding: 0.8rem !important;
+    font-size: 1.4rem !important;
+    padding: 0.8rem !important;
 }
+
 select#exampleFormControlSelect1 {
-  padding: 1rem !important;
-  font-size: 1.4rem !important;
-  height: 40px !important;
+    padding: 1rem !important;
+    font-size: 1.4rem !important;
+    height: 40px !important;
 }
+
 .btn {
-  font-size: 1.4rem !important;
-  /* padding: .8rem !important; */
+    font-size: 1.4rem !important;
+    /* padding: .8rem !important; */
 }
+
 .padding-select {
-  padding: 0.5rem;
+    padding: 0.5rem;
 }
+
 .form-select {
-  border: 1px solid #ced4da !important; 
-  outline: none !important;
+    border: 1px solid #ced4da !important;
+    outline: none !important;
 }
+
 .form-select:focus {
-  border-color: #80bdff !important;
+    border-color: #80bdff !important;
 }

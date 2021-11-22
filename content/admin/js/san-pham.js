@@ -424,7 +424,7 @@ $("#them-san-pham").submit(function(e) {
                         //Hiển thị thông báo thêm thành công sản phẩm
                         toast({
                             title: "Thành công",
-                            msg: "Thêm sản phẩm  thành công !",
+                            msg: "Thêm sản phẩm thành công !",
                             type: "success",
                             duration: 5000,
                             link: "list-san-pham",
@@ -595,7 +595,7 @@ $("#update-san-pham").submit(function(e) {
                         //Hiển thị thông báo thêm thành công sản phẩm
                         toast({
                             title: "Thành công",
-                            msg: "Cập nhật sản phẩm  thành công !",
+                            msg: "Cập nhật sản phẩm thành công !",
                             type: "success",
                             duration: 5000,
                             link: "list-san-pham",

@@ -17,5 +17,4 @@
         
     </div>
 </div>
-<h1>hello</h1>
 <script src="<?= $CONTENT_ADMIN_URL ?>/js/ckeditor-news.js"></script>

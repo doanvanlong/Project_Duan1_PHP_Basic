@@ -208,7 +208,8 @@ a:hover {
     color: var(--link);
 }
 
-.search {}
+
+/* .search {} */
 
 .search input {
     line-height: 2rem !important;
