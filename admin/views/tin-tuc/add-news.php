@@ -20,7 +20,7 @@
                                echo '<option value="'.$id_dm_news.'">'.$ten_dm_news.'</option>';
                             }
                         } else {
-                            echo '<option value="0">Không có dữ liệu</option>';
+                            echo '<option value="">Không có dữ liệu</option>';
                         }
                         ?>
                     </select>

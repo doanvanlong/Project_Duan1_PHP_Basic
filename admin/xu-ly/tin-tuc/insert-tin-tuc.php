@@ -71,9 +71,3 @@ if (isset($_POST['content-news']) && $_POST['content-news'] != "") {
         echo 0;
     }
 }
-
-// if (isset($_POST['editor1'])) {
-    
-//     var_dump($_POST['editor1']);
-// }
-
