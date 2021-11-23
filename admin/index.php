@@ -96,6 +96,19 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                     $title = "Thêm bài viết mới";
                     $list_news_category = list_news_category();
                     break;
+                case 'list-news':
+                    $view = "views/tin-tuc/list-news.php";
+                    $title = "Danh sách bài viết";
+                    $list_news = list_news();
+                    $list_news_category = list_category_news();
+                    break;
+                case 'edit-news':
+                    $view = "views/tin-tuc/edit-news.php";
+                    $title = "Cập nhật bài viết";
+                    $id_news = $_GET["ID"];
+                    $one_news = one_news($id_news);
+                    $list_news_category = list_category_news();
+                    break;
                 case 'client':
                     header('location:../client');
                     break;

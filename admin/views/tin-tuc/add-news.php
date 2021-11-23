@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
             </div>
-            <input type="submit" value="SEND" class="btn btn-primary" id="send">
+            <input type="submit" value="Thêm Bài Viết" class="btn btn-success" id="send">
         </form>
 
     </div>

@@ -1,25 +1,5 @@
 <?php
-    require_once '../../../model/tin-tuc.php';
-
-    if (isset($_POST['keyup_ten_dm_tin_tuc'])) {
-        $keyup_ten_dm_tin_tuc = $_POST['keyup_ten_dm_tin_tuc'];
-        echo (check_category_news($keyup_ten_dm_tin_tuc));
-        // echo 0 là ko trùng dữ liệu
-        // echo số khác 0 là trùng dữ liệu
-        // vì hàm trả về số record
-    }
-
-    if (isset($_POST['danh-muc-tin-tuc'])) {
-       $name_dm_tin_tuc = $_POST['danh-muc-tin-tuc'];
-       try {
-           insert_news_category($name_dm_tin_tuc);
-           echo 1;
-       } catch (Exception $e) {
-           echo 0;
-       }
-       
-    }
-
+require_once '../../../model/tin-tuc.php';
 //Xử lý ckeditor 
 //upload.php
 // Xử lý tải lên máy chủ ,và move vào thư mục UPLOAD qua lấy từ $ FILES
@@ -42,28 +22,31 @@ if (isset($_FILES['upload']['name'])) {
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
     }
 }
-if (isset($_POST['content-news'])) {
-    //Xử lí ảnh đại diện bài viết
-    if (isset($_FILES['avt-news']['name'])) {
-        $extension = explode('.', $_FILES['avt-news']['name']); //cắt thành mảng cách nhau bởi dấu .
+if (isset($_POST['update-news-category']) && $_POST['update-news-category'] != "") {
+    //Xử lí điều kiện nếu update mà không upload ảnh
+    if ($_FILES['update-avt-news']['name'] == null) {
+        $img_news_update = null;
+    } else {
+        $extension = explode('.', $_FILES['update-avt-news']['name']); //cắt thành mảng cách nhau bởi dấu .
         $file_extension = end($extension); //lấy đuôi file
         $allowed_type = array('jpg', 'jpeg', 'png', 'gif'); //cho phép tải file ảnh
         if (in_array($file_extension, $allowed_type)) {
             // nếu đuôi file nằm trong mảng cho chép định dạng thì ok
             $new_name = rand() . "." . $file_extension; //random số + với đuôi file 
             $path = "../../../content/uploads/" . $new_name; //đường dẫn hình ảnh đưa vào
-            if (move_uploaded_file($_FILES['avt-news']['tmp_name'], $path)) {
+            if (move_uploaded_file($_FILES['update-avt-news']['tmp_name'], $path)) {
                 //    upload hình từ đường dẫn tmp name vào đường dẫn đã khai báo path
             }
         }
+        $img_news_update = $new_name;
     }
-    $img_news = $new_name;
     //Xử lí data liên quan khác
-    $name_news = $_POST['content-news'];
-    $name_news_category = $_POST['news-category'];
-    $mo_ta_news = $_POST['editor1'];
+    $name_news_update = $_POST['update-name-news'];
+    $name_news_category_update = $_POST['update-news-category'];
+    $mo_ta_news_update = $_POST['editor1'];
+    $id_news = $_POST['id_news'];
     try {
-        insert_news($name_news_category,$name_news,$img_news,$mo_ta_news);
+        update_news($id_news, $name_news_category_update, $name_news_update, $img_news_update, $mo_ta_news_update);
         //Thành công hiển thị 1
         echo 1;
     } catch (exception $e) {

@@ -338,7 +338,7 @@ $("#send").click(function() {
                             msg: "Thêm bài viết mới thành công !",
                             type: "success",
                             duration: 5000,
-                            link: "#",
+                            link: "list-news",
                         });
                         // reload lại trang sau khi xoá xong
                         setTimeout(location.reload.bind(location), 1000);
@@ -365,4 +365,76 @@ $("#send").click(function() {
             });
         }
     });
+});
+//Loại bỏ lỗi form cập Nhật
+$('[name*="update-name-news"]').focus(function() {
+    $(this).css("border", "0");
+    $("#error-update-name-news").text("");
+});
+//SUBMIT FORM CẬP NHẬT BÀI VIẾT
+$("#update-news").submit(function(e) {
+    e.preventDefault();
+    if ($('[name*="update-name-news"]').val() == "") {
+        $('[name*="update-name-news"]').css("border", "1px solid #f38291");
+        $("#error-update-name-news").text("Tên bài viết không được để trống!");
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../admin/xu-ly/tin-tuc/update-news.php",
+            data: new FormData(this), //send all data theo id name
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                console.log(data);
+                // Xử lí data trả về
+                if (data == 1) {
+                    toast({
+                        title: "Thành công",
+                        msg: "Cập nhật bài viết thành công !",
+                        type: "success",
+                        duration: 5000,
+                        link: "list-news",
+                    });
+                    // reload lại trang sau khi xoá xong
+                    // setTimeout(location.reload.bind(location), 1000);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Cập nhật bài viết thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
+                }
+            },
+        });
+    }
+});
+//CHECK ALL BÀI VIẾT
+//Ẩn nút bỏ chọn khi chưa chọn tất cả
+$("#uncheck-news").css("display", "none");
+//Check all sản phẩm
+$("#checkall-news").click(function(isChecked) {
+    if (isChecked) {
+        $(".check-news").each(function() {
+            this.checked = true;
+            //Hiển thị nút bỏ chọn sau khi đã check all sản phẩm
+            $("#uncheck-news").css("display", "inline-block");
+            //Ẩn nút chọn tất cả
+            $("#checkall-news").css("display", "none");
+        });
+    }
+});
+
+//Bỏ các mục đã check
+$("#uncheck-news").click(function(notChecked) {
+    if (notChecked) {
+        $(".check-news").each(function() {
+            this.checked = false;
+            //Ẩn nút bỏ chọn sau khi click
+            $("#uncheck-news").css("display", "none");
+            //Hiển thị lại nút chọn tất cả
+            $("#checkall-news").css("display", "inline-block");
+        });
+    }
 });
