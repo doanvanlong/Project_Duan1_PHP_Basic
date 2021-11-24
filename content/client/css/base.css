@@ -5,6 +5,16 @@
   --primary-strong: #f62901;
   --foreign-color: #ff0000e3;
 }
+.text-primary-color{
+  color: var(--primary-color);
+}
+.porsition-sticky{
+  position: sticky;
+  top: 10px;
+}
+.font-weight-5{
+  font-weight: 500;
+}
 * {
   padding: 0;
   margin: 0;
@@ -19,6 +29,9 @@ body {
 }
 button {
   outline: none !important;
+}
+.font-size{
+  font-size:1.4rem;
 }
 ul {
   margin-bottom: 0;
@@ -39,6 +52,17 @@ a:hover {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+.text-ellip{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.label-deal-soc-add-cart{
+  border:1px solid var(--primary-color);
+  padding:2px 5px;
+  font-size: 1.1rem;
+  color:var(--foreign-color);
 }
 .owl-carousel {
   display: block !important;
@@ -74,6 +98,9 @@ a:hover {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+}
+.primary{
+  background-color: #f15a29;
 }
 .icon {
   font-size: 1.2rem !important;

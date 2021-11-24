@@ -252,7 +252,7 @@
                     <div class="row">
                         <!-- Sản phẩm dùng chung với tab menu -->
                         <?php
-                        $sp_features = san_pham_Query_All_Feature();
+                        $sp_features = san_pham_Query_Dien_Thoai_Feature();
                         foreach ($sp_features as $sp_feature) { ?>
                             <div class="col-4">
                                 <a href="san-pham?id=<?= $sp_feature['id_sp']; ?>&name=<?= $sp_feature['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
@@ -319,7 +319,7 @@
                         <!-- Sản phẩm dùng chung với tab menu -->
                         <!-- phụ kiện có lượt xem nhiều -->
                         <?php
-                        $phu_kien_feature = san_pham_Phu_kien_Query_All_Feature();
+                        $phu_kien_feature = san_pham_Phu_kien_Query_Feature();
                         foreach ($phu_kien_feature as $phu_kien_feature) { ?>
                             <div class="col-4">
                                 <a href="san-pham?id=<?= $phu_kien_feature['id_sp'] ?>&name=<?= $phu_kien_feature['ten_sp'] ?>" class="tab__menu-product-content-newproduct">
@@ -328,17 +328,17 @@
                                             Giảm đến 30%
                                         </span>
                                         <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in
-                          </span> -->
+                                     </span> -->
                                         <!-- <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span> -->
                                     </div>
                                     <div class="px-4 pt-1 pb-2">
                                         <!-- <div class="tab__menu-product-newproduct-rate">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                          </div> -->
+                                          <i class="fas fa-star"></i>
+                                         <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                      <i class="fas fa-star"></i>
+                                         <i class="fas fa-star"></i>
+                                          </div> -->
                                         <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
                                             <?= $phu_kien_feature['ten_sp'] ?>
                                         </p>

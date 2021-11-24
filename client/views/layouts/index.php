@@ -27,6 +27,7 @@
     <!-- css  -->
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/base.css">
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/main.css">
+    <link rel="stylesheet" href="<?=$CONTENT_CLIENT_URL ?>/css/san-pham-detail.css">
 </head>
 
 <body>
@@ -390,6 +391,7 @@
     </div>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/main.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/home.js"> </script>
+    <script src="<?= $CONTENT_CLIENT_URL ?>/js/chi-tiet-san-pham.js"> </script>
 
 
 </body>

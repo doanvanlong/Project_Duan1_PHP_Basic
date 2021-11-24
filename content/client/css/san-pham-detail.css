@@ -1,0 +1,269 @@
+.product-detail {
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+}
+
+.product-detail-title {
+  font-size: 2.4rem;
+}
+
+.product-deltai-img {
+  height: 400px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.product-detail-imgs {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.product-detail-imgs .owl-nav.disabled {
+  display: block !important;
+}
+
+.imgs-items {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 70px;
+}
+.product-detail-cau-hinh {
+  background-color: #f8f9fa;
+  padding: 15px;
+  cursor: help;
+  border-radius: 5px;
+}
+.product-detail-cau-hinh ul li {
+  padding: 5px 0;
+  color: var(--dark);
+}
+.product-detail-cau-hinh ul li i {
+  color: #b6bfc7;
+  padding-right: 8px;
+}
+
+.product-detail-heading {
+  border-bottom: 1px solid #eeeeee;
+}
+
+.product-detail-rating-danh-gia {
+}
+
+.product-detail-price-new {
+  font-size: 2.9rem;
+  color: var(--primary-color);
+}
+
+.product-detail-price-old {
+  font-size: 1.9rem;
+}
+
+.box-check-dung-luong {
+  background-color: #f8f9fa;
+  padding: 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.box-check-dung-luong.active {
+  background-color: #edeeef;
+}
+
+.product-detail-select-mau-img {
+  border-radius: 5px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.box-items-mau {
+  margin-right: 14px;
+  cursor: pointer;
+}
+.box-items-mau.active .product-detail-select-mau-img {
+  border: 1px solid var(--primary-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.product-detail-voucher {
+  background-color: #f8f9fa;
+}
+.product-detail-voucher ul {
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+}
+.product-detail-voucher ul li {
+  padding: 8px 14px;
+}
+.product-detail-voucher ul li:nth-child(1) {
+  border-bottom: 1px solid #eaeaea;
+  /* border-color: transparent #e9ecef #e9ecef #e9ecef; */
+  padding: 8px 14px;
+  color: var(--dark);
+  font-weight: 500;
+}
+.product-detail-buy-now {
+  width: 100% !important;
+  border-radius: 5px;
+}
+.product-detail-buy-now:hover {
+  background-color: #db3e00;
+}
+.product-detail-buy-now strong {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.product-detail-buy-tra-gop {
+  border-radius: 5px;
+  width: 100%;
+}
+.product-detail-buy-tra-gop strong {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.product-detail-buy-trade-in {
+  border-radius: 5px;
+  width: 100%;
+}
+.product-detail-buy-trade-in strong {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+/* mua kèm dal sốc */
+.product-detail-mua-kem-deal {
+}
+.product-detail-mua-kem-deal-main-pro-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 80px;
+  height: 100px;
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+}
+.product-detail-mua-kem-deal-main-pro-content {
+}
+.product-detail-mua-kem-deal-main-pro-content-price-new {
+  color: var(--primary-color);
+  padding-right: 5px;
+  font-weight: 700;
+}
+.product-detail-mua-kem-deal-main-pro-add-cart {
+}
+.product-detail-mua-kem-deal-main-pro-add-cart .btn {
+  background-color: #ffeee8;
+  opacity: 0.6;
+  cursor: alias !important;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+/* items pro */
+.product-detail-mua-kem-deal-main-items-content-price-new {
+  color: var(--primary-color);
+  padding-right: 5px;
+  font-weight: 700;
+}
+.product-detail-mua-kem-deal-main-items-add-cart {
+}
+.product-detail-mua-kem-deal-main-items-add-cart .btn {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  transition: all 0.4s;
+}
+.product-detail-mua-kem-deal-main-items-add-cart .btn:hover {
+  background-color: #ec6538;
+  color: white;
+}
+.btn-total-mua-kem-deal-soc {
+  color: white;
+  border-radius: 7px;
+}
+.btn-total-mua-kem-deal-soc:hover {
+  opacity: 0.9;
+}
+/* sản phẩm tương tự */
+.san-pham-tuong-tu {
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+}
+/* mô tả sp */
+.mota-product-detail {
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.mota-product-detail img {
+  width: 100%;
+}
+.doc-them {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+.an-bot {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+.news-product-detai-title {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.news-product-detail {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.danh-sach-bai-viet-product-detail .banner__right-promotion-body-content {
+  margin: 20px 0;
+}
+.product-detail-rating {
+  background-color: white;
+  padding: 10px;
+}
+/* proges sao */
+.product-detail-rating-proges-5-star-main-count {
+  background-color: #e9ecef;
+  width:80%;
+  height:10px;
+  position: relative;
+  border-radius:5px;
+
+}
+.product-detail-rating-proges-5-star-counting {
+  background-color:#48bb78;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10000;
+  border-radius:5px;
+
+}
+.product-detail-rating-avg-count {
+    font-size: 4rem;
+    font-weight: 500;
+    color:var(--primary-color);
+}
+.btn-viet-danh-gia{
+    border-radius: 5px;
+}

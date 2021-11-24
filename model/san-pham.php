@@ -43,6 +43,13 @@ function san_pham_QueryAll()
     $sql = "SELECT * FROM san_pham";
     return pdo_query($sql);
 }
+//hàm truy vấn sp theo danh mục con
+function san_pham_Query_Danh_Muc_Con($id_sub_dm_pro)
+{
+    $sql = "SELECT * FROM san_pham where id_sub_dm_pro =?";
+    return pdo_query($sql,$id_sub_dm_pro);
+}
+
 // hàm truy vấn 1 sản phẩm
 function san_pham_QueryOne($id_sp)
 {
@@ -235,16 +242,16 @@ function san_pham_Query_All_Flash_Sale()
 
 //hàm truy vấn điện thoại nỗi bật , có lượt xem nhiều
 // dùng tạm truy vấn all
-function san_pham_Query_All_Feature()
+function san_pham_Query_Dien_Thoai_Feature()
 {
-    $sql = "SELECT * FROM san_pham WHERE id_dm_pro = 47 limit 6";
+    $sql = "SELECT * FROM san_pham WHERE id_dm_pro = 47 and so_luot_xem >0 order by so_luot_xem desc limit 6";
     return pdo_query($sql);
 }
 
 // hàm truy vấn phụ kiện có nhiều lượt xem nhiều
-function san_pham_Phu_kien_Query_All_Feature()
+function san_pham_Phu_kien_Query_Feature()
 {
-    $sql = "SELECT * FROM san_pham where id_dm_pro =48 limit 6";
+    $sql = "SELECT * FROM san_pham where id_dm_pro =48  and so_luot_xem >0 order by so_luot_xem desc limit 6";
     return pdo_query($sql);
 }
 
@@ -288,6 +295,11 @@ function dien_thoai_Iphone_Query_9()
 {
     $sql = "SELECT * FROM san_pham where id_dm_pro =47 and id_sub_dm_pro = 47 limit 9";
     return pdo_query($sql);
+}
+//hàm update số lượt xem sp khi clcik vào 
+function san_pham_Update_So_Luot_Xem($id_sp){
+    $sql="UPDATE san_pham SET so_luot_xem = so_luot_xem + 1 where id_sp=?";
+    return pdo_execute($sql, $id_sp);
 }
 
 
