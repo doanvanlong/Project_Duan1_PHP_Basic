@@ -17,7 +17,7 @@
             <label>Danh sách danh mục tin tức:</label>
             <br>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-striped">
                     <thead>
                         <tr style="text-align:center;">
                             <th scope="col" class="table-dark">#</th>

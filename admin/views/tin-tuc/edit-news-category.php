@@ -3,7 +3,6 @@
         extract($one_news_category);
     }
 ?>
-
 <h3 class="alert bg-secondary text-light heading-cate">Cập Nhật Danh Mục Tin Tức</h3>
 <form action="" id="update-news-category" method="POST">
     <div class="form-group">

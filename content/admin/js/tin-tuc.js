@@ -28,7 +28,10 @@ $('[name*="update-news-category"]').keyup(function() {
                         "Tên danh mục này đã tồn tại, vui lòng nhập tên khác!"
                     );
                     //Sản phẩm đã tồn tại sẽ có border red input
-                    $('[name*="update-news-category"]').css("border", "1px solid #f38291");
+                    $('[name*="update-news-category"]').css(
+                        "border",
+                        "1px solid #f38291"
+                    );
                     check = false;
                 } else {
                     //Không có data trả về
@@ -41,7 +44,6 @@ $('[name*="update-news-category"]').keyup(function() {
         });
     }
 });
-
 
 //SUBMIT FORM THÊM DANH MỤC TIN TỨC
 $("#add-dm-tin-tuc").submit(function(e) {
@@ -135,9 +137,7 @@ $("#update-news-category").submit(function(e) {
     var checkForm = $('[name*="update-news-category"]').val() == "";
     if (checkForm == true) {
         $('[name*="update-news-category"]').css("border", "1px solid #f38291");
-        $("#error-news-category").text(
-            "Tên danh mục tin tức không được để trống!"
-        );
+        $("#error-news-category").text("Tên danh mục tin tức không được để trống!");
         toast({
             title: "Thất bại",
             msg: "Cập nhật danh mục tin tức thất bại !",
@@ -236,9 +236,9 @@ $("#uncheck-news-category").click(function(notChecked) {
             $("#uncheck-news-category").css("display", "none");
             //Hiển thị lại nút chọn tất cả
             $("#checkall-news-category").css("display", "inline-block");
-        })
+        });
     }
-})
+});
 
 //GửI ajax xoá nhiều sản phẩm
 $("#dm-tin-tuc").submit(function(e) {
@@ -270,21 +270,171 @@ $("#dm-tin-tuc").submit(function(e) {
         },
     });
 });
-//VALIDATE FORM TIN TỨC
+//Loại bỏ lỗi khỏi form
+$('[name*="content-news"]').focus(function() {
+    $(this).css("border", "0");
+    $("#error-content-news").text("");
+});
+
+$('[name*="news-category"]').focus(function() {
+    $(this).css("border", "0");
+    $("#error-news-category").text("");
+});
+
+$('[name*="avt-news"]').focus(function() {
+    $(this).css("border", "0");
+    $("#error-avt-news").text("");
+});
+
+$('[name*="editor1"]').focus(function() {
+    $(this).css("border", "0");
+    $("#error-editor1").text("");
+});
+//END loại bỏ lỗi
 
 //THÊM TIN TỨC MỚI
-$('#send').click(function() {
-    var data = CKEDITOR.instances.editor1.getData();
+$("#send").click(function() {
     $("#add-news").submit(function(e) {
         e.preventDefault();
+        if (
+            $('[name*="content-news"]') &&
+            $('[name*="news-category"]') &&
+            $('[name*="avt-news"]') &&
+            $('[name*="editor1"]').val() == ""
+        ) {
+            if ($('[name*="content-news"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="content-news"]').css("border", "1px solid #f38291");
+                $("#error-content-news").text("Tiêu đề không được để trống!");
+            }
+            if ($('[name*="news-category"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="news-category"]').css("border", "1px solid #f38291");
+                $("#error-news-category").text("Vui lòng chọn danh mục tin tức!");
+            }
+            if ($('[name*="avt-news"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="avt-news"]').css("border", "1px solid #f38291");
+                $("#error-avt-news").text("Vui lòng tải lên ảnh đại diện bài viết!");
+            }
+            if ($('[name*="editor1"]').val() == "") {
+                // border input và hiển thị lỗi
+                $('[name*="editor1"]').css("border", "1px solid #f38291");
+                $("#error-editor1").text("Vui lòng nhập mô tả bài viết!");
+            }
+        } else {
+            //GửI dữ liệu đến form xử lí
+            $.ajax({
+                type: "POST",
+                url: "../admin/xu-ly/tin-tuc/insert-tin-tuc.php",
+                data: new FormData(this), //send all data theo id name
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    // Xử lí data trả về
+                    if (data == 1) {
+                        toast({
+                            title: "Thành công",
+                            msg: "Thêm bài viết mới thành công !",
+                            type: "success",
+                            duration: 5000,
+                            link: "list-news",
+                        });
+                        // reload lại trang sau khi xoá xong
+                        setTimeout(location.reload.bind(location), 1000);
+                    } else {
+                        toast({
+                            title: "Thất bại",
+                            msg: "Thêm bài viết mới thất bại !",
+                            type: "error",
+                            duration: 5000,
+                            link: "#",
+                        });
+                    }
+                },
+            });
+            //Tạo biến data lưu mô tả, send 1 ajax khác đến form xử lí
+            var data = CKEDITOR.instances.editor1.getData();
+            $.ajax({
+                type: "POST",
+                url: "../admin/xu-ly/tin-tuc/insert-tin-tuc.php",
+                data: { editor1: data }, //send all data theo id name
+                success: function(data) {
+                    //đẩy data mô tả bài viết thành công
+                },
+            });
+        }
+    });
+});
+//Loại bỏ lỗi form cập Nhật
+$('[name*="update-name-news"]').focus(function() {
+    $(this).css("border", "0");
+    $("#error-update-name-news").text("");
+});
+//SUBMIT FORM CẬP NHẬT BÀI VIẾT
+$("#update-news").submit(function(e) {
+    e.preventDefault();
+    if ($('[name*="update-name-news"]').val() == "") {
+        $('[name*="update-name-news"]').css("border", "1px solid #f38291");
+        $("#error-update-name-news").text("Tên bài viết không được để trống!");
+    } else {
         $.ajax({
-            type: 'POST',
-            url: '../admin/xu-ly/tin-tuc/insert-tin-tuc.php',
-            data: $("#add-news").serializeArray(),
+            type: "POST",
+            url: "../admin/xu-ly/tin-tuc/update-news.php",
+            data: new FormData(this), //send all data theo id name
+            contentType: false,
+            processData: false,
             success: function(data) {
                 console.log(data);
-            }
+                // Xử lí data trả về
+                if (data == 1) {
+                    toast({
+                        title: "Thành công",
+                        msg: "Cập nhật bài viết thành công !",
+                        type: "success",
+                        duration: 5000,
+                        link: "list-news",
+                    });
+                    // reload lại trang sau khi xoá xong
+                    // setTimeout(location.reload.bind(location), 1000);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Cập nhật bài viết thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
+                }
+            },
         });
-    });
+    }
+});
+//CHECK ALL BÀI VIẾT
+//Ẩn nút bỏ chọn khi chưa chọn tất cả
+$("#uncheck-news").css("display", "none");
+//Check all sản phẩm
+$("#checkall-news").click(function(isChecked) {
+    if (isChecked) {
+        $(".check-news").each(function() {
+            this.checked = true;
+            //Hiển thị nút bỏ chọn sau khi đã check all sản phẩm
+            $("#uncheck-news").css("display", "inline-block");
+            //Ẩn nút chọn tất cả
+            $("#checkall-news").css("display", "none");
+        });
+    }
+});
 
+//Bỏ các mục đã check
+$("#uncheck-news").click(function(notChecked) {
+    if (notChecked) {
+        $(".check-news").each(function() {
+            this.checked = false;
+            //Ẩn nút bỏ chọn sau khi click
+            $("#uncheck-news").css("display", "none");
+            //Hiển thị lại nút chọn tất cả
+            $("#checkall-news").css("display", "inline-block");
+        });
+    }
 });
