@@ -6,13 +6,13 @@
                 <table class="table table-striped">
                     <thead>
                         <tr style="text-align:center;">
+                            <th scope="col" class="table-dark"></th>
                             <th scope="col" class="table-dark">#</th>
-                            <th scope="col" class="table-dark">Số Thứ Tự</th>
-                            <th scope="col" class="table-dark">ID Bài Viết</th>
-                            <th scope="col" class="table-dark">Danh Mục Bài Viết</th>
-                            <th scope="col" class="table-dark">Tên Bài Viết</th>
-                            <th scope="col" class="table-dark">Ảnh Đại Diện</th>
-                            <th scope="col" class="table-dark">Nội dung</th> 
+                            <th scope="col" class="table-dark">ID </th>
+                            <th scope="col" class="table-dark">Danh Mục </th>
+                            <th scope="col" style="width:30%" class="table-dark">Tên Bài Viết</th>
+                            <th scope="col" style="width:20%" class="table-dark">Ảnh Đại Diện</th>
+                            <th scope="col"  class="table-dark">Nội dung</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +35,7 @@
                                 <td class="align-middle">' . $id_bai_viet . '</td>
                                 <td class="align-middle">' . $tenDanhMuc . '</td>
                                 <td class="align-middle">'.$tieu_de_news.'</td>
-                                <td class="align-middle"><img src="' . $CONTENT_UPLOAD .'/'. $img_news. '" alt="Ảnh đại diện bài viết"></td>
+                                <td class="align-middle"><img style="width:60%;" src="' . $CONTENT_UPLOAD .'/'. $img_news. '" alt="Ảnh đại diện bài viết"></td>
                                 <td class="align-middle">
                                 <a href="edit-news&ID=' . $id_bai_viet . '">
                                 <i class="fas fa-edit mr-3"></i>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2021 lúc 03:54 AM
+-- Thời gian đã tạo: Th10 24, 2021 lúc 03:41 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -20,6 +20,287 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `ltsmart`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `bai_viet`
+--
+
+CREATE TABLE `bai_viet` (
+  `id_bai_viet` int(11) NOT NULL,
+  `id_dm_news` int(11) NOT NULL,
+  `tieu_de_news` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `img_news` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `noi_dung` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `bai_viet`
+--
+
+INSERT INTO `bai_viet` (`id_bai_viet`, `id_dm_news`, `tieu_de_news`, `img_news`, `noi_dung`) VALUES
+(2, 7, 'TIN ĐỒN: APPLE LOẠI BỎ CẢM BIẾN TOUCH ID VÀ CỔNG LIGHTNING TRÊN MẪU IPHONE 13', '1158721664.jpg', '<h2><strong>Trong khi độ &ldquo;hot&rdquo; của&nbsp;<a href=\"https://www.xtsmart.vn/iphone-12\" target=\"_blank\">iPhone 12</a>&nbsp;series chưa giảm th&igrave; mới đ&acirc;y, nhiều trang mạng lại r&ograve; rỉ th&ocirc;ng tin về mẫu iPhone 13. Được biết, đ&acirc;y l&agrave; phi&ecirc;n bản n&acirc;ng cấp nhẹ của d&ograve;ng iPhone 12 v&agrave; sẽ được T&aacute;o khuyết tr&igrave;nh l&agrave;ng v&agrave;o m&ugrave;a thu năm sau.</strong></h2>\r\n\r\n<p>&gt;&gt; Xem th&ecirc;m:</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.xtsmart.vn/iphone-12-con-chua-len-ke-thong-tin-chipset-tren-iphone-13-da-duoc-he-lo\" target=\"_blank\">iPhone 12 còn chưa l&ecirc;n k&ecirc;̣, th&ocirc;ng tin chipset tr&ecirc;n iPhone 13 đã được hé l&ocirc;̣</a></li>\r\n	<li><a href=\"https://www.xtsmart.vn/so-sanh-iphone-12-pro-max-va-galaxy-note-20-ultra-dau-la-lua-chon-tot-nhat-\" target=\"_blank\">So s&aacute;nh iPhone 12 Pro Max v&agrave; Galaxy Note 20 Ultra: đ&acirc;u l&agrave; lựa chọn tốt nhất?</a></li>\r\n</ul>\r\n\r\n<p>Một leaker c&oacute; t&ecirc;n Jiorīku đ&atilde; n&oacute;i rằng khả năng iPhone 13 kế thừa ng&ocirc;n ngữ thiết kế của iPhone 12 series l&agrave; rất cao. Điều n&agrave;y đồng nghĩa với việc Apple sẽ tiếp tục sử dụng chất liệu k&iacute;nh b&oacute;ng bẩy v&agrave; khung viền v&aacute;t phẳng như d&ograve;ng iPad Pro cho thế hệ iPhone mới. Đồng thời, khung viền của model cũng được ho&agrave;n thiện nhờ th&eacute;p kh&ocirc;ng gỉ hoặc nh&ocirc;m, điều n&agrave;y t&ugrave;y v&agrave;o từng phi&ecirc;n bản.</p>\r\n\r\n<p><img alt=\"Jiorīku đã nói rằng khả năng iPhone 13 kế thừa ngôn ngữ thiết kế của iPhone 12 series là rất cao\" src=\"https://www.xtsmart.vn/vnt_upload/news/11_2020/iphone-13-xtsmart.jpg\" /></p>\r\n\r\n<p>Chưa hết, Jiorīku c&ograve;n nhắc đến việc mẫu iPhone 13 sẽ kh&ocirc;ng được t&iacute;ch hợp cảm biến Touch ID tr&ecirc;n m&agrave;n h&igrave;nh. Nếu đ&oacute; l&agrave; sự thật th&igrave; c&oacute; lẽ Apple sẽ mất đi một lượng fan kh&ocirc;ng hề nhỏ, bởi&nbsp;hiện tại hầu hết người d&ugrave;ng đều mong muốn&nbsp;kết hợp cả Face ID v&agrave; Touch ID tr&ecirc;n c&ugrave;ng một&nbsp;thiết bị di động. Tuy nhi&ecirc;n, đ&acirc;y vẫn chỉ l&agrave; đồn đo&aacute;n, c&oacute; thể &nbsp;Apple sẽ bổ sung th&ecirc;m trong qu&aacute; tr&igrave;nh ph&aacute;t triển iPhone.</p>\r\n\r\n<p>Ngo&agrave;i ra, vị leaker n&agrave;y cũng tiết lộ&nbsp;cổng Lightning sẽ bị loại bỏ tr&ecirc;n iPhone 13. Thay v&agrave;o đ&oacute; Apple chuyển sang d&ugrave;ng sạc USB-C hoặc kh&ocirc;ng cổng kết nối. Nghe c&oacute; vẻ thất vọng nhưng biết đ&acirc;u nh&agrave; sản xuất đang chuẩn bị cho ra mắt một c&ocirc;ng nghệ hiện đại hơn, c&ugrave;ng XTsmart chờ xem nh&eacute;!</p>\r\n'),
+(3, 7, 'ĐÁNH GIÁ THỜI LƯỢNG PIN IPHONE 12 PRO, KẾT QUẢ GÂY THẤT VỌNG', '1418962935.jpg', '<h2><strong><a href=\"https://www.xtsmart.vn/iphone-12-pro-512gb-vna\" target=\"_blank\">iPhone 12 Pro</a>&nbsp;vừa trải qua một cuộc kiểm tra thời lượng pin do chuy&ecirc;n trang Phonearena l&agrave;m gi&aacute;m thị. Được biết, smartphone n&agrave;y sở hữu thỏi pin 2,815 mAh, tức nhỏ hơn vi&ecirc;n pin tr&ecirc;n iPhone 11 Pro tiền nhiệm. Điều n&agrave;y c&oacute; g&acirc;y ảnh hưởng g&igrave; tới thời lượng sử dụng thiết bị? B&agrave;i viết dưới đ&acirc;y sẽ n&ecirc;u chi tiết, tham khảo nh&eacute;!</strong></h2>\r\n\r\n<p>&gt;&gt; Xem th&ecirc;m:</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.xtsmart.vn/iphone-12-con-chua-len-ke-thong-tin-chipset-tren-iphone-13-da-duoc-he-lo\" target=\"_blank\">iPhone 12 còn chưa l&ecirc;n k&ecirc;̣, th&ocirc;ng tin chipset tr&ecirc;n iPhone 13 đã được hé l&ocirc;̣</a></li>\r\n	<li><a href=\"https://www.xtsmart.vn/so-sanh-iphone-12-pro-max-va-galaxy-note-20-ultra-dau-la-lua-chon-tot-nhat-\" target=\"_blank\">So s&aacute;nh iPhone 12 Pro Max v&agrave; Galaxy Note 20 Ultra: đ&acirc;u l&agrave; lựa chọn tốt nhất?</a></li>\r\n</ul>\r\n\r\n<p>Trước đ&oacute;, Apple đ&atilde; từng tuy&ecirc;n bố thời gian hoạt động của iPhone 12 Pro c&oacute; thể k&eacute;o d&agrave;i đến ng&agrave;y thứ hai. Tuy nhi&ecirc;n, b&agrave;i đ&aacute;nh gi&aacute; thực tế của Phonearena lại tr&aacute;i ngược ho&agrave;n to&agrave;n khi chỉ duy tr&igrave; được 1 ng&agrave;y rưỡi với 1 lần sạc m&agrave; th&ocirc;i. B&ecirc;n cạnh đ&oacute;, iPhone 12 v&agrave; iPhone 12 Pro được trang bị c&ugrave;ng dung lượng, n&ecirc;n kết quả kiểm tra gần như giống nhau.</p>\r\n\r\n<p><img alt=\"iPhone 12 Pro lướt web tới 12 giờ \" src=\"https://www.xtsmart.vn/vnt_upload/news/10_2020/iphone-12-xtsmart_4.jpg\" /></p>\r\n\r\n<p>Ri&ecirc;ng b&agrave;i kiểm tra lướt web, iPhone 12 Pro v&agrave; iPhone 12 hoạt động l&acirc;u hơn iPhone 11 Pro lần lượt l&agrave; 4 giờ v&agrave; 1 giờ. Mặc d&ugrave; vượt trội so với thế hệ trước&nbsp;nhưng phải n&oacute;i rằng con số n&agrave;y kh&ocirc;ng mấy ấn tượng với c&aacute;c thiết bị di động Android tr&ecirc;n thị trường hiện nay.</p>\r\n\r\n<p><img alt=\"xem video YouTube liên tục trên iPhone 12 Pro sẽ kéo dài 6,5 giờ\" src=\"https://www.xtsmart.vn/vnt_upload/news/10_2020/pin-iphone-12-xtsmart.jpg\" /></p>\r\n\r\n<p>Nhất l&agrave; c&aacute;c smartphone đến từ thương hiệu đối thủ Samsung, c&oacute; thể n&oacute;i thời lượng pin l&agrave; một trong những ưu điểm nổi bật của họ. Theo đ&oacute; người d&ugrave;ng c&oacute; thể thao t&aacute;c li&ecirc;n tục hay xem vieo tr&ecirc;n YouTube m&agrave; kh&ocirc;ng phải lo dừng lại giữa chừng để nạp năng lượng. Điều n&agrave;y chứng tỏ Apple cần phải tăng tốc, d&ugrave; hiện tại iPhone 12 Pro đ&atilde; l&agrave;m kh&aacute; tốt khi so với tiền nhiệm về phần n&agrave;y.</p>\r\n\r\n<p><img alt=\"iPhone 12 Pro chơi game trong thời gian 3 giờ mà thôi\" src=\"https://www.xtsmart.vn/vnt_upload/news/10_2020/vien-pin-iphone-12-xtsmart.jpg\" /></p>\r\n\r\n<p>B&agrave;i kiểm tra cũng n&ecirc;u r&otilde;, việc xem video YouTube li&ecirc;n tục tr&ecirc;n iPhone 12 Pro sẽ k&eacute;o d&agrave;i 6,5 giờ, n&oacute;i cho c&ugrave;ng th&igrave; cũng kh&ocirc;ng qu&aacute; ngắn cho một thiết bị cầm tay. Nhưng đ&aacute;ng n&oacute;i khi bạn chuyển sang chơi game 3D. Kết quả phải gọi l&agrave; tệ nhất b&agrave;i test v&agrave; chiếc iPhone năm ngo&aacute;i khi chỉ duy tr&igrave; khoảng 3 giờ m&agrave; th&ocirc;i.</p>\r\n\r\n<p>Cụ thể, Phonearena đ&atilde; cho thử nghiệm một v&agrave;i game như Call of Duty Mobile v&agrave; Minecraft. Kh&ocirc;ng chỉ &ldquo;hụt hơi&rdquo; m&agrave; nhiệt độ m&aacute;y cũng tăng đột ngột, chỉ khi ngừng sử dụng th&igrave; iPhone 12 Pro mới về trạng th&aacute;i ban đầu. Dường như chip xử l&yacute; Apple A14 Bionic gặp trục trặc khi tối ưu c&aacute;c tựa game đồ họa. Với kết quả kiểm tra, tốt nhất bạn n&ecirc;n c&acirc;n nhắc về iPhone 11 Pro, bởi thiết bị vẫn c&oacute; nhiều ưu điểm về thời lượng pin hơn khi chơi game.</p>\r\n'),
+(4, 7, 'DÒNG GALAXY S22: NÊN HAY KHÔNG VIỆC CHỜ ĐỢI NGÀY RA MẮT?', '1435118834.jpg', '<h2><strong>Như đ&atilde; biết, d&ograve;ng&nbsp;<a href=\"http://www.xtsmart.vn/samsung-galaxy-s22-s22-ultra\" target=\"_blank\">Galaxy S22</a>&nbsp;của&nbsp;<a href=\"https://www.xtsmart.vn/samsung\" target=\"_blank\">Samsung</a>&nbsp;sẽ ch&iacute;nh thức ra mắt trong v&agrave;i th&aacute;ng nữa. Do đ&oacute;, người d&ugrave;ng c&ocirc;ng nghệ đang rất n&oacute;ng l&ograve;ng xem loạt sản phẩm mới cung cấp những t&iacute;nh năng hiện đại g&igrave;, c&oacute; xứng đ&aacute;ng để chờ đợi hay kh&ocirc;ng.</strong></h2>\r\n\r\n<p>&gt;&gt; Xem th&ecirc;m:</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://www.xtsmart.vn/them-bang-chung-cho-thay-thiet-ke-galaxy-s22-ultra-se-nam-tinh-nhu-galaxy-note\" target=\"_blank\">Th&ecirc;m bằng chứng cho thấy thiết kế Galaxy S22 Ultra sẽ nam t&iacute;nh như Galaxy Note</a></li>\r\n	<li><a href=\"https://www.xtsmart.vn/gia-ban-galaxy-s22-galaxy-s22-plus-va-galaxy-s22-ultra-duoc-tiet-lo\" target=\"_blank\">Gi&aacute; b&aacute;n Galaxy S22, Galaxy S22 Plus v&agrave; Galaxy S22 Ultra được tiết lộ</a></li>\r\n</ul>\r\n\r\n<h3><strong>L&yacute; do chờ đợi Galaxy S22 series</strong></h3>\r\n\r\n<p>Một v&agrave;i nguồn tin thời gian gần đ&acirc;y n&oacute;i rằng Samsung sẽ mang đến 3 model trong series n&agrave;y, bao gồm Galaxy S22, Galaxy S22 Plus v&agrave; bản cao cấp nhất Galaxy S22 Ultra. D&ograve;ng điện thoại mới được cho l&agrave; sở hữu nhiều c&ocirc;ng nghệ hiện đại cũng như n&acirc;ng cấp mạnh mẽ phần cứng so với Galaxy S21 trước đ&oacute;. Thậm ch&iacute; một v&agrave;i b&aacute;o c&aacute;o c&ograve;n khẳng định Galaxy S22 series sẽ đ&aacute;nh bại mọi đối thủ c&ugrave;ng ph&acirc;n kh&uacute;c tr&ecirc;n thị trường.</p>\r\n\r\n<p>Cụ thể, c&aacute;c model Galaxy S mới nhất sẽ sử dụng sức mạnh từ bộ xử l&yacute; Exynos 2200 với GPU AMD. Một v&agrave;i b&agrave;i kiểm tra đ&atilde; tiến h&agrave;nh v&agrave; kết quả cho thấy bộ xử l&yacute; mới của c&ocirc;ng ty xứ kim chi sẽ c&oacute; hiệu năng cực kỳ mạnh mẽ. Kh&ocirc;ng chỉ vậy, Samsung chắc chắn sẽ đầu tư mạnh tay về hệ thống m&aacute;y ảnh, bởi đ&acirc;y l&agrave; yếu tố m&agrave; h&atilde;ng xem l&agrave; quan trọng kh&ocirc;ng k&eacute;m hiệu năng điện thoại.</p>\r\n\r\n<p><img alt=\"Dòng Galaxy S22 sở hữu nhiều công nghệ mới\" src=\"https://www.xtsmart.vn/vnt_upload/news/11_2021/ss-galaxy-s22-xtsmart.jpg\" /></p>\r\n\r\n<p>Nhiều tin đồn tiết lộ Galaxy S22 sở hữu cảm biến l&ecirc;n tới 108MP thế hệ mới, cung cấp khả năng chụp ảnh thiếu s&aacute;ng si&ecirc;u chuy&ecirc;n nghiệp. Ri&ecirc;ng đối với bản đắt tiền nhất Galaxy S22 Ultra c&ograve;n được đồn sẽ c&oacute; thiết kế vu&ocirc;ng vức v&agrave; đi k&egrave;m khe chứa b&uacute;t S-Pen. Điều n&agrave;y l&agrave;m ch&uacute;ng ta li&ecirc;n tưởng đến ngay d&ograve;ng Galaxy Note cao cấp bị cho&nbsp;Samsung đ&atilde; khai tử.</p>\r\n\r\n<p>Những trang bị tr&ecirc;n chắc đ&atilde; đủ l&yacute; do để bạn chờ đợi Galaxy S22 ra mắt trong v&agrave;i th&aacute;ng nữa. V&agrave; nếu bạn muốn sở hữu t&acirc;n binh với nhiều t&iacute;nh năng mới n&agrave;y th&igrave; ngay từ b&acirc;y giờ h&atilde;y tạm dừng mua Galaxy S21, Galaxy S21 Plus hoặc Galaxy S21 Ultra, để xem những g&igrave; r&ograve; rỉ c&oacute; ch&iacute;nh x&aacute;c kh&ocirc;ng nh&eacute;.</p>\r\n\r\n<h3><strong>L&yacute; do kh&ocirc;ng n&ecirc;n đợi Galaxy S22 series</strong></h3>\r\n\r\n<p>Dẫu biết d&ograve;ng điện thoại mới nh&agrave; Samsung sẽ được trang bị nhiều c&ocirc;ng nghệ h&agrave;ng đầu v&agrave; tất nhi&ecirc;n sẽ mạnh mẽ hơn tiền nhiệm rất nhiều. Nhưng c&ocirc;ng bằng m&agrave; n&oacute;i, Galaxy S21 series vẫn dư sức đ&aacute;p ứng mọi nhu cầu của người d&ugrave;ng hiện tại, thậm ch&iacute; l&agrave; đ&aacute;nh bại c&aacute;c điện thoại c&ugrave;ng ph&acirc;n kh&uacute;c. Trải nghiệm thực tế bạn sẽ cảm nhận được điều n&agrave;y, nhất l&agrave; khi chiến game đồ họa.</p>\r\n\r\n<p><img alt=\"Có nên chờ đợi Galaxy S22 ra mắt không?\" src=\"https://www.xtsmart.vn/vnt_upload/news/11_2021/galaxy-s22-xtsmart_1.jpg\" /></p>\r\n\r\n<p>Song song đ&oacute;, nếu bạn muốn sở hữu một flaghip cao cấp hơn th&igrave; c&ograve;n c&oacute; bộ đ&ocirc;i flagship m&agrave;n h&igrave;nh gập Galaxy Z Fold 3 5G v&agrave; Galaxy Z Flip 3 5G. Như đ&atilde; biết, Galaxy Z Fold 3 5G v&agrave; Galaxy Z Flip 3 5G hiện l&agrave; hai mẫu điện thoại&nbsp;dẫn đầu thị trường với thiết kế thu h&uacute;t. Mặc d&ugrave; kh&ocirc;ng qu&aacute; nổi bật về thời lượng pin v&agrave; camera nhưng kh&ocirc;ng thể phủ nhận điện thoại m&agrave;n h&igrave;nh gập Samsung được lựa chọn nhiều nhất hiện nay.</p>\r\n\r\n<p>Về gi&aacute;, nếu Galaxy S21 bắt đầu ở mức 799 USD (khoảng 18.1 triệu đồng), th&igrave; Galaxy S22 được đồn đại l&agrave; 849 USD (khoảng 19.3 triệu đồng) v&agrave; l&ecirc;n tới 1.049 USD (khoảng 23.8 triệu đồng) cho Galaxy S22+, tức đắt hơn 50 USD so với mức gi&aacute; 999 USD (khoảng 22.7 triệu đồng) của Galaxy S21+.&nbsp; C&ograve;n Galaxy S22 Ultra mức gi&aacute; khởi điểm c&oacute; thể l&agrave; 1.299 USD (khoảng 29.5 triệu đồng), trong khi gi&aacute; khởi điểm ban đầu của Galaxy S21 Ultra l&agrave; 1.199 USD (khoảng 27.2 triệu đồng).</p>\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `binh_luan_news`
+--
+
+CREATE TABLE `binh_luan_news` (
+  `id_bl_news` int(11) NOT NULL,
+  `id_kh` int(11) NOT NULL,
+  `id_bai_viet` int(11) NOT NULL,
+  `noi_dung` text COLLATE utf8_unicode_ci NOT NULL,
+  `ngay_bl` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `binh_luan_pro`
+--
+
+CREATE TABLE `binh_luan_pro` (
+  `id_bl_pro` int(11) NOT NULL,
+  `id_kh` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `noi_dung` text COLLATE utf8_unicode_ci NOT NULL,
+  `rate` int(1) NOT NULL,
+  `ngay_bl` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cau_hinh_phone`
+--
+
+CREATE TABLE `cau_hinh_phone` (
+  `id_ch_phone` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `man_hinh` text COLLATE utf8_unicode_ci NOT NULL,
+  `camera_sau` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `camera_selfie` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `ram` int(11) NOT NULL,
+  `rom` int(11) NOT NULL,
+  `cpu` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `dung_luong_pin` int(11) NOT NULL,
+  `the_sim` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `he_dieu_hanh` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `xuat_xu` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cau_hinh_phone`
+--
+
+INSERT INTO `cau_hinh_phone` (`id_ch_phone`, `id_sp`, `man_hinh`, `camera_sau`, `camera_selfie`, `ram`, `rom`, `cpu`, `dung_luong_pin`, `the_sim`, `he_dieu_hanh`, `xuat_xu`) VALUES
+(43, 103, '', '', '', 0, 32, '', 0, '', '', ''),
+(44, 108, '6.1\", Super Retina XDR, OLED, 2532 x 1170 Pixel', '2.0 MP + 12.0 MP + 12.0 MP', '12.0 MP', 6, 128, 'A14 Bionic', 2815, '2, 1 eSIM, 1 Nano SI', 'iOS 14', 'Trung Quốc'),
+(45, 109, '6.1\" Super Retina XDR', '2 camera 12 MP', '12 MP', 6, 256, 'Apple A15 Bionic', 309520, '	1 Nano SIM & 1 eSIM', 'IOS 15', ''),
+(46, 110, 'Dynamic AMOLED 2X6.7\"Quad HD+ (2K+)', '10 MP', '	Chính 12 MP & Phụ 6', 8, 128, 'Exynos 990', 4500, '2 Nano SIM hoặc 1 Na', 'Android 10', ''),
+(47, 111, '	Dynamic AMOLED 6,8 inch 1440 x 3040 pixels', 'Chính 12 MP & Phụ 12 MP, 16 MP, TOF 3D', '10', 12, 256, 'Snapdragon 855 (7 nm', 4300, '	Nano SIM', 'Android 9', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `danh_muc_news`
+--
+
+CREATE TABLE `danh_muc_news` (
+  `id_dm_news` int(11) NOT NULL,
+  `ten_dm_news` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `danh_muc_news`
+--
+
+INSERT INTO `danh_muc_news` (`id_dm_news`, `ten_dm_news`) VALUES
+(9, 'Đánh giá và trải nghiệm'),
+(12, 'Hoạt động của cửa hàng'),
+(11, 'Khuyến mãi'),
+(10, 'Thủ thuật'),
+(7, 'Tin công nghệ');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `danh_muc_pro`
+--
+
+CREATE TABLE `danh_muc_pro` (
+  `id_dm_pro` int(11) NOT NULL,
+  `ten_dm_pro` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `danh_muc_pro`
+--
+
+INSERT INTO `danh_muc_pro` (`id_dm_pro`, `ten_dm_pro`) VALUES
+(47, 'Điện thoại'),
+(49, 'Oppo'),
+(48, 'Phụ kiện');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dung_luong_phone`
+--
+
+CREATE TABLE `dung_luong_phone` (
+  `id_dl_phone` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `rom` int(11) NOT NULL,
+  `don_gia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dung_luong_phone`
+--
+
+INSERT INTO `dung_luong_phone` (`id_dl_phone`, `id_sp`, `rom`, `don_gia`) VALUES
+(76, 103, 32, 5000000),
+(77, 103, 0, 0),
+(78, 108, 128, 27400000),
+(79, 108, 256, 29000000),
+(80, 109, 256, 25190000),
+(81, 109, 0, 0),
+(82, 110, 128, 16890000),
+(83, 110, 0, 0),
+(84, 111, 256, 13720000),
+(85, 111, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hoa_don`
+--
+
+CREATE TABLE `hoa_don` (
+  `id_hoa_don` int(11) NOT NULL,
+  `id_kh` int(11) NOT NULL,
+  `tinh_trang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `tong_tien` int(11) NOT NULL,
+  `ngay_dat_hang` date NOT NULL,
+  `ngay_giao_hang` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hoa_don_chi_tiet`
+--
+
+CREATE TABLE `hoa_don_chi_tiet` (
+  `id_hoa_don_chi_tiet` int(11) NOT NULL,
+  `id_hoa_don` int(11) NOT NULL,
+  `id_kh` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `so_luong_mua` int(11) NOT NULL,
+  `don_gia` int(11) NOT NULL,
+  `giam_gia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `images_pro`
+--
+
+CREATE TABLE `images_pro` (
+  `id_images_pro` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `images` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `images_pro`
+--
+
+INSERT INTO `images_pro` (`id_images_pro`, `id_sp`, `images`) VALUES
+(85, 108, '80_iphone_12_pro_max_trang_1.png'),
+(86, 108, '600_iphone_12_pro_max_vang_1.png'),
+(87, 108, '600_iphone_12_pro_max_xam_1.png'),
+(88, 108, '600_iphone_12_pro_max_xanh_1.png'),
+(89, 109, '600_iphone_13_den_dem_muon_3.png'),
+(90, 109, '600_iphone_13_do_3.png'),
+(91, 109, '600_iphone_13_hong_3.png'),
+(92, 109, '600_iphone_13_trang_anh_sao_3.png'),
+(93, 109, '600_iphone_13_xanh_duong_3.png'),
+(94, 111, 'galaxy_note_10_plus_den_2.png'),
+(95, 111, 'galaxy_note_10_plus_do_3.png'),
+(96, 111, 'galaxy_note_10_plus_gradian_3.png'),
+(97, 111, 'galaxy_note_10_plus_hong_2.png'),
+(98, 111, 'galaxy_note_10_plus_xanh_2.png');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `khach_hang`
+--
+
+CREATE TABLE `khach_hang` (
+  `id_kh` int(11) NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mat_khau` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ho_ten` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `hinh_anh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `so_dien_thoai` int(11) DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dia_chi` int(255) DEFAULT NULL,
+  `vai_tro` int(1) NOT NULL DEFAULT 0 COMMENT '0 là tài khoản khách hàng ,1 là quản trị viên'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `khach_hang`
+--
+
+INSERT INTO `khach_hang` (`id_kh`, `username`, `mat_khau`, `ho_ten`, `hinh_anh`, `so_dien_thoai`, `email`, `dia_chi`, `vai_tro`) VALUES
+(13, 'longdv', '12345678', 'Long Đoàn', NULL, NULL, NULL, NULL, 1),
+(14, 'thangpham', '12345678', 'Thắng Phạm', NULL, NULL, NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `mau_sac_phone`
+--
+
+CREATE TABLE `mau_sac_phone` (
+  `id_ms_phone` int(11) NOT NULL,
+  `id_sp` int(11) NOT NULL,
+  `ten_mau` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `hinh_anh` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `mau_sac_phone`
+--
+
+INSERT INTO `mau_sac_phone` (`id_ms_phone`, `id_sp`, `ten_mau`, `hinh_anh`) VALUES
+(121, 103, 'Vàng', '1832599755.jpg'),
+(122, 103, '', ''),
+(123, 108, 'Trắng', '101958767.png'),
+(124, 108, 'Xanh', '600_iphone_12_pro_max_xanh_1.png'),
+(125, 108, 'Đen ', '600_iphone_12_pro_max_xam_1.png'),
+(126, 108, 'Vàng', '600_iphone_12_pro_max_vang_1.png'),
+(127, 109, 'Trắng', '1126825242.png'),
+(128, 109, 'Hồng', '600_iphone_13_hong_3.png'),
+(129, 109, 'Đỏ', '600_iphone_13_do_3.png'),
+(130, 109, 'Đen bóng ', '600_iphone_13_den_dem_muon_3.png'),
+(131, 109, 'Xanh dương', '600_iphone_13_xanh_duong_3.png'),
+(132, 110, 'Tím', '1307321390.png'),
+(133, 110, '', ''),
+(134, 111, 'Navy', '943036231.png'),
+(135, 111, 'Hồng', 'galaxy_note_10_plus_hong_2.png'),
+(136, 111, 'Đỏ', 'galaxy_note_10_plus_do_3.png'),
+(137, 111, 'Trắng', '600_galaxy_note_10_plus_trang_2.png'),
+(138, 111, 'Đen ', '600_galaxy_note_10_plus_den_2.png');
 
 -- --------------------------------------------------------
 
@@ -45,12 +326,130 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`id_sp`, `id_dm_pro`, `id_sub_dm_pro`, `ten_sp`, `hinh_anh`, `don_gia`, `so_luong`, `ngay_nhap`, `mo_ta`, `so_luot_xem`) VALUES
-(67, 48, 48, 'Tai nghe có dây choàng đầu có mic i.value T-139', '1546566852.jpg', 449000, 11, '2021-11-19', '<h2>Đặc điểm nổi bật</h2>\r\n\r\n<p><strong>L&agrave; sản phẩm c&oacute; gi&aacute; b&aacute;n hợp l&yacute; vừa t&uacute;i tiền,&nbsp;<a href=\"https://fptshop.com.vn/phu-kien/tai-nghe-co-day-choang-dau-co-mic-ivalue-t-139\">tai nghe chụp tai c&oacute; d&acirc;y c&oacute; mic i.value T-139</a>&nbsp;sẽ g&acirc;y bất ngờ cho người d&ugrave;ng ngay trong lần sử dụng đầu ti&ecirc;n bởi trải nghiệm tuyệt vời m&agrave; n&oacute; đem lại. Từ cảm gi&aacute;c đeo thoải m&aacute;i tr&ecirc;n tai cho tới chất lượng &acirc;m thanh thể hiện, T-139 đều cho thấy gi&aacute; trị vượt trội ngo&agrave;i mong đợi.</strong></p>\r\n\r\n<h3><img alt=\"Mô tả sản phẩm tai nghe có dây choàng đầu có mic i.value T-139 1\" src=\"http://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/AnhNQ/1310/Mo-ta-san-pham-tai-nghe-co-day-choang-dau-co-mic-i-value-t-139-1.jpg\" /></h3>\r\n\r\n<h3><strong>Thiết kế hiện đại n&oacute;i l&ecirc;n phong c&aacute;ch chủ nh&acirc;n</strong></h3>\r\n\r\n<p>Với mong muốn tạo n&ecirc;n một sản phẩm tai nghe chất lượng cao, gi&aacute; b&aacute;n phải chăng để phục vụ cho c&aacute;c kh&aacute;ch h&agrave;ng trẻ tuổi, i.value đ&atilde; mang tới cho T-139 diện mạo hết sức đẹp mắt với thiết kế hiện đại năng động. Nh&agrave; sản xuất đ&atilde; kh&eacute;o l&eacute;o sử dụng m&agrave;u đen chủ đạo kết hợp với những n&eacute;t nhấn nh&aacute; m&agrave;u đỏ để x&acirc;y dựng phong c&aacute;ch c&aacute; t&iacute;nh nhưng vẫn thanh lịch cho sản phẩm. Ph&ugrave; hợp với đối tượng kh&aacute;ch h&agrave;ng năng động v&agrave; c&aacute; t&iacute;nh.</p>\r\n\r\n<p><img alt=\"Thiết kế hiện đại nói lên phong cách chủ nhân 1\" src=\"http://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/AnhNQ/1310/Mo-ta-san-pham-tai-nghe-co-day-choang-dau-co-mic-i-value-t-139-3.jpg\" /></p>\r\n\r\n<h3><strong>K&iacute;ch cỡ gọn g&agrave;ng với đệm tai &ecirc;m &aacute;i</strong></h3>\r\n\r\n<p>Khi m&agrave; c&aacute;c c&ocirc;ng cụ giải tr&iacute; như phim, nhạc v&agrave; game trực tuyến ng&agrave;y c&agrave;ng ph&aacute;t triển mạnh mẽ, ch&uacute;ng ta c&oacute; nhu cầu sử dụng tai nghe nhiều hơn trong ng&agrave;y. Hiểu được điều đ&oacute;, nh&agrave; sản xuất đ&atilde; nghi&ecirc;n cứu để bổ sung th&ecirc;m chất liệu đệm silicon v&agrave;o cấu tạo của chiếc tai nghe tại những bộ phận tiếp x&uacute;c trực tiếp như quai đeo v&agrave; chụp tai, từ đ&oacute; giảm thiểu tối đa cảm gi&aacute;c kh&oacute; chịu khi trải nghiệm trong nhiều giờ li&ecirc;n tục. Ngo&agrave;i ra, hai b&ecirc;n quai đeo cũng c&oacute; thể nới rộng hoặc r&uacute;t gọn để ph&ugrave; hợp với k&iacute;ch cỡ kh&aacute;c nhau của mỗi người.</p>\r\n\r\n<p><img alt=\"Kích cỡ gọn gàng với đệm tai êm ái 1\" src=\"http://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/AnhNQ/1310/Mo-ta-san-pham-tai-nghe-co-day-choang-dau-co-mic-i-value-t-139-4.jpg\" /></p>\r\n\r\n<h3><strong>Thoải m&aacute;i trải nghiệm &acirc;m nhạc bất cứ nơi đ&acirc;u</strong></h3>\r\n\r\n<p>Tương t&aacute;c th&ocirc;ng qua jack 3.5 mm, i.value T-139 c&oacute; thể kết hợp với mọi thiết bị điện tử được hỗ trợ phương thức kết nối nối n&agrave;y. Nhờ vậy, bạn c&oacute; thể sử dụng chiếc tai nghe T-139 với cả&nbsp;<a href=\"https://fptshop.com.vn/may-tinh-bang\">m&aacute;y t&iacute;nh bảng</a>, desktop,&nbsp;<a href=\"https://fptshop.com.vn/may-tinh-xach-tay\">laptop</a>&nbsp;hay&nbsp;<a href=\"https://fptshop.com.vn/dien-thoai\">smartphone</a>. D&acirc;y nối được thiết kế với độ d&agrave;i hợp l&yacute; cho ph&eacute;p chủ nh&acirc;n c&oacute; thể lựa chọn tư thế ngồi thoải m&aacute;i nhất, tr&aacute;nh g&acirc;y n&ecirc;n cảm gi&aacute;c vướng v&iacute;u khi trải nghiệm.</p>\r\n\r\n<p><img alt=\"Đưa bạn tới không gian âm nhạc rộn ràng 1\" src=\"http://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/AnhNQ/1310/Mo-ta-san-pham-tai-nghe-co-day-choang-dau-co-mic-i-value-t-139-2.jpg\" /></p>\r\n\r\n<h3><strong>Đưa bạn tới kh&ocirc;ng gian &acirc;m nhạc rộn r&agrave;ng</strong></h3>\r\n\r\n<p>Với lợi thế t&aacute;i hiện &acirc;m thanh trong trẻo v&agrave; r&otilde; r&agrave;ng, i.value T-139 dễ d&agrave;ng đưa người d&ugrave;ng v&agrave;o kh&ocirc;ng gian giải tr&iacute; s&ocirc;i động. Trải nghiệm thực tế cho thấy T-139 hết sức ph&ugrave; hợp với những thể loại nhạc s&ocirc;i động như EDM hay nhạc điện tử. D&ugrave; vậy, nếu bạn muốn thay đổi cảm x&uacute;c th&ocirc;ng qua c&aacute;c bản nhạc kh&ocirc;ng lời s&acirc;u lắng hay d&ograve;ng nhạc trữ t&igrave;nh th&igrave; sản phẩm vẫn thể hiện tốt v&agrave; đ&aacute;p ứng trọn vẹn nhu cầu.</p>\r\n\r\n<p><img alt=\"i.value T-139, chiếc tai nghe lý tưởng trong tầm giá 1\" src=\"http://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/AnhNQ/1310/Mo-ta-san-pham-tai-nghe-co-day-choang-dau-co-mic-i-value-t-139-5.jpg\" /></p>\r\n\r\n<h3><strong>i.value T-139, chiếc tai nghe l&yacute; tưởng trong tầm gi&aacute;</strong></h3>\r\n\r\n<p>Những ưu điểm vượt trội như thiết kế trẻ trung phong c&aacute;ch, đem tới cảm gi&aacute;c tr&ecirc;n tai tốt v&agrave; t&aacute;i hiện &acirc;m thanh trung thực, i.value T-139 l&agrave;&nbsp;<a href=\"https://fptshop.com.vn/phu-kien/tai-nghe\">chiếc tai nghe</a>&nbsp;kh&ocirc;ng c&oacute; đối thủ trong c&ugrave;ng tầm gi&aacute;. Nếu bạn l&agrave; người đang t&igrave;m kiếm một trải nghiệm &acirc;m thanh tốt với gi&aacute; b&aacute;n phải chăng th&igrave; chớ n&ecirc;n bỏ qua i.value T-139 nh&eacute;.</p>\r\n\r\n<p>&nbsp;</p>\r\n', 0),
-(68, 47, 49, 'Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)', '690107965.jpg', 7480000, 22, '2021-11-19', '<p>&nbsp;</p>\r\n\r\n<p><img src=\"https://www.xtsmart.vn/vnt_upload/product/05_2021/3_10.jpg\" /></p>\r\n\r\n<h2>Đ&aacute;nh gi&aacute; chi tiết Samsung Galaxy Note 9 128GB 99% likenew (Mỹ)</h2>\r\n\r\n<h2><strong><a href=\"https://www.xtsmart.vn/samsung-galaxy-note-9-128gb-99-likenew-my-\" target=\"_blank\">Samsung Galaxy Note 9 128GB cũ Mỹ</a></strong>&nbsp;d&ugrave; kh&ocirc;ng qu&aacute; nổi bật về thiết kế nhưng &ldquo;nội c&ocirc;ng&rdquo; của flagship l&agrave; mơ ước của nhiều đối thủ. C&oacute; thể thấy tr&ecirc;n d&ograve;ng sản phẩm n&agrave;y, Samsung đ&atilde; tập trung v&agrave;o việc ho&agrave;n thiện c&aacute;c t&iacute;nh năng đ&atilde; c&oacute; từ thế hệ trước. Cụ thể ra sao? C&ugrave;ng theo d&otilde;i b&agrave;i viết dưới đ&acirc;y để c&oacute; c&acirc;u trả lời nh&eacute;!</h2>\r\n\r\n<h3><strong>Kiểu d&aacute;ng sang trọng quen thuộc</strong></h3>\r\n\r\n<p>Thoạt nh&igrave;n, thi&ecirc;́t k&ecirc;́ Galaxy Note 9 128GB cũ Mỹ gần như kh&ocirc;ng thay đổi so với th&ecirc;́ h&ecirc;̣ tiền nhiệm. Ngoại trừ việc nh&agrave; sản xuất đ&atilde; đưa cảm biến v&acirc;n tay xuống dưới cụm camera k&eacute;p nhằm gi&uacute;p người d&ugrave;ng dễ thao t&aacute;c hơn, kh&ocirc;ng bị chạm nhầm ống k&iacute;nh như tr&ecirc;n Galaxy Note 8.</p>\r\n\r\n<p><img alt=\"Galaxy Note 9 128GB cũ gần như không thay đổi so với Note 8 tiền nhiệm\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/thiet-ke-man-hinh-note-9-128gb-cu-my-xtsmart.jpg\" /></p>\r\n\r\n<p>C&ograve;n lại, m&aacute;y vẫn sử dụng chất liệu kim loại nguy&ecirc;n khối với hai mặt được phủ k&iacute;nh bảo vệ b&oacute;ng lo&aacute;ng v&agrave; đảm bảo an to&agrave;n trong qu&aacute; tr&igrave;nh sử dụng. C&aacute;c g&oacute;c cạnh&nbsp;được bo tr&ograve;n tỉ mỉ, chăm ch&uacute;t. Song song đ&oacute;, Galaxy Note 9 cũ Mỹ c&ograve;n sở hữu 4 m&agrave;u sắc trẻ trung, bao gồm Đen Huyền B&iacute;, Đồng &Aacute;nh Kim, T&iacute;m Oải Hương, Xanh Đại Dương. Tất cả l&agrave;m n&ecirc;n một tổng thể Note 9 ho&agrave;n hảo, thu h&uacute;t.</p>\r\n\r\n<h3><strong>M&agrave;n h&igrave;nh ch&acirc;n thật, sống động</strong></h3>\r\n\r\n<p>Samsung Galaxy Note 9 128GB cũ Mỹ sở hữu&nbsp;m&agrave;n h&igrave;nh Super AMOLED c&oacute;&nbsp;k&iacute;ch thước l&ecirc;n đến&nbsp;6.4 inch,&nbsp;độ ph&acirc;n giải 2.960 x 1.440 pixel v&agrave; theo&nbsp;tỷ lệ 18.5:9. Tương tự Note 8 v&agrave; Galayx S9, m&agrave;n h&igrave;nh của Note 9 cũ Mỹ cũng được trang bị khả năng hiển thị HDR theo chuẩn HDR10, hiển thị dải s&aacute;ng rộng hơn v&agrave; m&agrave;u sắc rực rỡ hơn so với điện thoại kh&ocirc;ng hỗ trợ.</p>\r\n\r\n<p><img alt=\"Samsung Galaxy Note 9 128GB cũ Mỹ sở hữu màn hình Super AMOLED có kích thước lên đến 6.4 inch\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/man-hinh-note-9-128gb-cu-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Với những trang bị tr&ecirc;n, Galaxy Note 9 128GB cũ kh&ocirc;ng l&agrave;m người d&ugrave;ng thất vọng bởi m&agrave;n h&igrave;nh s&aacute;ng, ch&acirc;n thật, m&agrave;u sắc rực rỡ, chi tiết, g&oacute;c nh&igrave;n rộng, độ đen rất s&acirc;u v&agrave; c&oacute; thể nh&igrave;n tốt cả khi d&ugrave;ng ngo&agrave;i trời nắng. T&oacute;m lại, m&agrave;n h&igrave;nh tr&ecirc;n smartphone cao cấp vẫn l&agrave; điểm &ocirc;ng lớn Samsung trội hơn c&aacute;c h&atilde;ng Android kh&aacute;c tr&ecirc;n thị trường.</p>\r\n\r\n<h3><strong>Hiệu năng vượt trội</strong></h3>\r\n\r\n<p>C&acirc;́u hình&nbsp;Galaxy Note 9 128GB cũ Mỹ được trang bị chip Snapdragon 845, bộ nhớ lưu trữ RAM/ ROM l&ecirc;n đến 6GB/ 128GB v&agrave; được hỗ trợ mở rộng kh&ocirc;ng gian lưu trữ th&ecirc;m 512GB qua khe cắm thẻ nhớ microSD. C&ugrave;ng với đ&oacute;, h&atilde;ng đ&atilde; tập trung n&acirc;ng cấp về giao diện đồ họa v&agrave; tương t&aacute;c th&ocirc;ng minh nhiều chạm, gi&uacute;p sản phẩm xử l&yacute; th&agrave;nh c&ocirc;ng mọi t&aacute;c vụ.</p>\r\n\r\n<p><img alt=\"Note 9 mang đến trải nghiệm rất mượt mà, phản hồi nhanh và không có bất kỳ hiện tượng giật lag hay đứng máy\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/hieu-nang-note-9-128gb-cu-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Tr&ecirc;n thực tế sử dụng, mua Galaxy Note 9 128GB cũ Mỹ sẽ mang đến trải nghiệm rất mượt m&agrave;, phản hồi nhanh v&agrave; kh&ocirc;ng c&oacute; bất kỳ hiện tượng giật lag hay đứng m&aacute;y n&agrave;o xảy ra. C&aacute;c ứng dụng mở nhanh v&agrave; chuyển đổi giữa c&aacute;c ứng dụng hay m&agrave;n h&igrave;nh diễn ra tức th&igrave;, điều n&agrave;y l&agrave; một điểm cộng kh&aacute; lớn cho một thiết bị di động như Galaxy Note 9.</p>\r\n\r\n<h3><strong>Camera k&eacute;p chuy&ecirc;n nghiệp</strong></h3>\r\n\r\n<p>Tương tự như người anh em Galaxy S9 Plus, camera Samsung Note 9 128GB cũ bản Mỹ cũng được trang bị camera k&eacute;p 12MP ở mặt sau, gồm một camera g&oacute;c rộng c&oacute; thể thay đổi giữa 2 khẩu độ f/1.5 v&agrave; f/2.4 c&ugrave;ng với một camera tele để zoom 2X, đồng thời&nbsp;hỗ trợ t&iacute;nh năng chụp x&oacute;a ph&ocirc;ng. Camera trước của m&aacute;y c&oacute; độ ph&acirc;n giải 8MP khẩu độ f/1.7.</p>\r\n\r\n<p><img alt=\"Samsung đã bổ sung thêm trí tuệ nhân tạo AI cho chức năng nhận diện cảnh chụp để tự động điều chỉnh thiết lập phù hợp cho camera.\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/camera-man-hinh-note-9-128gb-cu-my-xtsmart.jpg\" /></p>\r\n\r\n<p>B&ecirc;n cạnh đ&oacute;, Samsung đ&atilde; bổ sung th&ecirc;m tr&iacute; tuệ nh&acirc;n tạo AI cho chức năng nhận diện cảnh chụp để tự động điều chỉnh thiết lập ph&ugrave; hợp cho camera. Nh&agrave; sản xuất cũng cho biết th&ecirc;m, Note 9 cũ Mỹ c&oacute; thể tự động nhận diện được 20 bối cảnh chụp kh&aacute;c nhau như thức ăn, hoa, động vật, phong cảnh, c&acirc;y xanh, trời, th&aacute;c nước, đường phố, ban đ&ecirc;m...</p>\r\n\r\n<h3><strong>Dung lượng pin &ldquo;khủng&rdquo;</strong></h3>\r\n\r\n<p>Lớn hơn 20% dung lượng so với tiền nhiệm, vi&ecirc;n pin 4.000 mAh tr&ecirc;n Galaxy Note 9 128GB cũ Mỹ mang đến khả năng chơi game suốt 15 giờ liền v&agrave; chạy video 1080p trong hơn 20 giờ. C&oacute; thể thấy thời lượng trải nghiệm ch&iacute;nh l&agrave; một bước tiến lớn của c&ocirc;ng ty điện tử xứ kim chi n&agrave;y.</p>\r\n\r\n<h3><strong>B&uacute;t S-pen thao t&aacute;c từ xa</strong></h3>\r\n\r\n<p>S-pen kh&ocirc;ng chỉ l&agrave; một phụ kiện đơn thuần m&agrave; đ&acirc;y c&ograve;n l&agrave; đặc trưng nổi bật của d&ograve;ng Samsung Galaxy Note. Chiếc b&uacute;t nằm ở cạnh dưới b&ecirc;n phải của m&aacute;y, khi bạn lấy chiếc b&uacute;t ra c&oacute; thể k&iacute;ch hoạt rất nhiều c&aacute;c t&iacute;nh năng độc quyền, c&oacute; thể kể đến như: nhận diện văn bản viết tay th&agrave;nh văn bản chuẩn, tr&igrave;nh chiếu, bật camera,&hellip;</p>\r\n\r\n<p><img alt=\"dòng S-Pen trên Note 9 còn được hỗ trợ công nghệ Bluetooth Low Energy\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/s-pen-man-hinh-note-9-128gb-cu-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Ngo&agrave;i ra, d&ograve;ng S-Pen tr&ecirc;n Galaxy Note 9 128GB cũ giá rẻ c&ograve;n được hỗ trợ c&ocirc;ng nghệ Bluetooth Low Energy, c&oacute; nghĩa l&agrave; người d&ugrave;ng c&oacute; thể sử dụng n&uacute;t tr&ecirc;n b&uacute;t để chụp ảnh cũng như play/pause từ xa. Việc d&ugrave;ng b&uacute;t để điều khiển như vậy thật sự hữu &iacute;ch trong thực tế, chẳng hạn như tự chụp ảnh m&agrave; kh&ocirc;ng cần sự hỗ trợ từ người xung quanh.</p>\r\n\r\n<h3><strong>Mua Galaxy Note 9 128GB cũ Mỹ tại XTsmart</strong></h3>\r\n\r\n<p>Giá bán Galaxy Note 9 128GB cũ Mỹ tại XTsmart lu&ocirc;n đảm bảo t&ocirc;́t nh&acirc;́t thị trường. Ch&acirc;́t lượng sản ph&acirc;̉m được đảm bảo tuy&ecirc;̣t đ&ocirc;́i th&ocirc;ng qua chính sách bảo hành dài hạn và đ&ocirc;̉i mới trong 30 ngày. Do đó khách hàng hoàn toàn có th&ecirc;̉ y&ecirc;n t&acirc;m khi mua sản ph&acirc;̉m tại đ&acirc;y, đ&ocirc;̀ng thời cửa hàng còn thường xuy&ecirc;n mang đ&ecirc;́n nhi&ecirc;̀u chương trình khuy&ecirc;́n mãi h&acirc;́p d&acirc;̃n, h&ocirc;̃ trợ trả góp 0%, thu cũ l&ecirc;n đời kh&ocirc;ng bù ti&ecirc;̀n...</p>\r\n', 0);
+(103, 47, 47, 'iPhone 7 Plus 256GB Quốc Tế (Likenew)', '1832599755.jpg', 5000000, 21, '2021-11-22', '<h2>Đánh giá chi tiết iPhone 7 Plus 256GB Quốc Tế (Likenew)</h2>\r\n\r\n<h2><strong><a href=\"https://www.xtsmart.vn/iphone-7-plus-256gb-quoc-te-likenew-\" target=\"_blank\">iPhone 7 Plus 256GB cũ</a> là một trong những điện thoại đáng mua nhất hiện nay. Bởi thiết bị không chỉ mang đến mức giá hấp dẫn cho người dùng mà còn đảm bảo hiệu năng ổn định, thiết kế sang trọng bền bỉ. </strong></h2>\r\n\r\n<h3><strong>Thiết kế truyền thống, tinh tế</strong></h3>\r\n\r\n<p>Thiết kế iPhone 7 Plus 256GB cũ mang đến sự chắc chắn và bền bỉ cao cho người dùng. Apple đã sử dụng chất liệu cao cấp dành cho flagship của mình với khung kim loại nguyên khối kết hợp với mặt kính Ion-strengthened Glass ở mặt trước. Điều này giúp mặt trước có khả năng chống va đập và hạn chế trầy xước tốt hơn.</p>\r\n\r\n<p><img alt=\"Thiết kế iPhone 7 Plus 256GB cũ mang đến sự chắc chắn\" src=\"https://www.xtsmart.vn/vnt_upload/product/08_2020/thiet-ke-iphone-7-plus-256gb-cu-xtsmart.jpg\" /></p>\r\n\r\n<p>Bên cạnh đó Apple cũng đã tích hợp công nghệ kháng nước IP 67 cho iPhone 7 Plus. Với tính năng này máy có thể sống sót tốt ở độ sâu 1m trong thời gian 30 phút. Các góc cạnh trên máy được bo cong mềm mại mang đến cảm giác cầm nắm tốt hơn, đồng thời mặt lưng máy cũng được Apple tinh chỉnh thông thoáng hơn khi di chuyển dải ăng-ten lên 2 cạnh viền trên và dưới.</p>\r\n\r\n<p>Trên điện thoại iPhone 7 Plus 256GB cũ cũng đã loại bỏ jack cắm tai nghe 3.5mm và  phím home ảo được thiết kế dạng button. Đây là một trong những tính năng khiến người dùng tiếc nuối. Mua iPhone 7 Plus 256GB cũ bạn sẽ được trải nghiệm màn hình lớn với kích thước 5.5 inch, trên tấm nền IPS LCD với độ phân giải 1080x1920 Pixels, tỉ lệ 16:9.</p>\r\n\r\n<p><img alt=\"Mua iPhone 7 Plus 256GB được trang bị màn hình 5.5 inch\" src=\"https://www.xtsmart.vn/vnt_upload/news/08_2020/man-hinh-iphone-7-plus-256gb-cu-xtsmart.jpg\" /></p>\r\n\r\n<p>Chất lượng hiển thị được đánh giá cao, mang lại màu sắc rực rỡ, độ chi tiết cao và độ tương phản đạt 1398:1. Thậm chí điện thoại hoàn toàn có khả năng hiển thị tốt ở ngoài trời nhờ độ sáng tối đa lên đến 600 nits.</p>\r\n\r\n<h3><strong>Cấu hình là điều mà Apple tự hào</strong></h3>\r\n\r\n<p>Hiệu năng trên điện thoại là một trong những thế mạnh giúp Apple có thể đánh bại các đối thủ hiện nay. Trải qua bao nhiêu năm đi nữa thì hiệu suất hoạt động trên các model iPhone vẫn rất ổn định. Cấu hình iPhone 7 256GB cũ được tích hợp chipset Apple A10 Fusion 4 lõi sản xuất trên tiến trình 16nm.</p>\r\n\r\n<p><img alt=\"Cấu hình iPhone 7 256GB cũ được tích hợp chipset Apple A10 Fusion\" src=\"https://www.xtsmart.vn/vnt_upload/product/08_2020/cau-hinh-iphone-7-plus-256gb-cu-xtsmart.jpg\" /></p>\r\n\r\n<p>Với con chip mạnh mẽ này mang đến tốc độ xử lý các tác vụ hàng ngày một cách nhanh nhẹn và mượt mà. Chưa hết khả năng đa nhiệm cũng được đánh giá cao nhờ sự hỗ trợ của bộ nhớ lưu trữ tương đối lớn với RAM 3GB và ROM 256GB. Điện thoại hoàn toàn dư sức đáp ứng tốt các tựa game đồ họa nặng nhất hiện nay nhờ GPU PowerVR Series7XT Plus 6 lõi.</p>\r\n\r\n<h3><strong>Điện thoại đầu tiên sở hữu camera kép</strong></h3>\r\n\r\n<p>Camera iPhone 7 Plus 256GB được trang bị 2 ống kính đặt góc trên bên trái điện thoại. Hệ thống camera có cùng độ phân giải 12MP mang đến khả năng chụp ảnh ấn tượng. Bên cạnh đó Apple cũng đã bổ sung thêm một số tính năng mới giúp chất lượng hình ảnh được hoàn thiện hơn như: Lấy nét tự động, chống rung quang học OIS, zoom quang học 2x...</p>\r\n\r\n<p><img alt=\"Camera iPhone 7 Plus 256GB được trang bị 2 ống kính \" src=\"https://www.xtsmart.vn/vnt_upload/product/08_2020/camera-iphone-7-plus-256gb-cu-xtsmart.jpg\" /></p>\r\n\r\n<p>So với thế hệ tiền nhiệm thì camera trên iPhone 7 Plus 256GB cũ mang đến chất lượng chụp ảnh đêm tốt hơn nhờ sự hỗ trợ của đèn LED, hình ảnh ít nhiễu và dễ dàng kiểm soát hơn. Trong khi đó camera trước máy có độ phân giải 7MP cũng được hỗ trợ nhiều tính năng hấp dẫn nhằm phục vụ tốt nhu cầu chụp ảnh tự sướng.</p>\r\n\r\n<h3><strong>Thời lượng pin được cải thiện</strong></h3>\r\n\r\n<p>Dung lượng pin 2.900 mAh trên iPhone 7 Plus 256GB cũ được xem là một cải thiện lớn so với thế hệ iPhone cũ. Cùng với đó kết hợp với chipset tiết kiệm điện năng đã mang đến thời lượng sử dụng tốt hơn trên iPhone 7 Plus, máy có thể đáp ứng hơn 1 ngày đối với người dùng sử dụng ở cường độ bình thường. </p>\r\n\r\n<p><img alt=\"Thời lượng pin trên iPhone 7 256GB cũ được cải thiện\" src=\"https://www.xtsmart.vn/vnt_upload/news/08_2020/thoi-luong-pin-iphone-7-plus-256gb-cu-xtsmart.jpg\" /></p>\r\n\r\n<h3><strong>Mua iPhone 7 Plus 256GB cũ tại XTsmart</strong></h3>\r\n\r\n<p>Mua iPhone 7 Plus 256GB cũ tại XTsmart hoàn toàn yên tâm về chất lượng thông qua các chính sách bảo hành và hậu mãi cực tốt. Đối với máy cũ sẽ được bảo hành 6 tháng, bảo hành 1 đổi 1 trong 30 ngày. Bên cạnh đó, tại cửa hàng còn hỗ trợ mua iPhone 7 Plus 256GB cũ trả góp 0%, thu cũ lên đời máy mới không bù tiền...</p>\r\n', 4),
+(104, 48, 48, 'Tai nghe có dây choàng đầu có mic i.value T-139', '1054568922.jpg', 239000, 22, '2021-11-22', '', 1),
+(108, 47, 47, 'iPhone 12 Pro 256GB', '101958767.png', 27400000, 21, '2021-11-22', '<h2>Đặc điểm nổi bật của&nbsp;iPhone 12 Pro</h2>\r\n\r\n<p><img alt=\"iPhone 12 Pro 256GB\" src=\"https://images.fpt.shop/unsafe/fit-in/665x374/filters:quality(100):fill(white)/fptshop.com.vn/Uploads/Originals/2021/5/24/637574720778410065_iphone-12-pro-dung-luong-128gb.png\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Đ&aacute;nh gi&aacute; chi tiết&nbsp;iPhone 12 Pro</h2>\r\n\r\n<p><strong>Đến với đẳng cấp Pro đ&iacute;ch thực, nơi m&agrave; những điều đặc biệt đang chờ đ&oacute;n bạn tr&ecirc;n&nbsp;<a href=\"https://fptshop.com.vn/dien-thoai/iphone-12-pro\">iPhone 12 Pro</a>. Từ hệ thống camera Pro chụp thiếu s&aacute;ng cực đỉnh, kết nối 5G si&ecirc;u tốc cho đến bộ vi xử l&yacute; A14 Bionic nhanh nhất thế giới smartphone, vẫn c&ograve;n nhiều bất ngờ kh&aacute;c để bạn kh&aacute;m ph&aacute;.</strong></p>\r\n\r\n<p><strong><img alt=\"Điện thoại iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-1.jpg\" /></strong></p>\r\n\r\n<h3><strong>Viền m&agrave;n h&igrave;nh mỏng hơn, m&agrave;n h&igrave;nh lớn hơn</strong></h3>\r\n\r\n<p>Nhờ viền m&agrave;n h&igrave;nh mỏng hơn, iPhone 12 Pro đ&atilde; c&oacute; thể trang bị một m&agrave;n h&igrave;nh lớn hơn, nhưng k&iacute;ch thước vẫn nhỏ gọn tương tự&nbsp;<a href=\"https://fptshop.com.vn/dien-thoai/iphone-11-pro-64gb\">iPhone 11 Pro</a>. Giờ đ&acirc;y bạn sẽ c&oacute; m&agrave;n h&igrave;nh lớn tới 6,1 inch, để trải nghiệm được nhiều hơn.</p>\r\n\r\n<p>Ấn tượng hơn nữa, m&agrave;n h&igrave;nh iPhone 12 Pro si&ecirc;u sắc n&eacute;t với c&ocirc;ng nghệ Super Retina XDR. Tấm nền OLED mang tới h&igrave;nh ảnh trong trẻo, m&agrave;u sắc ch&iacute;nh x&aacute;c, độ tương phản l&ecirc;n tới 2.000.000:1, độ s&aacute;ng tối đa 1200 nits. C&aacute;c c&ocirc;ng nghệ kh&aacute;c như HDR hay True Tone khiến cho chất lượng hiển thị của iPhone 12 Pro th&ecirc;m phần ho&agrave;n hảo.</p>\r\n\r\n<p><img alt=\"màn hình iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-10.jpg\" /></p>\r\n\r\n<h3><strong>Mặt k&iacute;nh m&agrave;n h&igrave;nh bền nhất thế giới smartphone</strong></h3>\r\n\r\n<p>Apple đ&atilde; đưa c&ocirc;ng nghệ bảo vệ m&agrave;n h&igrave;nh phủ gốm Ceramic Shield l&ecirc;n iPhone 12 Pro. C&aacute;c tinh thể gốm nano cứng hơn cả kim loại v&agrave; k&iacute;nh được đưa v&agrave;o tấm k&iacute;nh m&agrave;n h&igrave;nh, mang tới độ bền cũng như khả năng chống xước tuyệt vời. Kết quả l&agrave; m&agrave;n h&igrave;nh iPhone 12 Pro sẽ bền hơn tới 4 lần trong thử nghiệm thả rơi. Nguy cơ bị vỡ m&agrave;n h&igrave;nh của bạn sẽ giảm đi rất nhiều với Ceramic Shield.</p>\r\n\r\n<p><img alt=\"mặt kính iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-3.jpg\" /></p>\r\n\r\n<h3><strong>T&aacute;c phẩm nghệ thuật đ&iacute;ch thực</strong></h3>\r\n\r\n<p>iPhone 12 Pro đ&atilde; đạt đến tầm tinh xảo thượng thừa trong thiết kế. Bạn sẽ c&oacute; một chiếc điện thoại viền th&eacute;p kh&ocirc;ng gỉ đặc biệt sang trọng v&agrave; cứng c&aacute;p. Phần viền th&eacute;p được l&agrave;m phẳng, vu&ocirc;ng vắn với những đường cắt kim cương s&aacute;ng b&oacute;ng tạo n&ecirc;n vẻ ngo&agrave;i cao cấp, xứng tầm t&aacute;c phẩm nghệ thuật.</p>\r\n\r\n<p>Sẽ c&oacute; 4 m&agrave;u sắc để bạn lựa chọn l&agrave; Bạc, X&aacute;m than ch&igrave;, V&agrave;ng v&agrave; Xanh đại dương. Cả 4 m&agrave;u sắc n&agrave;y đều rất đẳng cấp v&agrave; tạo phong th&aacute;i ri&ecirc;ng cho người d&ugrave;ng.</p>\r\n\r\n<p><img alt=\"thiết kế iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-2.jpg\" /></p>\r\n\r\n<h3><strong>Đ&aacute;nh bật nỗi lo v&agrave;o nước</strong></h3>\r\n\r\n<p>Chuẩn chống nước IP68 tr&ecirc;n iPhone 12 Pro mang tới khả năng chống nước h&agrave;ng đầu trong ng&agrave;nh smartphone. Bạn c&oacute; thể ng&acirc;m nước ở độ s&acirc;u l&ecirc;n đến 6m trong v&ograve;ng 30 ph&uacute;t m&agrave; kh&ocirc;ng ảnh hưởng g&igrave; đến điện thoại. Gần như to&agrave;n bộ mối nguy hại từ nước đều được miễn nhiễm bởi iPhone 12 Pro.</p>\r\n\r\n<p><img alt=\"chống nước iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-8.jpg\" /></p>\r\n\r\n<h3><strong>C&ocirc;ng nghệ&nbsp;5G si&ecirc;u&nbsp;tốc độ</strong></h3>\r\n\r\n<p>Kết nối 5G gi&uacute;p cho iPhone 12 Pro trở th&agrave;nh thiết bị ho&agrave;n hảo để v&agrave;o mạng. Giờ đ&acirc;y bạn c&oacute; thể tải xuống những tệp tin lớn, xem phim HDR chất lượng cao, chơi game online si&ecirc;u mượt, kh&ocirc;ng hề c&oacute; bất cứ hiện tượng lag giật nhỏ n&agrave;o. iPhone 12 Pro cũng l&agrave; chiếc điện thoại c&oacute; băng tần 5G lớn nhất hiện nay, mở ra một tương lai mới cho tốc độ Internet.</p>\r\n\r\n<p><img alt=\"5G iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-9.jpg\" /></p>\r\n\r\n<h3><strong>Hiệu năng đỉnh cao với Apple A14 Bionic</strong></h3>\r\n\r\n<p>Cho đến trước khi&nbsp;<a href=\"https://fptshop.com.vn/dien-thoai/iphone-12\">iPhone 12</a>, iPhone 12 Pro v&agrave;&nbsp;<a href=\"https://fptshop.com.vn/dien-thoai/iphone-12-pro-max\">iPhone 12 Pro Max</a>&nbsp;xuất hiện, Apple A13 Bionic của iPhone 11 Pro vẫn l&agrave; con chip mạnh nhất thế giới smartphone. Nhưng sự c&oacute; mặt của&nbsp;<a href=\"https://fptshop.com.vn/tin-tuc/danh-gia/tat-tan-tat-ve-chip-apple-a14-trai-tim-se-lam-nen-suc-manh-cho-iphone-12-121314\">Apple A14 Bionic</a>&nbsp;đ&iacute;ch thực l&agrave; một &ldquo;vụ nổ&rdquo; với loạt n&acirc;ng cấp v&agrave; c&ocirc;ng nghệ mới đ&aacute;ng gi&aacute;. Đ&acirc;y l&agrave; con chip sản xuất tr&ecirc;n tiến tr&igrave;nh 5nm đầu ti&ecirc;n, tăng tới 40% số lượng b&oacute;ng b&aacute;n dẫn, cho hiệu suất vượt trội v&agrave; thời lượng pin tuyệt vời.</p>\r\n\r\n<p>Hơn thế nữa, Apple A14 Bionic c&ograve;n t&iacute;ch hợp chip xử l&yacute; h&igrave;nh ảnh ISP mới, cho t&iacute;nh năng quay video Dolby Vision, t&iacute;nh năng m&agrave; nhiều m&aacute;y quay phim chuy&ecirc;n nghiệp c&ograve;n kh&ocirc;ng l&agrave;m được.</p>\r\n\r\n<p><img alt=\"vi xử lý iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-7.jpg\" /></p>\r\n\r\n<h3><strong>M&aacute;y qu&eacute;t LiDAR, tương lai của thực tế tăng cường AR</strong></h3>\r\n\r\n<p>LiDAR l&agrave; c&ocirc;ng nghệ đang được NASA sử dụng trong ng&agrave;nh h&agrave;ng kh&ocirc;ng vũ trụ. Với m&aacute;y qu&eacute;t LiDAR, iPhone 12 Pro c&oacute; thể đo khoảng thời gian &aacute;nh s&aacute;ng phản xạ lại từ c&aacute;c vật thể để tạo ra bản đồ chiều s&acirc;u của bất cứ vật thể n&agrave;o trong kh&ocirc;ng gian.</p>\r\n\r\n<p>Tốc độ cực nhanh v&agrave; ch&iacute;nh x&aacute;c gi&uacute;p bạn c&oacute; thể t&aacute;i hiện cả một khu rừng ngay trong ph&ograve;ng nhờ c&aacute;c ứng dụng AR. M&aacute;y qu&eacute;t LiDAR chuy&ecirc;n nghiệp sẽ mở ra tương lai của c&ocirc;ng nghệ thực tế tăng cường AR, xu hướng c&ocirc;ng nghệ ứng dụng sẽ rất phổ biến trong thời gian tới.</p>\r\n\r\n<p><img alt=\"LiDAR iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-6.jpg\" /></p>\r\n\r\n<h3><strong>Camera si&ecirc;u chụp đ&ecirc;m r&otilde; n&eacute;t như ban ng&agrave;y</strong></h3>\r\n\r\n<p>Chế độ chụp đ&ecirc;m Night Mode c&oacute; mặt tr&ecirc;n cả camera g&oacute;c rộng v&agrave; g&oacute;c si&ecirc;u rộng của iPhone 12 Pro, đồng thời loạt t&iacute;nh năng l&yacute; tưởng gi&uacute;p cho m&aacute;y c&oacute; khả năng chụp ảnh thiếu s&aacute;ng cực đỉnh. Khẩu độ lớn f/1.6 gi&uacute;p thu được &aacute;nh s&aacute;ng nhiều hơn 27%; thấu k&iacute;nh 7 th&agrave;nh phần mới cho độ sắc n&eacute;t ho&agrave;n hảo; t&iacute;nh năng chống rung quang học OIS được cải tiến, đồng thời sự trợ gi&uacute;p của m&aacute;y qu&eacute;t LiDAR gi&uacute;p tăng tốc độ lấy n&eacute;t tới 6 lần trong điều kiện thiếu s&aacute;ng.</p>\r\n\r\n<p>Kết quả l&agrave; ảnh thiếu s&aacute;ng tr&ecirc;n iPhone 12 Pro tốt hơn tới 87%, cho bạn chụp những bức ảnh ban đ&ecirc;m v&ocirc; c&ugrave;ng r&otilde; n&eacute;t, m&agrave;u sắc ch&iacute;nh x&aacute;c, &aacute;nh s&aacute;ng tuyệt vời v&agrave; &iacute;t nhiễu. Thậm ch&iacute; bạn c&ograve;n c&oacute; thể chụp ch&acirc;n dung trong đ&ecirc;m tối với hiệu ứng l&agrave;m mờ đầy nghệ thuật, với hậu cảnh l&agrave; những &aacute;nh đ&egrave;n lung linh huyền ảo.</p>\r\n\r\n<p><img alt=\"chụp đêm iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-20.jpg\" /></p>\r\n\r\n<h3><strong>Chụp ảnh sắc n&eacute;t trong mọi ho&agrave;n cảnh</strong></h3>\r\n\r\n<p>Tr&iacute; tuệ nh&acirc;n tạo AI cũng đ&oacute;ng g&oacute;p vai tr&ograve; quan trọng để iPhone 12 Pro chụp ảnh xuất sắc trong mọi ho&agrave;n cảnh. T&iacute;nh năng Smart HDR 3 sẽ tự động tinh chỉnh c&aacute;c điểm nổi bật, hiệu ứng b&oacute;ng đổ v&agrave; đường viền trong bức ảnh để bạn chụp ảnh r&otilde; n&eacute;t trong điều kiện &aacute;nh s&aacute;ng phức tạp. D&ugrave; chủ thể l&agrave; khu&ocirc;n mặt hay cảnh vật, Smart HDR 3 đều đủ th&ocirc;ng minh để nhận dạng v&agrave; tạo n&ecirc;n bức ảnh ch&acirc;n thực, c&oacute; hồn nhất.</p>\r\n\r\n<p><img alt=\"camera iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-18(1).jpg\" /></p>\r\n\r\n<h3><strong>Quay video 4K Dolby Vision chuy&ecirc;n nghiệp</strong></h3>\r\n\r\n<p>Với phần cứng camera mạnh mẽ v&agrave; chip xử l&yacute; A14 Bionic cực nhanh, lần đầu ti&ecirc;n iPhone 12 Pro tr&igrave;nh l&agrave;ng t&iacute;nh năng quay video 4K Dolby Vision l&ecirc;n tới 60fps, điều m&agrave; nhiều m&aacute;y quay chuy&ecirc;n nghiệp kh&ocirc;ng l&agrave;m được chứ chưa n&oacute;i đến những chiếc&nbsp;<a href=\"https://fptshop.com.vn/dien-thoai\">điện thoại</a>&nbsp;kh&aacute;c. Bạn c&oacute; thể quay những đoạn video si&ecirc;u sắc n&eacute;t, khả năng phơi s&aacute;ng tuyệt vời, dải m&agrave;u sống động tới 700 triệu m&agrave;u ở những đoạn video Dolby Vision.</p>\r\n\r\n<p>Chưa hết, bạn c&ograve;n c&oacute; thể chỉnh sửa video Dolby Vision ngay tr&ecirc;n iPhone 12 Pro. H&atilde;y thử xuất bản v&agrave; xem tr&ecirc;n TV 4K HDR m&agrave;n h&igrave;nh lớn, bạn sẽ được chi&ecirc;m ngưỡng những t&aacute;c phẩm điện ảnh đ&iacute;ch thực quay bằng ch&iacute;nh iPhone 12 Pro.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><strong>Camera selfie TrueDepth đỉnh cao</strong></h3>\r\n\r\n<p>Tin vui cho những ai th&iacute;ch sử dụng camera trước, Apple đ&atilde; t&iacute;ch hợp tất cả những t&iacute;nh năng cao cấp của camera sau l&ecirc;n camera TrueDepth mặt trước. Bạn sẽ c&oacute; chế độ chụp selfie đ&ecirc;m; t&iacute;nh năng Deep Fusion, Smart HDR 3 v&agrave; cả quay video Dolby Vision. Lu&ocirc;n tỏa s&aacute;ng rạng ngời với những bức ảnh selfie, video hay livestream bằng iPhone 12 Pro.</p>\r\n\r\n<p><img alt=\"camera selfie iPhone 12 Pro\" src=\"https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-12-pro-16.jpg\" /></p>\r\n', 1),
+(109, 47, 47, 'iPhone 13 256GB Chính hãng (VN/A)', '1126825242.png', 25190000, 24, '2021-11-22', '<h2>Đ&aacute;nh gi&aacute; chi tiết iPhone 13 256GB Ch&iacute;nh h&atilde;ng (VN/A)</h2>\r\n\r\n<h2><strong><a href=\"https://www.xtsmart.vn/iphone-13-256gb\" target=\"_blank\">iPhone 13 256GB VN/A</a>&nbsp;là chi&ecirc;́c iPhone được trang bị h&ecirc;̣ th&ocirc;́ng camera kép t&ocirc;́t nh&acirc;́t từ trước đ&ecirc;́n nay. Kh&ocirc;ng những v&acirc;̣y, đi&ecirc;̣n còn sở hữu c&acirc;́u hình mạnh mẽ với chip xử lý A15 Bionic, thời lượng pin cải thi&ecirc;̣n...sẵn sàng đáp ứng mọi nhu c&acirc;̀u người dùng.&nbsp;</strong></h2>\r\n\r\n<p>Đánh giá iPhone 13 256GB chính hãng cho th&acirc;́y đ&acirc;y ứng cử vi&ecirc;́n bán chạy nh&acirc;́t trong s&ocirc;́ các thi&ecirc;́t bị mà Apple trình làng bởi mức giá h&acirc;́p d&acirc;̃n. N&ecirc;́u bạn còn ph&acirc;n v&acirc;n v&ecirc;̀ những ưu đi&ecirc;̉m mà đi&ecirc;̣n thoại mang lại thì hãy xem ngay bài vi&ecirc;́t sau nhé!</p>\r\n\r\n<h3><strong>Thi&ecirc;́t k&ecirc;́ sang trọng, b&ecirc;̀n bỉ</strong></h3>\r\n\r\n<p>Thi&ecirc;́t k&ecirc;́ iPhone 13 256GB v&acirc;̃n toát l&ecirc;n sự đẳng c&acirc;́p ngay từ cái nhìn đ&acirc;̀u ti&ecirc;n. Mặc dù kh&ocirc;ng có sự đ&ocirc;̣t phá v&ecirc;̀ mặt ngoại hình nhưng máy đã được &quot;Táo khuy&ecirc;́t&quot; tinh chỉnh trở n&ecirc;n hoàn hảo hơn. Khung vi&ecirc;̀n vát phẳng k&ecirc;́t hợp với màn hình tai thỏ và m&ocirc;-đun camera hình vu&ocirc;ng là những đi&ecirc;̀u quen thu&ocirc;̣c mà Apple giữ lại tr&ecirc;n th&ecirc;́ h&ecirc;̣ iPhone mới của mình.&nbsp;</p>\r\n\r\n<p><img alt=\"Thiết kế iPhone 13 256GB vẫn toát lên sự đẳng cấp\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2021/thiet-ke-iphone-13-256gb-xtsmart.jpg\" /></p>\r\n\r\n<p>Năm nay, c&ocirc;ng ty đã thu hẹp kích thước tai thỏ tr&ecirc;n iPhone 13 256GB giá rẻ nhỏ hơn 20% so với các model trước. Từ đó giúp màn hình tr&ocirc;ng r&ocirc;̣ng rãi và đẹp mắt hơn. Hai &ocirc;́ng kính phía sau cũng được sắp x&ecirc;́p lại b&ocirc;́ cục đường chéo thay vì dọc giúp người dùng d&ecirc;̃ dàng ph&acirc;n bi&ecirc;̣t với iPhone 12. &Ocirc;́ng kính cũng có ph&acirc;̀n nh&ocirc; ra và lớn hơn so với th&ecirc;́ h&ecirc;̣ ti&ecirc;̀n nhi&ecirc;̣m của nó.</p>\r\n\r\n<p>Vi&ecirc;̣c thay đ&ocirc;̉i m&ocirc;̣t vài chi ti&ecirc;́t thi&ecirc;́t k&ecirc;́ k&ecirc;́t hợp với dung lượng pin lớn hơn đã làm cho t&ocirc;̉ng th&ecirc;̉ của đi&ecirc;̣n thoại có ph&acirc;̀n dày và nặng hơn so với trước. Apple đã mang đ&ecirc;́n khá nhi&ecirc;̀u tùy chọn màu sắc phong phú cho người dùng khi mua iPhone 13 256GB. Các phi&ecirc;n bản màu bao g&ocirc;̀m: H&ocirc;̀ng, đen, trắng, xanh và đỏ.</p>\r\n\r\n<h3><strong>Màn hình hi&ecirc;̉n thị ch&acirc;́t lượng</strong></h3>\r\n\r\n<p>Màn hình iPhone 13 256GB chính hãng ti&ecirc;́p tục sử dụng kích thước 6,1 inch, tr&ecirc;n t&acirc;́m n&ecirc;̀n OLED cao c&acirc;́p. N&ecirc;́u như các bi&ecirc;́n th&ecirc;̉ iPhone 13 Pro và iPhone 13 Pro Max nh&acirc;̣n được n&acirc;ng c&acirc;́p màn hình lớn với t&ocirc;́c đ&ocirc;̣ làm mới 120Hz thì tr&ecirc;n phi&ecirc;n bản ti&ecirc;u chu&acirc;̉n v&acirc;̃n chỉ có t&acirc;̀n s&ocirc;́ quét 60Hz. Tuy nhi&ecirc;n, đi&ecirc;̣n thoại v&acirc;̃n đáp ứng t&ocirc;́t các trải nghi&ecirc;̣m chơi game, xem phim hay giải trí m&ocirc;̣t cách mượt mà.</p>\r\n\r\n<p><img alt=\"Màn hình iPhone 13 256GB chính hãng tiếp tục sử dụng kích thước 6,1 inch\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2021/man-hinh-iphone-13-256gb-xtsmart.jpg\" /></p>\r\n\r\n<p>Màn hình Super Retina XDR tr&ecirc;n iPhone 13 được đánh giá có đ&ocirc;̣ sáng t&ocirc;́t hơn đ&ecirc;́n 28% so với model trước nhờ đ&ocirc;̣ sáng 800 nits thay vì 600 nits. Do đó, sẽ mang đ&ecirc;́n cho người dùng cảm giác thoải mái khi hi&ecirc;̉n thị ngoài trời. Dù kh&ocirc;ng có t&acirc;̀n s&ocirc;́ quét cao nhưng màn hình hi&ecirc;̉n thị tr&ecirc;n đi&ecirc;̣n thoại v&acirc;̃n r&acirc;́t xu&acirc;́t sắc với hình ảnh ch&acirc;n th&acirc;̣t và đ&ocirc;̣ chi ti&ecirc;́t cao.</p>\r\n\r\n<h3><strong>C&acirc;́u hình mạnh mẽ</strong></h3>\r\n\r\n<p>iPhone 13 256GB VN/A giá rẻ được cho là đi&ecirc;̣n thoại nhanh nh&acirc;́t so với b&acirc;́t kỳ đ&ocirc;́i thủ hi&ecirc;̣n nào hi&ecirc;̣n nay khi được trang bị chip A15 Bionic. Con chip A14 Bionic tr&ecirc;n iPhone 12 v&ocirc;́n đã r&acirc;́t mạnh, nhưng giờ đ&acirc;y A15 Bionic lại có hi&ecirc;̣u su&acirc;́t tăng đáng k&ecirc;̉. Chính vì v&acirc;̣y, mua iPhone 13 chắc chắn sẽ đáp ứng t&acirc;́t cả nhu c&acirc;̀u của người dùng m&ocirc;̣t cách nhanh nh&acirc;́t.</p>\r\n\r\n<p>Nói m&ocirc;̣t chút v&ecirc;̀ chipset mới của Apple, gi&ocirc;́ng với th&ecirc;́ h&ecirc;̣ ti&ecirc;̀n nhi&ecirc;̣m nó cũng g&ocirc;̀m 6 nh&acirc;n CPU (2 nh&acirc;n hi&ecirc;̣u năng cao và 4 nh&acirc;n ti&ecirc;́t ki&ecirc;̣m đi&ecirc;̣n năng) 4 nh&acirc;n GPU. Tuy nhi&ecirc;n, giờ đ&acirc;y chip xử lý mới còn có th&ecirc;m 16 lõi&nbsp;Neural Engine cho máy học và AI, giúp nó có th&ecirc;̉ thực hi&ecirc;̣n được 15.8 nghìn phép tính m&ocirc;̃i gi&acirc;y.</p>\r\n\r\n<p><img alt=\"iPhone 13 256GB VN/A giá rẻ được cho là điện thoại nhanh nhất \" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2021/cau-hinh-iphone-13-256gb-xtsmart.jpg\" /></p>\r\n\r\n<p>Kh&ocirc;ng những sở hữu c&acirc;́u hình mạnh mẽ, đi&ecirc;̣n thoại còn được trang bị k&ecirc;́t n&ocirc;́i 5G th&ecirc;́ h&ecirc;̣ mới được mở r&ocirc;̣ng với hơn 200 nhà mạng ở 60 qu&ocirc;́c gia. Ngoài ra Apple cũng trang bị vi&ecirc;n pin có dung lượng lớn hơn cho đi&ecirc;̣n thoại. Đ&acirc;y là m&ocirc;̣t trong những n&acirc;ng c&acirc;́p nh&acirc;̣n được nhi&ecirc;̀u sự quan t&acirc;m của người dùng bởi pin lu&ocirc;n là đi&ecirc;̉m y&ecirc;́u tr&ecirc;n iPhone.</p>\r\n\r\n<p>Tại thời đi&ecirc;̉m ra mắt, Apple đã c&ocirc;ng b&ocirc;́ iPhone 13 có thời lượng sử dụng pin l&acirc;u hơn đ&ecirc;́n 1.5 giờ so với iPhone 12. Đ&ecirc;̉ có được đi&ecirc;̀u này là cả m&ocirc;̣t quá trình từ nhi&ecirc;̀u y&ecirc;́u t&ocirc;́ như dung lượng pin được n&acirc;ng c&acirc;́p, màn hình hi&ecirc;̣u quả và chip xử lý ti&ecirc;́t ki&ecirc;̣m đi&ecirc;̣n năng. Tuy nhi&ecirc;n, đi&ecirc;̣n thoại v&acirc;̃n chỉ h&ocirc;̃ trợ sạc nhanh với c&ocirc;ng su&acirc;́t 20W và sạc kh&ocirc;ng d&acirc;y 15W.</p>\r\n\r\n<h3><strong>Camera ch&acirc;́t lượng</strong></h3>\r\n\r\n<p>Camera là m&ocirc;̣t trong những đi&ecirc;̉m sáng giá tr&ecirc;n iPhone 13 256GB chính hãng. Mặc dù đi&ecirc;̣n thoại v&acirc;̃n được trang bị hai &ocirc;́ng kính với đ&ocirc;̣ ph&acirc;n giả 12MP nhưng Apple đã n&acirc;ng c&acirc;́p khá nhi&ecirc;̀u giúp khả năng chụp ảnh cũng như video t&ocirc;́t hơn khá nhi&ecirc;̀u. Trong đó &ocirc;́ng kính chính có kích thước đi&ecirc;̉m ảnh 1.7um, thu sáng t&ocirc;́t hơn 47% so với model trước.</p>\r\n\r\n<p>Trong khi đó, camera góc si&ecirc;u r&ocirc;̣ng h&ocirc;̃ trợ t&ocirc;́t hơn trong các đi&ecirc;̀u ki&ecirc;̣n ánh sáng y&ecirc;́u và ít nhi&ecirc;̃u hơn và chụp nhi&ecirc;̀u cảnh hơn g&acirc;́p 4 l&acirc;̀n. Cảm bi&ecirc;́t mới ch&acirc;́t lượng giúp camera Ultra Wide của iPhone 13 giúp chụp ảnh thi&ecirc;́u sáng t&ocirc;́t hơn, b&ocirc;̉ sung ch&ecirc;́ đ&ocirc;̣ chụp đ&ecirc;m, ch&acirc;́t lượng hình ảnh ch&acirc;n thực hơn bao giờ h&ecirc;́t.</p>\r\n\r\n<p><img alt=\"Camera là một trong những điểm sáng giá trên iPhone 13 256GB chính hãng\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2021/camera-iphone-13-256gb-xtsmart.jpg\" /></p>\r\n\r\n<p>Năm nay, gã kh&ocirc;̉ng l&ocirc;̀ c&ocirc;ng ngh&ecirc;̣ Mỹ cũng b&ocirc;̉ sung th&ecirc;m khá nhi&ecirc;̀u tính năng giúp vi&ecirc;̣c chụp ảnh trở n&ecirc;n chuy&ecirc;n nghi&ecirc;̣p hơn. Tính năng Photographic, cho phép người dùng chuy&ecirc;̉n đ&ocirc;̉i nhi&ecirc;̀u phong cách nhi&ecirc;̣t đ&ocirc;̣ màu khác nhau g&ocirc;̀m: ti&ecirc;u chu&acirc;̉n, &acirc;́m áp, mát mẻ, s&ocirc;́ng đ&ocirc;̣ng, đ&ocirc;̣ tương phản phong phú. Nhìn chung, ch&acirc;́t lượng hình ảnh của iPhone 13 và iPhone 12 kh&ocirc;ng có nhi&ecirc;̀u sự ch&ecirc;nh l&ecirc;̣ch trong nhi&ecirc;̀u tính u&ocirc;́ng.</p>\r\n\r\n<p>Nhưng đ&ocirc;́i với ch&ecirc;́ đ&ocirc;̣ ban đ&ecirc;m thì camera iPhone 13 mang đ&ecirc;́n ch&acirc;́t lượng t&ocirc;́t hơn nhờ Apple đã n&acirc;ng c&acirc;́p kích thước cảm bi&ecirc;́n lớn hơn. Mua iPhone 13 256GB VN/A người dùng còn được trải nghi&ecirc;̣m ch&ecirc;́ đ&ocirc;̣&nbsp;Cinematic Mode&nbsp;cho phép quay video chuy&ecirc;n nghi&ecirc;̣p như các b&ocirc;̣ phim đi&ecirc;̣n ảnh nhờ vi&ecirc;̣c làm mờ h&acirc;̣u cảnh.&nbsp;</p>\r\n\r\n<h3><strong>Có n&ecirc;n mua iPhone 13 256GB chính hãng giá rẻ</strong></h3>\r\n\r\n<p>Đánh giá iPhone 13 256GB VN/A cho th&acirc;́y đ&acirc;y là phi&ecirc;n bản n&acirc;ng c&acirc;́p hoàn hảo của iPhone 12, dù kh&ocirc;ng có nhi&ecirc;̀u đ&ocirc;̣t phá nhưng nó đã t&acirc;̣p trung vào trải nghi&ecirc;̣m người dùng hơn. Mua iPhone 13 256GB chính hãng là lựa chọn tuy&ecirc;̣t vời ở thời đi&ecirc;̉m này, đặc bi&ecirc;̣t XTsmart còn h&ocirc;̃ trợ trả góp 0% lãi su&acirc;́t cùng nhi&ecirc;̀u chính sách ưu đãi h&acirc;́p d&acirc;̃n cho khách hàng.</p>\r\n', 118),
+(110, 47, 49, 'Samsung Galaxy S20 Plus (8GB|128GB) BTS Edition (CTY)', '1307321390.png', 16890000, 12, '2021-11-22', '<h2>Đ&aacute;nh gi&aacute; chi tiết Samsung Galaxy S20 Plus (8GB|128GB) BTS Edition (CTY)</h2>\r\n\r\n<h2>C&aacute;ch đ&acirc;y kh&ocirc;ng l&acirc;u, Samsung đ&atilde; cho ra mắt&nbsp;<strong><a href=\"https://www.xtsmart.vn/samsung-galaxy-s20-plus-bts-edition\" target=\"_blank\">Galaxy S20 Plus BTS Edition</a></strong>&nbsp;với sự hợp t&aacute;c của nh&oacute;m nhạc nổi tiếng nhất nh&igrave; Kpop &ndash; BTS. Flagship kh&ocirc;ng chỉ nổi bật về thiết kế, cấu h&igrave;nh m&agrave; đ&acirc;y c&ograve;n l&agrave; một cơ hội để người h&acirc;m mộ BTS thể hiện sự y&ecirc;u qu&yacute; thần tượng của m&igrave;nh.</h2>\r\n\r\n<h3><strong>Thiết kế thu h&uacute;t ngay &aacute;nh nh&igrave;n đầu ti&ecirc;n</strong></h3>\r\n\r\n<p>C&oacute; thể n&oacute;i, thiết kế l&agrave; điểm thu h&uacute;t nhất&nbsp;của phi&ecirc;n bản Galaxy S20 Plus BTS Edition c&oacute; một kh&ocirc;ng hai n&agrave;y. M&aacute;y kho&aacute;c tr&ecirc;n m&igrave;nh sắc t&iacute;m độc đ&aacute;o nhưng v&ocirc; c&ugrave;ng thời thượng, đ&acirc;y l&agrave; m&agrave;u sắc m&agrave; hầu hết c&aacute;c nh&agrave; sản xuất chỉ d&ugrave;ng cho phi&ecirc;n bản đặc biệt của m&igrave;nh m&agrave; th&ocirc;i. Điểm mới lạ n&agrave;y mang đến sự trẻ trung, c&aacute; t&iacute;nh ri&ecirc;ng cho người sở hữu.</p>\r\n\r\n<p><img alt=\"Galaxy S20 Plus BTS Edition có biểu tượng trái tim nhỏ nhắn nằm liền kề cụm camera chính\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/thiet-ke-galaxy-s20-plus-bts-edition-xtsmart.jpg\" /></p>\r\n\r\n<p>Điểm nhấn ấn tượng nhất tr&ecirc;n Galaxy S20 Plus BTS Edition ch&iacute;nh l&agrave; biểu tượng tr&aacute;i tim nhỏ nhắn nằm liền kề cụm camera ch&iacute;nh. B&ecirc;n cạnh đ&oacute;, sẽ xuất hiện logo BTS dưới t&ecirc;n nh&agrave; sản xuất Samsung. Ngo&agrave;i ra, h&atilde;ng c&ograve;n c&agrave;i sẵn Weverse &ndash; bộ chủ đề về BTS v&agrave; cộng đồng Fan c&ugrave;ng 7 chiếc photocard c&oacute; h&igrave;nh ảnh của c&aacute;c th&agrave;nh vi&ecirc;n BTS b&ecirc;n trong&nbsp;hộp.</p>\r\n\r\n<h3><strong>M&agrave;n h&igrave;nh c&ocirc;ng nghệ hiện đại</strong></h3>\r\n\r\n<p>Samsung Galaxy S20 Plus BTS Edition được trang bị m&agrave;n h&igrave;nh tr&agrave;n viền c&oacute; k&iacute;ch thước tới 6,7 inch. Kh&ocirc;ng gian hiển thị n&agrave;y được xem l&agrave; lớn nhất nh&igrave; hiện nay, nhất l&agrave; kh&ocirc;ng bị giới hạn ở mọi g&oacute;c nh&igrave;n. H&igrave;nh ảnh hiển thị tr&ecirc;n Galaxy S20 Plus&nbsp;sẽ c&oacute; độ ph&acirc;n giải Quad HD+ v&ocirc; c&ugrave;ng sắc n&eacute;t.</p>\r\n\r\n<p><img alt=\"Galaxy S20 Plus BTS Edition được trang bị màn hình tràn viền có kích thước tới 6,7 inch\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/man-hinh-galaxy-s20-plus-bts-edition-xtsmart.jpg\" /></p>\r\n\r\n<p>K&egrave;m theo đ&oacute; l&agrave; c&ocirc;ng nghệ Dynamic Amoled 2X mang đến chất lượng hiển thị kh&ocirc;ng thua k&eacute;m g&igrave; một chiếc TV hiện nay. Mọi chuyển động trở n&ecirc;n mượt m&agrave;, sống động với độ ph&acirc;n giải cao, sắc n&eacute;t, ch&acirc;n thật như thực tế.</p>\r\n\r\n<h3><strong>Camera chuy&ecirc;n nghiệp c&ugrave;ng biểu tượng tr&aacute;i tim</strong></h3>\r\n\r\n<p>Như đ&atilde; giới thiệu ở tr&ecirc;n, điểm nhấn tr&ecirc;n phi&ecirc;n bản n&agrave;y ch&iacute;nh l&agrave; biểu tượng tr&aacute;i tim nằm gần kề cụm camera sau. Galaxy S20 Plus BTS Edition c&oacute; tất cả 3 ống k&iacute;nh 64MP, 12MP, 12MP v&agrave; 1 cảm biến VGA mang đến khả năng chụp ảnh chuy&ecirc;n nghiệp, bắt trọn từng khoảnh khắc m&agrave; người d&ugrave;ng muốn lưu giữ.</p>\r\n\r\n<p><img alt=\"Galaxy S20 Plus BTS Edition là camera selfie 10MP\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/camera-galaxy-s20-plus-bts-edition-xtsmart.jpg\" /></p>\r\n\r\n<p>C&ograve;n mặt trước Galaxy S20 Plus BTS Edition l&agrave; camera selfie 10MP với khả năng tự động lấy n&eacute;t chuẩn x&aacute;c. C&aacute;c ống k&iacute;nh đều được Samsung t&iacute;ch hợp c&aacute;c t&iacute;nh năng hỗ trợ hiện đại nhất n&ecirc;n d&ugrave; chụp ở camera n&agrave;o th&igrave; h&igrave;nh ảnh vẫn v&ocirc; c&ugrave;ng xuất sắc.</p>\r\n\r\n<h3><strong>Hiệu năng mạnh mẽ, thời lượng pin tốt</strong></h3>\r\n\r\n<p>Phi&ecirc;n bản Samsung Galaxy S20 Plus BTS Edition sở hữu bộ nhớ RAM 8GB c&ugrave;ng bộ nhớ trong l&ecirc;n đến 128GB. M&aacute;y kh&ocirc;ng chỉ mang đến hiệu năng mạnh mẽ với những pha xử l&yacute; t&aacute;c vụ mượt m&agrave;, nhanh ch&oacute;ng m&agrave; c&ograve;n c&oacute; kh&ocirc;ng gian lưu trữ rộng r&atilde;i. Theo đ&oacute;, người d&ugrave;ng ho&agrave;n to&agrave;n c&oacute; thể tải phim, game hay lưu nhiều video, h&igrave;nh ảnh m&agrave; kh&ocirc;ng lo đầy bộ nhớ.</p>\r\n\r\n<p><img alt=\"Samsung Galaxy S20 Plus BTS Edition sở hữu bộ nhớ RAM 8GB cùng bộ nhớ trong lên đến 128GB\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/hieu-nang-galaxy-s20-plus-bts-edition-xtsmart.jpg\" /></p>\r\n\r\n<p>Để đ&aacute;p ứng nhu cầu sử dụng suốt ng&agrave;y, Samsung đ&atilde; trang bị thỏi pin lớn 4.500 mAh. Với những t&aacute;c vụ th&ocirc;ng thường, vi&ecirc;n pin n&agrave;y dư sức duy tr&igrave; đến ng&agrave;y thứ hai. Ch&iacute;nh v&igrave; vậy, bạn c&oacute; thể thoải m&aacute;i tận hưởng m&agrave; kh&ocirc;ng cần bận t&acirc;m dừng lại sạc giữa chừng.</p>\r\n\r\n<h3><strong>Mua Samsung Galaxy S20 Plus BTS Edition tại XTsmart</strong></h3>\r\n\r\n<p>Nếu bạn đang n&oacute;ng l&ograve;ng muốn sở hữu một chiếc Samsung Galaxy S20 Plus BTS Edition về cho m&igrave;nh th&igrave; XTsmart l&agrave; địa chỉ m&agrave; bạn c&oacute; thể tin tưởng để đến v&agrave; sắm chiếc smartphone độc đ&aacute;o ấy về cho m&igrave;nh. XTsmart lu&ocirc;n cam đoan mang đến cho kh&aacute;ch h&agrave;ng smartphone với chất lượng tốt nhất, gi&aacute; rẻ nhất thị&nbsp;trường TP.HCM v&agrave; Đ&agrave; Nẵng.</p>\r\n\r\n<p>Khi mua Samsung Galaxy S20 Plus BTS Edition tại XTsmart, qu&yacute; kh&aacute;ch h&agrave;ng c&ograve;n c&oacute; thể nhận được qu&agrave; tặng, ưu đ&atilde;i rất hấp dẫn. Ngo&agrave;i ra, XTsmart lu&ocirc;n c&oacute; đội ngũ nh&acirc;n vi&ecirc;n chuy&ecirc;n nghiệp, tận t&igrave;nh sẵn s&agrave;ng giải đ&aacute;p mọi vấn đề của bạn về sản phẩm.</p>\r\n', 0),
+(111, 47, 49, 'Samsung Galaxy Note 10 Plus (12GB|256GB) Mỹ (New Nobox)', '943036231.png', 13720000, 42, '2021-11-22', '<h2>Đ&aacute;nh gi&aacute; chi tiết Samsung Galaxy Note 10 Plus (12GB|256GB) Mỹ (New Nobox)</h2>\r\n\r\n<h2>Ngay từ khi ra mắt,&nbsp;<strong><a href=\"https://www.xtsmart.vn/samsung-galaxy-note-10-plus-12gb-256gb-my-new-nobox-\" target=\"_blank\">Galaxy Note 10 Plus 256GB New Nobox Mỹ</a></strong>&nbsp;đ&atilde; được đ&aacute;nh gi&aacute; cao bởi thi&ecirc;́t k&ecirc;́ đẹp mắt, c&acirc;́u hình mạnh mẽ cùng nhiều tính năng hiện đại ấn tượng. C&oacute; thể n&oacute;i, chiếc smartphone n&agrave;y đ&atilde; n&acirc;ng tầm trải nghiệm của người d&ugrave;ng l&ecirc;n một tầm cao mới.</h2>\r\n\r\n<h3><strong>Thiết kế tinh chỉnh ho&agrave;n hảo</strong></h3>\r\n\r\n<p>Về tổng thể, Galaxy Note 10 Plus 256GB New Nobox Mỹ vẫn mang ng&ocirc;n ngữ thiết kế đặc trưng của Galaxy Note series. Tuy nhi&ecirc;n, Samsung đ&atilde; ho&agrave;n thiện tốt hơn thế hệ trước với c&aacute;c đường viền cạnh/ g&oacute;c bao quanh m&aacute;y tr&ocirc;ng mềm mại hơn. Nhưng hơn hết l&agrave; vẫn giữ được sự sang trọng, mạnh mẽ v&agrave; nam t&iacute;nh vốn c&oacute;.</p>\r\n\r\n<p><img alt=\"Galaxy Note 10 Plus 256GB New Nobox Mỹ còn tích hợp vân tay siêu âm vào thẳng màn hình\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/thiet-ke-galaxy-note-10-plus-256gb-new-bobox-my-xtsmart.jpg\" /></p>\r\n\r\n<p>B&ecirc;n cạnh đ&oacute;, nh&agrave; sản xuất c&ograve;n tận dụng lợi thế của m&agrave;n h&igrave;nh tr&agrave;n viền n&ecirc;n d&ugrave; c&oacute; k&iacute;ch thước đến 6,8 inch nhưng Galaxy Note 10 Plus vẫn kh&ocirc;ng qu&aacute; lớn. Kh&ocirc;ng những vậy, Galaxy Note 10 Plus 256GB New Nobox Mỹ c&ograve;n t&iacute;ch hợp v&acirc;n tay si&ecirc;u &acirc;m v&agrave;o thẳng m&agrave;n h&igrave;nh. C&ocirc;ng nghệ n&agrave;y c&oacute; khả năng nhận diện nhanh, ch&iacute;nh x&aacute;c v&agrave; bảo mật tuyệt đối thiết bị c&aacute; nh&acirc;n của bạn.</p>\r\n\r\n<p><img alt=\"Galaxy Note 10 Plus 256GB New Nobox Mỹ vẫn mang ngôn ngữ thiết kế đặc trưng của Galaxy Note series\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/thiet-ke-lung-galaxy-note-10-plus-256gb-new-bobox-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Chưa hết, Samsung c&ograve;n trang bị th&ecirc;m khả năng kh&aacute;ng nước ở độ s&acirc;u 1,5m v&agrave; bụi bẩn chuẩn IP68 cho Galaxy Note 10 Plus 256GB&nbsp;Mỹ. Nhờ đ&oacute;, người d&ugrave;ng tha hồ vui chơi ở m&ocirc;i trường nước m&agrave; kh&ocirc;ng phải lo hư hỏng hay chập m&aacute;y.</p>\r\n\r\n<h3><strong>M&agrave;n h&igrave;nh chuẩn &ldquo;điện ảnh&rdquo;</strong></h3>\r\n\r\n<p>Galaxy Note 10 Plus 256GB New Nobox Mỹ được trang bị tấm nền Dynamic AMOLED c&oacute; độ ph&acirc;n giải 3.040 x 1.440 pixels, đảm bảo hiển thị nội dung đầy đủ, sắc n&eacute;t v&agrave; kh&ocirc;ng bị giới hạn g&oacute;c nh&igrave;n tr&ecirc;n k&iacute;ch thước 6,8 inch. Được biết, tấm nền n&agrave;y c&ograve;n được hỗ trợ c&ocirc;ng nghệ chuẩn HDR10+ n&ecirc;n h&igrave;nh ảnh hiển thị c&oacute; độ s&aacute;ng cao, dải m&agrave;u rộng, sống động như thực tế.</p>\r\n\r\n<p><img alt=\"Galaxy Note 10 Plus 256GB New Nobox Mỹ được trang bị tấm nền Dynamic AMOLED\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/man-hinh-galaxy-note-10-plus-256gb-new-bobox-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Kh&ocirc;ng chỉ mang lại trải nghiệm tuyệt vời, tấm nền tr&ecirc;n Galaxy Note 10 Plus 256GB New Nobox c&ograve;n hạn chế tối đa &aacute;nh s&aacute;ng xanh &ndash; t&aacute;c nh&acirc;n g&acirc;y hại cho mắt. V&igrave; vậy, d&ugrave; c&oacute; sử dụng trong thời gian d&agrave;i, mắt bạn vẫn kh&ocirc;ng gặp phải t&igrave;nh trạng mỏi hay nhức mắt như trước đ&acirc;y.</p>\r\n\r\n<h3><strong>Cụm camera chất lượng</strong></h3>\r\n\r\n<p>Samsung bố tr&iacute; hệ thống camera ch&iacute;nh tr&ecirc;n Galaxy Note 10 Plus 256GB New Nobox Mỹ theo chiều dọc, c&oacute; phần hơi lồi ra ở mặt lưng. Đ&oacute; l&agrave; cụm 3 ống k&iacute;nh c&ugrave;ng 1 cảm biến 3D ToF gi&uacute;p chuy&ecirc;n đo chiều s&acirc;u để qu&eacute;t h&igrave;nh ảnh 3D đặt dưới đ&egrave;n Flash. Điểm nổi bật ở đ&acirc;y ch&iacute;nh l&agrave; sự linh hoạt thay đổi khẩu độ trong từng điều kiện m&ocirc;i trường kh&aacute;c nhau. Do đ&oacute;, m&aacute;y đ&atilde; khắc phục được t&igrave;nh trạng chụp trong tối hay dưới &aacute;nh s&aacute;ng mặt trời một c&aacute;ch hiệu quả.</p>\r\n\r\n<p><img alt=\"hệ thống camera chính trên Galaxy Note 10 Plus 256GB New Nobox Mỹ theo chiều dọc\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/camera-galaxy-note-10-plus-256gb-new-bobox-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Ri&ecirc;ng mặt trước l&agrave; camera selfie 10MP, hỗ trợ nhận diện khu&ocirc;n mặt v&agrave; tự động lấy n&eacute;t (AF). C&oacute; thể n&oacute;i, Samsung đầu tư ng&agrave;y c&agrave;ng nhiều hơn, nghi&ecirc;m t&uacute;c hơn cho thiết bị của m&igrave;nh. C&oacute; lẽ &ocirc;ng lớn xứ kim chi muốn biến Galaxy Note 10 Plus 256GB New Nobox Mỹ th&agrave;nh một &ldquo;camera phone&rdquo; ch&iacute;nh hiệu.</p>\r\n\r\n<h3><strong>Cấu h&igrave;nh khủng</strong></h3>\r\n\r\n<p>L&agrave; d&ograve;ng điện thoại cao cấp, n&ecirc;n Galaxy Note 10 Plus 256GB New Nobox Mỹ c&oacute; sức mạnh vượt trội về hiệu năng cũng l&agrave; lẽ hiển nhi&ecirc;n. M&aacute;y sử dụng con chip Snapdragon 855 8 nh&acirc;n của Qualcomm, sản xuất tr&ecirc;n tiến tr&igrave;nh 7nm hiện đại c&ugrave;ng chip đồ họa GPU Adreno 64. Tương ứng l&agrave; bộ nhớ 12GB RAM v&agrave; 256GB bộ nhớ trong, tạo ra kh&ocirc;ng gian lưu trữ v&ocirc; c&ugrave;ng rộng r&atilde;i.</p>\r\n\r\n<p><img alt=\"Galaxy Note 10 Plus 256GB New Nobox Mỹ sử dụng con chip Snapdragon 855\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/hieu-nang-galaxy-note-10-plus-256gb-new-bobox-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Nhờ tối ưu h&oacute;a tốt của phần cứng v&agrave; phần mềm m&agrave; Galaxy Note 10 Plus 256GB New Nobox mang đến những pha xử l&yacute; mượt m&agrave;, nhanh ch&oacute;ng&nbsp;kh&ocirc;ng cần phải load lại. Đồng thời, bạn c&oacute; thể thoải m&aacute;i tải phim, game m&agrave; kh&ocirc;ng phải lo t&igrave;nh trạng &ldquo;x&oacute;a &ndash; x&oacute;a &ndash; x&oacute;a &ldquo; do đầy bộ nhớ như trước đ&acirc;y.</p>\r\n\r\n<p><img alt=\"Galaxy Note 10 Plus 256GB Mỹ được trang bị thỏi pin có dung lượng khủng 4.300 mAh\" src=\"https://www.xtsmart.vn/vnt_upload/news/09_2020/pin-galaxy-note-10-plus-256gb-new-bobox-my-xtsmart.jpg\" /></p>\r\n\r\n<p>Về pin, Galaxy Note 10 Plus 256GB Mỹ được trang bị thỏi pin c&oacute; dung lượng khủng 4.300 mAh c&ugrave;ng sạc nhanh 45W, tha hồ cho bạn&nbsp;sử dụng nguy&ecirc;n ng&agrave;y chỉ sau 1 giờ sạc m&agrave; th&ocirc;i.</p>\r\n\r\n<h3><strong>B&uacute;t S-Pen thế hế mới</strong></h3>\r\n\r\n<p>Với Galaxy Note 10 Plus 256GB New Nobox Mỹ, b&uacute;t S-Pen được hỗ trợ th&ecirc;m nhiều t&iacute;nh năng đặc biệt, hỗ trợ kết nối Bluetooth LE. Theo đ&oacute;, người d&ugrave;ng c&oacute; thể điều khiển từ xa một số thao t&aacute;c cơ bản, c&oacute; thể kể đến như chụp ảnh, bật nhạc, thay đổi ứng dụng, nhận diện chữ viết tay, ghi ch&uacute;,&hellip;</p>\r\n\r\n<h3><strong>Mua Galaxy Note 10 Plus 256GB New Nobox Mỹ tại XTsmart</strong></h3>\r\n\r\n<p>Qua b&agrave;i đ&aacute;nh gi&aacute; chi tiết về Galaxy Note 10 Plus 256GB New Nobox Mỹ, XTsmart hy vọng rằng bạn sẽ nhanh ch&oacute;ng sở hữu cho m&igrave;nh chiếc điện thoại tuyệt vời n&agrave;y. Vừa mang đến cho bạn những trải nghiệm l&yacute; th&uacute;, vừa thể hiện sự sang trọng, đẳng cấp. Hiện nay, tại XTsmart gi&aacute; của Galaxy Note 10 Plus Mỹ c&oacute; thể n&oacute;i l&agrave; rẻ nhất thị trường, đi c&ugrave;ng l&agrave; những phần qu&agrave; v&agrave; ưu đ&atilde;i si&ecirc;u hấp dẫn, k&egrave;m theo đ&oacute; l&agrave; ch&iacute;nh s&aacute;ch hậu m&atilde;i số 1 tại TP.HCM v&agrave; Đ&agrave; Nẵng.</p>\r\n', 0),
+(112, 48, 52, 'Ốp lưng iPhone 13 Pro Max Leather Case with MagSafe ', '663173266.jpg', 1200000, 44, '2021-11-22', '', 1),
+(113, 48, 51, 'SẠC DỰ PHÒNG HYPERJUICE USB-C + LIGHTNING 18W 10000mAh', '671719120.jpg', 1400000, 23, '2021-11-22', '', 2),
+(114, 48, 48, 'ai nghe chơi game không dây Corsair Virtuoso RGB SE ', '1550058048.jpg', 4300000, 55, '2021-11-22', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sub_danh_muc_pro`
+--
+
+CREATE TABLE `sub_danh_muc_pro` (
+  `id_sub_dm_pro` int(11) NOT NULL,
+  `ten_sub_dm_pro` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_dm_pro` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `sub_danh_muc_pro`
+--
+
+INSERT INTO `sub_danh_muc_pro` (`id_sub_dm_pro`, `ten_sub_dm_pro`, `id_dm_pro`) VALUES
+(45, 'Oppo', 47),
+(47, 'Iphone', 47),
+(48, 'Tai nghe', 48),
+(49, 'Samsung', 47),
+(51, 'Pin dự phòng', 48),
+(52, 'Ốp lưng', 48);
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `bai_viet`
+--
+ALTER TABLE `bai_viet`
+  ADD PRIMARY KEY (`id_bai_viet`),
+  ADD KEY `id_dm_news` (`id_dm_news`);
+
+--
+-- Chỉ mục cho bảng `binh_luan_news`
+--
+ALTER TABLE `binh_luan_news`
+  ADD PRIMARY KEY (`id_bl_news`),
+  ADD KEY `id_bai_viet` (`id_bai_viet`),
+  ADD KEY `id_kh` (`id_kh`);
+
+--
+-- Chỉ mục cho bảng `binh_luan_pro`
+--
+ALTER TABLE `binh_luan_pro`
+  ADD PRIMARY KEY (`id_bl_pro`),
+  ADD KEY `id_sp` (`id_sp`),
+  ADD KEY `id_kh` (`id_kh`);
+
+--
+-- Chỉ mục cho bảng `cau_hinh_phone`
+--
+ALTER TABLE `cau_hinh_phone`
+  ADD PRIMARY KEY (`id_ch_phone`),
+  ADD KEY `id_sp` (`id_sp`);
+
+--
+-- Chỉ mục cho bảng `danh_muc_news`
+--
+ALTER TABLE `danh_muc_news`
+  ADD PRIMARY KEY (`id_dm_news`),
+  ADD UNIQUE KEY `ten_dm_news` (`ten_dm_news`);
+
+--
+-- Chỉ mục cho bảng `danh_muc_pro`
+--
+ALTER TABLE `danh_muc_pro`
+  ADD PRIMARY KEY (`id_dm_pro`),
+  ADD UNIQUE KEY `ten_dm_pro` (`ten_dm_pro`);
+
+--
+-- Chỉ mục cho bảng `dung_luong_phone`
+--
+ALTER TABLE `dung_luong_phone`
+  ADD PRIMARY KEY (`id_dl_phone`),
+  ADD KEY `id_sp` (`id_sp`);
+
+--
+-- Chỉ mục cho bảng `hoa_don`
+--
+ALTER TABLE `hoa_don`
+  ADD PRIMARY KEY (`id_hoa_don`);
+
+--
+-- Chỉ mục cho bảng `hoa_don_chi_tiet`
+--
+ALTER TABLE `hoa_don_chi_tiet`
+  ADD PRIMARY KEY (`id_hoa_don_chi_tiet`),
+  ADD KEY `id_sp` (`id_sp`),
+  ADD KEY `id_hoa_don` (`id_hoa_don`);
+
+--
+-- Chỉ mục cho bảng `images_pro`
+--
+ALTER TABLE `images_pro`
+  ADD PRIMARY KEY (`id_images_pro`),
+  ADD KEY `id_sp` (`id_sp`);
+
+--
+-- Chỉ mục cho bảng `khach_hang`
+--
+ALTER TABLE `khach_hang`
+  ADD PRIMARY KEY (`id_kh`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Chỉ mục cho bảng `mau_sac_phone`
+--
+ALTER TABLE `mau_sac_phone`
+  ADD PRIMARY KEY (`id_ms_phone`),
+  ADD KEY `id_sp` (`id_sp`);
 
 --
 -- Chỉ mục cho bảng `san_pham`
@@ -62,18 +461,155 @@ ALTER TABLE `san_pham`
   ADD KEY `id_sub_dm_pro` (`id_sub_dm_pro`);
 
 --
+-- Chỉ mục cho bảng `sub_danh_muc_pro`
+--
+ALTER TABLE `sub_danh_muc_pro`
+  ADD PRIMARY KEY (`id_sub_dm_pro`),
+  ADD UNIQUE KEY `ten_sub_dm_pro` (`ten_sub_dm_pro`),
+  ADD KEY `id_dm_pro` (`id_dm_pro`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `bai_viet`
+--
+ALTER TABLE `bai_viet`
+  MODIFY `id_bai_viet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `binh_luan_news`
+--
+ALTER TABLE `binh_luan_news`
+  MODIFY `id_bl_news` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `binh_luan_pro`
+--
+ALTER TABLE `binh_luan_pro`
+  MODIFY `id_bl_pro` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `cau_hinh_phone`
+--
+ALTER TABLE `cau_hinh_phone`
+  MODIFY `id_ch_phone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT cho bảng `danh_muc_news`
+--
+ALTER TABLE `danh_muc_news`
+  MODIFY `id_dm_news` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `danh_muc_pro`
+--
+ALTER TABLE `danh_muc_pro`
+  MODIFY `id_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT cho bảng `dung_luong_phone`
+--
+ALTER TABLE `dung_luong_phone`
+  MODIFY `id_dl_phone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
+-- AUTO_INCREMENT cho bảng `hoa_don`
+--
+ALTER TABLE `hoa_don`
+  MODIFY `id_hoa_don` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `hoa_don_chi_tiet`
+--
+ALTER TABLE `hoa_don_chi_tiet`
+  MODIFY `id_hoa_don_chi_tiet` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `images_pro`
+--
+ALTER TABLE `images_pro`
+  MODIFY `id_images_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+
+--
+-- AUTO_INCREMENT cho bảng `khach_hang`
+--
+ALTER TABLE `khach_hang`
+  MODIFY `id_kh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT cho bảng `mau_sac_phone`
+--
+ALTER TABLE `mau_sac_phone`
+  MODIFY `id_ms_phone` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+
+--
+-- AUTO_INCREMENT cho bảng `sub_danh_muc_pro`
+--
+ALTER TABLE `sub_danh_muc_pro`
+  MODIFY `id_sub_dm_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `bai_viet`
+--
+ALTER TABLE `bai_viet`
+  ADD CONSTRAINT `bai_viet_ibfk_1` FOREIGN KEY (`id_dm_news`) REFERENCES `danh_muc_news` (`id_dm_news`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `binh_luan_news`
+--
+ALTER TABLE `binh_luan_news`
+  ADD CONSTRAINT `binh_luan_news_ibfk_1` FOREIGN KEY (`id_bai_viet`) REFERENCES `bai_viet` (`id_bai_viet`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `binh_luan_news_ibfk_2` FOREIGN KEY (`id_kh`) REFERENCES `khach_hang` (`id_kh`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `binh_luan_pro`
+--
+ALTER TABLE `binh_luan_pro`
+  ADD CONSTRAINT `binh_luan_pro_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `san_pham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `binh_luan_pro_ibfk_2` FOREIGN KEY (`id_kh`) REFERENCES `khach_hang` (`id_kh`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `cau_hinh_phone`
+--
+ALTER TABLE `cau_hinh_phone`
+  ADD CONSTRAINT `cau_hinh_phone_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `san_pham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `dung_luong_phone`
+--
+ALTER TABLE `dung_luong_phone`
+  ADD CONSTRAINT `dung_luong_phone_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `san_pham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `hoa_don_chi_tiet`
+--
+ALTER TABLE `hoa_don_chi_tiet`
+  ADD CONSTRAINT `hoa_don_chi_tiet_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `san_pham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hoa_don_chi_tiet_ibfk_2` FOREIGN KEY (`id_hoa_don`) REFERENCES `hoa_don` (`id_hoa_don`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `images_pro`
+--
+ALTER TABLE `images_pro`
+  ADD CONSTRAINT `images_pro_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `san_pham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `mau_sac_phone`
+--
+ALTER TABLE `mau_sac_phone`
+  ADD CONSTRAINT `mau_sac_phone_ibfk_1` FOREIGN KEY (`id_sp`) REFERENCES `san_pham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `san_pham`
@@ -81,6 +617,12 @@ ALTER TABLE `san_pham`
 ALTER TABLE `san_pham`
   ADD CONSTRAINT `san_pham_ibfk_1` FOREIGN KEY (`id_dm_pro`) REFERENCES `danh_muc_pro` (`id_dm_pro`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `san_pham_ibfk_2` FOREIGN KEY (`id_sub_dm_pro`) REFERENCES `sub_danh_muc_pro` (`id_sub_dm_pro`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `sub_danh_muc_pro`
+--
+ALTER TABLE `sub_danh_muc_pro`
+  ADD CONSTRAINT `sub_danh_muc_pro_ibfk_1` FOREIGN KEY (`id_dm_pro`) REFERENCES `danh_muc_pro` (`id_dm_pro`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
