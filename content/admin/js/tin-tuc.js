@@ -396,7 +396,7 @@ $("#update-news").submit(function(e) {
                         link: "list-news",
                     });
                     // reload lại trang sau khi xoá xong
-                    // setTimeout(location.reload.bind(location), 1000);
+                    setTimeout(location.reload.bind(location), 1000);
                 } else {
                     toast({
                         title: "Thất bại",
@@ -437,4 +437,38 @@ $("#uncheck-news").click(function(notChecked) {
             $("#checkall-news").css("display", "inline-block");
         });
     }
+});
+
+//DELETE MỘT BÀI VIẾT
+$(".delete-news").click(function() {
+    var isDeleteComfirm = confirm("Bạn có muốn xoá bài viết này không?");
+    if (isDeleteComfirm) {
+        let id_news = $(this).data("delete_news");
+        $.ajax({
+            type: "POST",
+            url: "../admin/xu-ly/tin-tuc/delete-news-category.php",
+            data: { delete_news: id_news },
+            success: function(data) {
+                if (data == 1) {
+                    toast({
+                        title: "Thành công",
+                        msg: "Xoá bài viết thành công!",
+                        type: "success",
+                        duration: 5000,
+                        link: "list-news",
+                    });
+                    // reload lại trang sau khi xoá xong
+                    setTimeout(location.reload.bind(location), 1000);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Xoá bài viết thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
+                }
+            },
+        });
+    } else {}
 });

@@ -42,7 +42,7 @@ if (isset($_FILES['upload']['name'])) {
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
     }
 }
-if (isset($_POST['content-news'])) {
+if (isset($_POST['content-news']) && $_POST['content-news'] != "") {
     //Xử lí ảnh đại diện bài viết
     if (isset($_FILES['avt-news']['name'])) {
         $extension = explode('.', $_FILES['avt-news']['name']); //cắt thành mảng cách nhau bởi dấu .

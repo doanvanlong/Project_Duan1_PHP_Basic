@@ -76,3 +76,12 @@ function update_news($id_news, $name_news_category_update, $name_news_update, $i
     }
     pdo_execute($sql);
 }
+function delete_one_news($id_news){
+    $sql = "DELETE FROM `bai_viet` WHERE `id_bai_viet` = ?";
+    pdo_execute($sql, $id_news);
+}
+function delete_multi_news($list)
+{
+    $sql = "DELETE FROM `bai_viet` WHERE `id_bai_viet` = ?";
+    pdo_execute($sql, $list);
+}

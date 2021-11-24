@@ -23,5 +23,28 @@
            echo 0;
         }
     }
+    //Xoá 1 Bài viết
+    if (isset($_POST['delete_news'])){
+        $id_news = $_POST['delete_news'];
+        try {
+           delete_one_news($id_news);
+           echo 1;
+        } catch (Exception $e) {
+            echo 0;
+        }
+    }
+    //Xoá nhiều bài viết
+    if (isset($_POST['list-news'])) {
+        $list_del_news = $_POST['list-news'];
+        try {
+            foreach ($list_del_news as $list_delete) {
+                $list = $list_delete;
+                delete_multi_news($list);
+            }
+            echo 1;
+        } catch (Exception $e) {
+           echo 0;
+        }
+    }
 
 ?>
