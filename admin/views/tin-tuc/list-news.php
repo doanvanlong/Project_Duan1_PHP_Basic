@@ -1,7 +1,7 @@
 <h3 class="alert bg-secondary text-light heading-cate">Danh sách bài viết</h3>
 <div class="row">
     <div class="col-12">
-        <form action="" method="post" id="dm-tin-tuc">
+        <form action="" method="post" id="list-news">
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -50,7 +50,7 @@
                             echo '
                                 <tr>
                                 <td scope="row"></td>
-                                <td colspan="5" style="text-align:center;"><img src="' . $CONTENT_ADMIN_URL . '/img/nodata.png" alt="No data">
+                                <td colspan="6" style="text-align:center;"><img src="' . $CONTENT_ADMIN_URL . '/img/nodata.png" alt="No data">
                                 <h4 style="text-align:center; padding-top:1em;">Không có bài viết nào để hiển thị!</h4>
                                 </td>
                                 </tr>';
