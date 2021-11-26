@@ -324,7 +324,7 @@ $("#them-san-pham").submit(function(e) {
                 contentType: false,
                 processData: false,
                 success: function(data) {
-                    // data được gửi về từ file xử lý
+                    // // data được gửi về từ file xử lý
                     if (data == 1) {
                         //Hiển thị thông báo thêm thành công sản phẩm
                         toast({
@@ -800,4 +800,6 @@ $("#delete-san-pham").submit(function(e) {
             }
         },
     });
+
+
 });

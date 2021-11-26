@@ -5,6 +5,8 @@ require_once '../global.php';
 require_once '../model/tai-khoan.php';
 require_once '../model/san-pham.php';
 require_once '../model/danh-muc.php';
+require_once '../model/tin-tuc.php';
+
 
 
 // info kh

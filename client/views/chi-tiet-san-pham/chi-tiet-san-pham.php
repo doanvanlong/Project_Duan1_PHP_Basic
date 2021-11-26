@@ -1,7 +1,11 @@
     <!-- update số lưuojt xem sp -->
     <?php
     san_pham_Update_So_Luot_Xem($info_sp['id_sp']);
+    if (sessionLogin_Isset()) {
+        $id_kh_session = $_SESSION['login']['id_kh'];
+    }
     ?>
+    <input type="hidden" name="id_sp" value="<?php echo $info_sp['id_sp'] ?>">
     <div class="row">
         <div class="col-12">
             <div class="product-detail p-3">
@@ -21,35 +25,64 @@
                 <div class="row py-4">
                     <div class="col-6  ">
                         <div class="porsition-sticky">
-                            <div class="product-deltai-img " style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
+                            <div class="product-deltai-img mt-5 " style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
 
                                 <!-- <img src="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>" alt=""> -->
                             </div>
-                            <div class="product-detail-imgs my-5">
 
-                                <div class="owl-carousel owl-theme owl-imgs-detail">
-                                    <div class="item">
-                                        <div class="imgs-items" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
-                                        </div>
+                            <?php
+                            $list_imgs = san_pham_Query_Images_Pro($info_sp['id_sp']);
+                            if (count($list_imgs) > 0) { ?>
+                                <div class="product-detail-imgs my-5 ">
+                                    <div class="owl-carousel owl-theme owl-imgs-detail">
+                                        <?php
+                                        $list_imgs = san_pham_Query_Images_Pro($info_sp['id_sp']);
+                                        if (count($list_imgs) > 0) {
+                                            foreach ($list_imgs as $imgs) { ?>
+                                                <div class="item cursor-pointer">
+                                                    <div class="imgs-items" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $imgs['images'] ?>')">
+                                                    </div>
+                                                </div>
+                                            <?php
+
+                                            }
+                                            ?>
+
+
+                                        <?php
+                                        }
+                                        ?>
+
+
                                     </div>
-                                    <div class="item">
-                                        <div class="imgs-items" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
-                                        </div>
-                                    </div>
+
                                 </div>
+                            <?php
+                            } ?>
+                            <?php
+                            $cau_hinh_sp = san_pham_Query_Cau_Hinh($info_sp['id_sp']);
+                            $list_dung_luong = san_pham_Query_Dung_Luong($info_sp['id_sp']);
+                            if (is_array($cau_hinh_sp) > 0) { ?>
+                                <div class="product-detail-cau-hinh">
+                                    <ul>
+                                        <?php $cau_hinh_sp = san_pham_Query_Cau_Hinh($info_sp['id_sp']);
+                                        if (is_array($cau_hinh_sp)) {
+                                        ?>
+                                            <li><i class="fas fa-mobile-alt"></i><?= $cau_hinh_sp['man_hinh'] ?></li>
+                                            <li><i class="fas fa-camera"></i><?= $cau_hinh_sp['camera_sau'] ?></li>
+                                            <li><i class="fas fa-camera-retro"></i><?= $cau_hinh_sp['camera_selfie'] ?></li>
+                                            <li><i class="fas fa-microchip"></i><?= $cau_hinh_sp['cpu'] ?></li>
+                                            <li class=""><i class="fas fa-hdd"></i><span class="dung_luong_san_pham"><?= $list_dung_luong[0]['rom'] . '&nbsp;GB' ?></span> </li>
+                                            <li><a href="#">Xem chi tiết thông số kỹ thuật</a></li>
+                                        <?php
+                                        }
+                                        ?>
 
-                            </div>
-                            <div class="product-detail-cau-hinh">
-                                <ul>
-                                    <li><i class="fas fa-mobile-alt"></i>Màn hình chính: 7.6”, Màn hình phụ: 6.2”, HD+, Chính: Dynamic AMOLED 2X, phụ: Dynamic AMOLED 2X, 1768 x 2208 Pixel</li>
-                                    <li><i class="fas fa-camera"></i>12.0 MP + 12.0 MP + 12.0 MP</li>
-                                    <li><i class="fas fa-camera-retro"></i>10.0 MP</li>
-                                    <li><i class="fas fa-microchip"></i>Snapdragon 888</li>
-                                    <li><i class="fas fa-hdd"></i>256 GB</li>
-                                    <li><a href="#">Xem chi tiết thông số kỹ thuật</a></li>
-                                </ul>
-                            </div>
-
+                                    </ul>
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="col-6">
@@ -58,47 +91,49 @@
                             <h2 class="product-detail-price-old text-secondary"><strike><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></strike></h2>
 
                         </div>
+                        <!-- dung lượng -->
                         <div class="product-detail-select-dung-luong ">
                             <div class="row no-gutters">
-                                <div class="col-4">
-                                    <div class="form-check box-check-dung-luong my-2  active">
-                                        <div class="check cursor-pointer">
-                                            <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $info_sp['id_sp'] ?>" value="option1" checked>
-                                            <label class="form-check-label pl-2  cursor-pointer" for="<?= $info_sp['id_sp'] ?>">
-                                                64 GB
+                                <?php
+                                foreach ($list_dung_luong as $dung_luong) { ?>
+                                    <div class="col-4">
+                                        <?php
+                                        if ($list_dung_luong[0]['rom'] == $dung_luong['rom']) {
+                                        ?>
+                                            <label for="<?= $dung_luong['id_dl_phone'] ?>" class="form-check box-check-dung-luong my-2 active" data-id_dung_luong="<?= $dung_luong['id_dl_phone'] ?>">
+                                                <div class="check cursor-pointer ">
+                                                    <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $dung_luong['id_dl_phone'] ?>" checked value="option1">
+                                                    <label class="form-check-label pl-2 text-dung-luong  cursor-pointer" for="<?= $dung_luong['id_dl_phone'] ?>">
+                                                        <?= $dung_luong['rom'] ?> GB
+                                                    </label>
+                                                </div>
+                                                <label for="<?= $dung_luong['id_dl_phone'] ?>" class="cursor-pointer">
+                                                    <div class="form-check-price"><?= number_format($dung_luong['don_gia'], 0, ',', '.') . 'đ' ?></div>
+                                                </label>
                                             </label>
-                                        </div>
-                                        <label for="<?= $info_sp['id_sp'] ?>" class="cursor-pointer">
-                                            <div class="form-check-price">1000000020 đ</div>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-check box-check-dung-luong my-2 ">
-                                        <div class="check cursor-pointer">
-                                            <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $info_sp['id_sp'] ?>" value="option1">
-                                            <label class="form-check-label pl-2  cursor-pointer" for="<?= $info_sp['id_sp'] ?>">
-                                                64 GB
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <label for="<?= $dung_luong['id_dl_phone'] ?>" class="form-check box-check-dung-luong my-2" data-id_dung_luong="<?= $dung_luong['id_dl_phone'] ?>">
+                                                <div class="check cursor-pointer ">
+                                                    <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $dung_luong['id_dl_phone'] ?>" value="option1">
+                                                    <label class="form-check-label pl-2 text-dung-luong cursor-pointer" for="<?= $dung_luong['id_dl_phone'] ?>">
+                                                        <?= $dung_luong['rom'] ?> GB
+                                                    </label>
+                                                </div>
+                                                <label for="<?= $dung_luong['id_dl_phone'] ?>" class="cursor-pointer">
+                                                    <div class="form-check-price"><?= number_format($dung_luong['don_gia'], 0, ',', '.') . 'đ' ?></div>
+                                                </label>
                                             </label>
-                                        </div>
-                                        <label for="<?= $info_sp['id_sp'] ?>" class="cursor-pointer">
-                                            <div class="form-check-price">1000000020 đ</div>
-                                        </label>
+                                        <?php
+                                        }
+                                        ?>
+
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-check box-check-dung-luong my-2 ">
-                                        <div class="check cursor-pointer">
-                                            <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $info_sp['id_sp'] ?>" value="option1">
-                                            <label class="form-check-label pl-2  cursor-pointer" for="<?= $info_sp['id_sp'] ?>">
-                                                64 GB
-                                            </label>
-                                        </div>
-                                        <label for="<?= $info_sp['id_sp'] ?>" class="cursor-pointer">
-                                            <div class="form-check-price">1000000020 đ</div>
-                                        </label>
-                                    </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
+
 
                             </div>
 
@@ -106,31 +141,39 @@
 
                         </div>
                         <div class="product-detail-select-mau d-flex py-4 ">
-                            <div class="box-items-mau active d-flex flex-column align-items-center justify-content-center">
-                                <div class="product-detail-select-mau-img ">
+                            <?php
+                            $list_mau_sac = san_pham_Query_Color($info_sp['id_sp']);
+                            foreach ($list_mau_sac as $mau_sac) {
+                                if ($list_mau_sac[0]['id_ms_phone'] == $mau_sac['id_ms_phone']) { ?>
+                                    <div class="box-items-mau active  d-flex flex-column align-items-center justify-content-center">
+                                        <div class="product-detail-select-mau-img ">
 
-                                    <img style="width:80%" src="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>" alt="">
-                                </div>
-                                <div class="product-detail-select-mau-name">Vàng</div>
-                            </div>
-                            <div class="box-items-mau d-flex flex-column align-items-center justify-content-center">
-                                <div class="product-detail-select-mau-img ">
-                                    <img style="width:80%" src="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>" alt="">
-                                </div>
-                                <div class="product-detail-select-mau-name">Vàng</div>
-                            </div>
-                            <div class="box-items-mau d-flex flex-column align-items-center justify-content-center">
-                                <div class="product-detail-select-mau-img ">
-                                    <img style="width:80%" src="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>" alt="">
-                                </div>
-                                <div class="product-detail-select-mau-name">Vàng</div>
-                            </div>
-                            <div class="box-items-mau d-flex flex-column align-items-center justify-content-center">
-                                <div class="product-detail-select-mau-img ">
-                                    <img style="width:80%" src="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>" alt="">
-                                </div>
-                                <div class="product-detail-select-mau-name">Vàng</div>
-                            </div>
+                                            <img style="width:80%" class="select_mau_sac_img" src="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>" alt="">
+                                        </div>
+                                        <input type="hidden" name="mau_sac" value="<?= $mau_sac['ten_mau'] ?>">
+                                        <div class="product-detail-select-mau-name"><?= $mau_sac['ten_mau'] ?></div>
+                                    </div>
+                                <?php
+                                } else { ?>
+                                    <div class="box-items-mau  d-flex flex-column align-items-center justify-content-center">
+                                        <div class="product-detail-select-mau-img ">
+
+                                            <img style="width:80%" class="select_mau_sac_img" src="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>" alt="">
+                                        </div>
+                                        <input type="hidden" name="mau_sac" value="<?= $mau_sac['ten_mau'] ?>">
+                                        <div class="product-detail-select-mau-name"><?= $mau_sac['ten_mau'] ?></div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+
+
+                            <?php
+
+
+                            }
+                            ?>
+
 
                         </div>
                         <div class="product-detail-voucher">
@@ -208,7 +251,7 @@
                             </div>
                             <div class="product-detail-mua-kem-deal-main-items my-3">
                                 <div class="row align-items-center">
-                                    <div class="col-2">
+                                    <div class="col-2 ">
                                         <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
                                         </div>
 
@@ -262,6 +305,7 @@
 
             </div>
             <div class="san-pham-tuong-tu py-3 my-5">
+                <h3 class="san-pham-tuong-tu-title py-4 pl-4 font-size-heading">Sản phẩm bạn quan tâm</h3>
                 <div class="owl-carousel owl-theme owl-san-pham-tuong-tu">
                     <?php
                     $list_sp_cung_dm = san_pham_Query_Danh_Muc_Con($info_sp['id_sub_dm_pro']);
@@ -303,46 +347,62 @@
             <div class="product-detail-mota-news">
                 <div class="row">
                     <div class="col-8">
-                        <div class="mota-product-detail bg-white p-4">
-                            <?= $info_sp['mo_ta'] ?>
-                            <button class="doc-them btn btn-primary font-size">Đọc thêm <i class="fas fa-angle-down"></i></button>
-                            <button class="an-bot btn btn-primary font-size">Ẩn bớt <i class="fas fa-chevron-up"></i></button>
-                        </div>
+                        <?php
+                        if ($info_sp['mo_ta'] == "") { ?>
+                            <div class="product-detail-mota-no-content">
+                                <h3>Chưa có mô tả nào về <?= $info_sp['ten_sp'] ?></h3>
+                            </div>
+                        <?php
+                        } else { ?>
+                            <div class="mota-product-detail bg-white p-4">
+                                <?= $info_sp['mo_ta'] ?>
+                                <button class="doc-them btn btn-primary font-size">Đọc thêm <i class="fas fa-angle-down"></i></button>
+                                <button class="an-bot btn btn-primary font-size">Ẩn bớt <i class="fas fa-chevron-up"></i></button>
+                            </div>
+                        <?php
+                        }
+                        ?>
+
                     </div>
                     <div class="col-4">
                         <div class="news-product-detail porsition-sticky">
                             <div class="news-product-detai-title text-overflow">Bài viết về <?= $info_sp['ten_sp'] ?> </div>
-                            <div class="danh-sach-bai-viet-product-detail">
-                                <!-- dùng chung của banner tin tức đầu trang -->
-                                <div class="banner__right-promotion-body-content  d-flex align-items-center">
-                                    <div class="banner__right-promotion-body-img">
-                                        <img style="width:100%;min-height:60px;" src="<?= $CONTENT_CLIENT_URL ?>/img/(500x250)_crop_cover_web_10-8.png" alt="">
-                                    </div>
-                                    <div class="banner__right-promotion-body-text ">
-                                        <p class="text-overflow">Đặt trước iPhone 12 series VN/A: Tiết kiệm lên đến 5 triệu đồng</p>
-                                        <p class="mb-0 text-muted" style="font-size: 1.1rem;">3 tuần trước</p>
-                                    </div>
+                            <?php
+                            $list_bai_viet = bai_viet_Query_By_Id_Sp_Thuoc_DM_Danh_Gia($info_sp['id_sp']);
+                            if (count($list_bai_viet) > 0) { ?>
+                                <div class="danh-sach-bai-viet-product-detail">
+                                    <?php
+                                    foreach ($list_bai_viet as $bai_viet) { ?>
+                                        <!-- dùng chung của banner tin tức đầu trang -->
+                                        <a href="#" class="banner__right-promotion-body-content  d-flex align-items-center">
+                                            <div class="banner__right-promotion-body-img">
+                                                <img style="width:100%;min-height:60px;" src="<?= $CONTENT_UPLOAD ?>/<?= $bai_viet['img_news'] ?>" alt="">
+                                            </div>
+                                            <div class="banner__right-promotion-body-text ">
+                                                <p class="text-overflow"><?= $bai_viet['tieu_de_news'] ?></p>
+                                                <p class="mb-0 text-muted" style="font-size: 1.1rem;"><?= $bai_viet['ngay_post'] ?></p>
+                                            </div>
+                                        </a>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
-                                <div class="banner__right-promotion-body-content  d-flex align-items-center">
-                                    <div class="banner__right-promotion-body-img">
-                                        <img style="width:100%;min-height:60px;" src="<?= $CONTENT_CLIENT_URL ?>/img/(500x250)_crop_cover_web_10-8.png" alt="">
-                                    </div>
-                                    <div class="banner__right-promotion-body-text ">
-                                        <p class="text-overflow">Đặt trước iPhone 12 series VN/A: Tiết kiệm lên đến 5 triệu đồng</p>
-                                        <p class="mb-0 text-muted" style="font-size: 1.1rem;">3 tuần trước</p>
-                                    </div>
-                                </div>
+                            <?php
+                            } else { ?>
+                                <p class="py-3"><i>Đang cập nhật...</i></p>
+                            <?php
+                            }
+                            ?>
 
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product-detail-rating my-5 py-4">
-                <h3 class="product-detail-rating-title pb-4">
+            <div class="product-detail-rating my-5 ">
+                <h2 class="product-detail-rating-title  pt-4 pl-4 pb-4">
                     Đánh giá & nhận xét <?= $info_sp['ten_sp']; ?>
-                </h3>
-                <div class="product-detail-rating-content">
+                </h2>
+                <div class="product-detail-rating-content py-3">
                     <div class="row">
                         <div class="col-4">
                             <div class="product-detail-rating-avg text-center">
@@ -407,35 +467,70 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-detail-rating-write">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="product-detail-rating-write-title">
+                <div class="product-detail-rating-write py-4">
+                    <form ation="" method="post" id="send-danh-gia" class="row align-items-center">
+                        <div class="col-5 text-center box-select-star">
+                            <div class="product-detail-rating-write-title font-size-1-8 ">
                                 Bạn chấm sản phẩm này bao nhiêu sao?
                             </div>
-                            <!-- <div class="product-detail-rating-write-title-check-star">
-                                <input type="radio" name="rating-sao" id="sao5">
-                                <label for="sao5"><i class="fas fa-star"></i></label>
-                                <input type="radio" name="rating-sao" id="sao4">
-                                <label for="sao4"><i class="fas fa-star"></i></label>
-                                <input type="radio" name="rating-sao" id="sao3">
-                                <label for="sao3"><i class="fas fa-star"></i></label>
-                                <input type="radio" name="rating-sao" id="sao2">
-                                <label for="sao2"><i class="fas fa-star"></i></label>
-                                <input type="radio" name="rating-sao" id="sao1">
-                                <label for="sao1"><i class="fas fa-star"></i></label>
-                            </div> -->
+                            <input type="hidden" name="id_sp" value="<?= $info_sp['id_sp'] ?>">
+                            <div class="product-detail-rating-write-title-check-star vote-sao py-2">
+                                <input hidden type="radio" class="rating-sao" name="rating-sao" value="5" id="sao5">
+                                <label data-text="Tuyệt vời" for="sao5" class="rating-sao "><i class="fas fa-star icon-star icon-max"></i></label>
+                                <input hidden type="radio" class="rating-sao" name="rating-sao" value="4" id="sao4">
+                                <label data-text="Hài lòng" for="sao4" class="rating-sao"><i class="fas fa-star icon-star icon-max"></i></label>
+                                <input hidden type="radio" class="rating-sao" name="rating-sao" value="3" id="sao3">
+                                <label data-text="Bình thường" for="sao3" class="rating-sao"><i class="fas fa-star icon-star icon-max"></i></label>
+                                <input hidden type="radio" class="rating-sao" name="rating-sao" value="2" id="sao2">
+                                <label data-text="Tạm được" for="sao2" class="rating-sao"><i class="fas fa-star icon-star icon-max"></i></label>
+                                <input hidden type="radio" class="rating-sao" name="rating-sao" value="1" id="sao1">
+                                <label data-text="Không thích" for="sao1" class="rating-sao"><i class="fas fa-star icon-star icon-max"></i></label>
+                            </div>
+                            <p class="text-select-star"></p>
 
                         </div>
-                        <div class="col-8">
-
+                        <div class="col-7 pt-3">
+                            <!-- -->
+                            <div class="form-group box-write-danh-gia pr-4">
+                                <textarea class="form-control text-area-send-rate" name="noi_dung" id="" style="resize:none;" placeholder="Viết đánh của bạn ..." rows="3">
+                                </textarea>
+                                <button tpye="submit" class="btn primary btn-send-danh-gia font-size text-light p-3">Gửi đánh giá</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
+                <!-- render list đánh giá -->
                 <div class="list-product-detail-rating">
 
+                    <!-- ajax load ra -->
+                    <!-- dùng chung comment reder -->
+
+
+                </div>
+
+            </div>
+            <div class="product-detail-comment">
+                <div class="product-detail-comment-title">
+                    Hỏi & đáp về <?= $info_sp['ten_sp'] ?>
+                </div>
+                <!-- dùng chung textarea rating -->
+                <form action="" method="POST" id="send_comment" class="product-detail-comment-write">
+                    <div class="form-group box-write-danh-gia pr-4">
+                        <input type="hidden" name="id_sp" value="<?= $info_sp['id_sp'] ?>">
+                        <input type="hidden" name="id_kh" value="<?= $id_kh_session ?>">
+
+                        <textarea class="form-control text-area-send-rate" name="noi_dung_comment" id="" style="resize:none;" placeholder="Viết đánh của bạn ..." rows="2">
+                                </textarea>
+                        <button type="submit" class="btn primary btn-send-comment font-size text-light p-3">Gửi bình luận</button>
+                    </div>
+                </form>
+                <!-- end viết comment -->
+                <!-- comment1 -->
+                <div class="list-comment-render">
+                   <!-- load từ ajax -->
                 </div>
             </div>
         </div>
+
 
     </div>

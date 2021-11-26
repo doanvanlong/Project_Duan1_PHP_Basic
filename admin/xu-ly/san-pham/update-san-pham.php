@@ -26,9 +26,6 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
     $mau_sac = $_POST['mau-sac']; //nếu là điện thoại
     $dung_luong_san_pham = $_POST['dung-luong'];
     //có nhu cầu nhập thêm ,khi chọn điện thoại
-    $mau_sac_more_update = $_POST['mau-sac-more-update'];
-    $dung_luong_more_update = $_POST['dung-luong-more-update'];
-    $gia_san_pham_more_update = $_POST['gia-san-pham-more-update'];
     $man_hinh = $_POST['man-hinh'];
     $camera_sau = $_POST['camera-sau'];
     $camera_truoc = $_POST['camera-truoc'];
@@ -42,8 +39,6 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
     $mo_ta = $_POST['content'];
     //khi clcik Thêm mới màu sắc,ảnh,dung lượng,giá
     // $anh_mau_sac_more_add = $_FILES['anh-mau-sac-more-add']['name'];
-    $id_ms_phones = $_POST['id_ms_phone'];
-    $id_dl_phones = $_POST['id_dl_phone'];
 
 
     //Xữ lý Hình ảnh đại diện  Nếu ko click thay đổi
@@ -99,11 +94,11 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
                     san_pham_Insert_Img_Detail($id_sp, $anh_chi_tiet);
                     $i++;
                 }
-                $j=0;
-                $anhct_names=$_FILES['anh-chi-tiet']['name'];
+                $j = 0;
+                $anhct_names = $_FILES['anh-chi-tiet']['name'];
                 foreach ($_FILES['anh-chi-tiet']['tmp_name'] as $anh_chi_tiet_tmp) {
                     // move upload file
-                    move_uploaded_file($anh_chi_tiet_tmp, '../../../content/uploads/' .$anhct_names[$j]);
+                    move_uploaded_file($anh_chi_tiet_tmp, '../../../content/uploads/' . $anhct_names[$j]);
                     $j++;
                 }
             } else {
@@ -132,45 +127,54 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
         //update cấu hình
         san_pham_Update_Cau_Hinh($info_sp['id_sp'], $man_hinh, $camera_sau, $camera_truoc, $ram, $rom, $cpu, $dung_luong_pin, $the_sim, $he_dieu_hanh, $xuat_xu);
         // Sửa màu sắc more update
-        $mau_sac_more_updates = $_POST['mau-sac-more-update'];
-        $i = 0;
-        $anh_mau_sac_more_updates = $_FILES['anh-mau-sac-more-update']['name'];
-        foreach ($anh_mau_sac_more_updates as $anh_mau_sac_more_update) {
-            if ($anh_mau_sac_more_update == '') {
-                //    rỗng thì kệ nó ko làm gì
-                $colors = san_pham_Query_All_Color_Tru_First($info_sp['id_sp']);
-                $hinh_anh_more = $colors[$i]['hinh_anh'];
-                $id_more = $id_ms_phones[$i];
-                $mau_sac_more = $mau_sac_more_updates[$i];
-                san_pham_Update_Color_More_Update($info_sp['id_sp'], $id_more, $mau_sac_more, $hinh_anh_more);
-                $i++;
-            } else {
-                // có thì update
-                $colors = san_pham_Query_All_Color_Tru_First($info_sp['id_sp']);
-                $hinh_anh_more = $anh_mau_sac_more_updates[$i];
-                $id_more = $id_ms_phones[$i];
-                $mau_sac_more = $mau_sac_more_updates[$i];
-                san_pham_Update_Color_More_Update($info_sp['id_sp'], $id_more, $mau_sac_more, $hinh_anh_more);
-                $i++;
+        if (isset($_POST['mau-sac-more-update'])) {
+            $mau_sac_more_updates = $_POST['mau-sac-more-update'];
+            $id_ms_phones = $_POST['id_ms_phone'];
+
+            $i = 0;
+            $anh_mau_sac_more_updates = $_FILES['anh-mau-sac-more-update']['name'];
+            foreach ($anh_mau_sac_more_updates as $anh_mau_sac_more_update) {
+                if ($anh_mau_sac_more_update == '') {
+                    //    rỗng thì kệ nó ko làm gì
+                    $colors = san_pham_Query_All_Color_Tru_First($info_sp['id_sp']);
+                    $hinh_anh_more = $colors[$i]['hinh_anh'];
+                    $id_more = $id_ms_phones[$i];
+                    $mau_sac_more = $mau_sac_more_updates[$i];
+                    san_pham_Update_Color_More_Update($info_sp['id_sp'], $id_more, $mau_sac_more, $hinh_anh_more);
+                    $i++;
+                } else {
+                    // có thì update
+                    $colors = san_pham_Query_All_Color_Tru_First($info_sp['id_sp']);
+                    $hinh_anh_more = $anh_mau_sac_more_updates[$i];
+                    $id_more = $id_ms_phones[$i];
+                    $mau_sac_more = $mau_sac_more_updates[$i];
+                    san_pham_Update_Color_More_Update($info_sp['id_sp'], $id_more, $mau_sac_more, $hinh_anh_more);
+                    $i++;
+                }
             }
         }
 
         //sửa dung lượng more update
-        $dung_luong_more_updates = $_POST['dung-luong-more-update'];
-        $don_gia_more_updates = $_POST['gia-san-pham-more-update'];
-        $i = 0;
-        foreach ($dung_luong_more_updates as $dung_luong_more_update) {
-            $id_sp;
-            $id_dl_phones[$i];
-            $dung_luong_more_update;
-            $don_gia_more_updates[$i];
-            san_pham_Update_Dung_Luong_More_Update($id_sp, $dung_luong_more_update, $don_gia_more_updates[$i], $id_dl_phones[$i]);
-            $i++;
+        if (isset($_POST['dung-luong-more-update'])) {
+            $dung_luong_more_updates = $_POST['dung-luong-more-update'];
+            $don_gia_more_updates = $_POST['gia-san-pham-more-update'];
+            $i = 0;
+            $id_dl_phones = $_POST['id_dl_phone'];
+
+            foreach ($dung_luong_more_updates as $dung_luong_more_update) {
+                $id_sp;
+                $id_dl_phones[$i];
+                $dung_luong_more_update;
+                $don_gia_more_updates[$i];
+                san_pham_Update_Dung_Luong_More_Update($id_sp, $dung_luong_more_update, $don_gia_more_updates[$i], $id_dl_phones[$i]);
+                $i++;
+            }
         }
+
         //more add ,muốn thêm tiếp dung lượng khi sửa
 
         // nếu có thêm màu sắc
-        if (isset($_POST['mau-sac-more-add']) && $_POST['mau-sac-more-add'] != "") {
+        if (isset($_POST['mau-sac-more-add']) && $_POST['mau-sac-more-add'][0] != "") {
             //    hình ảnh more adđ là mảng
             // hình ảnh more add nên dùng mau-sac-more-add [i] thứ i
             if (isset($_FILES['anh-mau-sac-more-add'])) {
@@ -188,7 +192,7 @@ if (isset($_POST['danh-muc-chinh-san-pham-update'])) {
             }
         }
         // nếu có thêm dung lượng
-        if (isset($_POST['dung-luong-more-add']) && $_POST['dung-luong-more-add'] != "") {
+        if (isset($_POST['dung-luong-more-add']) && $_POST['dung-luong-more-add'][0] != "") {
             $i = 0;
             foreach ($_POST['dung-luong-more-add'] as $dung_luong) {
                 san_pham_Insert_Dung_luong($id_sp, $dung_luong, $_POST['gia-san-pham-more-add'][$i]);
