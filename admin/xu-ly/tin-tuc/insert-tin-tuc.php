@@ -44,7 +44,7 @@ if (isset($_FILES['upload']['name'])) {
 }
 if (isset($_POST['content-news']) && $_POST['content-news'] != "") {
     //Xử lí ảnh đại diện bài viết
-    if (isset($_FILES['avt-news']['name'])) {
+    if (isset($_FILES['avt-news']['name']) && $_FILES['avt-news']['name'] !="") {
         $extension = explode('.', $_FILES['avt-news']['name']); //cắt thành mảng cách nhau bởi dấu .
         $file_extension = end($extension); //lấy đuôi file
         $allowed_type = array('jpg', 'jpeg', 'png', 'gif'); //cho phép tải file ảnh
@@ -56,14 +56,24 @@ if (isset($_POST['content-news']) && $_POST['content-news'] != "") {
                 //    upload hình từ đường dẫn tmp name vào đường dẫn đã khai báo path
             }
         }
-    }
     $img_news = $new_name;
+
+    }else{
+        $img_news="";
+    }
     //Xử lí data liên quan khác
     $name_news = $_POST['content-news'];
     $name_news_category = $_POST['news-category'];
     $mo_ta_news = $_POST['editor1'];
+    //tag sp vào bài viết
+    $date=Date("y-m-d");
+    if($_POST['tag_san_pham'] !=0){
+        $tag_san_pham= $_POST['tag_san_pham'];
+    }else{
+        $tag_san_pham="0";
+    }
     try {
-        insert_news($name_news_category,$name_news,$img_news,$mo_ta_news);
+        insert_news($name_news_category,$name_news,$img_news,$mo_ta_news,$tag_san_pham,$date);
         //Thành công hiển thị 1
         echo 1;
     } catch (exception $e) {

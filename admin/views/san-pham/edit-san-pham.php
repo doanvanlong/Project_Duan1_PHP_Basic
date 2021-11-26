@@ -196,7 +196,10 @@
                     $colors = san_pham_Query_All_Color_Tru_First($info_sp['id_sp']);
                     foreach ($colors as $color) { ?>
                         <div class="row ">
-                            <div class="col-5">
+                            <div class="col-2">
+                            <span class="btn btn-outline-danger click_xoa-mau-sac ml-2" data-id_ms="<?=$color['id_ms_phone']?>">Xoá</span>
+                            </div>
+                            <div class="col-4">
                                 <input type="hidden" name="id_ms_phone[]" value="<?= $color['id_ms_phone'] ?>">
                                 <div class="mau-sac-more-update">
                                     <div class="mb-3">
@@ -206,12 +209,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-7">
+                            <div class="col-6">
                                 <div class="hinh-anh-more-update">
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label my-3">Ảnh màu sắc:</label>
                                         <div class="d-flex align-items-center">
-                                            <input style="width:50%" class="form-control " type="file" id="" name="anh-mau-sac-more-update[]">
+                                            <input style="width:50%;" class="form-control mt-3 " type="file" id="" name="anh-mau-sac-more-update[]">
                                             <img style="width:100px" src="<?= $CONTENT_UPLOAD . '/' . $color['hinh_anh']; ?>" alt="">
                                         </div>
                                         <small id="error-anh-mau-sac-more-add" class="form-text text-danger "></small>
@@ -235,7 +238,10 @@
 
                     foreach ($dung_luongs as $dung_luong) { ?>
                         <div class="row ">
-                            <div class="col-6 ">
+                            <div class="col-2">
+                            <span class="btn btn-outline-danger click_xoa-dung-luong ml-2" data-id_dl="<?=$dung_luong['id_dl_phone']?>">Xoá</span>
+                            </div>
+                            <div class="col-4 ">
                                 <input type="hidden" name="id_dl_phone[]" value="<?= $dung_luong['id_dl_phone']; ?>">
                                 <div class="dung-luong-more-update">
                                     <label class="my-3">Dung lượng:</label>

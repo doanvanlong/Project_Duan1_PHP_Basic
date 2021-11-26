@@ -240,6 +240,11 @@ function san_pham_Query_All_Flash_Sale()
     return pdo_query($sql);
 }
 
+// hàm truy vấn sản phẩm điện thoại
+function san_pham_Query_By_DM_Dien_Thoai(){
+    $sql="SELECT * FROM san_pham where id_dm_pro =47";
+    return pdo_query($sql);
+}
 //hàm truy vấn điện thoại nỗi bật , có lượt xem nhiều
 // dùng tạm truy vấn all
 function san_pham_Query_Dien_Thoai_Feature()
@@ -301,7 +306,42 @@ function san_pham_Update_So_Luot_Xem($id_sp){
     $sql="UPDATE san_pham SET so_luot_xem = so_luot_xem + 1 where id_sp=?";
     return pdo_execute($sql, $id_sp);
 }
-
+//hàm truy vấn hình ảnh chi tiết của 1 sản phẩm
+function san_pham_Query_Imgs_Detail($id_sp){
+    $sql="SELECT * FROM images_pro where id_sp =?";
+    return pdo_query($sql, $id_sp);
+}
+//hàm truy vấn tất cả màu sắc của 1 sản phẩm
+function san_pham_Query_Color($id_sp){
+    $sql="SELECT * FROM mau_sac_phone where id_sp=?";
+    return pdo_query($sql, $id_sp);
+}
+//hàm truy vấn tất cả dung lượng sản phẩm
+function san_pham_Query_Dung_Luong($id_sp){
+    $sql="SELECT * FROM dung_luong_phone where id_sp=?";
+    return pdo_query($sql, $id_sp);
+}
+// hàm truy vấn dung lượng 1 sp theo id dung lượng riêng
+function san_pham_Query_One_ID_Dung_Luong($id_dl_phone){
+    $sql="SELECT * FROM dung_luong_phone where id_dl_phone =?";
+    return pdo_query_one($sql, $id_dl_phone);
+}
+//hàm truy vấn cấu hình theo san_pham
+function san_pham_Query_One_Cau_hinh($id_sp){
+    $sql="SELECT * FROM cau_hinh_phone where id_sp =?";
+    return pdo_query($sql, $id_sp);
+}
+//hàm xoá 1 màu sắc more add theo id ms 
+function san_pham_Delete_One_MS_phone($id_ms_phone) {
+    $sql="DELETE FROM mau_sac_phone where id_ms_phone =?";
+    return pdo_execute($sql, $id_ms_phone);
+    
+}
+//hàm xoá 1 dung lượng more add theo id dung_luong_phone
+function san_pham_Delete_One_DL_phone($id_dl_phone){
+    $sql="DELETE FROM dung_luong_phone where id_dl_phone =?";
+    return pdo_execute($sql, $id_dl_phone);
+}
 
 //tìm kiếm sản phẩm và danh mục
 function san_pham_Search($keyword)

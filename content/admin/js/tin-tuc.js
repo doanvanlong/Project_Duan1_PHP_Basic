@@ -45,9 +45,12 @@ $('[name*="update-news-category"]').keyup(function() {
     }
 });
 
+
+
 //SUBMIT FORM THÊM DANH MỤC TIN TỨC
 $("#add-dm-tin-tuc").submit(function(e) {
     e.preventDefault();
+
     //validate form
     var checkForm = $('[name*="danh-muc-tin-tuc"]').val() == "";
     if (checkForm == true) {
@@ -291,6 +294,17 @@ $('[name*="editor1"]').focus(function() {
     $("#error-editor1").text("");
 });
 //END loại bỏ lỗi
+
+$('.show-danh-gia-trai-nghiem').hide();
+//SELECT TAG sản phẩm vào bài viết 
+$('[name*="news-category"]').change(function() {
+    if($(this).val()==9){
+        $('.show-danh-gia-trai-nghiem').show();
+    }else{
+        $('.show-danh-gia-trai-nghiem').hide();
+
+    }
+})
 
 //THÊM TIN TỨC MỚI
 $("#send").click(function() {

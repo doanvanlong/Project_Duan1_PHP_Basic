@@ -11,6 +11,7 @@ if (isset($_POST['keyup_ten_san_pham'])) {
     // vì hàm trả về số record
 }
 
+
 if (isset($_POST['danh-muc-chinh-san-pham'])) {
     $dm_chinh = $_POST['danh-muc-chinh-san-pham'];
     $dm_chi_tiet = $_POST['danh-muc-chi-tiet-san-pham'];
@@ -72,7 +73,7 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
                     san_pham_Insert_Cau_hinh($id_sp, $man_hinh, $camera_sau, $camera_truoc, $ram, $dung_luong_san_pham, $cpu, $dung_luong_pin, $the_sim, $he_dieu_hanh, $xuat_xu);
                 }
                 // nếu có thêm màu sắc
-                if (isset($_POST['mau-sac-more-add'])) {
+                if (isset($_POST['mau-sac-more-add']) && $_POST['mau-sac-more-add'][0]!="") {
                     //    hình ảnh more adđ là mảng
                     // hình ảnh more add nên dùng mau-sac-more-add [i] thứ i
                     if (isset($_FILES['anh-mau-sac-more-add'])) {
@@ -90,7 +91,7 @@ if (isset($_POST['danh-muc-chinh-san-pham'])) {
                     }
                 }
                 // nếu có thêm dung lượng
-                if (isset($_POST['dung-luong-more-add'])) {
+                if (isset($_POST['dung-luong-more-add']) && $_POST['dung-luong-more-add'][0] !="") {
                     $i = 0;
                     foreach ($_POST['dung-luong-more-add'] as $dung_luong) {
                         san_pham_Insert_Dung_luong($id_sp, $dung_luong, $_POST['gia-san-pham-more-add'][$i]);

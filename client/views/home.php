@@ -11,19 +11,23 @@
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="d-block w-100" src="<?= $CONTENT_CLIENT_URL ?>/img/baner_slider_10-29.png" alt="First slide">
-                            </div>
+                            <?php
+                            $list_news_km = bai_viet_Query_Danh_Muc_KM();
+                            foreach ($list_news_km as $news_km) {
+                                if ($list_news_km[0]['id_bai_viet'] == $news_km['id_bai_viet']) { ?>
+                                    <a href="#" class="carousel-item active ">
+                                        <img alt="<?= $news_km['tieu_de_news'] ?>" style="height:301px;" class="d-block w-100" src="<?= $CONTENT_UPLOAD ?>/<?= $news_km['img_news'] ?>" alt="First slide">
+                                    </a>
+                                <?php
+                                } else { ?>
+                                    <a href="#" class="carousel-item ">
+                                        <img alt="<?= $news_km['tieu_de_news'] ?>" style="height:301px;" class="d-block w-100" src="<?= $CONTENT_UPLOAD ?>/<?= $news_km['img_news'] ?>" alt="First slide">
+                                    </a>
+                            <?php
+                                }
+                            }
+                            ?>
 
-                            <div class="carousel-item ">
-                                <img class="d-block w-100" src="<?= $CONTENT_CLIENT_URL ?>/img/slider_10-8.png" alt="First slide">
-                            </div>
-                            <div class="carousel-item ">
-                                <img class="d-block w-100" src="<?= $CONTENT_CLIENT_URL ?>/img/slider_7-13_Sam.png" alt="First slide">
-                            </div>
-                            <div class="carousel-item ">
-                                <img class="d-block w-100" src="<?= $CONTENT_CLIENT_URL ?>/img/Trung_iphone_13_1.png">
-                            </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,28 +44,26 @@
                         <div class="banner__right-promotion">
                             <div class="banner__right-promotion-title d-flex justify-content-between align-items-center">
                                 <h3 class="banner__right-promotion-heading mb-0">Khuyến mãi</h3>
-                                <a href="" style="font-size:1.3rem" class="banner__right-promotion-seeall mb-0">Xem thêm</a>
+                                <a href="#" style="font-size:1.3rem" class="banner__right-promotion-seeall mb-0">Xem thêm</a>
                             </div>
                             <div class="banner__right-promotion-body">
-                                <div class="banner__right-promotion-body-content  d-flex align-items-center">
-                                    <div class="banner__right-promotion-body-img">
-                                        <img style="width:100%;min-height:60px;" src="<?= $CONTENT_CLIENT_URL ?>/img/(500x250)_crop_cover_web_10-8.png" alt="">
-                                    </div>
-                                    <div class="banner__right-promotion-body-text ">
-                                        <p class="text-overflow">Đặt trước iPhone 13 series VN/A: Tiết kiệm lên đến 5 triệu đồng</p>
-                                        <p class="mb-0 text-muted" style="font-size: 1.1rem;">3 tuần trước</p>
-                                    </div>
-                                </div>
-                                <div class="banner__right-promotion-body-content  d-flex align-items-center">
-                                    <div class="banner__right-promotion-body-img">
-                                        <img style="width:100%;min-height:60px;" src="<?= $CONTENT_CLIENT_URL ?>/img/(500x250)_crop_Cover_web.png" alt="">
-                                    </div>
-                                    <div class="banner__right-promotion-body-text ">
-                                        <p class="text-overflow"> Đặt mua iPhone 12 mini VN/A: Giá siêu hời: Tiết kiệm tới 3.7 triệu
-                                            đồng</p>
-                                        <p class="mb-0 text-muted" style="font-size: 1.1rem;">3 tuần trước</p>
-                                    </div>
-                                </div>
+                                <?php
+                                $top_2_news_km = bai_viet_Query_Top2_Km();
+                                foreach ($top_2_news_km as $top_2_km) { ?>
+                                    <a href="#" class="banner__right-promotion-body-content  d-flex align-items-center">
+                                        <div class="banner__right-promotion-body-img">
+                                            <img style="width:100%;min-height:60px;" src="<?= $CONTENT_UPLOAD ?>/<?=$top_2_km['img_news']?>" alt="">
+                                        </div>
+                                        <div class="banner__right-promotion-body-text ">
+                                            <p class="text-overflow"><?=$top_2_km['tieu_de_news']?></p>
+                                            <p class="mb-0 text-muted" style="font-size: 1.1rem;"><?=$top_2_km['ngay_post']?></p>
+                                        </div>
+                                    </a>
+
+                                <?php
+                                }
+                                ?>
+
                             </div>
 
 

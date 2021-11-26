@@ -43,10 +43,10 @@ function delete_multi_news_category($list)
     $sql = "DELETE FROM `danh_muc_news` WHERE `id_dm_news` = ?";
     pdo_execute($sql, $list);
 }
-function insert_news($name_news_category, $name_news, $img_news, $mo_ta_news)
+function insert_news($name_news_category, $name_news, $img_news, $mo_ta_news,$id_sp,$date)
 {
-    $sql = "INSERT INTO `bai_viet`(`id_dm_news`, `tieu_de_news`, `img_news`, `noi_dung`) VALUES (?,?,?,?)";
-    pdo_execute($sql, $name_news_category, $name_news, $img_news, $mo_ta_news);
+    $sql = "INSERT INTO `bai_viet`(`id_dm_news`, `tieu_de_news`, `img_news`, `noi_dung`,`id_sp`,`ngay_post`) VALUES (?,?,?,?,?,?)";
+    pdo_execute($sql, $name_news_category, $name_news, $img_news, $mo_ta_news,$id_sp,$date);
 }
 function list_news()
 {
@@ -84,4 +84,21 @@ function delete_multi_news($list)
 {
     $sql = "DELETE FROM `bai_viet` WHERE `id_bai_viet` = ?";
     pdo_execute($sql, $list);
+}
+
+//hàm truy vấn bài viết thuộc danh mục đánh giá trải nghiệm 9
+function bai_viet_Query_By_Id_Sp_Thuoc_DM_Danh_Gia($id_sp){
+    $sql="SELECT * FROM bai_viet where id_dm_news =9 and id_sp=?";
+    return pdo_query($sql,$id_sp);
+}
+
+//hàm truy vấn tất cả bài viết thuộc danh mục tin khuyến mãi
+function bai_viet_Query_Danh_Muc_KM(){
+    $sql="SELECT * FROM bai_viet where id_dm_news =11";
+    return pdo_query($sql);
+}
+// hàm truy vấn top 2 tin khuyến mãi mới
+function bai_viet_Query_Top2_Km(){
+    $sql="SELECT * FROM bai_viet where id_dm_news=11 order by id_bai_viet desc  limit 2";
+    return pdo_query($sql);
 }
