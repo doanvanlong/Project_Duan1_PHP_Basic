@@ -366,7 +366,6 @@ a:hover {
     position: absolute;
     bottom: 0;
 }
-<<<<<<< HEAD
 
 
 /* hiển thị password */
@@ -388,11 +387,10 @@ a:hover {
     right: 5%;
     cursor: pointer;
     position: absolute;
-=======
+}
 .click_xoa-mau-sac{
     margin-top:43px;
 }
 .click_xoa-dung-luong{
     margin-top:43px;
->>>>>>> 34f337e9ee7c995241cfc7bc08c1f0c9eda2e140
 }
