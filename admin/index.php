@@ -109,6 +109,10 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                     $one_news = one_news($id_news);
                     $list_news_category = list_category_news();
                     break;
+                case 'add-user':
+                    $view = "views/khach-hang/add-user.php";
+                    $title = "Thêm khách hàng";
+                    break;
                 case 'client':
                     header('location:../client');
                     break;

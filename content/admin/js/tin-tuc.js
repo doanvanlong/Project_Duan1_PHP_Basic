@@ -385,7 +385,6 @@ $("#update-news").submit(function(e) {
             contentType: false,
             processData: false,
             success: function(data) {
-                console.log(data);
                 // Xử lí data trả về
                 if (data == 1) {
                     toast({

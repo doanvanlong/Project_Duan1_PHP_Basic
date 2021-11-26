@@ -24,4 +24,17 @@
         $sql="SELECT * FROM khach_hang where id_kh =?";
         return pdo_query_one($sql,$id_kh);
     }
+    function add_user($username, $password, $name, $phone, $email, $address){
+        $sql = "INSERT INTO `khach_hang`( `username`, `mat_khau`, `ho_ten`, `so_dien_thoai`, `email`, `dia_chi`) 
+        VALUES ('$username','$password','$name','$phone','$email','$address');";
+        if ($phone == "") {
+            $sql = "INSERT INTO `khach_hang`( `username`, `mat_khau`, `ho_ten`, `email`, `dia_chi`) 
+            VALUES ('$username','$password','$name','$email','$address');"; 
+        }
+        if ($address == "") {
+            $sql = "INSERT INTO `khach_hang`( `username`, `mat_khau`, `ho_ten`, `so_dien_thoai`, `email`) 
+            VALUES ('$username','$password','$name','$phone','$email');"; 
+        }
+        pdo_execute($sql);   
+    }
 ?>

@@ -366,3 +366,25 @@ a:hover {
     position: absolute;
     bottom: 0;
 }
+
+
+/* hiển thị password */
+
+#showPassword {
+    position: relative;
+}
+
+#eye {
+    position: absolute;
+    top: 55%;
+    right: 5%;
+    cursor: pointer;
+}
+
+#eye2 {
+    display: none;
+    top: 55%;
+    right: 5%;
+    cursor: pointer;
+    position: absolute;
+}
