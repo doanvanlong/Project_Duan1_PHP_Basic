@@ -486,3 +486,33 @@ $(".delete-news").click(function() {
         });
     } else {}
 });
+//Delete nhiều bài viết
+$("#list-news").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "../admin/xu-ly/tin-tuc/delete-news-category.php",
+        data: $("#list-news").serializeArray(),
+        success: function(data) {
+            if (data == 1) {
+                toast({
+                    title: "Thành công",
+                    msg: "Xoá bài viết thành công !",
+                    type: "success",
+                    duration: 5000,
+                    link: "list-news",
+                });
+                // reload lại trang sau khi xoá xong
+                setTimeout(location.reload.bind(location), 1000);
+            } else {
+                toast({
+                    title: "Thất bại",
+                    msg: "Xoá bài viết thất bại !",
+                    type: "error",
+                    duration: 5000,
+                    link: "#",
+                });
+            }
+        },
+    });
+});
