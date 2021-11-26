@@ -518,7 +518,6 @@
                     <div class="form-group box-write-danh-gia pr-4">
                         <input type="hidden" name="id_sp" value="<?= $info_sp['id_sp'] ?>">
                         <input type="hidden" name="id_kh" value="<?= $id_kh_session ?>">
-
                         <textarea class="form-control text-area-send-rate" name="noi_dung_comment" id="" style="resize:none;" placeholder="Viết đánh của bạn ..." rows="2">
                                 </textarea>
                         <button type="submit" class="btn primary btn-send-comment font-size text-light p-3">Gửi bình luận</button>
