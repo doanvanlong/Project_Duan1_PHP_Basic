@@ -1,4 +1,4 @@
-<h3 class="alert bg-secondary text-light heading-cate">Danh sách bài viết</h3>
+<h3 class="alert bg-secondary text-light heading-cate">Danh Sách Bài Viết</h3>
 <div class="row">
     <div class="col-12">
         <form action="" method="post" id="list-news">
