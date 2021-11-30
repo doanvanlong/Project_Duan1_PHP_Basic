@@ -1,11 +1,12 @@
 <?php
-$ROOT_URL = '/duan1';
-$ADMIN_URL = $ROOT_URL . '/admin';
-$CLIENT_URL = $ROOT_URL . '/client';
-$CONTENT_URL = $ROOT_URL . '/content';
-$CONTENT_CLIENT_URL = $CONTENT_URL . '/client';
-$CONTENT_ADMIN_URL = $CONTENT_URL . '/admin';
-$CONTENT_UPLOAD = $CONTENT_URL . '/uploads';
+$ROOT_URL='/duan1';
+$ADMIN_URL= $ROOT_URL.'/admin';
+$CLIENT_URL=$ROOT_URL.'/client';
+$CONTENT_URL=$ROOT_URL.'/content';
+$CONTENT_CLIENT_URL=$CONTENT_URL.'/client';
+$CONTENT_ADMIN_URL=$CONTENT_URL.'/admin';
+$CONTENT_UPLOAD=$CONTENT_URL.'/uploads';
+$AVTUSER_UPLOAD = $ADMIN_URL.'/xu-ly/khach-hang/uploads';
 
 // var_dump
 function dd()

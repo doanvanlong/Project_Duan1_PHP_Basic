@@ -4,7 +4,6 @@ require_once '../global.php';
 require_once '../model/danh-muc.php'; //gọi model hàm xử lý danh mục
 require_once '../model/san-pham.php'; //gọi model hàm xử lý san-pham
 require_once '../model/tai-khoan.php'; //gọi model 
-
 require_once '../model/san-pham.php'; //gọi model hàm xử lý danh mục
 require_once '../model/tin-tuc.php'; //Gọi model hàm xử lí tin tức
 // nếu session user mà ko có vai trò là 1 thì ko thể vào đc
@@ -112,6 +111,17 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                 case 'add-user':
                     $view = "views/khach-hang/add-user.php";
                     $title = "Thêm khách hàng";
+                    break;
+                case 'list-user':
+                    $view = "views/khach-hang/list-user.php";
+                    $title = "Danh sách khách hàng";
+                    $list_user = list_user();
+                    break;
+                case 'edit-user':
+                    $view = "views/khach-hang/edit-user.php";
+                    $title = "Cập nhật thông tin khách hàng";
+                    $id_user = $_GET['ID'];
+                    $list_one_user = khach_hang_Query_One($id_user);
                     break;
                 case 'client':
                     header('location:../client');

@@ -190,7 +190,6 @@ $(".delete-news-category").click(function() {
             url: "../admin/xu-ly/tin-tuc/delete-news-category.php",
             data: { delete_news_category: id },
             success: function(data) {
-                console.log(data);
                 if (data == 1) {
                     toast({
                         title: "Thành công",
@@ -298,9 +297,9 @@ $('[name*="editor1"]').focus(function() {
 $('.show-danh-gia-trai-nghiem').hide();
 //SELECT TAG sản phẩm vào bài viết 
 $('[name*="news-category"]').change(function() {
-    if($(this).val()==9){
+    if ($(this).val() == 9) {
         $('.show-danh-gia-trai-nghiem').show();
-    }else{
+    } else {
         $('.show-danh-gia-trai-nghiem').hide();
 
     }
