@@ -6,9 +6,8 @@ require_once '../model/tai-khoan.php';
 require_once '../model/san-pham.php';
 require_once '../model/danh-muc.php';
 require_once '../model/tin-tuc.php';
-
-
-
+require_once '../model/rating.php';
+require_once '../model/binh-luan_pro.php';
 // info kh
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
@@ -35,11 +34,31 @@ switch ($url) {
         $title = 'Điện thoại | Samsung  chính hãng ';
         break;
     case 'san-pham':
-        $id=$_GET["id"];
-        $name=$_GET["name"];
-        $info_sp= san_pham_QueryOne($id);
+        $id = $_GET["id"];
+        $name = $_GET["name"];
+        $info_sp = san_pham_QueryOne($id);
         $view = "views/chi-tiet-san-pham/chi-tiet-san-pham.php";
         $title = $name;
+        break;
+    case 'cart':
+        $view = "views/cart/cart.php";
+        $title = 'Giỏ hàng ';
+        break;
+    case 'checkout':
+        $view = "views/cart/checkout.php";
+        $title = 'Thông tin thanh toán ';
+        break;
+    case 'checkout=success':
+        $view = "views/cart/success.php";
+        $title = 'Hoàn tất đặt hàng ';
+        break;
+    case 'address':
+        $view = "views/tai-khoan/address.php";
+        $title = 'Sổ địa chỉ ';
+        break;
+    case 'home':
+        $view = 'views/home.php';
+        $title = 'LTsmart | Hệ thống bán lẻ điện thoại chính hãng giá rẻ tại Đà Nẵng ';
         break;
     default:
         $view = 'views/home.php';

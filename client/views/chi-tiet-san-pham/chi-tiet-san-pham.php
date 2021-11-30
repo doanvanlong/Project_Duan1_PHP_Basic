@@ -1,5 +1,7 @@
     <!-- update số lưuojt xem sp -->
     <?php
+    // unset session khi vào lại trang chi tiết ,vì trước đó đã tạo session
+    unset($_SESSION['url-session']);
     san_pham_Update_So_Luot_Xem($info_sp['id_sp']);
     if (sessionLogin_Isset()) {
         $id_kh_session = $_SESSION['login']['id_kh'];
@@ -8,20 +10,34 @@
     <input type="hidden" name="id_sp" value="<?php echo $info_sp['id_sp'] ?>">
     <div class="row">
         <div class="col-12">
-            <div class="product-detail p-3">
+            <form action="" method="POST" id="add-cart"   class="product-detail p-3">
+                <input type="hidden" name="ten_sp_chinh" value="<?=$info_sp['ten_sp']?>">
                 <div class="product-detail-heading d-flex justify-content-between align-items-center">
                     <h2 class="product-detail-title py-2 text-overflow"><?= $info_sp['ten_sp']; ?></h2>
                     <div class="product-detail-rating d-flex ">
-                        <div class="product-detail-rating-star px-1">
-                            <i class="icon-to fas fa-star"></i><i class="icon-to fas fa-star"></i><i class="icon-to fas fa-star"></i><i class="icon-to fas fa-star"></i><i class="icon-to fas fa-star"></i>
+                        <div class="product-detail-rating-star px-1 load_rating_avg_title">
+                            <?php
+                            $rating = rating_Avg($info_sp['id_sp']);
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ($i <= $rating) { ?>
+                                    <i class="icon-to fas fa-star"></i>
+                                <?php
+                                } else { ?>
+                                    <i class="text-secondary fas fa-star"></i>
+                            <?php
+                                }
+                            }
+                            ?>
 
                         </div>
                         <div class="product-detail-rating-comment d-flex">
-                            <a href="#" class="product-detail-rating-danh-gia px-2">1 đánh giá</a> |
-                            <a href="#" class="product-detail-rating-hoi-dap px-2">1 Hỏi & đáp</a>
+                            <a href="#" class="product-detail-rating-danh-gia px-2 "><span class="load_rating_cout_title"><?= rating_Count($info_sp['id_sp']) ?></span> đánh giá</a> |
+                            <a href="#" class="product-detail-rating-hoi-dap px-2"><span class="load_comment_cout_title"><?= binh_luan_pro_Count($info_sp['id_sp']) ?></span> Hỏi & đáp</a>
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="url-session" value="http://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?> ">
+
                 <div class="row py-4">
                     <div class="col-6  ">
                         <div class="porsition-sticky">
@@ -89,7 +105,8 @@
                         <div class="product-detail-price py-2 d-flex align-items-center">
                             <h2 class="product-detail-price-new pr-3"><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></h2>
                             <h2 class="product-detail-price-old text-secondary"><strike><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></strike></h2>
-
+                            <input type="hidden" name="id_sp_chinh" value="<?=$info_sp['id_sp']?>">
+                            <input type="hidden" class="product-detail-price-new-road_cart" name="gia_sp_chinh" value="<?=$info_sp['don_gia'] ?>">
                         </div>
                         <!-- dung lượng -->
                         <div class="product-detail-select-dung-luong ">
@@ -102,7 +119,7 @@
                                         ?>
                                             <label for="<?= $dung_luong['id_dl_phone'] ?>" class="form-check box-check-dung-luong my-2 active" data-id_dung_luong="<?= $dung_luong['id_dl_phone'] ?>">
                                                 <div class="check cursor-pointer ">
-                                                    <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $dung_luong['id_dl_phone'] ?>" checked value="option1">
+                                                    <input class="form-check-input cursor-pointer " type="radio" name="dung-luong_chinh" id="<?= $dung_luong['id_dl_phone'] ?>" checked value="<?=$dung_luong['rom']?>">
                                                     <label class="form-check-label pl-2 text-dung-luong  cursor-pointer" for="<?= $dung_luong['id_dl_phone'] ?>">
                                                         <?= $dung_luong['rom'] ?> GB
                                                     </label>
@@ -116,7 +133,7 @@
                                         ?>
                                             <label for="<?= $dung_luong['id_dl_phone'] ?>" class="form-check box-check-dung-luong my-2" data-id_dung_luong="<?= $dung_luong['id_dl_phone'] ?>">
                                                 <div class="check cursor-pointer ">
-                                                    <input class="form-check-input cursor-pointer " type="radio" name="exampleRadios" id="<?= $dung_luong['id_dl_phone'] ?>" value="option1">
+                                                    <input class="form-check-input cursor-pointer " type="radio" name="dung-luong_chinh" id="<?= $dung_luong['id_dl_phone'] ?>" value="<?=$dung_luong['rom']?>">
                                                     <label class="form-check-label pl-2 text-dung-luong cursor-pointer" for="<?= $dung_luong['id_dl_phone'] ?>">
                                                         <?= $dung_luong['rom'] ?> GB
                                                     </label>
@@ -147,20 +164,20 @@
                                 if ($list_mau_sac[0]['id_ms_phone'] == $mau_sac['id_ms_phone']) { ?>
                                     <div class="box-items-mau active  d-flex flex-column align-items-center justify-content-center">
                                         <div class="product-detail-select-mau-img ">
-
+                                        <input type="radio" hidden name="hinh-anh-chinh" checked value="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>">
                                             <img style="width:80%" class="select_mau_sac_img" src="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>" alt="">
                                         </div>
-                                        <input type="hidden" name="mau_sac" value="<?= $mau_sac['ten_mau'] ?>">
+                                        <input type="radio" hidden name="mau_sac_chinh" checked value="<?= $mau_sac['ten_mau'] ?>">
                                         <div class="product-detail-select-mau-name"><?= $mau_sac['ten_mau'] ?></div>
                                     </div>
                                 <?php
                                 } else { ?>
                                     <div class="box-items-mau  d-flex flex-column align-items-center justify-content-center">
                                         <div class="product-detail-select-mau-img ">
-
+                                        <input type="radio" hidden name="hinh-anh-chinh" value="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>">
                                             <img style="width:80%" class="select_mau_sac_img" src="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>" alt="">
                                         </div>
-                                        <input type="hidden" name="mau_sac" value="<?= $mau_sac['ten_mau'] ?>">
+                                        <input type="radio" hidden  name="mau_sac_chinh" value="<?= $mau_sac['ten_mau'] ?>">
                                         <div class="product-detail-select-mau-name"><?= $mau_sac['ten_mau'] ?></div>
                                     </div>
                                 <?php
@@ -187,7 +204,7 @@
                             </ul>
                         </div>
                         <div class="product-detail-buy">
-                            <button type="submit" class="product-detail-buy-now btn primary text-white my-3 ">
+                            <button type="submit" name="mua-ngay" class="product-detail-buy-now btn primary text-white my-3 ">
                                 <div>
                                     <strong class="">Mua ngay</strong>
                                     <p class="font-size mb-1">Giao hàng miễn phí hoặc nhận tại shop</p>
@@ -195,7 +212,7 @@
                             </button>
                             <div class="row ">
                                 <div class="col-6">
-                                    <button class="product-detail-buy-tra-gop btn btn-primary ">
+                                    <button  class="product-detail-buy-tra-gop btn btn-primary ">
                                         <div>
                                             <strong>Trả góp 0%</strong>
                                             <p class="font-size mb-1">Duyệt nhanh qua điện thoại</p>
@@ -219,6 +236,7 @@
                             <div class="product-detail-mua-kem-deal-main-pro">
                                 <div class="row align-items-center">
                                     <div class="col-2">
+                                        <input type="hidden" name="hinh-anh-deal[]" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>"> 
                                         <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
                                         </div>
 
@@ -258,17 +276,19 @@
                                     </div>
                                     <div class="col-7">
                                         <div class="product-detail-mua-kem-deal-main-items-content mb-4">
-                                            <p class="product-detail-mua-kem-deal-main-items-content-title text-ellip"><?= $info_sp['ten_sp'] ?> </p>
+                                            <p class="product-detail-mua-kem-deal-main-items-content-title text-ellip">Loa blu </p>
                                             <!-- Nhãn deal sốc add cart -->
                                             <span class="label-deal-soc-add-cart">
                                                 Deal sốc
                                             </span>
+                                            <input type="hidden" name="ten_sp_deal" value="loa blu">
+                                            <input type="hidden" name="gia_sp_deal" value="5000000">
                                             <div class="product-detail-mua-kem-deal-main-items-content-price d-flex">
                                                 <div class="product-detail-mua-kem-deal-main-items-content-price-new">
-                                                    <?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                  5.000.000đ
                                                 </div>
                                                 <strike class="product-detail-mua-kem-deal-main-items-content-price-old text-secondary">
-                                                    <?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                  10.000.000đ 
                                                 </strike>
                                             </div>
 
@@ -277,7 +297,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="product-detail-mua-kem-deal-main-items-add-cart">
-                                            <p class="btn font-size" disable> Thêm vào</p>
+                                            <p class="btn font-size add-deal" > Thêm vào</p>
                                         </div>
 
                                     </div>
@@ -287,12 +307,13 @@
                             <div class="box-total-mua-kem-deal-soc py-4 pl-4">
                                 <div class="row">
 
-                                    <button class="col-4 btn primary btn-total-mua-kem-deal-soc d-flex justify-content-center align-items-center "><i class="icofont-cart font-size-2-5 pr-2"></i>
-                                        <p class="font-size mb-0">Mua deal sốc</p>
+                                    <button  type="submit" name="mua-deal" title="Bạn chưa thêm deal "  disabled="true" class="col-4 btn primary btn-total-mua-kem-deal-soc d-flex justify-content-center align-items-center "><i class="icofont-cart font-size-2-5 pr-2"></i>
+                                        <p class="font-size mb-0 " >Mua deal sốc</p>
                                     </button>
                                     <div class="col-8 total-mua-kem-deal-soc">
-                                        <p class="mb-0"><b class="text-dark pr-2">Tổng cộng:</b> <span class="font-weight-5 text-dark"><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></span>
-                                            <strike class="pl-3 text-secondary"><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></strike>
+                                        <input type="hidden" name="tong_cong_deal" value="32.400.000">
+                                        <p class="mb-0"><b class="text-dark pr-2">Tổng cộng:</b> <span class="font-weight-5 text-dark">32.400.000đ</span>
+                                            <strike class="pl-3 text-secondary">10.000.000đ</strike>
                                         </p>
                                         <p class="text-primary-color mb-0">Tiết kiệm : <?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></p>
                                     </div>
@@ -303,7 +324,8 @@
                     </div>
                 </div>
 
-            </div>
+            </form>
+            <!-- end box 1 -->
             <div class="san-pham-tuong-tu py-3 my-5">
                 <h3 class="san-pham-tuong-tu-title py-4 pl-4 font-size-heading">Sản phẩm bạn quan tâm</h3>
                 <div class="owl-carousel owl-theme owl-san-pham-tuong-tu">
@@ -410,52 +432,138 @@
                                     Đánh giá trung bình
                                 </div>
                                 <b class="product-detail-rating-avg-count ">
-                                    3/5
+                                    <!-- ajax gửi về -->
+                                    <span class="load_avg-rating">
+                                        <?php echo rating_Avg($info_sp['id_sp']) ?>
+                                    </span>/5
                                 </b>
                                 <div class="product-detail-rating-avg-star">
-                                    <i class="fas fa-star icon-to"></i> <i class="fas fa-star icon-to"></i> <i class="fas fa-star icon-to"></i> <i class="fas fa-star font-size text-dark"></i> <i class="fas fa-star font-size text-dark "></i>
+                                    <?php
+                                    // ajax gửi về
+                                    $rating_avg = rating_Avg($info_sp['id_sp']);
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if ($i <= $rating_avg) { ?>
+                                            <i class="fas fa-star icon-to"></i>
+                                        <?php
+                                        } else { ?>
+                                            <i class="fas fa-star text-secondary"></i>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <div class="product-detail-rating-avg-count-total text-dark">
-                                    10 đánh giá & 10 nhận xét
+                                    <span class="count_rating">
+                                        <!-- cập nhật lấy từ ajax  -->
+                                        <?php
+                                        echo rating_Count($info_sp['id_sp']);
+                                        ?>
+                                    </span>
+                                    <span class="pl-2">đánh giá </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 load_proges_rating">
+                            <!-- gọi ajax lấy dữ liệu realtime -->
+                            <?php
+                            $sum_rating = rating_Phan_Tram($info_sp['id_sp']);
+                            ?>
                             <div class="product-detail-rating-proges text-center">
+                                <?php
+                                $so_luot = (rating_Count_Luot($info_sp['id_sp'], 5)); //số lượng vote theo số sao
+                                if ($so_luot > 0) {
+                                    $phan_tram = ($so_luot / $sum_rating) * 100;
+                                } else {
+                                    $phan_tram = 0;
+                                }
+                                ?>
                                 <div class="product-detail-rating-proges-5-star d-flex align-items-center">
                                     5 <i class="fas fa-star icon pl-1 pr-2"></i>
                                     <div class="product-detail-rating-proges-5-star-main-count pr-2">
-                                        <span class="product-detail-rating-proges-5-star-counting" style="width:60%"></span>
+                                        <span class="product-detail-rating-proges-5-star-counting" style="width:<?= $phan_tram ?>%"></span>
                                     </div>
-                                    <span class="pl-2">2</span>
+                                    <span class="pl-2">
+                                        <?php
+                                        echo $so_luot; //số lượng vote theo số sao
+
+                                        ?>
+                                    </span>
                                 </div>
                                 <div class="product-detail-rating-proges-5-star d-flex align-items-center">
+                                    <?php
+                                    $so_luot = (rating_Count_Luot($info_sp['id_sp'], 4)); //số lượng vote theo số sao
+                                    if ($so_luot > 0) {
+                                        $phan_tram = ($so_luot / $sum_rating) * 100;
+                                    } else {
+                                        $phan_tram = 0;
+                                    }
+                                    ?>
                                     4 <i class="fas fa-star icon pl-1 pr-2"></i>
                                     <div class="product-detail-rating-proges-5-star-main-count pr-2">
-                                        <span class="product-detail-rating-proges-5-star-counting" style="width:60%"></span>
+                                        <span class="product-detail-rating-proges-5-star-counting" style="width:<?= $phan_tram ?>%"></span>
                                     </div>
-                                    <span class="pl-2">2</span>
+                                    <span class="pl-2">
+                                        <?php
+                                        echo $so_luot;
+                                        ?>
+                                    </span>
                                 </div>
                                 <div class="product-detail-rating-proges-5-star d-flex align-items-center">
+                                    <?php
+                                    $so_luot = (rating_Count_Luot($info_sp['id_sp'], 3)); //số lượng vote theo số sao
+                                    if ($so_luot > 0) {
+                                        $phan_tram = ($so_luot / $sum_rating) * 100;
+                                    } else {
+                                        $phan_tram = 0;
+                                    }
+                                    ?>
                                     3 <i class="fas fa-star icon pl-1 pr-2"></i>
                                     <div class="product-detail-rating-proges-5-star-main-count pr-2">
-                                        <span class="product-detail-rating-proges-5-star-counting" style="width:60%"></span>
+                                        <span class="product-detail-rating-proges-5-star-counting" style="width:<?= $phan_tram ?>%"></span>
                                     </div>
-                                    <span class="pl-2">2</span>
+                                    <span class="pl-2">
+                                        <?php
+                                        echo $so_luot;
+                                        ?>
+                                    </span>
                                 </div>
                                 <div class="product-detail-rating-proges-5-star d-flex align-items-center">
+                                    <?php
+                                    $so_luot = (rating_Count_Luot($info_sp['id_sp'], 2)); //số lượng vote theo số sao
+                                    if ($so_luot > 0) {
+                                        $phan_tram = ($so_luot / $sum_rating) * 100;
+                                    } else {
+                                        $phan_tram = 0;
+                                    }
+                                    ?>
                                     2 <i class="fas fa-star icon pl-1 pr-2"></i>
                                     <div class="product-detail-rating-proges-5-star-main-count pr-2">
-                                        <span class="product-detail-rating-proges-5-star-counting" style="width:60%"></span>
+                                        <span class="product-detail-rating-proges-5-star-counting" style="width:<?= $phan_tram ?>%"></span>
                                     </div>
-                                    <span class="pl-2">2</span>
+                                    <span class="pl-2">
+                                        <?php
+                                        echo $so_luot;
+                                        ?>
+                                    </span>
                                 </div>
                                 <div class="product-detail-rating-proges-5-star d-flex align-items-center">
+                                    <?php
+                                    $so_luot = (rating_Count_Luot($info_sp['id_sp'], 1)); //số lượng vote theo số sao
+                                    if ($so_luot > 0) {
+                                        $phan_tram = ($so_luot / $sum_rating) * 100;
+                                    } else {
+                                        $phan_tram = 0;
+                                    }
+                                    ?>
                                     1 <i class="fas fa-star icon pl-1 pr-2"></i>
                                     <div class="product-detail-rating-proges-5-star-main-count pr-2">
-                                        <span class="product-detail-rating-proges-5-star-counting" style="width:60%"></span>
+                                        <span class="product-detail-rating-proges-5-star-counting" style="width:<?= $phan_tram ?>%"></span>
                                     </div>
-                                    <span class="pl-2">2</span>
+                                    <span class="pl-2">
+                                        <?php
+                                        echo $so_luot;
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -491,6 +599,7 @@
                         </div>
                         <div class="col-7 pt-3">
                             <!-- -->
+                            <input type="hidden" name="url_session" value="http://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>">
                             <div class="form-group box-write-danh-gia pr-4">
                                 <textarea class="form-control text-area-send-rate" name="noi_dung" id="" style="resize:none;" placeholder="Viết đánh của bạn ..." rows="3">
                                 </textarea>
@@ -500,7 +609,7 @@
                     </form>
                 </div>
                 <!-- render list đánh giá -->
-                <div class="list-product-detail-rating">
+                <div class="list-product-detail-rating ">
 
                     <!-- ajax load ra -->
                     <!-- dùng chung comment reder -->
@@ -518,6 +627,7 @@
                     <div class="form-group box-write-danh-gia pr-4">
                         <input type="hidden" name="id_sp" value="<?= $info_sp['id_sp'] ?>">
                         <input type="hidden" name="id_kh" value="<?= $id_kh_session ?>">
+                        <input type="hidden" name="url_session" value="http://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>">
                         <textarea class="form-control text-area-send-rate" name="noi_dung_comment" id="" style="resize:none;" placeholder="Viết đánh của bạn ..." rows="2">
                                 </textarea>
                         <button type="submit" class="btn primary btn-send-comment font-size text-light p-3">Gửi bình luận</button>
@@ -526,11 +636,10 @@
                 <!-- end viết comment -->
                 <!-- comment1 -->
                 <div class="list-comment-render">
-                   <!-- load từ ajax -->
+                    <!-- load từ ajax -->
                 </div>
             </div>
         </div>
 
 
     </div>
-    

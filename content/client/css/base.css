@@ -109,6 +109,9 @@ a:hover {
 .primary{
   background-color: #f15a29;
 }
+button:disabled:hover{
+  background-color:none !important;
+}
 .icon-secondary{
   font-size:1rem;
   color:var(--secondary) !important;

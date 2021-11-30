@@ -18,6 +18,12 @@ require_once 'pdo.php';
         return pdo_execute($sql, $id_bl_pro);
     }
 
+    //hàm đếm tổng số bình luận của san_pham
+    function binh_luan_pro_Count($id_sp){
+        $sql="SELECT count(*) FROM binh_luan_pro where id_sp=?";
+        return pdo_query_value($sql,$id_sp)[0];
+    }
+
     // Bình luận REPLY
 
     // hàm thêm mới bình luận reply

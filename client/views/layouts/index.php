@@ -27,7 +27,10 @@
     <!-- css  -->
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/base.css">
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/main.css">
-    <link rel="stylesheet" href="<?=$CONTENT_CLIENT_URL ?>/css/san-pham-detail.css">
+    <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/san-pham-detail.css">
+    <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/cart.css">
+    <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/toastMessage.css">
+
 </head>
 
 <body>
@@ -125,9 +128,26 @@
                                         <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
                                             2</div>
                                     </a>
-                                    <a href="#" class="header__right-cart "><i class="icofont-cart-alt"></i>
-                                        <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
-                                            2</div>
+                                    <a href="cart" class="header__right-cart ">
+                                        <i class="icofont-cart-alt"></i>
+                                        <div class="load_count_cart_index">
+                                            <?php
+                                            if (sessionLogin_Isset()) {
+                                                if (sessionCart_Isset()) {
+                                                    if (count($_SESSION['cart']) > 0) { ?>
+                                                        <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
+                                                            <?php echo count($_SESSION['cart']); ?>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                            <?php
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+
                                     </a>
                                 </div>
 
@@ -392,6 +412,8 @@
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/main.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/home.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/chi-tiet-san-pham.js"> </script>
+    <script src="<?= $CONTENT_CLIENT_URL ?>/js/cart.js"> </script>
+
 
 
 </body>

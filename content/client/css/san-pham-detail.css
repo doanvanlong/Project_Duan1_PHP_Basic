@@ -219,8 +219,13 @@
   color: white;
   border-radius: 7px;
 }
+.btn-total-mua-kem-deal-soc:disabled {
+  cursor:help;
+}
+/* check mua deal ko */
+
 .btn-total-mua-kem-deal-soc:hover {
-  opacity: 0.9;
+  background-color:var(--bg-primary-hover);
 }
 /* sản phẩm tương tự */
 .san-pham-tuong-tu {
@@ -363,7 +368,7 @@ label.rating-sao i {
 
 /* list rating */
 .list-product-detail-rating{
-  padding: 1.4% !important;
+  padding: 1.4%  !important;
 }
 
 /* comment */
@@ -411,9 +416,24 @@ label.rating-sao i {
 }
 .comment-render-reply{
   margin-left:8%;
-  border-left: 4px solid #eaeaea;
+  border-left: 2px solid #eaeaea;
   padding-left: 8px;
   padding-right: 2%;
+  border-radius:5px;
+
+}
+.chia-nhanh-reply{
+  position: relative;
+}
+.chia-nhanh-reply:after{
+  position: absolute;
+  top: 30%;
+  left: -1%;
+  content: "";
+  width:13px;
+  height: 2px;
+  background-color:#eaeaea;
+  border-radius: 5px;
 }
 .comment-render-label-admin{
   background-color:var(--primary-color);

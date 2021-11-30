@@ -196,7 +196,22 @@ $(document).ready(function () {
               duration: 5000,
               link: "#",
             });
-            $("#error-password-login").text("Tên đăng nhập hoặc mật khẩu không hợp lệ");
+            $("#error-password-login").text(
+              "Tên đăng nhập hoặc mật khẩu không hợp lệ"
+            );
+          } else if (data == 1) {
+            toast({
+              title: "Thành công",
+              msg: "Đăng nhập thành công!",
+              type: "success",
+              duration: 5000,
+              link: "../../",
+            });
+            setTimeout(function () {
+              //  data được gửi về là biến session chưa url
+              window.location.href = '';
+            }, 1200);
+
           } else {
             toast({
               title: "Thành công",
@@ -206,8 +221,9 @@ $(document).ready(function () {
               link: "../../",
             });
             setTimeout(function () {
-              window.location.href = "../../";
-            }, 1400);
+              //  data được gửi về là biến session chưa url
+              window.location.href = data;
+            }, 1200);
           }
         },
       });

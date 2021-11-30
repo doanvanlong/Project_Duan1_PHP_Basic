@@ -180,4 +180,5 @@ $(".filter-tab-gia-cao").click(function () {
       $(".box-dien-thoai-content-product").html(data);
     }
   );
+  
 });

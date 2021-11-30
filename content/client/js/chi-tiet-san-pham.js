@@ -99,6 +99,7 @@ $(document).ready(function () {
       { id_dung_luong: id_dung_luong },
       function (data) {
         $(".product-detail-price-new").text(data);
+        $(".product-detail-price-new-road_cart").val(data);
       }
     );
     //lấy được mảng tên sp hiển thị đầu tiên
@@ -170,19 +171,78 @@ $(document).ready(function () {
     load_danh_gia();
   }, 1000);
 
+  //load đánh giá trung binhf
+  function load_rating_AVG() {
+    var id_sp_rating_avg = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_rating_avg: id_sp_rating_avg },
+      success: function (data) {
+        $(".load_avg-rating").text(data);
+      },
+    });
+  }
+  load_rating_AVG();
+
+  // load số sao đánh giá avg
+  function load_star_rating_AVG() {
+    var id_sp_star_rating_avg = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_star_rating_avg: id_sp_star_rating_avg },
+      success: function (data) {
+        $(".product-detail-rating-avg-star").html(data);
+      },
+    });
+  }
+  load_star_rating_AVG();
+
+  // load tổng số đánh giá sp
+  function load_so_rating() {
+    var id_sp_so_rating = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_so_rating: id_sp_so_rating },
+      success: function (data) {
+        $(".count_rating").text(data);
+      },
+    });
+  }
+  load_so_rating();
+
+  // load proges rating
+  function load_proges_rating() {
+    var id_sp_proges_rating = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_proges_rating: id_sp_proges_rating },
+      success: function (data) {
+        $(".load_proges_rating").html(data);
+      },
+    });
+  }
+  load_proges_rating();
+
   // Gửi đánh giá sao khi click btn
+
   $("#send-danh-gia").submit(function (e) {
     e.preventDefault();
     // check lỗi sao rỗng
+    
     $.ajax({
       url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
       type: "POST",
       data: $(this).serializeArray(),
       success: function (data) {
-        if (data == 2) {
+        if (data == "saorong") {
           $(".text-select-star").css("color", "red");
           $(".text-select-star").text("Vui lòng chọn sao");
-        } else if (data == 1) {
+        } else if (data == "loi") {
+        } else if (data == "thanhcong") {
           // Thành công
           setTimeout(function () {
             $(".product-detail-rating-write").hide();
@@ -190,13 +250,78 @@ $(document).ready(function () {
           $("#send-danh-gia")[0].reset();
           setTimeout(function () {
             load_danh_gia();
-          }, 1000);
+          }, 800);
+          // load số avg rating
+          setTimeout(function () {
+            load_rating_AVG();
+          }, 800);
+          setTimeout(function () {
+            load_star_rating_AVG();
+          }, 800);
+          setTimeout(function () {
+            load_so_rating();
+          }, 800);
+          setTimeout(function () {
+            load_proges_rating();
+          }, 800);
+          setTimeout(function () {
+            load_rating_avg_title();
+          }, 800);
+
+          setTimeout(function () {
+            load_rating_title();
+          }, 800);
+
           // load danh sách đánh giá
         } else {
+          window.location="./tai-khoan/login";//chuyển đến login khi chưa dnhap
+        
         }
       },
     });
   });
+
+  // Load rating avg tiêu đề sản phẩm
+  function load_rating_avg_title() {
+    var id_sp_rating_avg_title = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_rating_avg_title: id_sp_rating_avg_title },
+      success: function (data) {
+        $(".load_rating_avg_title").html(data);
+      },
+    });
+  }
+  load_rating_avg_title();
+
+  // Load số rating tiêu đề sản phẩm
+  function load_rating_title() {
+    var id_sp_rating_title = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_rating_title: id_sp_rating_title },
+      success: function (data) {
+        $(".load_rating_cout_title").text(data);
+      },
+    });
+  }
+  load_rating_title();
+
+  // Load số comment tiêu đề sản phẩm
+  function load_comment_title() {
+    var id_sp_comment_title = $('[name*="id_sp"]').val();
+    $.ajax({
+      url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+      type: "POST",
+      data: { id_comment_title: id_sp_comment_title },
+      success: function (data) {
+        $(".load_comment_cout_title").text(data);
+      },
+    });
+  }
+  load_comment_title();
 
   //  Xử lý sao khi hover
   $(".rating-sao").mouseover(function () {
@@ -237,7 +362,12 @@ $(document).ready(function () {
           setTimeout(function () {
             load_comment();
           }, 500);
-        } else {
+          setTimeout(function () {
+            load_comment_title();
+          }, 500);
+        } else if(data ==0) {
+        }else{
+          window.location.href = "./tai-khoan/login";
         }
       },
     });

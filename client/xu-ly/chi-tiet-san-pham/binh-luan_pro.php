@@ -6,31 +6,46 @@ require_once '../../../model/tai-khoan.php';
 
 //thêm comment
 if (isset($_POST['noi_dung_comment'])) {
-    $noi_dung = $_POST['noi_dung_comment'];
-    $id_sp = $_POST['id_sp'];
-    $id_kh = $_POST['id_kh'];
-    $ngay_bl = Date("y-m-d");
-    try {
-        binh_luan_pro_Insert($id_kh, $id_sp, $noi_dung, $ngay_bl);
-        echo 1;
-    } catch (Exception $e) {
-        echo 0;
+    if (!sessionLogin_Isset()) {
+        // lưu url vào session chuyển đến trang login để header lại trang khi nảy
+        $url_session = $_POST['url_session'];
+        $_SESSION['url_session'] = $url_session;
+        echo $url_session;
+    } else {
+        $noi_dung = $_POST['noi_dung_comment'];
+        $id_sp = $_POST['id_sp'];
+        $id_kh = $_POST['id_kh'];
+        $ngay_bl = Date("Y-m-d");
+        try {
+            binh_luan_pro_Insert($id_kh, $id_sp, $noi_dung, $ngay_bl);
+            echo 1;
+        } catch (Exception $e) {
+            echo 0;
+        }
     }
 }
 
 // thêm comment reply
 if (isset($_POST['id_sp_comment_reply'])) {
-    $id_sp = $_POST['id_sp_comment_reply'];
-    $id_bl_pro = $_POST['id_bl_pro'];
-    $id_kh = $_POST['id_kh'];
-    $noi_dung = $_POST['noi_dung_comment_reply'];
-    $date = Date("y-m-d");
-    try {
-        binh_luan_pro_Reply_Insert($id_bl_pro, $id_kh, $noi_dung, $date);
-        echo 1;
-    } catch (PDOException $e) {
-        echo 0;
-    } ?>
+    if (!sessionLogin_Isset()) {
+        // lưu url vào session chuyển đến trang login để header lại trang khi nảy
+        $url_session = $_POST['url_session'];
+        $_SESSION['url_session'] = $url_session;
+        echo $url_session;
+    } else {
+        $id_sp = $_POST['id_sp_comment_reply'];
+        $id_bl_pro = $_POST['id_bl_pro'];
+        $id_kh = $_POST['id_kh'];
+        $noi_dung = $_POST['noi_dung_comment_reply'];
+        $date = Date("Y-m-d ");
+        try {
+            binh_luan_pro_Reply_Insert($id_bl_pro, $id_kh, $noi_dung, $date);
+            echo 1;
+        } catch (PDOException $e) {
+            echo 0;
+        }
+    }
+?>
 
     <?php
 }
@@ -58,6 +73,14 @@ if (isset($_POST['id_sp_comment'])) {
                 <div class="comment-render-content  pl-2">
                     <div class="comment-render-name d-flex align-items-center">
                         <div class="comment-render-name-title"><?= $info_kh_db['ho_ten'] ?></div>
+                        <div class="comment-render-label-admin" style="font-size:1.1rem">
+                            <?php
+                            if ($info_kh_db['vai_tro'] != 0) { ?>
+                                Quản trị viên
+                            <?php
+                            }
+                            ?>
+                        </div>
                         <div class="comment-render-name-date"><?= $bl['ngay_bl'] ?></div>
                     </div>
                     <div class="comment-render-content"><?= $bl['noi_dung'] ?></div>
@@ -89,33 +112,51 @@ if (isset($_POST['id_sp_comment'])) {
                     if ($bl_reply['id_bl_pro'] == $bl['id_bl_pro']) {
 
                         $info_kh_db = khach_hang_Query_One($bl_reply['id_kh']) ?>
-                        <div class="comment-render-content pl-2 col-11 my-3">
-                            <div class="comment-render-name d-flex align-items-center">
-                                <div class="comment-render-name-title"><?= $info_kh_db['ho_ten'] ?></div>
-                                <div class="comment-render-label-admin" style="font-size:1.1rem">
+                        <div class="comment-render-content chia-nhanh-reply pl-2 col-11 my-3 d-flex">
+                            <div>
+                                <?php
+                                $info_kh_db = khach_hang_Query_One($bl['id_kh']);
+                                if ($info_kh_db['hinh_anh'] == "") { ?>
+                                    <div class="comment-render-avatar" style="background-image:url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png')">
+                                    </div>
+                                <?php
+                                } else { ?>
+                                    <div class="comment-render-avatar" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            <div>
+                                <div class="comment-render-name d-flex align-items-center">
+                                    <div class="comment-render-name-title"><?= $info_kh_db['ho_ten'] ?></div>
+                                    <div class="comment-render-label-admin" style="font-size:1.1rem">
+                                        <?php
+                                        if ($info_kh_db['vai_tro'] != 0) { ?>
+                                            Quản trị viên
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="comment-render-name-date"><?= $bl_reply['ngay_reply'] ?></div>
+                                </div>
+
+                                <div class="comment-render-content"><?= $bl_reply['noi_dung'] ?></div>
+                                <div class="comment-render-action py-1 " style="font-size:1.3rem">
                                     <?php
-                                    if ($info_kh_db['vai_tro'] != 0) { ?>
-                                        Quản trị viên
+                                    // kiểm tra session khách hàng
+                                    if (sessionLogin_Isset()) {
+                                        $id_kh_session = $_SESSION['login']['id_kh'];
+                                        // nếu khách hàng đang truy cập có id = id trong bl reply thì xoá được bl
+                                        if ($id_kh_session == $bl_reply['id_kh']) { ?>
+                                            <span data-id_comment_reply="<?= $bl_reply['id_reply'] ?>" class="xoa_comment_reply">Xoá</span>
                                     <?php
+                                        }
                                     }
+
                                     ?>
                                 </div>
-                                <div class="comment-render-name-date"><?= $bl_reply['ngay_reply'] ?></div>
-                            </div>
-                            <div class="comment-render-content"><?= $bl_reply['noi_dung'] ?></div>
-                            <div class="comment-render-action py-1 " style="font-size:1.3rem">
-                                <?php
-                                // kiểm tra session khách hàng
-                                if (sessionLogin_Isset()) {
-                                    $id_kh_session = $_SESSION['login']['id_kh'];
-                                    // nếu khách hàng đang truy cập có id = id trong bl reply thì xoá được bl
-                                    if ($id_kh_session == $bl_reply['id_kh']) { ?>
-                                        <span data-id_comment_reply="<?= $bl_reply['id_reply'] ?>" class="xoa_comment_reply">Xoá</span>
-                                <?php
-                                    }
-                                }
 
-                                ?>
                             </div>
 
                         </div>
@@ -131,6 +172,7 @@ if (isset($_POST['id_sp_comment'])) {
             <form action="" id="" method="POST" class="comment-render-reply-write send_comment_reply" data-id_comment="<?= $bl['id_bl_pro'] ?>">
                 <div class="form-group box-write-danh-gia pr-4 box-write-reply">
                     <input type="hidden" name="id_sp_comment_reply" value="<?= $id_sp ?>">
+                    <input type="hidden" name="url_session" value="http://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?>">
 
                     <input type="hidden" name="id_kh" value="<?= $id_kh_session ?>">
                     <input type="hidden" name="id_bl_pro" value="<?= $bl['id_bl_pro'] ?>">
@@ -197,6 +239,10 @@ if (isset($_POST['id_sp_comment'])) {
 
 
 
+                        } else if (data == 0) {
+
+                        } else {
+                            window.location.href = "./tai-khoan/login";
                         }
                     }
                 })
@@ -229,6 +275,22 @@ if (isset($_POST['id_sp_comment'])) {
                             setTimeout(function() {
                                 load_comment();
                             }, 200);
+                            // Load số comment tiêu đề sản phẩm
+                            function load_comment_title() {
+                                var id_sp_comment_title = $('[name*="id_sp"]').val();
+                                $.ajax({
+                                    url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
+                                    type: "POST",
+                                    data: {
+                                        id_comment_title: id_sp_comment_title
+                                    },
+                                    success: function(data) {
+                                        $(".load_comment_cout_title").text(data);
+                                    },
+                                });
+                            }
+                            load_comment_title();
+
                         }
                     }
                 })
