@@ -100,7 +100,7 @@
                                     <?php
                                     if ($info_kh['hinh_anh'] != "") { ?>
                                         <!-- lấy ảnh DB ra -->
-                                        <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_ADMIN_URL ?>/img/user.jpg');">
+                                        <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $AVTUSER_UPLOAD ?>/<?=$info_kh['hinh_anh']?>');">
                                         <?php
                                     } else { ?>
                                             <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png');">

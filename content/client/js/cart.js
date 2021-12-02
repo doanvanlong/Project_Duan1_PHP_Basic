@@ -6,15 +6,7 @@ $(document).ready(function () {
     }
   });
   //   adđ cart
-  // $(".box-items-mau ").click(function () {
-  //   hinh_anh_chinh = $(this)
-  //     .children(".product-detail-select-mau-img")
-  //     .children("input")
-  //     .val();
-  //   mau_sac_chinh = $(this).children("input").val();
-  //   mau_sac_chinh=(mau_sac_chinh);
-
-  // });
+  
   var mau_sac_chinh = $('[name*="mau_sac_chinh"]:checked').val();
   var hinh_anh_chinh = $('[name*="hinh-anh-chinh"]:checked').val();
 
@@ -429,7 +421,7 @@ $(document).ready(function () {
           <div class="cart__total-prices-shipAddress">
               <div class="shipAddress-heading pb-2 d-flex justify-content-between">
                   <span class="shipAddress-heading1">Giao tới</span>
-                  <span><a href="tai-khoan/address">Thay đổi</a></span>
+                  <span><a href="address">Thay đổi</a></span>
               </div>
               <div class="shipAddress-title py-2">
                   <b class="shipAddress-title-name">${data.ho_ten}</b>
@@ -1291,7 +1283,7 @@ $(document).ready(function () {
         </div>
 
     </div>
-    <a href="checkout=success" id="checkout_success" class="cart__total-price-btnCheckout ">
+    <a href="success" id="checkout_success" class="cart__total-price-btnCheckout ">
                    
             <button type="submit" class="btn primary btnCheckout">Chấp nhận</button>
     </a>

@@ -1,0 +1,96 @@
+.giam-gia {
+  padding: 20px;
+  border-radius: 5px;
+}
+/* bootstrap */
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: var(--primary-color) !important;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link {
+  color: var(--secondary) !important;
+  font-weight: 600;
+}
+/*  */
+.giam-gia-heading {
+  font-size: 1.8rem;
+  display: block;
+}
+.box-form-giam-gia {
+  margin: 20px 0;
+}
+.box-form-giam-gia label {
+  font-weight: 600;
+  color: #444;
+}
+.add-giam-gia-search-sp {
+  width: 100%;
+}
+
+.form-search-add-giam-gia-sp input {
+  height: 30px;
+  margin-bottom: 10px;
+  width: 350px !important;
+}
+.form-search-add-giam-gia-sp button {
+  height: 30px;
+  width: 50px;
+  margin-bottom: 10px;
+}
+.searchgiam-gia-theo-ten {
+}
+.box-form-search-add-giam-gia {
+}
+.table-sp table {
+  border-radius: 100px;
+  border: 1px solid #eaeaea;
+}
+a.page-link.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Csss trang add giảm giá  */
+#example_wrapper {
+  width: 100% !important;
+}
+#example_filter{
+  text-align: right;
+}
+#example_paginate{
+  text-align: center;
+}
+.paginate_button{
+  background-color: var(--primary-color);
+  color: white;
+  margin:0 10px;
+  padding:10px;
+  cursor: pointer;
+}
+.paginate_button:hover{
+  color:white;
+  background-color: #db3e00;
+}
+
+/* Modal hỏi xoá */
+
+
+.btn-accept {
+  background-color: var(--primary-color);
+}
+.btn-no_accpet {
+}
+
+/* dùng chung */
+.btn-no_accpet:hover{
+  color: white !important;
+}
+.btn-accept:hover {
+  background-color:  #db3e00;
+}
+
+/* khi vượt quá 3 sp thì sẻ xuất hiện và N ảnh nữa */
+.table-bordered td{
+  border: none !important;
+}

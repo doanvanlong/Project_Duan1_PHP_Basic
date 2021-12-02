@@ -11,4 +11,5 @@
         $sql="INSERT INTO hoa_don_chi_tiet (id_hoa_don,id_sp,so_luong_mua,don_gia,mau_sac,dung_luong) values(?,?,?,?,?,?)";
         return pdo_execute($sql, $id_hoa_don, $id_sp, $so_luong,$don_gia,$mau_sac,$dung_luong);
     }
+    
 ?>

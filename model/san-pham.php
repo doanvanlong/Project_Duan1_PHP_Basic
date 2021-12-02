@@ -43,6 +43,10 @@ function san_pham_QueryAll()
     $sql = "SELECT * FROM san_pham";
     return pdo_query($sql);
 }
+//hàm truy vấn all sp , có 2 ct khuyến mãi với điều kiện chưa tham gia 1 chương trình khuyến mãi chi tiết nào đó ,
+//và sp đó không đc tham gia deal sốc
+
+
 //hàm truy vấn sp theo danh mục con
 function san_pham_Query_Danh_Muc_Con($id_sub_dm_pro)
 {
@@ -218,6 +222,29 @@ function del_multi_san_pham($list_san_pham)
     $sql = "DELETE FROM `san_pham` WHERE id_sp = ?";
     return pdo_execute($sql, $list_san_pham);
 }
+// Trang ADMin
+//hàm truy vấn top 10 sản phẩm mới Nhất
+function san_pham_Query_Top4_New(){
+    $sql="SELECT * FROM `san_pham`  order by id_sp desc limit 4";
+    return pdo_query($sql);
+}
+//hàm đếm sản phẩm đã bán , có trong hoá đơn là đếm
+function san_pham_Count_Da_Ban($id_sp){
+    $sql="SELECT * FROM `san_pham` INNER JOIN hoa_don_chi_tiet ON san_pham.id_sp =hoa_don_chi_tiet.id_sp where san_pham.id_sp=?";
+    $arr=pdo_query($sql,$id_sp);
+    $sum=0;
+    foreach($arr as $count){
+        $sum+=$count['so_luong_mua'];
+    }
+    return $sum;
+
+}
+
+// hàm truy vấn sản phẩm theo id 
+function san_pham_Query_One($id_sp){
+    $sql="SELECT * FROM san_pham WHERE id_sp=?";
+    return pdo_query_one($sql, $id_sp);
+}
 
 //Hàm truy vấn tất cả điện thoại bán chạy nhất có hoá đơn đặt hàng nhiều nhất
 // dùng tạm truy vấn all sp
@@ -245,6 +272,7 @@ function san_pham_Query_By_DM_Dien_Thoai(){
     $sql="SELECT * FROM san_pham where id_dm_pro =47";
     return pdo_query($sql);
 }
+
 //hàm truy vấn điện thoại nỗi bật , có lượt xem nhiều
 // dùng tạm truy vấn all
 function san_pham_Query_Dien_Thoai_Feature()

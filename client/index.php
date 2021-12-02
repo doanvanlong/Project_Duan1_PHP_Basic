@@ -8,6 +8,7 @@ require_once '../model/danh-muc.php';
 require_once '../model/tin-tuc.php';
 require_once '../model/rating.php';
 require_once '../model/binh-luan_pro.php';
+
 // info kh
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
@@ -48,7 +49,7 @@ switch ($url) {
         $view = "views/cart/checkout.php";
         $title = 'Thông tin thanh toán ';
         break;
-    case 'checkout=success':
+    case 'success':
         $view = "views/cart/success.php";
         $title = 'Hoàn tất đặt hàng ';
         break;

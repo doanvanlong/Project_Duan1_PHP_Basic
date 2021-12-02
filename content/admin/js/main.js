@@ -129,23 +129,7 @@ $(document).ready(function () {
     }
   }
 
-  $(".show").click(function () {
-    if ($(this).text() == "show") {
-      toast({
-        title: "Thành công",
-        msg: "Đăng nhập thành công !",
-        type: "success",
-        duration: 5000,
-      });
-    } else {
-      toast({
-        title: "Thất bại!",
-        msg: "Đăng nhập thất bại !",
-        type: "error",
-        duration: 5000,
-      });
-    }
-  });
+ 
 
   // Trang thêm danh mục
 

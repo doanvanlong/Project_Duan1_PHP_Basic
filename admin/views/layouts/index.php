@@ -21,10 +21,14 @@
     <script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"></script>
 
     <!-- favi icon -->
+
     <link rel="shortcut icon" href="<?= $CONTENT_ADMIN_URL ?>/img/avatar_xt.gif" type="image/x-icon">
+    
     <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/main.css">
     <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/base.css">
     <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/toastMessage.css">
+    <link rel="stylesheet" href="<?= $CONTENT_ADMIN_URL ?>/css/khuyen-mai.css">
+
 </head>
 
 <body>
@@ -91,11 +95,11 @@
                             <span class="box__icon-dropdown"><i class="icon__dropdown fas fa-angle-down"></i></span></span>
                     </div>
                     <div class="sub-menu">
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Mã
+                        <a class="sub-menu-items d-flex align-items-center" href="ma-giam-gia"><i class="fas fa-circle"></i>Mã
                             khuyến mãi </a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Giảm
+                        <a class="sub-menu-items d-flex align-items-center" href="giam-gia"><i class="fas fa-circle"></i>Giảm
                             giá sản phẩm</a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Deal
+                        <a class="sub-menu-items d-flex align-items-center" href="deal-soc"><i class="fas fa-circle"></i>Deal
                             sốc</a>
                     </div>
                 </li>
@@ -180,7 +184,7 @@
                             $id_kh = $_SESSION['login']['id_kh'];
                             $info_kh = khach_hang_Query_One($id_kh);
                             if ($info_kh['hinh_anh'] != '') { ?>
-                                <div class="user__dropdown" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?=$info_kh['hinh_anh']?>')">
+                                <div class="user__dropdown" style="background-image: url('<?= $AVTUSER_UPLOAD ?>/<?=$info_kh['hinh_anh']?>')">
                                 </div>
                             <?php
                             } else { ?>
@@ -208,10 +212,10 @@
 
 
             </div>
-            <footer class="footer ">
+            <!-- <footer class="footer ">
                 Bản quyền thuộc <span class="text-danger">LT SMART</span> Copyright &copy; 2021 . Trang web
                 Designed by <a target="_blank" href="https://github.com/doanvanlong/Duan1">Nhóm 10</a>
-            </footer>
+            </footer> -->
     </div>
     </main>
 
@@ -221,6 +225,9 @@
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/san-pham.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/tin-tuc.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/khach-hang.js"></script>
+    <script src="<?= $CONTENT_ADMIN_URL ?>/js/giam-gia.js"></script>
+
+
 </body>
 
 </html>
