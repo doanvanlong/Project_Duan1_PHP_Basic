@@ -13,7 +13,7 @@ if (isset($_POST['id_ket_thuc_km'])) {
         echo 0;
     }
 }
-//xoá khuyễn mãi khỏi Db
+//xoá khuyến mãi khỏi Db
 if(isset($_POST['id_xoa_km'])){
     $id_km=$_POST['id_xoa_km'];
     try{

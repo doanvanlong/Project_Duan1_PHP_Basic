@@ -94,3 +94,18 @@ a.page-link.active {
 .table-bordered td{
   border: none !important;
 }
+
+/* Css mã giảm giá */
+.img-ma_giam_gia{
+  background-color:#48dbfb;
+  width:45px;
+  height:45px;
+  border-radius:4px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.img-ma_giam_gia i{
+  font-size: 2.6rem;
+  color:#fff;
+}

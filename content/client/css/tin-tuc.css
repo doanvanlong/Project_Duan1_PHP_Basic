@@ -1,0 +1,113 @@
+.menu-danh-muc-tin-tuc {
+  background-color: white;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.menu-items-tin-tuc {
+  color: var(--dark);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-items-tin-tuc:hover {
+  color: var(--primary-color);
+}
+.menu-items-tin-tuc i {
+  font-size: 1rem;
+  color: white;
+}
+.box-radius {
+  margin: 0 10px;
+  width: 23px;
+  height: 23px;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner_tin-khuyen_mai {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+  position: relative;
+}
+
+.banner_tin-khuyen_mai:hover .banner_tin_tin_khuyen_mai-title {
+}
+.banner_tin_tin_khuyen_mai-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.815);
+  padding: 4px 14px;
+  color: rgba(255, 255, 255, 0.87);
+}
+.banner_tin_tin_khuyen_mai-title:hover {
+  color: white !important;
+}
+.zoom {
+  overflow: hidden;
+}
+.banner_tin_tin_khuyen_mai-title .title {
+  font-size: 1.8rem;
+}
+
+.tin-khuyen-mai-items-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 140px;
+}
+.tin-khuyen-mai-items-title {
+  font-weight: 500;
+}
+.list-tin-tuc-noi-bat-title {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.6;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 7px 10px;
+}
+.list-tin-tuc-moi-nhat-title {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding: 6px;
+  border-radius: 2px;
+}
+.chi-tiet-bai-viet {
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.chi-tiet-bai-viet-content img {
+  width: 100%;
+}
+
+/* khuyến mãi */
+.chuong-trinh-km-hom-nay-title {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.897);
+  font-weight: 500;
+  background-color: var(--primary-color);
+  text-align: center;
+  text-transform: uppercase;
+}
+.chuong-trinh-km-hom-nay {
+}
+.chuong-trinh-km-hom-nay-box {
+  padding: 0 0 20px 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  background-color: white;
+  margin:10px 0;
+  display: block;
+}

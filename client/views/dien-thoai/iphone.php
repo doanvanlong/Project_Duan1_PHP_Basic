@@ -1,44 +1,7 @@
 <div class="row">
     <div class="col-3">
         <div class="filter">
-            <div class="pb-4 filter-hang_san_xuat">
-                <b class="filter-hang_san_xuat-title">Hãng sản xuất</b>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="hang-san-xuat" value="" id="flexCheckDefault">
-                            <label class="form-check-label pl-3" for="flexCheckDefault">
-                                Tất cả
-                            </label>
-                        </div>
-                    </div>
-                    <!-- liệt kê các danh mục thuộc dm điện thoại -->
-                    <?php
-                    $list_dm_dienthoai = danh_muc_con_Select_by_id_dm_chinh(47);
-                    foreach ($list_dm_dienthoai as $dm_dienthoai) { ?>
-                        <div class="col-6">
-                            <!-- nếu danh mục con là 47 là iphone sẻ được checked -->
-                            <div class="form-check">
-                                <?php
-                                if ($dm_dienthoai['id_sub_dm_pro'] == 47) { ?>
-                                    <input class="form-check-input " type="radio" name="hang-san-xuat" checked value="" id="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
-                                <?php
-                                } else {?>
-                                    <input class="form-check-input " type="radio" name="hang-san-xuat"  value="" id="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
-                                <?php
-                                }
-                                ?>
-                                <label class="form-check-label pl-3" for="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
-                                    <?= $dm_dienthoai['ten_sub_dm_pro']; ?>
-                                </label>
-                            </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-
-                </div>
-            </div>
+          
             <div class="pb-4 filter-muc_gia">
                 <b class="filter-muc_gia-title">Mức giá</b>
                 <div class="form-check">

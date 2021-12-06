@@ -1,0 +1,131 @@
+.breadcrumb {
+    font-size: 1.4rem;
+  }
+  .errorMessage{
+    color:var(--primary);
+  }
+  .accountCustomer {
+    font-size: 1.4rem;
+  }
+  .accountCustomer ul li a {
+    color: var(--dark);
+    
+  
+  }
+  .accountCustomer input {
+      font-size: 1.3rem;
+  }
+  .accountCustomer ::placeholder {
+      font-size: 1.3rem;
+  }
+  .account__avatar-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .account__avatar-name{
+    color:rgb(51, 51, 51);
+    font-weight: 600;
+  }
+  .account__inner{
+    color:rgb(51, 51, 51);
+  
+  }
+  .account__inner-content {
+    background-color: rgb(255, 255, 255);
+    padding: 30px 20px;
+    border-radius: 4px;
+  }
+  .account__inner-content .form-control {
+    width: 80%;
+    height:40px;
+  }
+  .account__inner-content .form-select {
+    padding: 6px 20px;
+    border: 1px solid #ced4da;
+    outline: none;
+    border-radius:3px;
+  }
+  .account__inner-content .form-select + .form-select {
+    margin: 0 10px;
+  }
+  .icon__accoutNav{
+    font-size: 1.8rem;
+    width:30px;
+    text-align: center;
+    padding-right: 20px;
+    color:#a0a0a0;
+  }
+  .accountNav ul li a span{
+    flex:1;
+    padding:10px 0;
+  }
+  .accountNav-items:hover{
+    background-color:#eaeaea;
+  }
+  .accountNav-items-link{
+  }
+  .accountNav-items{
+    padding-left: 10px;
+  }
+  .accountNav-items.active{
+    background-color:#eaeaea;
+  }
+  .btnUpdateProfile{
+    color:white;
+    padding:10px 50px;
+    border-radius:5px;
+    font-size: 1.4rem;
+  }
+  .btnUpdateProfile:hover{
+    color:white;
+    opacity: .9;
+  }
+  .svg{
+    margin-left: -2px;
+  }
+  .account__inner-heading{
+    font-size: 1.9rem;
+    font-weight:400;
+  }
+  .hidden_changePassword{
+    display: none;
+  }
+  .hidden_changePassword.open{
+    display: block;
+  }
+
+  .box-show_pass{
+      position: relative;
+  }
+  .show_pass{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 23%;
+
+  }
+  
+  .hide_pass{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 23%;
+    
+}
+.show_pass1{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 23%;
+
+}
+
+.hide_pass1{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 23%;
+  
+}

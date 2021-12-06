@@ -90,6 +90,19 @@
   font-size: 1.9rem;
 }
 
+/* lable giảm giá */
+.product-detail-label_giam-gia{
+  background-color:var(--primary-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  color:white;
+  font-size: 1.2rem;
+  padding: 4px;
+  border-radius:3px;
+  margin-left: 10px;
+}
+
+
 .box-check-dung-luong {
   background-color: #f8f9fa;
   padding: 5px 15px;
@@ -470,3 +483,63 @@ label.rating-sao i {
   background-color: var(--primary-color);
 color:white;
 }
+
+.ma_giam_gia{
+  position: relative;
+}
+.hover-box-ma-giam-gia{
+  position: absolute;
+  width: 70%;
+  top: 200%;
+  left: 0;
+  border-radius:5px;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.ma_giam_gia:before {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  background-color: transparent;
+  width: 60%;
+  height: 52px;
+}
+.hover-box-ma-giam-gia-content-items{
+  width: 300px;
+  
+}
+/* css hover mã giảm giá
+ */
+ .ma_giam_gia:hover .hover-box-ma-giam-gia{
+   display: flex !important;
+ }
+ .hover-box-ma-giam-gia{
+   display: none !important;
+
+ }
+ .hover-box-ma-giam-gia-content{
+   margin: 10px 0;
+ }
+ .hover-box-ma-giam-gia-content-items{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border:1px solid #eaeaea;
+  border-radius: 5px;
+
+ }
+ .hover-box-ma-giam-gia-content-items-img{
+   background-color: #ff641f;
+   width:23%;
+   border-right: 1px solid #eaeaea;
+   height:60px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 5px;
+ }
+ .hover-box-ma-giam-gia-content-items-img i{
+   font-size: 3rem;
+   color: #fff;
+ }
+ 

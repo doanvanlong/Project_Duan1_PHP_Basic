@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-12">
         <!-- banner -->
@@ -15,12 +16,12 @@
                             $list_news_km = bai_viet_Query_Danh_Muc_KM();
                             foreach ($list_news_km as $news_km) {
                                 if ($list_news_km[0]['id_bai_viet'] == $news_km['id_bai_viet']) { ?>
-                                    <a href="#" class="carousel-item active ">
+                                    <a href="bai-viet?id=<?=$news_km['id_bai_viet']?>&title=<?=$news_km['tieu_de_news']?>" class="carousel-item active ">
                                         <img alt="<?= $news_km['tieu_de_news'] ?>" style="height:301px;" class="d-block w-100" src="<?= $CONTENT_UPLOAD ?>/<?= $news_km['img_news'] ?>" alt="First slide">
                                     </a>
                                 <?php
                                 } else { ?>
-                                    <a href="#" class="carousel-item ">
+                                    <a href="bai-viet?id=<?=$news_km['id_bai_viet']?>&title=<?=$news_km['tieu_de_news']?>" class="carousel-item ">
                                         <img alt="<?= $news_km['tieu_de_news'] ?>" style="height:301px;" class="d-block w-100" src="<?= $CONTENT_UPLOAD ?>/<?= $news_km['img_news'] ?>" alt="First slide">
                                     </a>
                             <?php
@@ -50,13 +51,13 @@
                                 <?php
                                 $top_2_news_km = bai_viet_Query_Top2_Km();
                                 foreach ($top_2_news_km as $top_2_km) { ?>
-                                    <a href="#" class="banner__right-promotion-body-content  d-flex align-items-center">
+                                    <a href="bai-viet?id=<?=$top_2_km['id_bai_viet']?>&title=<?=$top_2_km['tieu_de_news']?>" class="banner__right-promotion-body-content  d-flex align-items-center">
                                         <div class="banner__right-promotion-body-img">
-                                            <img style="width:100%;min-height:60px;" src="<?= $CONTENT_UPLOAD ?>/<?=$top_2_km['img_news']?>" alt="">
+                                            <img style="width:100%;min-height:60px;" src="<?= $CONTENT_UPLOAD ?>/<?= $top_2_km['img_news'] ?>" alt="">
                                         </div>
                                         <div class="banner__right-promotion-body-text ">
-                                            <p class="text-overflow"><?=$top_2_km['tieu_de_news']?></p>
-                                            <p class="mb-0 text-muted" style="font-size: 1.1rem;"><?=$top_2_km['ngay_post']?></p>
+                                            <p class="text-overflow"><?= $top_2_km['tieu_de_news'] ?></p>
+                                            <p class="mb-0 text-muted" style="font-size: 1.1rem;"><?= $top_2_km['ngay_post'] ?></p>
                                         </div>
                                     </a>
 
@@ -96,34 +97,123 @@
                             <a href="san-pham?id=<?= $sp_BestSeller['id_sp']; ?>&name=<?= $sp_BestSeller['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
                                 <div class="tab__menu-product-content-newproduct-img" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $sp_BestSeller['hinh_anh'] ?>')">
                                     <!-- Nhãn giảm giá -->
-                                    <!-- <span class="tab__menu-product-content-newproduct-sale-label"> Giảm  đến 10%  </span> -->
+                                    <?php
+                                    $list_giam_gia = giam_gia_Query_All_Sp();
+                                    if (count($list_giam_gia) > 0) {
+                                        foreach ($list_giam_gia as $giam_gia) {
+                                            if ($giam_gia['id_sp'] == $sp_BestSeller['id_sp']) {
+                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                    // %
+                                    ?>
+                                                    <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= $giam_gia['muc_giam'] ?> %</span>
+                                                <?php
+                                                } else {
+                                                    //số tiền
+                                                ?>
+                                                    <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= number_format($giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </span>
+                                    <?php
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
+
                                     <!-- Nhãn check in -->
-                                    <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span>
+                                    <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
 
                                     <!-- Nhãn trả góp -->
                                     <span class="tab__menu-product-content-newproduct-installment-label ">Trả góp 0%</span>
                                 </div>
                                 <div class="px-4 pt-1 pb-5">
                                     <div class="tab__menu-product-newproduct-rate">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
+                                        
+                                        <?php
+                                        $rating = rating_Avg($sp_BestSeller['id_sp']);
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            if ($i <= $rating) { ?>
+                                                <i class=" fas fa-star"></i>
+                                            <?php
+                                            } else { ?>
+                                                <i class="text-secondary fas fa-star"></i>
+                                        <?php
+                                            }
+                                        }
+                                        ?>
                                     </div>
                                     <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
                                         <?= $sp_BestSeller['ten_sp']; ?>
                                     </p>
                                     <!-- Nhãn Mã giảm giá -->
-                                    <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span>
+                                    <?php
+                                    $list_ma_giam_gia = ma_giam_gia_Query_All();
+                                    if (count($list_ma_giam_gia) > 0) {
+                                        foreach ($list_ma_giam_gia as $ma_giam_gia) {
+                                            if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                // %
+                                    ?>
+                                                <span class="tab__menu-product-newproduct-code-label">Giảm <?= $ma_giam_gia['muc_giam'] ?> %</span>
+
+                                            <?php
+                                            } else {
+                                                //số tiền
+                                            ?>
+                                                <span class="tab__menu-product-newproduct-code-label">Giảm <?= number_format($ma_giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?></span>
+
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <!-- Nhãn deal sốc -->
-                                    <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
+                                    <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
                                     <div class="tab__menu-product-newproduct-price d-flex">
                                         <b class="tab__menu-product-newproduct-newprice pt-2">
-                                            <?= number_format($sp_BestSeller['don_gia'], 0, ',', '.') . 'đ'; ?>
+                                            <?php
+                                            $list_giam_gia = giam_gia_Query_All_Sp();
+                                            if (in_array($sp_BestSeller['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                //id sp nằm trong giảm giá
+                                                if (count($list_giam_gia) > 0) {
+                                                    foreach ($list_giam_gia as $giam_gia) {
+                                                        if ($giam_gia['id_sp'] == $sp_BestSeller['id_sp']) {
+                                                            if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                // %
+                                                                echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $sp_BestSeller['don_gia']);
+                                            ?>
+                                                            <?php
+                                                            } else {
+                                                                //số tiền
+                                                                echo So_Tien_Giam_Gia_Tien($sp_BestSeller['don_gia'], $giam_gia['muc_giam']);
+                                                            ?>
+
+                                            <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                //id sp ko nằm trong gg
+                                                echo number_format($sp_BestSeller['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                            }
+                                            ?>
                                         </b>
                                         <strike class="tab__menu-product-newproduct-oldprice pt-2">
-                                            <?= number_format($sp_BestSeller['don_gia'], 0, ',', '.') . 'đ'; ?>
+                                            <?php
+                                            $list_giam_gia = giam_gia_Query_All_Sp();
+                                            if (in_array($sp_BestSeller['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                //id sp nằm trong giảm giá
+                                                if (count($list_giam_gia) > 0) {
+                                                    foreach ($list_giam_gia as $giam_gia) {
+                                                        if ($giam_gia['id_sp'] == $sp_BestSeller['id_sp']) {
+                                                            // nếu sp có giảm giá mới in ra giá củ 
+                                                            echo  number_format($sp_BestSeller['don_gia'], 0, ',', '.') . 'đ';
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                //ko có giảm giá 
+
+                                            }
+                                            ?>
                                         </strike>
                                     </div>
                                 </div>
@@ -189,9 +279,26 @@
                             <a href="san-pham?id=<?= $sp_flash_sale['id_sp']; ?>&name=<?= $sp_flash_sale['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
                                 <div class="tab__menu-product-content-newproduct-img" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $sp_flash_sale['hinh_anh'] ?>')">
                                     <!-- Nhãn giảm giá -->
-                                    <span class="tab__menu-product-content-newproduct-sale-label">
-                                        Giảm đến 10%
-                                    </span>
+                                    <?php
+                                    $list_giam_gia = giam_gia_Query_All_Sp();
+                                    if (count($list_giam_gia) > 0) {
+                                        foreach ($list_giam_gia as $giam_gia) {
+                                            if ($giam_gia['id_sp'] == $sp_flash_sale['id_sp']) {
+                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                    // %
+                                    ?>
+                                                    <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= $giam_gia['muc_giam'] ?> %</span>
+                                                <?php
+                                                } else {
+                                                    //số tiền
+                                                ?>
+                                                    <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= number_format($giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </span>
+                                    <?php
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <!-- Nhãn check in -->
                                     <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
 
@@ -210,21 +317,87 @@
                                         <?= $sp_flash_sale['ten_sp'] ?>
                                     </p>
                                     <!-- Nhãn Mã giảm giá -->
+                                    <?php
+                                    $list_ma_giam_gia = ma_giam_gia_Query_All();
+                                    if (count($list_ma_giam_gia) > 0) {
+                                        foreach ($list_ma_giam_gia as $ma_giam_gia) {
+                                            if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                // %
+                                    ?>
+                                                <span class="tab__menu-product-newproduct-code-label">Giảm <?= $ma_giam_gia['muc_giam'] ?> %</span>
+
+                                            <?php
+                                            } else {
+                                                //số tiền
+                                            ?>
+                                                <span class="tab__menu-product-newproduct-code-label">Giảm <?= number_format($ma_giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?></span>
+
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
                                     <!-- Nhãn deal sốc -->
                                     <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
                                     <div class="tab__menu-product-newproduct-price d-flex">
                                         <b class="tab__menu-product-newproduct-newprice pt-2">
-                                            <?= number_format($sp_flash_sale['don_gia'], 0, ',', '.') . 'đ' ?>
+                                            <?php
+                                            $list_giam_gia = giam_gia_Query_All_Sp();
+                                            if (in_array($sp_flash_sale['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                //id sp nằm trong giảm giá
+                                                if (count($list_giam_gia) > 0) {
+                                                    foreach ($list_giam_gia as $giam_gia) {
+                                                        if ($giam_gia['id_sp'] == $sp_flash_sale['id_sp']) {
+                                                            if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                // %
+                                                                echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $sp_flash_sale['don_gia']);
+                                            ?>
+                                                            <?php
+                                                            } else {
+                                                                //số tiền
+                                                                echo So_Tien_Giam_Gia_Tien($sp_flash_sale['don_gia'], $giam_gia['muc_giam']);
+                                                            ?>
+
+                                            <?php
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                //id sp ko nằm trong gg
+                                                echo number_format($sp_flash_sale['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                            }
+                                            ?>
 
                                         </b>
                                         <strike class="tab__menu-product-newproduct-oldprice pt-2">
-                                            <?= number_format($sp_flash_sale['don_gia'], 0, ',', '.') . 'đ' ?>
+                                            <?php
+                                            $list_giam_gia = giam_gia_Query_All_Sp();
+                                            if (in_array($sp_flash_sale['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                //id sp nằm trong giảm giá
+                                                if (count($list_giam_gia) > 0) {
+                                                    foreach ($list_giam_gia as $giam_gia) {
+                                                        if ($giam_gia['id_sp'] == $sp_flash_sale['id_sp']) {
+                                                            // nếu sp có giảm giá mới in ra giá củ 
+                                                            echo  number_format($sp_flash_sale['don_gia'], 0, ',', '.') . 'đ';
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                //ko có giảm giá 
+
+                                            }
+                                            ?>
                                         </strike>
                                     </div>
                                     <div class="product__flash-sale-sold my-2">
-                                        Đã bán 12
-                                        <span class="product__flash-sale-sold-count" style="width:90%;"></span>
+                                        <?php
+                                          echo   $da_ban= san_pham_Count_Da_Ban($sp_flash_sale['id_sp']);
+                                            $tong_kho=$sp_flash_sale['so_luong'];
+                                            $phan_tram= ($da_ban / $tong_kho) * 100;
+                                        ?>
+                                        <span class="product__flash-sale-sold-count" style="width:<?=$phan_tram?>%;"></span>
                                     </div>
                                 </div>
                             </a>
@@ -259,9 +432,28 @@
                             <div class="col-4">
                                 <a href="san-pham?id=<?= $sp_feature['id_sp']; ?>&name=<?= $sp_feature['ten_sp']; ?>" class="tab__menu-product-content-newproduct">
                                     <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $sp_feature['hinh_anh'] ?>')">
-                                        <span class="tab__menu-product-content-newproduct-sale-label">
-                                            Giảm đến 10%
-                                        </span>
+
+                                        <!-- Nhãn giảm giá -->
+                                        <?php
+                                        $list_giam_gia = giam_gia_Query_All_Sp();
+                                        if (count($list_giam_gia) > 0) {
+                                            foreach ($list_giam_gia as $giam_gia) {
+                                                if ($giam_gia['id_sp'] == $sp_feature['id_sp']) {
+                                                    if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                        // %
+                                        ?>
+                                                        <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= $giam_gia['muc_giam'] ?> %</span>
+                                                    <?php
+                                                    } else {
+                                                        //số tiền
+                                                    ?>
+                                                        <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= number_format($giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </span>
+                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
                                         <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in
                           </span> -->
                                         <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span>
@@ -277,15 +469,77 @@
                                         <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
                                             <?= $sp_feature['ten_sp'] ?>
                                         </p>
-                                        <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span>
-                                        <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
+                                        <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
+                                        <?php
+                                        $list_ma_giam_gia = ma_giam_gia_Query_All();
+                                        if (count($list_ma_giam_gia) > 0) {
+                                            foreach ($list_ma_giam_gia as $ma_giam_gia) {
+                                                if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                    // %
+                                        ?>
+                                                    <span class="tab__menu-product-newproduct-code-label">Giảm <?= $ma_giam_gia['muc_giam'] ?> %</span>
+
+                                                <?php
+                                                } else {
+                                                    //số tiền
+                                                ?>
+                                                    <span class="tab__menu-product-newproduct-code-label">Giảm <?= number_format($ma_giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?></span>
+
+                                        <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
                                         <div class="tab__menu-product-newproduct-price d-flex">
                                             <b class="tab__menu-product-newproduct-newprice pt-2">
-                                                <?= number_format($sp_feature['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                <?php
+                                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                                if (in_array($sp_feature['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                    //id sp nằm trong giảm giá
+                                                    if (count($list_giam_gia) > 0) {
+                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                            if ($giam_gia['id_sp'] == $sp_feature['id_sp']) {
+                                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                    // %
+                                                                    echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $sp_feature['don_gia']);
+                                                ?>
+                                                                <?php
+                                                                } else {
+                                                                    //số tiền
+                                                                    echo So_Tien_Giam_Gia_Tien($sp_feature['don_gia'], $giam_gia['muc_giam']);
+                                                                ?>
+
+                                                <?php
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    //id sp ko nằm trong gg
+                                                    echo number_format($sp_feature['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                                }
+                                                ?>
 
                                             </b>
                                             <strike class="tab__menu-product-newproduct-oldprice pt-2">
-                                                <?= number_format($sp_feature['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                <?php
+                                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                                if (in_array($sp_feature['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                    //id sp nằm trong giảm giá
+                                                    if (count($list_giam_gia) > 0) {
+                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                            if ($giam_gia['id_sp'] == $sp_feature['id_sp']) {
+                                                                // nếu sp có giảm giá mới in ra giá củ 
+                                                                echo  number_format($sp_feature['don_gia'], 0, ',', '.') . 'đ';
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    //ko có giảm giá 
+
+                                                }
+                                                ?>
                                             </strike>
                                         </div>
                                     </div>
@@ -326,9 +580,28 @@
                             <div class="col-4">
                                 <a href="san-pham?id=<?= $phu_kien_feature['id_sp'] ?>&name=<?= $phu_kien_feature['ten_sp'] ?>" class="tab__menu-product-content-newproduct">
                                     <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $phu_kien_feature['hinh_anh'] ?>')">
-                                        <span class="tab__menu-product-content-newproduct-sale-label">
-                                            Giảm đến 30%
-                                        </span>
+
+                                        <!-- Nhãn giảm giá -->
+                                        <?php
+                                        $list_giam_gia = giam_gia_Query_All_Sp();
+                                        if (count($list_giam_gia) > 0) {
+                                            foreach ($list_giam_gia as $giam_gia) {
+                                                if ($giam_gia['id_sp'] == $phu_kien_feature['id_sp']) {
+                                                    if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                        // %
+                                        ?>
+                                                        <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= $giam_gia['muc_giam'] ?> %</span>
+                                                    <?php
+                                                    } else {
+                                                        //số tiền
+                                                    ?>
+                                                        <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= number_format($giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </span>
+                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
                                         <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in
                                      </span> -->
                                         <!-- <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span> -->
@@ -344,15 +617,77 @@
                                         <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
                                             <?= $phu_kien_feature['ten_sp'] ?>
                                         </p>
-                                        <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span>
+                                        <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
+                                        <?php
+                                        $list_ma_giam_gia = ma_giam_gia_Query_All();
+                                        if (count($list_ma_giam_gia) > 0) {
+                                            foreach ($list_ma_giam_gia as $ma_giam_gia) {
+                                                if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                    // %
+                                        ?>
+                                                    <span class="tab__menu-product-newproduct-code-label">Giảm <?= $ma_giam_gia['muc_giam'] ?> %</span>
+
+                                                <?php
+                                                } else {
+                                                    //số tiền
+                                                ?>
+                                                    <span class="tab__menu-product-newproduct-code-label">Giảm <?= number_format($ma_giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?></span>
+
+                                        <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
                                         <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
                                         <div class="tab__menu-product-newproduct-price d-flex">
                                             <b class="tab__menu-product-newproduct-newprice pt-2">
-                                                <?= number_format($phu_kien_feature['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                <?php
+                                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                                if (in_array($phu_kien_feature['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                    //id sp nằm trong giảm giá
+                                                    if (count($list_giam_gia) > 0) {
+                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                            if ($giam_gia['id_sp'] == $phu_kien_feature['id_sp']) {
+                                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                    // %
+                                                                    echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $phu_kien_feature['don_gia']);
+                                                ?>
+                                                                <?php
+                                                                } else {
+                                                                    //số tiền
+                                                                    echo So_Tien_Giam_Gia_Tien($phu_kien_feature['don_gia'], $giam_gia['muc_giam']);
+                                                                ?>
+
+                                                <?php
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    //id sp ko nằm trong gg
+                                                    echo number_format($phu_kien_feature['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                                }
+                                                ?>
 
                                             </b>
                                             <strike class="tab__menu-product-newproduct-oldprice pt-2">
-                                                <?= number_format($phu_kien_feature['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                <?php
+                                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                                if (in_array($phu_kien_feature['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                    //id sp nằm trong giảm giá
+                                                    if (count($list_giam_gia) > 0) {
+                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                            if ($giam_gia['id_sp'] == $phu_kien_feature['id_sp']) {
+                                                                // nếu sp có giảm giá mới in ra giá củ 
+                                                                echo  number_format($phu_kien_feature['don_gia'], 0, ',', '.') . 'đ';
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    //ko có giảm giá 
+
+                                                }
+                                                ?>
                                             </strike>
                                         </div>
                                     </div>

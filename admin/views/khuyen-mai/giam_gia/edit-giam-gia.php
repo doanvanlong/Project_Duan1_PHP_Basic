@@ -60,7 +60,7 @@
             </div>
             <div class="col-4">
                 <!-- chỉ cần lấy thèn đại diện trong mảng là đc  -->
-                <input type="number" name="muc_giam" value="<?= $list_info_all_sp[0]['muc_giam'] ?>" placeholder="% or VND" class="form-control" aria-describedby="passwordHelpInline">
+                <input type="number" name="muc_giam_gia" value="<?= $list_info_all_sp[0]['muc_giam'] ?>" placeholder="% or VND" class="form-control" aria-describedby="passwordHelpInline">
                 <small class="text-danger error-muc_giam"></small>
             </div>
 
@@ -83,9 +83,11 @@
                             <?php if (isset($_SESSION['add-giam-gia']) && count($_SESSION['add-giam-gia']) > 0) {
                                 echo count($_SESSION['add-giam-gia']) + count($list_info_all_sp);
                             }
+<<<<<<< HEAD
                             if (!isset($_SESSION['add-giam-gia'])) {
+=======
+>>>>>>> 13a134285c0f23305cc49bc7a7b48b674ae4eed0
                                 echo count($list_info_all_sp);
-                            }
                             ?>
                         </span>&nbsp;sản phẩm tham gia chương trình giảm giá này</small>
                 </div>
@@ -586,7 +588,6 @@
                         type: "POST",
                         data: $("#form_update_giam_gia").serializeArray(),
                         success: function(data) {
-                            console.log(data);
                               if (data == 1) {
                                 toast({
                                   title: "Thành công",

@@ -78,7 +78,7 @@ a:hover {
   font-size: 1.8rem;
 }
 .font-size-1-4 {
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
 }
 .font-size-1-2{
   font-size: 1.2rem !important;
@@ -141,4 +141,40 @@ button:disabled:hover{
 }
 input[type="checkbox"] {
   background: var(--primary-color) !important;
+}
+
+.dropdown-toggle::after{
+  display: none !important;
+}
+.dropdown-menu{
+  width: 350px;
+  top: 10px !important;
+  left:-50px !important;
+  z-index: 10000;
+  padding:10px 7px !important;
+}
+.thong_bao_user-content-img{
+  width:40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-radius:4px;
+}
+.thong_bao_user-content{
+  background-color: #eaeaea4f;
+padding:8px 5px;
+}
+.thong_bao_user-content-text{
+  flex:1;
+  padding-left:10px ;
+  font-size: 1.4rem;
+}
+.thong_bao_user-content-text.active{
+  font-weight:500;
+  color:var(--dark);
+}
+.thong_bao_user-content-text{
+  color:var(--secondary);
 }

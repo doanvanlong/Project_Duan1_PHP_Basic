@@ -1,10 +1,4 @@
 <?php
-// if ($list_orders['hinh_thuc_thanh_toan'] == 0) {
-//     $pay = "Thanh toán khi nhận hàng";
-// } else if ($list_orders['hinh_thuc_thanh_toan'] == 1) {
-//     $pay = "Thanh toán online";
-// }
-//Xử lí hình thức thanh toán
 switch ($list_orders['hinh_thuc_thanh_toan']) {
     case '1':
         $pay = "Thanh toán online";

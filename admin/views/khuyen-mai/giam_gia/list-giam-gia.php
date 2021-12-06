@@ -82,7 +82,7 @@
                                                     $hours = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
                                                     $minutes = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
                                                     ?>
-                                                    Sau
+                                                    <i class="fas fa-clock" style="font-size:1.2rem"></i> Sau
                                                     <?php
                                                     if ($months > 0) { ?>
                                                         <span class="mx-1"><?= $months ?></span>ngày

@@ -10,8 +10,8 @@
     <input type="hidden" name="id_sp" value="<?php echo $info_sp['id_sp'] ?>">
     <div class="row">
         <div class="col-12">
-            <form action="" method="POST" id="add-cart"   class="product-detail p-3">
-                <input type="hidden" name="ten_sp_chinh" value="<?=$info_sp['ten_sp']?>">
+            <form action="" method="POST" id="add-cart" class="product-detail p-3">
+                <input type="hidden" name="ten_sp_chinh" value="<?= $info_sp['ten_sp'] ?>">
                 <div class="product-detail-heading d-flex justify-content-between align-items-center">
                     <h2 class="product-detail-title py-2 text-overflow"><?= $info_sp['ten_sp']; ?></h2>
                     <div class="product-detail-rating d-flex ">
@@ -103,10 +103,104 @@
                     </div>
                     <div class="col-6">
                         <div class="product-detail-price py-2 d-flex align-items-center">
-                            <h2 class="product-detail-price-new pr-3"><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></h2>
-                            <h2 class="product-detail-price-old text-secondary"><strike><?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></strike></h2>
-                            <input type="hidden" name="id_sp_chinh" value="<?=$info_sp['id_sp']?>">
-                            <input type="hidden" class="product-detail-price-new-road_cart" name="gia_sp_chinh" value="<?=$info_sp['don_gia'] ?>">
+                            <h2 class="product-detail-price-new pr-3"> <?php
+                                                                        $list_giam_gia = giam_gia_Query_All_Sp();
+                                                                        if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                                            //id sp nằm trong giảm giá
+                                                                            if (count($list_giam_gia) > 0) {
+                                                                                foreach ($list_giam_gia as $giam_gia) {
+                                                                                    if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                                                        if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                                            // %
+                                                                                            echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $info_sp['don_gia']);
+                                                                        ?>
+                                                <?php
+                                                                                        } else {
+                                                                                            //số tiền
+                                                                                            echo So_Tien_Giam_Gia_Tien($info_sp['don_gia'], $giam_gia['muc_giam']);
+                                                ?>
+
+                                <?php
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            //id sp ko nằm trong gg
+                                                                            echo number_format($info_sp['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                                                        }
+                                ?>
+
+                            </h2>
+                            <h2 class="product-detail-price-old text-secondary"><strike class="gia_old">
+                                    <?php
+                                    $list_giam_gia = giam_gia_Query_All_Sp();
+                                    if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                        //id sp nằm trong giảm giá
+                                        if (count($list_giam_gia) > 0) {
+                                            foreach ($list_giam_gia as $giam_gia) {
+                                                if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                    // nếu sp có giảm giá mới in ra giá củ 
+                                                    echo number_format($info_sp['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        //ko có giảm giá 
+                                    }
+                                    ?></strike></h2>
+                            <span>
+                                <!-- Nhãn giảm giá -->
+                                <?php
+                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                if (count($list_giam_gia) > 0) {
+                                    foreach ($list_giam_gia as $giam_gia) {
+                                        if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                            if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                // %
+                                ?>
+                                                <span class="product-detail-label_giam-gia"> Giảm <?= $giam_gia['muc_giam'] ?> %</span>
+                                            <?php
+                                            } else {
+                                                //số tiền
+                                            ?>
+                                                <span class="product-detail-label_giam-gia"> Giảm <?= number_format($giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </span>
+                                <?php
+                                            }
+                                        }
+                                    }
+                                }
+                                ?>
+                            </span>
+                            <input type="hidden" name="id_sp_chinh" value="<?= $info_sp['id_sp'] ?>">
+                            <input type="hidden" class="product-detail-price-new-road_cart" name="gia_sp_chinh" value="<?php
+                                                                                                                        $list_giam_gia = giam_gia_Query_All_Sp();
+                                                                                                                        if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                                                                                            //id sp nằm trong giảm giá
+                                                                                                                            if (count($list_giam_gia) > 0) {
+                                                                                                                                foreach ($list_giam_gia as $giam_gia) {
+                                                                                                                                    if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                                                                                                        if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                                                                                            // %
+                                                                                                                                            echo (((100 - $giam_gia['muc_giam']) / 100) * $info_sp['don_gia']);
+                                                                                                                        ?>
+                                                                                                        <?php
+                                                                                                                                        } else {
+                                                                                                                                            //số tiền
+                                                                                                                                            echo ($info_sp['don_gia'] - $giam_gia['muc_giam']);
+                                                                                                        ?>
+                                                                                                             <?php
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        } else {
+                                                                                                                            //ko có giảm giá 
+                                                                                                                            echo $info_sp['don_gia'];
+                                                                                                                        }
+
+                                                                                                                ?>
+                                                                                                                                ">
                         </div>
                         <!-- dung lượng -->
                         <div class="product-detail-select-dung-luong ">
@@ -119,13 +213,42 @@
                                         ?>
                                             <label for="<?= $dung_luong['id_dl_phone'] ?>" class="form-check box-check-dung-luong my-2 active" data-id_dung_luong="<?= $dung_luong['id_dl_phone'] ?>">
                                                 <div class="check cursor-pointer ">
-                                                    <input class="form-check-input cursor-pointer " type="radio" name="dung-luong_chinh" id="<?= $dung_luong['id_dl_phone'] ?>" checked value="<?=$dung_luong['rom']?>">
+                                                    <input class="form-check-input cursor-pointer " type="radio" name="dung-luong_chinh" id="<?= $dung_luong['id_dl_phone'] ?>" checked value="<?= $dung_luong['rom'] ?>">
                                                     <label class="form-check-label pl-2 text-dung-luong  cursor-pointer" for="<?= $dung_luong['id_dl_phone'] ?>">
                                                         <?= $dung_luong['rom'] ?> GB
                                                     </label>
                                                 </div>
                                                 <label for="<?= $dung_luong['id_dl_phone'] ?>" class="cursor-pointer">
-                                                    <div class="form-check-price"><?= number_format($dung_luong['don_gia'], 0, ',', '.') . 'đ' ?></div>
+                                                    <div class="form-check-price"> <?php
+                                                                                    $list_giam_gia = giam_gia_Query_All_Sp();
+                                                                                    if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+
+                                                                                        // id sp có trong giảm giá  if (count($list_giam_gia) > 0) {
+                                                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                                                            if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                                                    // %
+                                                                                                    echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $dung_luong['don_gia']);
+                                                                                    ?>
+                                                                    <?php
+                                                                                                } else {
+                                                                                                    //số tiền
+                                                                                                    echo So_Tien_Giam_Gia_Tien($dung_luong['don_gia'], $giam_gia['muc_giam']);
+                                                                    ?>
+
+                                                        <?php
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    } else {
+
+                                                                                        // id sp ko nằm
+                                                                                        echo number_format($dung_luong['don_gia'], 0, ',', '.'), '&nbsp;đ';
+                                                                                    }
+
+
+                                                        ?>
+                                                    </div>
                                                 </label>
                                             </label>
                                         <?php
@@ -133,13 +256,43 @@
                                         ?>
                                             <label for="<?= $dung_luong['id_dl_phone'] ?>" class="form-check box-check-dung-luong my-2" data-id_dung_luong="<?= $dung_luong['id_dl_phone'] ?>">
                                                 <div class="check cursor-pointer ">
-                                                    <input class="form-check-input cursor-pointer " type="radio" name="dung-luong_chinh" id="<?= $dung_luong['id_dl_phone'] ?>" value="<?=$dung_luong['rom']?>">
+                                                    <input class="form-check-input cursor-pointer " type="radio" name="dung-luong_chinh" id="<?= $dung_luong['id_dl_phone'] ?>" value="<?= $dung_luong['rom'] ?>">
                                                     <label class="form-check-label pl-2 text-dung-luong cursor-pointer" for="<?= $dung_luong['id_dl_phone'] ?>">
                                                         <?= $dung_luong['rom'] ?> GB
                                                     </label>
                                                 </div>
                                                 <label for="<?= $dung_luong['id_dl_phone'] ?>" class="cursor-pointer">
-                                                    <div class="form-check-price"><?= number_format($dung_luong['don_gia'], 0, ',', '.') . 'đ' ?></div>
+                                                    <div class="form-check-price">
+                                                        <?php
+                                                        $list_giam_gia = giam_gia_Query_All_Sp();
+                                                        if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                            //có nằm
+                                                            if (count($list_giam_gia) > 0) {
+                                                                foreach ($list_giam_gia as $giam_gia) {
+                                                                    if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                                        if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                            // %
+                                                                            echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $dung_luong['don_gia']);
+                                                        ?>
+                                                                        <?php
+                                                                        } else {
+                                                                            //số tiền
+                                                                            echo So_Tien_Giam_Gia_Tien($dung_luong['don_gia'], $giam_gia['muc_giam']);
+                                                                        ?>
+
+                                                        <?php
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            //ko nằm
+                                                            echo number_format($dung_luong['don_gia'], 0, ',', '.'), '&nbsp;đ';
+                                                        }
+
+
+                                                        ?>
+                                                    </div>
                                                 </label>
                                             </label>
                                         <?php
@@ -164,7 +317,7 @@
                                 if ($list_mau_sac[0]['id_ms_phone'] == $mau_sac['id_ms_phone']) { ?>
                                     <div class="box-items-mau active  d-flex flex-column align-items-center justify-content-center">
                                         <div class="product-detail-select-mau-img ">
-                                        <input type="radio" hidden name="hinh-anh-chinh" checked value="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>">
+                                            <input type="radio" hidden name="hinh-anh-chinh" checked value="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>">
                                             <img style="width:80%" class="select_mau_sac_img" src="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>" alt="">
                                         </div>
                                         <input type="radio" hidden name="mau_sac_chinh" checked value="<?= $mau_sac['ten_mau'] ?>">
@@ -174,10 +327,10 @@
                                 } else { ?>
                                     <div class="box-items-mau  d-flex flex-column align-items-center justify-content-center">
                                         <div class="product-detail-select-mau-img ">
-                                        <input type="radio" hidden name="hinh-anh-chinh" value="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>">
+                                            <input type="radio" hidden name="hinh-anh-chinh" value="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>">
                                             <img style="width:80%" class="select_mau_sac_img" src="<?= $CONTENT_UPLOAD ?>/<?= $mau_sac['hinh_anh'] ?>" alt="">
                                         </div>
-                                        <input type="radio" hidden  name="mau_sac_chinh" value="<?= $mau_sac['ten_mau'] ?>">
+                                        <input type="radio" hidden name="mau_sac_chinh" value="<?= $mau_sac['ten_mau'] ?>">
                                         <div class="product-detail-select-mau-name"><?= $mau_sac['ten_mau'] ?></div>
                                     </div>
                                 <?php
@@ -189,10 +342,90 @@
 
 
                             }
+                            if (count($list_mau_sac) == 0) { ?>
+                            <input type="hidden" name="hinh-anh-chinh" value="<?=$CONTENT_UPLOAD?>/<?=$info_sp['hinh_anh']?>">
+                            <?php
+                            }
                             ?>
 
 
                         </div>
+                        <?php
+                        $list_ma_giam_gia = ma_giam_gia_Query_All();
+                        if (count($list_ma_giam_gia) > 0) { ?>
+                            <div class="d-flex mt-2 mb-5 ma_giam_gia">
+
+                                <?php
+                                $list_ma_giam_gia = ma_giam_gia_Query_All();
+                                if (count($list_ma_giam_gia) > 0) { ?>
+                                    <div class="text-gray">Mã giảm giá</div>
+                                    <?php
+                                    foreach ($list_ma_giam_gia as $ma_giam_gia) {
+                                        if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                            // %
+                                    ?>
+
+                                            <span class="tab__menu-product-newproduct-code-label text-uppercase font-size-1-4 ml-3" style="background-color:#fbebed !important;color:var(--primary-color);">Giảm <?= $ma_giam_gia['muc_giam'] ?> %</span>
+
+                                        <?php
+                                        } else {
+                                            //số tiền
+                                        ?>
+
+                                            <span class="tab__menu-product-newproduct-code-label text-uppercase font-size-1-4 ml-3" style="background-color:#fbebed !important;color:var(--primary-color);">Giảm <?= number_format($ma_giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?></span>
+
+                                <?php
+                                        }
+                                    }
+                                }
+                                ?>
+                                <div class="hover-box-ma-giam-gia d-flex justify-content-center flex-column align-items-center pt-3 pb-3">
+                                    <div class="hover-box-ma-giam-gia-title my-3 text-secondary">Tiết kiệm hơn khi áp dụng mã giảm giá.</div>
+
+                                    <?php
+                                    foreach ($list_ma_giam_gia as $ma_giam_gia) {
+                                        if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                            // %
+                                    ?>
+                                            <div class="hover-box-ma-giam-gia-content ">
+                                                <div class="p-4 hover-box-ma-giam-gia-content-items d-flex justify-content-center align-items-center">
+                                                    <div class="hover-box-ma-giam-gia-content-items-img">
+                                                        <i class="fas fa-dollar-sign"></i>
+                                                    </div>
+                                                    <div class="hover-box-ma-giam-gia-content-items-content pl-3">
+                                                        <p class="hover-box-ma-giam-gia-content-items-content-title mb-0" style="line-height:1.2rem;font-weight:500">Giảm <?= $ma_giam_gia['muc_giam'] . '&nbsp;%' ?></p>
+                                                        <p class="d-block font-size-1-4 mb-0">Đơn tối thiểu <?= number_format($ma_giam_gia['gia_tri_don_hang'], 0, ',', '.') . '&nbsp;đ' ?></p>
+                                                        <small class="" style="font-size:1rem">HSD: <?= $ma_giam_gia['ngay_ket_thuc'] ?> </small>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        } else {
+                                            //tiền
+                                        ?>
+                                            <div class="hover-box-ma-giam-gia-content ">
+                                                <div class="p-4 hover-box-ma-giam-gia-content-items d-flex justify-content-center align-items-center">
+                                                    <div class="hover-box-ma-giam-gia-content-items-img">
+                                                        <i class="fas fa-dollar-sign"></i>
+                                                    </div>
+                                                    <div class="hover-box-ma-giam-gia-content-items-content pl-3">
+                                                        <p class="hover-box-ma-giam-gia-content-items-content-title mb-0" style="line-height:1.2rem;font-weight:500">Giảm <?= number_format($ma_giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </p>
+                                                        <p class="d-block font-size-1-4 mb-0">Đơn tối thiểu <?= number_format($ma_giam_gia['gia_tri_don_hang'], 0, ',', '.') . '&nbsp;đ' ?></p>
+                                                        <small class="" style="font-size:1rem">HSD: <?= $ma_giam_gia['ngay_ket_thuc'] ?> </small>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+
+                                </div>
+                            </div>
+                        <?php } ?>
                         <div class="product-detail-voucher">
                             <ul>
                                 <li>Nhận ngay khuyến mãi đặc biệt</li>
@@ -212,7 +445,7 @@
                             </button>
                             <div class="row ">
                                 <div class="col-6">
-                                    <button  class="product-detail-buy-tra-gop btn btn-primary ">
+                                    <button class="product-detail-buy-tra-gop btn btn-primary ">
                                         <div>
                                             <strong>Trả góp 0%</strong>
                                             <p class="font-size mb-1">Duyệt nhanh qua điện thoại</p>
@@ -236,7 +469,7 @@
                             <div class="product-detail-mua-kem-deal-main-pro">
                                 <div class="row align-items-center">
                                     <div class="col-2">
-                                        <input type="hidden" name="hinh-anh-deal[]" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>"> 
+                                        <input type="hidden" name="hinh-anh-deal[]" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>">
                                         <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
                                         </div>
 
@@ -285,10 +518,10 @@
                                             <input type="hidden" name="gia_sp_deal" value="5000000">
                                             <div class="product-detail-mua-kem-deal-main-items-content-price d-flex">
                                                 <div class="product-detail-mua-kem-deal-main-items-content-price-new">
-                                                  5.000.000đ
+                                                    5.000.000đ
                                                 </div>
                                                 <strike class="product-detail-mua-kem-deal-main-items-content-price-old text-secondary">
-                                                  10.000.000đ 
+                                                    10.000.000đ
                                                 </strike>
                                             </div>
 
@@ -297,7 +530,7 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="product-detail-mua-kem-deal-main-items-add-cart">
-                                            <p class="btn font-size add-deal" > Thêm vào</p>
+                                            <p class="btn font-size add-deal"> Thêm vào</p>
                                         </div>
 
                                     </div>
@@ -307,8 +540,8 @@
                             <div class="box-total-mua-kem-deal-soc py-4 pl-4">
                                 <div class="row">
 
-                                    <button  type="submit" name="mua-deal" title="Bạn chưa thêm deal "  disabled="true" class="col-4 btn primary btn-total-mua-kem-deal-soc d-flex justify-content-center align-items-center "><i class="icofont-cart font-size-2-5 pr-2"></i>
-                                        <p class="font-size mb-0 " >Mua deal sốc</p>
+                                    <button type="submit" name="mua-deal" title="Bạn chưa thêm deal " disabled="true" class="col-4 btn primary btn-total-mua-kem-deal-soc d-flex justify-content-center align-items-center "><i class="icofont-cart font-size-2-5 pr-2"></i>
+                                        <p class="font-size mb-0 ">Mua deal sốc</p>
                                     </button>
                                     <div class="col-8 total-mua-kem-deal-soc">
                                         <input type="hidden" name="tong_cong_deal" value="32.400.000">
@@ -335,9 +568,27 @@
                         <div class="item">
                             <a href="san-pham?id=<?= $sp_cung_dm['id_sp'] ?>&name=<?= $sp_cung_dm['ten_sp'] ?>" class="tab__menu-product-content-newproduct">
                                 <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $sp_cung_dm['hinh_anh'] ?>')">
-                                    <span class="tab__menu-product-content-newproduct-sale-label">
-                                        Giảm đến 30%
-                                    </span>
+                                    <!-- Nhãn giảm giá -->
+                                    <?php
+                                    $list_giam_gia = giam_gia_Query_All_Sp();
+                                    if (count($list_giam_gia) > 0) {
+                                        foreach ($list_giam_gia as $giam_gia) {
+                                            if ($giam_gia['id_sp'] == $sp_cung_dm['id_sp']) {
+                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                    // %
+                                    ?>
+                                                    <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= $giam_gia['muc_giam'] ?> %</span>
+                                                <?php
+                                                } else {
+                                                    //số tiền
+                                                ?>
+                                                    <span class="tab__menu-product-content-newproduct-sale-label"> Giảm <?= number_format($giam_gia['muc_giam'], 0, ',', '.') . '&nbsp;đ' ?> </span>
+                                    <?php
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in
                                      </span> -->
                                     <!-- <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span> -->
@@ -643,3 +894,8 @@
 
 
     </div>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>

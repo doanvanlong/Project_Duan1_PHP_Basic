@@ -22,7 +22,7 @@
     }
     //DS CHI TIẾT SẢN PHẨM
     function list_order_details($ID){
-        $sql = "SELECT hoa_don_chi_tiet.id_hoa_don_chi_tiet AS ID_HD_Chi_Tiet, hoa_don_chi_tiet.id_hoa_don AS ID_HD, hoa_don_chi_tiet.so_luong_mua AS So_Luong, hoa_don_chi_tiet.don_gia AS Gia, hoa_don_chi_tiet.mau_sac AS Mau_Sac, hoa_don_chi_tiet.dung_luong AS Dung_Luong, hoa_don_chi_tiet.giam_gia AS Giam_Gia, san_pham.id_sp AS ID_San_Pham, san_pham.ten_sp AS Ten_San_Pham, san_pham.hinh_anh AS Anh_San_Pham FROM hoa_don_chi_tiet LEFT JOIN san_pham ON hoa_don_chi_tiet.id_sp = san_pham.id_sp WHERE id_hoa_don = $ID;";
+        $sql = "SELECT hoa_don_chi_tiet.id_hoa_don_chi_tiet AS ID_HD_Chi_Tiet, hoa_don_chi_tiet.id_hoa_don AS ID_HD, hoa_don_chi_tiet.so_luong_mua AS So_Luong, hoa_don_chi_tiet.don_gia AS Gia, hoa_don_chi_tiet.mau_sac AS Mau_Sac, hoa_don_chi_tiet.dung_luong AS Dung_Luong, san_pham.id_sp AS ID_San_Pham, san_pham.ten_sp AS Ten_San_Pham, san_pham.hinh_anh AS Anh_San_Pham FROM hoa_don_chi_tiet LEFT JOIN san_pham ON hoa_don_chi_tiet.id_sp = san_pham.id_sp WHERE id_hoa_don = $ID;";
         return pdo_query($sql);
     }
     //DS ĐƠN HÀNG

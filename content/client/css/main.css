@@ -1076,3 +1076,7 @@ strike.tab__menu-product-newproduct-oldprice {
 
 
 /* end footer */
+
+a.tab__menu-product-content-newproduct:hover{
+    color:var(--dark) !important;
+}

@@ -118,6 +118,8 @@ function san_pham_Is_Dm_Phone($id_sp)
     return pdo_query_value($sql, $id_sp)[0];
 }
 
+//
+
 
 //Hàm UPDATE sản phẩm
 function san_pham_Update($id_sp, $id_dm_pro, $id_sub_dm_pro, $ten_sp, $hinh_anh, $don_gia, $so_luong, $mo_ta)
@@ -383,3 +385,51 @@ function san_pham_Search($keyword)
     or sub_danh_muc_pro.ten_sub_dm_pro like ? limit 5";
     return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%', '%' . $keyword . '%');
 }
+
+//trang samsung 
+
+// hàm đếm tất cả sản phẩm samsung
+function dien_thoai_samsung_Count_All()
+{
+    $sql = "SELECT count(*) FROM san_pham where id_dm_pro =47 and id_sub_dm_pro=49 ";
+    return pdo_query_value($sql)[0];
+}
+// /hàm truy vấn tất cả điện thoại thuộc danh mục chi tiết samsung
+function dien_thoai_Samsung_Query_9()
+{
+    $sql = "SELECT * FROM san_pham where id_dm_pro =47 and id_sub_dm_pro = 49 limit 9";
+    return pdo_query($sql);
+}
+
+
+
+// Trang sản phẩm chi tiết
+// hàm tính số tiền sau giảm giá của san_pham phần trăm
+function So_Tien_Giam_Phan_Tram($so_phan_tram,$money){
+    $sum= (((100 - $so_phan_tram)/100) * $money);
+    return number_format($sum,0,',', '.') .'&nbsp;đ';
+}
+// hàm tính số tiền sau giảm giá của san_pham giá tiền
+function So_Tien_Giam_Gia_Tien($money,$muc_giam){
+    $sum=($money - $muc_giam);
+    return number_format($sum,0,',','.').'&nbsp;đ';
+}
+
+
+//trang cart , 
+
+//hàm đếm số lượng tồn kho của 1sp
+function san_pham_Count_Ton_Kho($id_sp){
+    $sql="SELECT * FROM san_pham where id_sp=?";
+    $info_sp=pdo_query_one($sql,$id_sp);
+    $so_luong=$info_sp['so_luong'];
+    $sql="SELECT * FROM hoa_don_chi_tiet where id_sp=?";
+    $list_sp_cart=pdo_query($sql,$id_sp);
+    $sum=0;
+    foreach($list_sp_cart as $sp){
+       $sum+= $sp['so_luong_mua'];
+    }
+    return $so_luong - $sum;
+}
+
+//trang homepage
