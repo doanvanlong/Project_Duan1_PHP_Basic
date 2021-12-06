@@ -23,8 +23,7 @@ if (sessionLogin_Isset()) { ?>
             </div>
         <?php
         } else {
-            // var_dump($_SESSION['cart']);
-            if(count($_SESSION['cart'])>0){
+            if(is_array($_SESSION['cart']) && count($_SESSION['cart'])>0){
                 $tong=0;
             foreach ($_SESSION['cart'] as $cart){
                 $tong+=$cart['so_luong']*$cart['gia_sp'];

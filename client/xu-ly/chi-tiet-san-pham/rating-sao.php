@@ -50,7 +50,7 @@ if (isset($_POST['id_sp_rating'])) {
                 </div>
             <?php
             } else { ?>
-                <div class="comment-render-avatar mt-3" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
+                <div class="comment-render-avatar mt-3" style="background-image:url('<?= $AVTUSER_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
                 </div>
             <?php
             }

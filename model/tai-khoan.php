@@ -34,6 +34,16 @@ function check_username($name_username)
     $sql = "SELECT count(*) FROM khach_hang WHERE username = ?";
     return pdo_query_value($sql, $name_username)[0];
 }
+
+//hàm update profile
+function khach_hang_Update_profile($id_kh,$mat_khau,$ho_ten,$hinh_anh,$so_dien_thoai,$email,$dia_chi){
+    $sql="UPDATE khach_hang SET mat_khau=?,ho_ten=?,hinh_anh=?,so_dien_thoai=?,email=?,dia_chi=? where id_kh=?";
+    return pdo_execute($sql, $mat_khau,$ho_ten,$hinh_anh,$so_dien_thoai,$email,$dia_chi,$id_kh);
+}
+
+
+
+
 //Thêm mới khách hàng bằng admin
 function add_user($username, $password, $name, $phone, $email, $address, $avt_user)
 {

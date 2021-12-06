@@ -8,6 +8,9 @@ require_once '../model/san-pham.php'; //gọi model hàm xử lý danh mục
 require_once '../model/tin-tuc.php'; //Gọi model hàm xử lí tin tức
 require_once '../model/loai_giam_gia.php';
 require_once '../model/khuyen-mai.php';
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$date_now = date('Y-m-d H:i:s');
+// kết thúc km nếu ngày hiện tại > ngày kết thúc
 $list_km = khuyen_mai_Query_Id_KM_Date_End(); //nếu bảng km có dữ liệu
 if (count($list_km) > 0 && is_array($list_km)) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -18,7 +21,22 @@ if (count($list_km) > 0 && is_array($list_km)) {
             //    đã kết thúc 
             // update lại thành 0
             $id_km = $km['id_khuyen_mai'];
-            khuyen_mai_Update_Tinh_Trang_Ket_Thuc($id_km);
+            khuyen_mai_Update_Ket_Thuc_KM($id_km, $date_now);
+        } else {
+            // echo 1;
+        }
+    }
+}
+//kết thúc km nếu số lượt sử dụng < số lươt đã sử Dụng
+$list_km_sd = khuyen_mai_Query_Id_KM_So_Luot_SD();
+if (count($list_km_sd) > 0 && is_array($list_km_sd)) {
+    //khuyến mãi
+    foreach ($list_km_sd as $km_sd) {
+        if ($km_sd['so_luot_su_dung'] <= $km_sd['da_su_dung']) {
+            //    đã kết thúc 
+            // update lại thành 0
+            $id_km = $km_sd['id_khuyen_mai'];
+            khuyen_mai_Update_Ket_Thuc_KM($id_km, $date_now);
         } else {
             // echo 1;
         }
@@ -150,20 +168,32 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                     $title = "Tạo chương trình giảm giá mới";
                     break;
                 case 'edit-giam-gia':
-                    $id_km=$_GET["id_km"];
-                    $info_km=khuyen_mai_Query_One_By_Id_Km($id_km);
-                    $list_info_all_sp=giam_gia_Query_Info_Sp_By_Id_Km($id_km);
+                    $id_km = $_GET["id_km"];
+                    $info_km = khuyen_mai_Query_One_By_Id_Km($id_km);
+                    $list_info_all_sp = giam_gia_Query_Info_Sp_By_Id_Km($id_km);
                     $view = "views/khuyen-mai/giam_gia/edit-giam-gia.php";
                     $title = "Cập nhật chương trình giảm giá";
                     break;
                 case 'ma-giam-gia':
-                    $view = "views/khuyen-mai/giam-gia/list-giam-gia.php";
-                    $title = "Chương trình giảm giá";
+                    $view = "views/khuyen-mai/ma-giam-gia/list-ma-giam-gia.php";
+                    $title = "Chương trình tạo mã giảm giá";
+                    break;
+                case 'add-ma-giam-gia':
+                    $view = "views/khuyen-mai/ma-giam-gia/add-ma-giam-gia.php";
+                    $title = "Tạo chương trình  mã giảm giá mới";
+                    break;
+                case 'edit-ma-giam-gia':
+                    $id_km = $_GET["id_km"];
+                    $info_km = khuyen_mai_Query_One_By_Id_Km($id_km);
+                    $info_ma_giam_gia = ma_giam_gia_Query_By_Id_Km_Dang_Dien_Ra($id_km);
+                    $view = "views/khuyen-mai/ma-giam-gia/edit-ma-giam-gia.php";
+                    $title = "Cập nhật chương trình  mã giảm giá ";
                     break;
                 case 'deal-soc':
                     $view = "views/khuyen-mai/giam-gia/list-giam-gia.php";
                     $title = "Chương trình giảm giá";
                     break;
+                   
                 case 'client':
                     header('location:../client');
                     break;

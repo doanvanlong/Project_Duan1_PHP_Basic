@@ -225,6 +225,7 @@ $(document).ready(function () {
     }
   });
   //kiểm tra mới insert vào DB
+  
   $("#form_add_giam_gia").submit(function (e) {
     e.preventDefault();
     if (

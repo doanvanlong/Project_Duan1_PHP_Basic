@@ -6,4 +6,8 @@ function loai_giam_gia_Query_All(){
     return pdo_query($sql);
 }
 
+
+
+
+
 ?>

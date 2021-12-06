@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  $('[data-toggle="popover"]').popover();
+
   // check dung lượng  active class name
   $(".box-check-dung-luong").click(function () {
     if (!$(this).hasClass("active")) {
@@ -98,8 +100,40 @@ $(document).ready(function () {
       "../client/xu-ly/chi-tiet-san-pham/click-dung-luong.php",
       { id_dung_luong: id_dung_luong },
       function (data) {
-        $(".product-detail-price-new").text(data);
-        $(".product-detail-price-new-road_cart").val(data);
+        var obj = JSON.parse(data);
+        if (obj.gia_new != "") {
+          //là có giảm giá
+          var gia_new = obj.gia_new;
+          var gia_old = obj.gia_old;
+          gia_old = new Number(gia_old);
+          gia_new = gia_new.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          });
+          gia_old = gia_old.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          });
+          $(".product-detail-price-new").text(gia_new);
+          $(".gia_old ").text(gia_old);
+          $(".product-detail-price-new-road_cart").val(obj.gia_new);
+        } else {
+          //  ko giảm giá =
+          var gia_new = obj.gia_new;
+          var gia_old = obj.gia_old;
+          gia_old = new Number(gia_old);
+          gia_new = gia_new.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          });
+          gia_old = gia_old.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          });
+          $(".product-detail-price-new").text(gia_old);
+          $(".gia_old ").text("");
+          $(".product-detail-price-new-road_cart").val(obj.gia_old);
+        }
       }
     );
     //lấy được mảng tên sp hiển thị đầu tiên
@@ -232,7 +266,7 @@ $(document).ready(function () {
   $("#send-danh-gia").submit(function (e) {
     e.preventDefault();
     // check lỗi sao rỗng
-    
+
     $.ajax({
       url: "../client/xu-ly/chi-tiet-san-pham/rating-sao.php",
       type: "POST",
@@ -274,8 +308,7 @@ $(document).ready(function () {
 
           // load danh sách đánh giá
         } else {
-          window.location="./tai-khoan/login";//chuyển đến login khi chưa dnhap
-        
+          window.location = "./tai-khoan/login"; //chuyển đến login khi chưa dnhap
         }
       },
     });
@@ -365,8 +398,8 @@ $(document).ready(function () {
           setTimeout(function () {
             load_comment_title();
           }, 500);
-        } else if(data ==0) {
-        }else{
+        } else if (data == 0) {
+        } else {
           window.location.href = "./tai-khoan/login";
         }
       },

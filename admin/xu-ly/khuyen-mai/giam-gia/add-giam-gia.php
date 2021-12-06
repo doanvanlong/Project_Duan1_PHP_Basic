@@ -121,15 +121,12 @@ if (isset($_POST['ten_ct_giam_gia'])) {
         // insert vào bảng khuyến mãi chung
         $id_km = khuyen_mai_Insert($ten_ct, $id_loai_khuyen_mai, $date_start, $date_end, $gioi_han, $tinh_trang);
         // sau đó insert cụ thể vào bảng giảm giá
-        try {
             foreach ($_SESSION['add-giam-gia'] as $sp) {
                 giam_gia_Insert($id_km, $sp, $id_loai_giam_gia, $muc_giam_gia);
             }
-            echo 1;
             unset($_SESSION['add-giam-gia']);
-        } catch (Exception $e) {
-            echo 0;
-        }
+       
+        echo 1;
     } catch (Exception $e) {
         echo 0;
     }

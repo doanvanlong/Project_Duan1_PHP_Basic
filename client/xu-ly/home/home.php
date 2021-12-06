@@ -2,6 +2,7 @@
 require_once '../../../global.php';
 require_once '../../../model/san-pham.php';
 //tabmenu sản phẩm mới nhất
+
 if (isset($_POST['tab_menu_sp_new_add'])) {
 ?>
     <div class="row">

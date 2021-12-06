@@ -159,7 +159,7 @@
   font-size: 1.4rem;
   padding: 10px 0;
   border-radius: 5px;
-  /* opacity: .5; */
+ 
   margin: 10px 0;
 }
 .box-ma_giam_gia:hover {
@@ -188,56 +188,37 @@
   font-weight: 500;
 }
 .box-ma_giam_gia-content-title {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--dark);
+}
+.box-ma_giam_gia-content-han-su-dung{
+  font-size: 1.2rem;
+  
+}
+.box-ma_giam_gia-content-ap-dung{
+  line-height: 1.2rem;
 }
 .box-ma_giam_gia-img {
   width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
-/* .box-ma_giam_gia-img img{
-  }
-  .box-ma_giam_gia-img-title{
-    position: absolute;
-    bottom: 20%;
-    right: 23%;
-    font-weight: 500;
-    color: var(--primary-color);
-    transform: rotate(319deg) scale(1) skew(1deg) translate(0px);
-    font-size: 1.5rem;
-  } */
-.box-ma_giam_gia-img-label {
-  /* background-image:linear-gradient(left, #ef8664, #f15a29,0.5); */
-  background-image: linear-gradient(to bottom, #ff774a, #ff641f);
-  filter: brightness(1.2);
-  color: white;
-  font-size: 1.6rem;
-  width: 50%;
+.box-ma_giam_gia-img-tt{
+  background-color: #ff621fdf;
+  width:70px;
+  height:70px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-  padding: 10px 0 0 0;
-  font-family: "Rubik", sans-serif;
-  position: relative;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.box-ma_giam_gia-img-label::after {
-  position: absolute;
-  top: 99.8%;
-  left: 0;
-  content: "";
-  width: 1px;
-  border-color: #fd6823 transparent transparent transparent;
-  border-width: 13px 33px;
-  border-style: solid;
-}
+  border-radius: 5px;
 
+}
+.box-ma_giam_gia-img-tt i{
+  font-size: 3rem;
+  color: #fff;
+}
 .box-ma_giam_gia-img-label-num {
   background-color: white;
   color: var(--primary-color);
@@ -261,11 +242,8 @@
 .modal-footer .btn {
   padding: 5px 10px !important;
   font-size: 1.5rem;
-  color: white;
 }
-.modal-footer .btn:nth-child(2):hover {
-  background-color: var(--bg-primary-hover);
-}
+
 
 /* cart */
 .btn-cart-zero {

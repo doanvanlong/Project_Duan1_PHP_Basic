@@ -71,17 +71,15 @@ $(document).ready(function () {
   $('[name*="search"]').keyup(function () {
     var search = $(this).val();
     $.post("xu-ly/search.php", { search: search }, function (data) {
-      $('.sp_goi_y_data').html(data);
+      $(".sp_goi_y_data").html(data);
     });
   });
   $('[name*="search"]').focus(function () {
-    $('.goi-y-search').css('opacity', 1);
-  })
+    $(".goi-y-search").css("opacity", 1);
+  });
   $('[name*="search"]').focusout(function () {
-    $('.goi-y-search').css('opacity', 0);
-  })
-  
- 
+    $(".goi-y-search").css("opacity", 0);
+  });
 
   // $('.header__right-user-login').mouseout(function () {
   //   $('.header__right-user-dropdown ').hide();
@@ -113,6 +111,24 @@ $(document).ready(function () {
         break;
       case "dien-thoai=samsung":
         $(".menu-samsung").css("border", "1px solid var(--primary-color)");
+        break;
+      case "phu-kien":
+        $(".menu-phu-kien").css("border", "1px solid var(--primary-color)");
+        break;
+      case "mua-tra-gop":
+        $(".menu-mua-tra-gop").css("border", "1px solid var(--primary-color)");
+        break;
+      case "khuyen-mai":
+        $(".menu-khuyen-mai").css("border", "1px solid var(--primary-color)");
+        break;
+      case "re-vo-dich":
+        $(".menu-re-vo-dich").css("border", "1px solid var(--primary-color)");
+        break;
+      case "ban-may-cu-doi-may-moi":
+        $(".menu-cu-moi").css("border", "1px solid var(--primary-color)");
+        break;
+      case "tin-tuc":
+        $(".menu-tin-moi").css("border", "1px solid var(--primary-color)");
         break;
     }
   };
@@ -180,5 +196,4 @@ $(".filter-tab-gia-cao").click(function () {
       $(".box-dien-thoai-content-product").html(data);
     }
   );
-  
 });

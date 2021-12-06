@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/san-pham-detail.css">
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/cart.css">
     <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/toastMessage.css">
+    <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/customer.css">
+    <link rel="stylesheet" href="<?= $CONTENT_CLIENT_URL ?>/css/tin-tuc.css">
 
 </head>
 
@@ -85,8 +87,8 @@
                                 <div class="header__right-user-login d-flex align-items-center cursor-pointer">
                                     <div class="header__right-user-dropdown">
                                         <ul>
-                                            <li><a href="">Đơn hàng của tôi</a></li>
-                                            <li><a href="">Tài khoản của tôi</a></li>
+                                            <li><a href="my_order">Đơn hàng của tôi</a></li>
+                                            <li><a href="profile">Tài khoản của tôi</a></li>
                                             <li><a href="">Quên mật khẩu</a></li>
                                             <li><a href="tai-khoan/logout">Đăng xuất</a></li>
                                             <?php
@@ -100,7 +102,7 @@
                                     <?php
                                     if ($info_kh['hinh_anh'] != "") { ?>
                                         <!-- lấy ảnh DB ra -->
-                                        <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $AVTUSER_UPLOAD ?>/<?=$info_kh['hinh_anh']?>');">
+                                        <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>');">
                                         <?php
                                     } else { ?>
                                             <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png');">
@@ -123,10 +125,20 @@
 
                                 }
                                     ?>
-                                    <a href="#" class="header__right-notification"><i class="far fa-bell"></i>
+                                    <a href="" class="header__right-notification dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <!-- đếm thông báo dùng chung với đếm cart -->
-                                        <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
-                                            2</div>
+                                        <i class="far fa-bell"></i>
+                                        <div class="header__right-cart-count__items count_thong_bao_new text-dark d-flex justify-content-center align-items-center"></div>
+
+                                        <div class="dropdown-menu load_thong_bao_user" aria-labelledby="dropdownMenuLink">
+                                            <h5 class="thong_bao_user-title text-secondary my-2">Thông báo mới nhận</h5>
+                                            <div class="thong_bao_user-content ">
+                                                
+                                            </div>
+                                            <div class="thong_bao_user-footer d-flex justify-content-center font-size-1-2">
+                                                <a href="">Xem tất cả</a>
+                                            </div>
+                                        </div>
                                     </a>
                                     <a href="cart" class="header__right-cart ">
                                         <i class="icofont-cart-alt"></i>
@@ -187,7 +199,7 @@
                                     Samsung
                                 </div>
                             </a>
-                            <a href="" class="menu__items">
+                            <a href="phu-kien" class="menu__items">
                                 <div class="menu__items-img menu-phu-kien">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/phukien.svg" alt="">
                                 </div>
@@ -196,7 +208,7 @@
                                 </div>
                             </a>
 
-                            <a href="" class="menu__items">
+                            <a href="mua-tra-gop" class="menu__items">
                                 <div class="menu__items-img menu-mua-tra-gop">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/tragop.svg" alt="">
                                 </div>
@@ -204,7 +216,7 @@
                                     Mua trả góp
                                 </div>
                             </a>
-                            <a href="" class="menu__items">
+                            <a href="khuyen-mai" class="menu__items">
                                 <div class="menu__items-img menu-khuyen-mai">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/gift.svg" alt="">
                                 </div>
@@ -212,7 +224,7 @@
                                     Khuyến mãi
                                 </div>
                             </a>
-                            <a href="" class="menu__items">
+                            <a href="re-vo-dich" class="menu__items">
                                 <div class="menu__items-img menu-re-vo-dich">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/revodich-01.svg" alt="">
                                 </div>
@@ -220,7 +232,7 @@
                                     Rẻ vô địch
                                 </div>
                             </a>
-                            <a href="" class="menu__items">
+                            <a href="ban-may-cu-doi-may-moi" class="menu__items">
                                 <div class="menu__items-img menu-cu-moi">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/renewphone.svg" alt="">
                                 </div>
@@ -228,7 +240,7 @@
                                     Bán máy cũ đổi máy mới
                                 </div>
                             </a>
-                            <a href="" class="menu__items">
+                            <a href="tin-tuc" class="menu__items">
                                 <div class="menu__items-img menu-tin-moi">
                                     <img src="<?= $CONTENT_CLIENT_URL ?>/img/newspaper.svg" alt="">
                                 </div>
@@ -413,6 +425,10 @@
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/home.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/chi-tiet-san-pham.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/cart.js"> </script>
+    <script src="<?= $CONTENT_CLIENT_URL ?>/js/customer.js"> </script>
+    <script src="<?= $CONTENT_CLIENT_URL ?>/js/tin-tuc.js"> </script>
+
+    <!-- <script async src="https://dochat.vn/code.js?id=9211205093811877578"></script> -->
 
 
 

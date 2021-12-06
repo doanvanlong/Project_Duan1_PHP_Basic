@@ -86,6 +86,30 @@ function delete_multi_news($list)
     pdo_execute($sql, $list);
 }
 
+//hàm truy vấn top 6 tin tức nỗi bật
+function bai_viet_Query_All_Top6_Noi_Bat(){
+    $sql="SELECT * FROM `bai_viet` ORDER BY `bai_viet`.`id_bai_viet` DESC";
+    return pdo_query($sql);
+}
+//hàm truy vấn top 10 tin tức mới
+function bai_viet_Query_All_Top10_New(){
+    $sql="SELECT * FROM `bai_viet` INNER JOIN danh_muc_news ON
+    bai_viet.id_dm_news=danh_muc_news.id_dm_news
+    ORDER by bai_viet.id_bai_viet desc";
+    return pdo_query($sql);
+}
+//hàm truy vấn top 10 tin tức đánh giá trải nghiệm
+function bai_viet_Query_All_Top10_Danh_Gia(){
+    $sql="SELECT * FROM `bai_viet` where bai_viet.id_dm_news=9 
+    ORDER by bai_viet.id_bai_viet desc";
+    return pdo_query($sql);
+}
+//hàm truy vấn thông tin 1 bài viết
+function bai_viet_Query_One($id_bai_viet){
+    $sql="SELECT * FROM bai_viet WHERE bai_viet.id_bai_viet=?";
+    return pdo_query_one($sql,$id_bai_viet);
+}
+
 //hàm truy vấn bài viết thuộc danh mục đánh giá trải nghiệm 9
 function bai_viet_Query_By_Id_Sp_Thuoc_DM_Danh_Gia($id_sp){
     $sql="SELECT * FROM bai_viet where id_dm_news =9 and id_sp=?";
@@ -93,9 +117,29 @@ function bai_viet_Query_By_Id_Sp_Thuoc_DM_Danh_Gia($id_sp){
 }
 
 //hàm truy vấn tất cả bài viết thuộc danh mục tin khuyến mãi
-function bai_viet_Query_Danh_Muc_KM(){
-    $sql="SELECT * FROM bai_viet where id_dm_news =11";
+function bai_viet_Query_Top3_Danh_Muc_KM(){
+    $sql="SELECT * FROM bai_viet where id_dm_news =11 order by id_dm_news desc limit 1,3";
     return pdo_query($sql);
+}
+// /hàm truy vấn tất cả bài viết thuộc danh mục tin khuyến mãi
+function bai_viet_Query_All_Danh_Muc_KM(){
+    $sql="SELECT * FROM bai_viet where id_dm_news =11 order by id_dm_news desc";
+    return pdo_query($sql);
+}
+//hàm truy vấn tất cả bài viết thuộc danh mục tin khuyến mãi
+function bai_viet_Query_Danh_Muc_KM(){
+    $sql="SELECT * FROM bai_viet where id_dm_news =11 order by id_dm_news desc";
+    return pdo_query($sql);
+}
+//hàm truy vấn bài viết cùng danh Mục
+function bai_viet_Query_Cung_Danh_Muc($id_dm_news){
+    $sql="SELECT * FROM `bai_viet` WHERE id_dm_news=? order by bai_viet.id_bai_viet desc limit 3";
+    return pdo_query($sql, $id_dm_news);
+}
+//hàm truy vấn bài viết mới top 1 thuộc danh mục tin khuyến mãi
+function bai_viet_Query_Top1_Danh_Muc_KM(){
+    $sql="SELECT * FROM bai_viet where id_dm_news =11 order by id_dm_news desc limit 1";
+    return pdo_query_one($sql);
 }
 // hàm truy vấn top 2 tin khuyến mãi mới
 function bai_viet_Query_Top2_Km(){

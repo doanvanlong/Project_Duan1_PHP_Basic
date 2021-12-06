@@ -64,7 +64,7 @@ if (isset($_POST['id_sp_comment'])) {
                     </div>
                 <?php
                 } else { ?>
-                    <div class="comment-render-avatar" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
+                    <div class="comment-render-avatar" style="background-image:url('<?= $AVTUSER_UPLOAD?>/<?= $info_kh_db['hinh_anh'] ?>')">
                     </div>
                 <?php
                 }
@@ -121,7 +121,7 @@ if (isset($_POST['id_sp_comment'])) {
                                     </div>
                                 <?php
                                 } else { ?>
-                                    <div class="comment-render-avatar" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
+                                    <div class="comment-render-avatar" style="background-image:url('<?= $AVTUSER_UPLOAD?>/<?= $info_kh_db['hinh_anh'] ?>')">
                                     </div>
                                 <?php
                                 }

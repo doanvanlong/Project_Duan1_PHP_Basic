@@ -20,6 +20,7 @@ if (!sessionLogin_Isset()) {
         $url = $_POST['url_session'];
         $ten_sp = $_POST['ten_sp_chinh'];
         $gia_sp = $_POST['gia_sp_chinh'];
+        $gia_sp= (int)$gia_sp;
         $dung_luong = $_POST['dung_luong_chinh'];
         $mau_sac = $_POST['mau_sac_chinh'];
         $hinh_anh = $_POST['hinh_anh_chinh'];
