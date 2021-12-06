@@ -83,7 +83,7 @@
                             <?php if (isset($_SESSION['add-giam-gia']) && count($_SESSION['add-giam-gia']) > 0) {
                                 echo count($_SESSION['add-giam-gia']) + count($list_info_all_sp);
                             }
-                            if (!$_SESSION['add-giam-gia']) {
+                            if (!isset($_SESSION['add-giam-gia'])) {
                                 echo count($list_info_all_sp);
                             }
                             ?>

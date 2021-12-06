@@ -8,6 +8,7 @@ require_once '../model/san-pham.php'; //gọi model hàm xử lý danh mục
 require_once '../model/tin-tuc.php'; //Gọi model hàm xử lí tin tức
 require_once '../model/loai_giam_gia.php';
 require_once '../model/khuyen-mai.php';
+require_once '../model/don-hang.php';
 $list_km = khuyen_mai_Query_Id_KM_Date_End(); //nếu bảng km có dữ liệu
 if (count($list_km) > 0 && is_array($list_km)) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -150,9 +151,9 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                     $title = "Tạo chương trình giảm giá mới";
                     break;
                 case 'edit-giam-gia':
-                    $id_km=$_GET["id_km"];
-                    $info_km=khuyen_mai_Query_One_By_Id_Km($id_km);
-                    $list_info_all_sp=giam_gia_Query_Info_Sp_By_Id_Km($id_km);
+                    $id_km = $_GET["id_km"];
+                    $info_km = khuyen_mai_Query_One_By_Id_Km($id_km);
+                    $list_info_all_sp = giam_gia_Query_Info_Sp_By_Id_Km($id_km);
                     $view = "views/khuyen-mai/giam_gia/edit-giam-gia.php";
                     $title = "Cập nhật chương trình giảm giá";
                     break;
@@ -163,6 +164,34 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                 case 'deal-soc':
                     $view = "views/khuyen-mai/giam-gia/list-giam-gia.php";
                     $title = "Chương trình giảm giá";
+                    break;
+                case 'order-new':
+                    $view = "views/don-hang/order-new.php";
+                    $title = "Đơn Hàng Mới";
+                    $list_orders = list_orders_news();
+                    break;
+                case 'order-details':
+                    $view = "views/don-hang/order-details.php";
+                    $title = "Chi Tiết Đơn Hàng";
+                    $ID = $_GET['ID'];
+                    $list_orders = list_orders($ID);
+                    $list_orders_details = list_order_details($ID);
+                    break;
+                case 'order-confirm':
+                    $view = "views/don-hang/order-confirm.php";
+                    $title = "Đơn Hàng Đã Xác Nhận";
+                    $list_orders = list_orders_confirm();
+                    break;
+                case 'order-delivered':
+                    $view = "views/don-hang/order-delivered.php";
+                    $title = "Đơn Hàng Đã Giao";
+                    $list_orders_confirm = list_orders_confirm();
+                    $list_orders_delivery_confirm = list_orders_delivery_confirm();
+                    break;
+                case 'order-canceled':
+                    $view = "views/don-hang/order-canceled.php";
+                    $title = "Đơn Hàng Đã Huỷ";
+                    $list_orders = list_orders_cancelled();
                     break;
                 case 'client':
                     header('location:../client');

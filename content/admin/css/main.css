@@ -26,6 +26,8 @@ a:hover {
     max-width: 100%;
     margin: 0 auto;
 }
+
+
 /* navigation */
 
 .navigation {
@@ -41,6 +43,8 @@ a:hover {
 .navigation.active {
     width: 60px;
 }
+
+
 /* .sub menu */
 
 .sub-menu-items {
@@ -53,11 +57,15 @@ a:hover {
     font-size: 0.6rem;
     padding-right: 10px;
 }
+
+
 /* .sub -menu */
 
 .sub-menu {
     display: none;
 }
+
+
 /* tạo thanh cuộn nav */
 
 .navigation ul {
@@ -81,6 +89,8 @@ a:hover {
 .navigation ul:hover::-webkit-scrollbar-thumb {
     display: block;
 }
+
+
 /* end scrollbar nav */
 
 .navigation li:nth-child(1) .navigation__link {
@@ -102,6 +112,8 @@ a:hover {
 .navigation.active .navigation__items {
     padding: 0 16px;
 }
+
+
 /* .navigation__items:nth-child(2){
 background-color:#03a9f4;
 
@@ -136,6 +148,8 @@ background-color:#03a9f4;
     padding-right: 14px;
     font-size: 2rem;
 }
+
+
 /* .navigation__items:hover {
 background-color: #03a9f4;
 }
@@ -153,6 +167,8 @@ background-color: #03a9f4;
 .navigation li:nth-child(1) .navigation__link:hover {
     color: var(--dark);
 }
+
+
 /* main */
 
 .main {
@@ -228,6 +244,8 @@ background-color: #03a9f4;
 .content {
     padding: 2% 2% 8% 2%;
 }
+
+
 /* overview */
 
 .title {
@@ -310,6 +328,8 @@ background-color: #03a9f4;
 .overview__box:hover .overview__content:before {
     width: 100%;
 }
+
+
 /* end overview */
 
 .chart__monthl-revenu {
@@ -319,6 +339,8 @@ background-color: #03a9f4;
 .chart__monthl-revenu svg {
     padding: 10px;
 }
+
+
 /* comment new */
 
 .user__comment {
@@ -328,7 +350,11 @@ background-color: #03a9f4;
     height: 30px;
     border-radius: 50%;
 }
+
+
 /* end main */
+
+
 /* .footer */
 
 .footer {
@@ -340,6 +366,8 @@ background-color: #03a9f4;
     position: absolute;
     bottom: 0;
 }
+
+
 /* hiển thị password */
 
 #showPassword {
@@ -369,4 +397,31 @@ background-color: #03a9f4;
     margin-top: 43px;
 }
 
+.btn-control {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
 
+.bold-red {
+    font-weight: bolder;
+    color: red;
+}
+
+.bold>p>span {
+    font-weight: bolder;
+}
+
+.bold {
+    width: 97%;
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 2em 2em;
+    padding: 1em 1em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+
+.content-detail {
+    text-align: center;
+}

@@ -123,13 +123,13 @@
                             <span class="box__icon-dropdown"><i class="icon__dropdown fas fa-angle-down"></i></span></span>
                     </div>
                     <div class="sub-menu">
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Đơn
+                        <a class="sub-menu-items d-flex align-items-center" href="order-new"><i class="fas fa-circle"></i>Đơn
                             hàng mới </a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Đơn
+                        <a class="sub-menu-items d-flex align-items-center" href="order-confirm"><i class="fas fa-circle"></i>Đơn
                             hàng đã xác nhận</a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Đơn
+                        <a class="sub-menu-items d-flex align-items-center" href="order-delivered"><i class="fas fa-circle"></i>Đơn
                             hàng đã giao</a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Đơn
+                        <a class="sub-menu-items d-flex align-items-center" href="order-canceled"><i class="fas fa-circle"></i>Đơn
                             hàng đã huỷ</a>
                     </div>
                 </li>
@@ -226,7 +226,7 @@
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/tin-tuc.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/khach-hang.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/giam-gia.js"></script>
-
+    <script src="<?= $CONTENT_ADMIN_URL ?>/js/don-hang.js"></script>
 
 </body>
 
