@@ -80,7 +80,6 @@ switch ($list_orders['ngay_giao_hang']) {
                         <th scope="col" class="table-dark">Màu Sắc</th>
                         <th scope="col" class="table-dark">Dung Lượng</th>
                         <th scope="col" class="table-dark">Số Lượng</th>
-                        <th scope="col" class="table-dark">Giảm Giá</th>
                         <th scope="col" class="table-dark">Giá Tiền</th>
                     </tr>
                 </thead>
@@ -98,12 +97,6 @@ switch ($list_orders['ngay_giao_hang']) {
                                 <td class="align-middle">' . $Mau_Sac . '</td>
                                 <td class="align-middle">' . $Dung_Luong . '</td>
                                 <td class="align-middle">' . $So_Luong . '</td>';
-                            if (!empty($Giam_Gia)) {
-                                echo '<td class="align-middle">' . number_format($Giam_Gia) . ' VNĐ</td>';
-                            } else {
-                                echo '<td class="align-middle">' . $Giam_Gia . '</td>';
-                            }
-
                             echo '<td class="align-middle" class="bold-red">' . number_format($Gia) . ' VNĐ</td>
                             <tr>';
                         }
