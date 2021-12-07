@@ -1,11 +1,3 @@
-// function myFunction() {
-//     var r = confirm("Press a button!");
-//     if (r == true) {
-//         console.log('OKKKK');
-//     } else {
-//         console.log("KO1");
-//     }
-// }
 $("#confirm").click(function() {
     var valueConfirm = $(this).val();
     var id = $(this).data("id_hoa_don");
