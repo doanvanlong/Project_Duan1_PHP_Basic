@@ -1,116 +1,105 @@
-$("#confirm").click(function() {
-    var valueConfirm = $(this).val();
-    var id = $(this).data("id_hoa_don");
-    var alertConfirm = confirm("Xác nhận đơn hàng này?");
-    if (alertConfirm == true) {
-        $("#order").submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "../admin/xu-ly/don-hang/order.php",
-                data: { xac_nhan: valueConfirm, id_hoa_don: id },
-                dataType: "text",
-                success: function(data) {
-                    if (data == 1) {
-                        toast({
-                            title: "Thành công",
-                            msg: "Xác nhận đơn hàng thành công!",
-                            type: "success",
-                            duration: 5000,
-                            link: "#",
-                        });
-                        setTimeout(location.reload.bind(location), 1000);
-                    } else {
-                        toast({
-                            title: "Thất bại",
-                            msg: "Xác nhận đơn hàng thất bại !",
-                            type: "error",
-                            duration: 5000,
-                            link: "#",
-                        });
-                    }
+$(".confirmOrder").click(function() {
+    var ID_Confirm = $(this).data("id_hoa_don_confirm");
+    $(".accept-confirm").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "../admin/xu-ly/don-hang/order.php",
+            data: { Confirm_Order: ID_Confirm },
+            dataType: "text",
+            success: function(data) {
+                if (data == 1) {
+                    $(".modal_remove").hide();
+                    $("body").removeClass("modal-open");
+                    $("body").attr("style", "");
+                    $(".fade").removeClass("modal-backdrop");
+                    toast({
+                        title: "Thành công",
+                        msg: "Xác nhận đơn hàng thành công!",
+                        type: "success",
+                        duration: 5000,
+                        link: "#",
+                    });
+                    setTimeout(location.reload.bind(location), 1500);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Xác nhận đơn hàng thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
                 }
-            });
+            }
         });
-    }
+    });
 });
-
-$("#cancelled").click(function() {
-    var cancelled = $(this).val();
-    var id = $(this).data("id_hoa_don");
-    var alertCancelled = confirm("Xác nhận huỷ đơn hàng này?");
-    if (alertCancelled == true) {
-        $("#order").submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "../admin/xu-ly/don-hang/order.php",
-                data: { huy_don: cancelled, id_hoa_don: id },
-                dataType: "text",
-                success: function(data) {
-                    if (data == 1) {
-                        toast({
-                            title: "Thành công",
-                            msg: "Huỷ đơn hàng thành công!",
-                            type: "success",
-                            duration: 5000,
-                            link: "#",
-                        });
-                        setTimeout(location.reload.bind(location), 1000);
-                    } else {
-                        toast({
-                            title: "Thất bại",
-                            msg: "Huỷ đơn hàng thất bại !",
-                            type: "error",
-                            duration: 5000,
-                            link: "#",
-                        });
-                    }
+$(".confirmCancelled").click(function() {
+    var ID_Cancelled = $(this).data("id_hoa_don_cancelled");
+    $(".accept-cancelled").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "../admin/xu-ly/don-hang/order.php",
+            data: { Cancelled_Order: ID_Cancelled },
+            dataType: "text",
+            success: function(data) {
+                if (data == 1) {
+                    $(".modal_remove").hide();
+                    $("body").removeClass("modal-open");
+                    $("body").attr("style", "");
+                    $(".fade").removeClass("modal-backdrop");
+                    toast({
+                        title: "Thành công",
+                        msg: "Huỷ đơn hàng thành công!",
+                        type: "success",
+                        duration: 5000,
+                        link: "#",
+                    });
+                    setTimeout(location.reload.bind(location), 1500);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Huỷ đơn hàng thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
                 }
-            });
+            }
         });
-    }
+    });
 });
-$("#delivery-confirmation").click(function() {
-    var valueConfirmDelivery = $(this).val();
-    var id = $(this).data("id_hoa_don");
-    var payment_status = $('[name*="payment-status"]').data("payment_status");
-    var alertDelivery = confirm("Xác nhận đã giao hàng cho đơn hàng này?");
-    if (alertDelivery == true) {
-        $("#order-delivery").submit(function(e) {
-            e.preventDefault();
-            var date = $('[name*="date"]').data("date_now");
-            $.ajax({
-                type: "POST",
-                url: "../admin/xu-ly/don-hang/order.php",
-                data: {
-                    payment_status: payment_status,
-                    dateConfirm: date,
-                    id_hoa_don: id,
-                    valueDelivery: valueConfirmDelivery
-                },
-                dataType: "text",
-                success: function(data) {
-                    if (data == 1) {
-                        toast({
-                            title: "Thành công",
-                            msg: "Xác nhận đã giao đơn hàng thành công!",
-                            type: "success",
-                            duration: 5000,
-                            link: "#",
-                        });
-                        setTimeout(location.reload.bind(location), 1000);
-                    } else {
-                        toast({
-                            title: "Thất bại",
-                            msg: "Xác nhận đã giao đơn hàng thất bại !",
-                            type: "error",
-                            duration: 5000,
-                            link: "#",
-                        });
-                    }
+$(".confirmDelivery").click(function() {
+    var ID_ConfirmDelivery = $(this).data("id_hoa_don_delivery");
+    $(".accept-delivery").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "../admin/xu-ly/don-hang/order.php",
+            data: { Confirm_Delivery: ID_ConfirmDelivery },
+            dataType: "text",
+            success: function(data) {
+                if (data == 1) {
+                    $(".modal_remove").hide();
+                    $("body").removeClass("modal-open");
+                    $("body").attr("style", "");
+                    $(".fade").removeClass("modal-backdrop");
+                    toast({
+                        title: "Thành công",
+                        msg: "Xác nhận đã giao đơn hàng thành công!",
+                        type: "success",
+                        duration: 5000,
+                        link: "#",
+                    });
+                    setTimeout(location.reload.bind(location), 1000);
+                } else {
+                    toast({
+                        title: "Thất bại",
+                        msg: "Xác nhận đã giao đơn hàng thất bại !",
+                        type: "error",
+                        duration: 5000,
+                        link: "#",
+                    });
                 }
-            });
+            }
         });
-    }
+    });
 });

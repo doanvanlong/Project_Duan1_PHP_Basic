@@ -9,6 +9,7 @@ require_once '../model/tin-tuc.php'; //Gọi model hàm xử lí tin tức
 require_once '../model/loai_giam_gia.php';
 require_once '../model/khuyen-mai.php';
 require_once '../model/don-hang.php';
+require_once '../model/index-admin.php';
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $date_now = date('Y-m-d H:i:s');
 // kết thúc km nếu ngày hiện tại > ngày kết thúc
@@ -63,8 +64,14 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                 case '/':
                     $view = "views/home.php";
                     $title = "Admin";
+                    $new_orders = new_orders();
+                    $new_comments = new_comments($dateNow);
+                    $new_users = new_users();
+                    $new_sales = sales($dateNow);
+                    $list_product_best_selling = list_product_best_selling();
+                    $list_comment_news = list_comment_news();
+                    $list_product_homepage = list_product_homepage();
                     break;
-
                 case 'add-danh-muc':
                     $view = 'views/danh-muc/add-danh-muc.php';
                     $title = 'Thêm danh mục';
