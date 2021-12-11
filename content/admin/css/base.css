@@ -92,6 +92,6 @@ select.exampleFormControlSelect1 {
 .avt_user_cmt {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }

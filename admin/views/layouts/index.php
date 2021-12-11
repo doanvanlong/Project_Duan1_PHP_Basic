@@ -140,9 +140,7 @@
                             <span class="box__icon-dropdown"><i class="icon__dropdown fas fa-angle-down"></i></span></span>
                     </div>
                     <div class="sub-menu">
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Bình
-                            luận mới </a>
-                        <a class="sub-menu-items d-flex align-items-center" href="#"><i class="fas fa-circle"></i>Danh
+                        <a class="sub-menu-items d-flex align-items-center" href="list-comment"><i class="fas fa-circle"></i>Danh
                             sách</a>
                     </div>
                 </li>
@@ -228,7 +226,7 @@
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/giam-gia.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/don-hang.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/ma-giam-gia.js"></script>
-
+    <script src="<?= $CONTENT_ADMIN_URL ?>/js/comment.js"></script>
 
 
 </body>
