@@ -96,11 +96,11 @@ if (!sessionLogin_Isset()) {
                                             <td class="text-danger">Đã xác nhận</td>
 
                                         <?php
-                                        } else if ($cart['trang_thai_don_hang'] == 'huy') { ?>
+                                        } else if ($cart['trang_thai_don_hang'] == 'dahuy') { ?>
                                             <td class="text-danger">Đã huỷ</td>
 
                                         <?php
-                                        } else if ($cart['trang_thai_don_hang'] == 'dagiao') { ?>
+                                        } else if ($cart['trang_thai_don_hang'] == 'dagiaohang') { ?>
                                             <td class="text-danger">Giao hàng thành công</td>
 
                                         <?php

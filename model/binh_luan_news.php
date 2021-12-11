@@ -1,6 +1,6 @@
 <?php
 require_once 'pdo.php';
-
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 // hàm insert bình luận news
 function binh_luan_news_Insert($id_kh, $id_bai_viet,$noi_dung,$ngay_bl){
     $sql="INSERT INTO binh_luan_news(id_kh,id_bai_viet,noi_dung,ngay_bl) values(?,?,?,?)";

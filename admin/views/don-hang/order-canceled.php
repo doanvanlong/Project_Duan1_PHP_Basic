@@ -1,25 +1,24 @@
 <h3 class="alert bg-secondary text-light heading-cate">Danh Sách Đơn Hàng Đã Huỷ</h3>
 <div class="row">
     <div class="col-12">
-        <form action="" method="post" id="order">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr style="text-align:center;">
-                            <th scope="col" class="table-dark">ID Hoá Đơn</th>
-                            <th scope="col" class="table-dark">ID Khách Hàng</th>
-                            <th scope="col" class="table-dark">Họ Tên</th>
-                            <th scope="col" class="table-dark">Hình Thức Thanh Toán</th>
-                            <th scope="col" class="table-dark">Ngày Đặt</th>
-                            <th scope="col" class="table-dark">Khuyến Mãi</th>
-                            <th scope="col" class="table-dark">Tổng Tiền</th>
-                            <th scope="col" class="table-dark" style="width: 13%;">Trạng Thái Đơn Hàng</th>
-                            <th scope="col" class="table-dark" style="width: 10%;">Hành Động</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         <?php
                         if (!empty($list_orders)) {
+                            echo '  <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr style="text-align:center;">
+                                        <th scope="col" class="table-dark">ID Hoá Đơn</th>
+                                        <th scope="col" class="table-dark">ID Khách Hàng</th>
+                                        <th scope="col" class="table-dark">Họ Tên</th>
+                                        <th scope="col" class="table-dark">Hình Thức Thanh Toán</th>
+                                        <th scope="col" class="table-dark">Ngày Đặt</th>
+                                        <th scope="col" class="table-dark">Khuyến Mãi</th>
+                                        <th scope="col" class="table-dark">Tổng Tiền</th>
+                                        <th scope="col" class="table-dark" style="width: 13%;">Trạng Thái Đơn Hàng</th>
+                                        <th scope="col" class="table-dark" style="width: 10%;">Hành Động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
                             foreach ($list_orders as $list) {
                                 extract($list);
                                 echo '
@@ -42,21 +41,22 @@
                                         <button type="input" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $id_hoa_don . '" style="color: white;">Xem Chi Tiết</a></button>
                                         </div>
                                     </td>
-                                    </tr>';
+                                    </tr></tbody>';
                                 }
                             }
+                            echo '</table>
+                            </div>';
                         } else {
                             echo '
-                                <tr>
-                                <td colspan="9" style="text-align:center;"><img src="' . $CONTENT_ADMIN_URL . '/img/nodata.png" alt="No data">
-                                <h4 style="text-align:center; padding-top:1em;">Không có đơn hàng chưa xác nhận!</h4>
-                                </td>
-                                </tr>';
+                            <hr>
+                            <div style="text-align: center;">
+                                <img src="' . $CONTENT_ADMIN_URL . '/img/nodata.png" alt="No data">
+                                <h4 style="padding: 1em 1em;">Không có đơn hàng nào đã huỷ.</h4>
+                            </div>
+                            <hr>';
                         }
                         ?>
-                    </tbody>
-                </table>
-            </div>
-        </form>
+                    
+                
     </div>
 </div>
