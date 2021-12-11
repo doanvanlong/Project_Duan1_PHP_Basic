@@ -278,6 +278,10 @@ input[type="checkbox"] {
     background-color: #f15b294d;
 }
 
+.active_phu_kien.active .box-icon_dm-pk {
+    background-color: #f15b294d;
+}
+
 .thong_bao_user-content-text {
     color: var(--secondary);
 }
