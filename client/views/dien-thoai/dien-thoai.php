@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-check">
-                            <input class="form-check-input" checked type="radio" name="hang-san-xuat" value="" id="flexCheckDefault">
-                            <label class="form-check-label pl-3" for="flexCheckDefault">
+                            <input class="form-check-input filter hang-san-xuat" checked type="radio" name="hang-san-xuat" value="" id="flexCheckDefault">
+                            <label class="form-check-label pl-3 cursor-pointer" for="flexCheckDefault">
                                 Tất cả
                             </label>
                         </div>
@@ -18,8 +18,8 @@
                     foreach ($list_dm_dienthoai as $dm_dienthoai) { ?>
                         <div class="col-6">
                             <div class="form-check">
-                                <input class="form-check-input " type="radio" name="hang-san-xuat" value="" id="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
-                                <label class="form-check-label pl-3" for="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
+                                <input class="form-check-input  filter hang-san-xuat" type="radio" name="hang-san-xuat" value="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>" id="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
+                                <label class="form-check-label pl-3 cursor-pointer" for="<?= $dm_dienthoai['ten_sub_dm_pro'] ?>">
                                     <?= $dm_dienthoai['ten_sub_dm_pro']; ?>
                                 </label>
                             </div>
@@ -33,39 +33,39 @@
             <div class="pb-4 filter-muc_gia">
                 <b class="filter-muc_gia-title">Mức giá</b>
                 <div class="form-check">
-                    <input class="form-check-input" checked type="radio" name="muc-gia" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter muc_gia" checked type="radio" name="muc-gia" value="" id="muc_gia1">
+                    <label class="form-check-label pl-3 cursor-pointer" for="muc_gia1">
                         Tất cả
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="muc-gia" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter muc_gia" type="radio" name="muc-gia" value="0-2000000" id="muc_gia2">
+                    <label class="form-check-label pl-3 cursor-pointer" for="muc_gia2">
                         Dưới 2 triệu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="muc-gia" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter muc_gia" type="radio" name="muc-gia" value="2000000-4000000" id="muc_gia3">
+                    <label class="form-check-label pl-3 cursor-pointer" for="muc_gia3">
                         Từ 2-4 triệu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="muc-gia" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter muc_gia" type="radio" name="muc-gia" value="4000000-7000000" id="muc_gia4">
+                    <label class="form-check-label pl-3 cursor-pointer" for="muc_gia4">
                         Từ 4-7 triệu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="muc-gia" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter muc_gia" type="radio" name="muc-gia" value="7000000-13000000" id="muc_gia5">
+                    <label class="form-check-label pl-3 cursor-pointer" for="muc_gia5">
                         Từ 7-13 triệu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="muc-gia" value="" id="">
-                    <label class="form-check-label pl-3" for="">
-                        Trên triệu
+                    <input class="form-check-input filter muc_gia" type="radio" name="muc-gia" value="13000000-100000000" id="muc_gia6">
+                    <label class="form-check-label pl-3 cursor-pointer" for="muc_gia6">
+                        Trên 13 triệu
                     </label>
                 </div>
 
@@ -73,29 +73,29 @@
             <div class="pb-4 filter-dung_luong_pin">
                 <b class="filter-muc_gia-title">Dung lượng pin</b>
                 <div class="form-check">
-                    <input class="form-check-input" checked type="radio" name="dung-luong-pin" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter dung_luong_pin" checked type="radio" name="dung-luong-pin" value="" id="pin1">
+                    <label class="form-check-label pl-3 cursor-pointer" for="pin1">
                         Tất cả
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="dung-luong-pin" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter dung_luong_pin" type="radio" name="dung-luong-pin" value="0-3000" id="pin2">
+                    <label class="form-check-label pl-3 cursor-pointer" for="pin2">
                         Dưới 3000 mah
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="dung-luong-pin" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter dung_luong_pin" type="radio" name="dung-luong-pin" value="3000-4000" id="pin3">
+                    <label class="form-check-label pl-3 cursor-pointer" for="pin3">
                         Từ 3000-4000 mah
                     </label>
                 </div>
 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="dung-luong-pin" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter dung_luong_pin" type="radio" name="dung-luong-pin" value="4000-10000" id="pin4">
+                    <label class="form-check-label pl-3 cursor-pointer" for="pin4">
                         Trên 4000 mah
                     </label>
                 </div>
@@ -104,21 +104,21 @@
             <div class="pb-4 filter-danh_gia_sao">
                 <b class="filter-muc_gia-title">Đánh giá sao</b>
                 <div class="form-check">
-                    <input class="form-check-input" checked type="radio" name="danh-gia-sao" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter rating" checked type="radio" name="danh-gia-sao" value="" id="rating1">
+                    <label class="form-check-label pl-3 cursor-pointer" for="rating1">
                         Tất cả
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="danh-gia-sao" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter rating" type="radio" name="danh-gia-sao" value="5-5" id="rating2">
+                    <label class="form-check-label pl-3 cursor-pointer" for="rating2">
                         <i class="fas fa-star icon"></i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i> <span> 5 sao</span>
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="danh-gia-sao" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter rating" type="radio" name="danh-gia-sao" value="4-5" id="rating3">
+                    <label class="form-check-label pl-3 cursor-pointer" for="rating3">
                         <i class="fas fa-star icon"></i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i> <span> Từ 4 sao</span>
 
                     </label>
@@ -126,8 +126,8 @@
 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="danh-gia-sao" value="" id="">
-                    <label class="form-check-label pl-3" for="">
+                    <input class="form-check-input filter rating" type="radio" name="danh-gia-sao" value="3-5" id="rating4">
+                    <label class="form-check-label pl-3 cursor-pointer" for="rating4">
                         </i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i><i class="fas fa-star icon"></i> <span> Từ 3 sao</span>
 
                     </label>
@@ -143,78 +143,37 @@
                 <h1 class="mb-0 font-size-2-5">Điện thoại</h1>
                 <?php
                 // đếm tất cả điện thoại
-                $dt_count=dien_thoai_Count_All();
+                // $dt_count=dien_thoai_Count_All();
                 ?>
-                <span class="font-size-1-8 text-secondary pl-3">(<?=$dt_count;?> sản phẩm)</span>
+                <!-- <span class="font-size-1-8 text-secondary pl-3">(<?= $dt_count; ?> sản phẩm)</span> -->
             </div>
             <div class="box-dien-thoai-content bg-white p-4 my-5" style="border-radius:5px ;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
-                <div class="box-dien-thoai-content-filter d-flex align-items-center ">
+                <div class="box-dien-thoai-content-filter d-flex align-items-center justify-content-center ">
                     Ưu tiên xem:
                     <div class="pl-5 box-dien-thoai-content-filter-tab d-flex align-items-center ">
-                        <div class="filter-tab-ban-chay tab-filter-btn active py-2 font-size-1-4 px-4 ">
-                            Bán chạy nhất
+                        <div class="  filter-tab-ban-chay active tab-filter-btn py-2 font-size-1-4 px-4">
+                            <input hidden class="form-check-input filter thap_cao" checked type="radio" name="thap_cao" value="0" id="gia_thap">
+                            <label class="form-check-label pl-3 cursor-pointer" for="gia_thap">
+                                Giá thấp
+                            </label>
                         </div>
-                        <div class="filter-tab-tra-gop tab-filter-btn py-2 font-size-1-4 px-4 ">
-                            Trả góp 0%
+                        <div class=" tab-filter-btn py-2 font-size-1-4 px-4">
+                            <input hidden class="form-check-input filter thap_cao" type="radio" name="thap_cao" value="1" id="gia_cao">
+                            <label class="form-check-label pl-3 cursor-pointer" for="gia_cao">
+                                Giá cao
+                            </label>
                         </div>
-                        <div class="filter-tab-gia-thap tab-filter-btn py-2 font-size-1-4 px-4 ">
-                            Giá thấp
-                        </div>
-                        <div class="filter-tab-gia-cao tab-filter-btn py-2 font-size-1-4 px-4 ">
-                            Giá cao
-                        </div>
+
                     </div>
                 </div>
-                <div class="box-dien-thoai-content-product py-5">
+                <div class="box-dien-thoai-content-product pt-5">
                     <div class="tab__menu-product-content py-4">
                         <!-- sản phẩm bán chạy trước -->
-                        <div class="row">
-                            <?php
-                            $dien_thoai_BestSeller = dien_thoai_Query_9_BestSeller();
-                            foreach ($dien_thoai_BestSeller as $dt_BestSeller) { ?>
-                                <div class="col-4">
-                                    <a href="san-pham?id=<?=$dt_BestSeller['id_sp']?>&name=<?=$dt_BestSeller['ten_sp']?>" class="tab__menu-product-content-newproduct">
-                                        <div class="tab__menu-product-content-newproduct-img" style="background-image:url('<?= $CONTENT_UPLOAD ?>/<?= $dt_BestSeller['hinh_anh'] ?>')">
-                                            <!-- Nhãn giảm giá -->
-                                            <!-- <span class="tab__menu-product-content-newproduct-sale-label"> Giảm  đến 10%  </span> -->
-                                            <!-- Nhãn check in -->
-                                            <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span>
-
-                                            <!-- Nhãn trả góp -->
-                                            <span class="tab__menu-product-content-newproduct-installment-label ">Trả góp 0%</span>
-                                        </div>
-                                        <div class="px-4 pt-1 pb-5">
-                                            <div class="tab__menu-product-newproduct-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
-                                                <?= $dt_BestSeller['ten_sp']; ?>
-                                            </p>
-                                            <!-- Nhãn Mã giảm giá -->
-                                            <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span>
-                                            <!-- Nhãn deal sốc -->
-                                            <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
-                                            <div class="tab__menu-product-newproduct-price d-flex">
-                                                <b class="tab__menu-product-newproduct-newprice pt-2">
-                                                    <?= number_format($dt_BestSeller['don_gia'], 0, ',', '.') . 'đ'; ?>
-                                                </b>
-                                                <strike class="tab__menu-product-newproduct-oldprice pt-2">
-                                                    <?= number_format($dt_BestSeller['don_gia'], 0, ',', '.') . 'đ'; ?>
-                                                </strike>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php
-                            }
-                            ?>
+                        <div class=" load_filter">
+                            
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -222,10 +181,19 @@
 </div>
 </div>
 <style>
-    .filter{
-        position: sticky;
-        top:0;
+    #loading {
+        text-align: center;
+        margin: 0 auto;
+        background: url('<?= $CONTENT_CLIENT_URL ?>/img/loading.gif') no-repeat center;
+        height: 200px;
+        width: 200px;
     }
+
+    .filter {
+        position: sticky;
+        top: 0;
+    }
+
     .tab-filter-btn {
         border: 1px solid #ced4da;
         color: #8392a5;

@@ -209,7 +209,7 @@ $(document).ready(function () {
             });
             setTimeout(function () {
               //  data được gửi về là biến session chưa url
-              window.location.href = '';
+              window.location.href = '../../';
             }, 1200);
 
           } else {

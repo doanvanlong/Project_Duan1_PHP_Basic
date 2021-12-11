@@ -39,7 +39,7 @@
                                     echo '<td class="align-middle"><span style="font-weight:bold; color: var(--primary);">Chưa Xác Nhận</span></td>
                                     <td class="align-middle">
                                         <div class="btn-control">
-                                            <button type="input" class="btn btn-success" value="daxacnhan" id="confirm" data-id_hoa_don=' . $id_hoa_don . '>Xác Nhận</button>
+                                            <button type="button" class="btn btn-success" value="daxacnhan" id="confirm" data-id_hoa_don=' . $id_hoa_don . '>Xác Nhận</button>
                                             <button type="input" class="btn btn-danger" value="dahuy" id="cancelled" data-id_hoa_don=' . $id_hoa_don . '>Huỷ Đơn</button>
                                             <button type="input" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $id_hoa_don . '" style="color: white;">Xem Chi Tiết</a></button>
                                         </div>

@@ -12,10 +12,19 @@ if (!sessionLogin_Isset()) {
                     <?php
                     if ($info_kh['hinh_anh'] == '') { ?>
                         <img class="account__avatar-img" src="<?= $CONTENT_CLIENT_URL ?>/img/avatar.png" alt="">
+                        <?php
+                    } else {
+                        if ($_SESSION['login']['id_fb'] == "") {
+                            //upload
+                        ?>
+                            <img class="account__avatar-img" src="<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>" alt="">
+                        <?php
+                        } else {
+                            //link
+                        ?>
+                            <img class="account__avatar-img" src="<?= $info_kh['hinh_anh'] ?>" alt="">
                     <?php
-                    } else { ?>
-                        <img class="account__avatar-img" src="<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>" alt="">
-                    <?php
+                        }
                     }
                     ?>
                     <div class="account__avatar-info px-3">
@@ -60,12 +69,20 @@ if (!sessionLogin_Isset()) {
                                 <input type="text" name="ho_ten" value="<?= $info_kh['ho_ten'] ?>" class="form-control">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Tên đăng nhập</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly name="username" value="<?= $info_kh['username'] ?>" class="form-control">
+                        <?php
+                        if ($_SESSION['login']['id_fb'] == "") { ?>
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">Tên đăng nhập</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly name="username" value="<?= $info_kh['username'] ?>" class="form-control">
+                                </div>
                             </div>
-                        </div>
+                        <?php
+                        } else {
+                        }
+                        ?>
+
+
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Số điện thoại</label>
                             <div class="col-sm-10">
@@ -80,57 +97,73 @@ if (!sessionLogin_Isset()) {
                                 <small class="text-danger error-email"></small>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Hình ảnh</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="hinh_anh">
-                            </div>
-                        </div>
-                        <div class="form-group row align-items-center">
-                            <label for="" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" name="hidden_changePass" class="form-check-input js-check-hidden_changePassword" id="exampleCheck1">
-                                    <label class="form-check-label pl-3" for="exampleCheck1">Thay đổi mật
-                                        khẩu</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row align-items-center">
-                            <label for="" class="col-sm-2 col-form-label"></label>
-                            <div class="col-sm-10">
+                        <?php
+                        if ($_SESSION['login']['id_fb'] == "") {
+                            //upload
 
-                            </div>
-                        </div>
-                        <div class="hidden_changePassword js-hidden_changePassword">
+                        ?>
+
                             <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Mật khẩu cũ</label>
+                                <label for="" class="col-sm-2 col-form-label">Hình ảnh</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="mat_khau" class="form-control" placeholder="Nhập mật khẩu cũ">
-                                    <small class="text-danger error-mat_khau_cu"></small>
+                                    <input type="file" name="hinh_anh">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label">Mật khẩu mới</label>
-                                <div class="col-sm-10 box-show_pass">
-                                    <div class="show_pass"><i class="far fa-eye"></i></div>
-                                    <div class="hide_pass"><i class="fas fa-eye-slash"></i></div>
-                                    <input type="password" autocomplete="off" name="mat_khau_moi" class="form-control" placeholder="Nhập mật khẩu mới">
-                                    <small class="text-danger error-mat_khau_moi"></small>
+                            <div class="form-group row align-items-center">
+                                <label for="" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" name="hidden_changePass" class="form-check-input js-check-hidden_changePassword" id="exampleCheck1">
+                                        <label class="form-check-label pl-3" for="exampleCheck1">Thay đổi mật
+                                            khẩu</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-center">
+                                <label for="" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
 
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="" class="col-sm-2 col-form-label ">Nhập lại</label>
-                                <div class="col-sm-10 box-show_pass">
-                                    <div class="show_pass1"><i class="far fa-eye"></i></div>
-                                    <div class="hide_pass1"><i class="fas fa-eye-slash"></i></div>
-                                    <input type="password" autocomplete="off" name="re_mat_khau_moi" class="form-control" placeholder="Nhập lại mật khẩu mới">
-                                    <small class="text-danger error-re_mat_khau_cu"></small>
+                            <div class="hidden_changePassword js-hidden_changePassword">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 col-form-label">Mật khẩu cũ</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="mat_khau" class="form-control" placeholder="Nhập mật khẩu cũ">
+                                        <small class="text-danger error-mat_khau_cu"></small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 col-form-label">Mật khẩu mới</label>
+                                    <div class="col-sm-10 box-show_pass">
+                                        <div class="show_pass"><i class="far fa-eye"></i></div>
+                                        <div class="hide_pass"><i class="fas fa-eye-slash"></i></div>
+                                        <input type="password" autocomplete="off" name="mat_khau_moi" class="form-control" placeholder="Nhập mật khẩu mới">
+                                        <small class="text-danger error-mat_khau_moi"></small>
 
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-2 col-form-label ">Nhập lại</label>
+                                    <div class="col-sm-10 box-show_pass">
+                                        <div class="show_pass1"><i class="far fa-eye"></i></div>
+                                        <div class="hide_pass1"><i class="fas fa-eye-slash"></i></div>
+                                        <input type="password" autocomplete="off" name="re_mat_khau_moi" class="form-control" placeholder="Nhập lại mật khẩu mới">
+                                        <small class="text-danger error-re_mat_khau_cu"></small>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php
+                        } else {
+                            //link
+                        ?>
+                        <?php
+                        }
+
+                        ?>
+
+
 
                         <div class="form-group row align-items-center">
                             <label for="" class="col-sm-2 col-form-label"></label>
@@ -145,7 +178,7 @@ if (!sessionLogin_Isset()) {
 
         </div>
 
-<div id="toast"></div>
+        <div id="toast"></div>
     </div>
 
 <?php

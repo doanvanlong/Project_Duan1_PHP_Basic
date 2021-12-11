@@ -20,7 +20,13 @@ if (isset($_POST['noi_dung'])) {
 
 
             try {
-                rating_Insert($id_sp, $id_kh_session, $rating_sao, $noi_dung, $date);
+                $id_rating = rating_Insert($id_sp, $id_kh_session, $rating_sao, $noi_dung, $date);
+                $sql = "SELECT *FROM rating_sp where id_rating=?";
+                $id_spp = pdo_query_one($sql,$id_rating);
+                $id = $id_spp['id_sp'];
+                $avg = rating_Avg($id);
+                $sql = "UPDATE rating_sp SET avg_rating =? where id_sp =?";
+                pdo_execute($sql, $avg, $id);
                 echo 'thanhcong';
             } catch (Exception $e) {
                 echo 'loi';
@@ -106,7 +112,7 @@ if (isset($_POST['id_sp_rating'])) {
     <?php
     } ?>
     <!-- phân trang -->
-    <div class="phan-trang-rating  d-flex justify-content-center">
+    <!-- <div class="phan-trang-rating  d-flex justify-content-center">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
@@ -126,7 +132,7 @@ if (isset($_POST['id_sp_rating'])) {
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> -->
     <script>
         $(document).ready(function() {
             $('.click-xoa-rating').click(function() {
@@ -261,9 +267,16 @@ if (isset($_POST['id_sp_rating'])) {
 //xử lý xoá rating khi khách hàng là có session truy Cập
 if (isset($_POST['id_del_rating'])) {
     $id_del_rating = $_POST['id_del_rating'];
+    $sql = "SELECT *FROM rating_sp where id_rating=?";
+    $id_spp = pdo_query_one($sql,$id_del_rating);
+    $id = $id_spp['id_sp'];
     try {
 
         rating_Delete_By_Id($id_del_rating);
+       
+        $avg = rating_Avg($id);
+        $sql = "UPDATE rating_sp SET avg_rating =? where id_sp =?";
+        pdo_execute($sql, $avg, $id);
         echo 1;
     } catch (PDOException $e) {
         echo 0;

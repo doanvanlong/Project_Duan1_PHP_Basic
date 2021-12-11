@@ -7,7 +7,12 @@ function khuyen_mai_Insert($ten_chuong_trinh, $id_loai_khuyen_mai, $ngay_bat_dau
      values(?,?,?,?,?,?)";
     return pdo_execute2($sql, $ten_chuong_trinh, $id_loai_khuyen_mai, $ngay_bat_dau, $ngay_ket_thuc, $so_luot_su_dung, $tinh_trang);
 }
-
+// hàm kiểm tra tên chương trình có tồn tại Chưa
+function khuyen_mai_Isset_Ten_Ct_Km($ten_chuong_trinh)
+{
+    $sql = "SELECT count(*) FROM khuyen_mai WHERE ten_chuong_trinh =?";
+    return pdo_query_value($sql, $ten_chuong_trinh)[0];
+}
 //hàm lấy id_km theo id mã giảm giamr giá
 function ma_giam_gia_Select_Id_Ma_Giam_Gia($id_ma_giam_gia)
 {
@@ -227,4 +232,68 @@ function ma_giam_gia_Query_By_Id_Km_Da_Ket_Thuc($id_khuyen_mai)
      ma_giam_gia.id_khuyen_mai=khuyen_mai.id_khuyen_mai 
      where khuyen_mai.tinh_trang=0 and ma_giam_gia.id_khuyen_mai=?";
     return pdo_query_one($sql, $id_khuyen_mai);
+}
+
+
+// Trang DEAL Sốc
+
+// hàm insert deal Sốc
+function deal_soc_Insert($id_km, $id_sp_chinh, $id_sp_mua_kem, $id_loai_giam_gia_tien, $muc_giam)
+{
+    $sql = "INSERT INTO deal_soc(id_khuyen_mai,id_sp_chinh,id_sp_mua_kem,id_loai_giam_gia_tien,muc_giam) values(?,?,?,?,?)";
+    return pdo_execute($sql, $id_km, $id_sp_chinh, $id_sp_mua_kem, $id_loai_giam_gia_tien, $muc_giam);
+}
+//hàm  truy vấn cho trang liệt kê giảm giá đang chạy
+
+//  thuộc chương trình giảm giá có tình trạng là 1 đang chạy
+function deal_soc_Query_By_Id_Km_Dang_Dien_Ra($id_khuyen_mai)
+{
+    $sql = "SELECT * FROM `deal_soc` INNER JOIN khuyen_mai ON
+    deal_soc.id_khuyen_mai=khuyen_mai.id_khuyen_mai 
+    INNER JOIN san_pham ON san_pham.id_sp =deal_soc.id_sp_mua_kem
+    where khuyen_mai.tinh_trang=1 and deal_soc.id_khuyen_mai=?";
+    return pdo_query($sql, $id_khuyen_mai);
+}
+// hàm truy vấn  bảng giảm giá : =>lấy được id khuyến mãi có tình trạng khuyến mãi đang chạy
+function deal_soc_Select_Ok_Id_Km_Dang_Dien_Ra()
+{
+    $sql = "SELECT DISTINCT(khuyen_mai.id_khuyen_mai) FROM `deal_soc` INNER JOIN khuyen_mai
+    on khuyen_mai.id_khuyen_mai =deal_soc.id_khuyen_mai
+    where khuyen_mai.tinh_trang=1";
+    return pdo_query($sql);
+}
+
+
+//  thuộc chương trình giảm giá có tình trạng là 0 đã kết thúc
+function deal_soc_Query_By_Id_Km_Da_Ket_Thuc($id_khuyen_mai)
+{
+    $sql = "SELECT * FROM `deal_soc` INNER JOIN khuyen_mai ON
+     deal_soc.id_khuyen_mai=khuyen_mai.id_khuyen_mai INNER JOIN san_pham ON san_pham.id_sp =deal_soc.id_sp_mua_kem
+     where khuyen_mai.tinh_trang=0 and deal_soc.id_khuyen_mai=?";
+    return pdo_query($sql, $id_khuyen_mai);
+}
+// hàm truy vấn  bảng giảm giá : =>lấy được id khuyến mãi có tình trạng khuyến mãi Kết thúc
+function deal_soc_Select_Ok_Id_Km_Da_Ket_Thuc()
+{
+    $sql = "SELECT DISTINCT(khuyen_mai.id_khuyen_mai) FROM `deal_soc` INNER JOIN khuyen_mai
+    on khuyen_mai.id_khuyen_mai =deal_soc.id_khuyen_mai
+    where khuyen_mai.tinh_trang=0";
+    return pdo_query($sql);
+}
+
+//hàm truy vấn tất cả sp trong giảm giá có trạng thái đang CHạy
+
+function deal_soc_Query_All_Sp_Chinh()
+{
+    $sql = "SELECT DISTINCT deal_soc.id_khuyen_mai,deal_soc.id_loai_giam_gia_tien ,deal_soc.id_sp_chinh,deal_soc.id_khuyen_mai FROM `deal_soc` INNER JOIN khuyen_mai on khuyen_mai.id_khuyen_mai =deal_soc.id_khuyen_mai 
+    where khuyen_mai.tinh_trang =1";
+    return pdo_query($sql);
+}
+
+//hàm truy vấn tất cả sp mua kèm đi theo sp Chính
+function deal_soc_Query_All_Sp_Mua_Kem(){
+    $sql="SELECT * FROM `deal_soc` INNER JOIN san_pham 
+    on san_pham.id_sp=deal_soc.id_sp_mua_kem INNER JOIN khuyen_mai
+    on khuyen_mai.id_khuyen_mai=deal_soc.id_khuyen_mai where khuyen_mai.tinh_trang =1";
+    return pdo_query($sql);
 }

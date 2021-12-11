@@ -7,7 +7,7 @@
                 <label for="" class="col-form-label">Tên chương trình mã giảm giá</label>
             </div>
             <div class="col-5">
-                <input type="text" class="form-control" name="ten_ct_ma_giam_gia" aria-describedby="">
+                <input type="text" class="form-control" autocomplete="off" name="ten_ct_ma_giam_gia" aria-describedby="">
                 <small class="text-danger error-ten_ct_ma_giam_gia"></small>
             </div>
 
@@ -19,7 +19,7 @@
             <div class="col-5">
                 <div class="input-group-prepend">
                     <span class="input-group-text " style="font-weight:600;font-size:1.3rem" id="inputGroup-sizing-lg">LTS</span>
-                    <input type="text" class="form-control" name="ten_ma_giam_gia" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    <input type="text" class="form-control" autocomplete="off" name="ten_ma_giam_gia" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
                 </div>
                 <small class="error-ten_ma_giam_gia text-danger"></small>
                 <small class="text-secondary ">* Tên mã giảm giá mặc định bắt đầu bằng LTS (Viết tắt LTSMART)</small>

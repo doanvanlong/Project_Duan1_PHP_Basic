@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-12">
         <!-- banner -->
@@ -16,12 +15,12 @@
                             $list_news_km = bai_viet_Query_Danh_Muc_KM();
                             foreach ($list_news_km as $news_km) {
                                 if ($list_news_km[0]['id_bai_viet'] == $news_km['id_bai_viet']) { ?>
-                                    <a href="bai-viet?id=<?=$news_km['id_bai_viet']?>&title=<?=$news_km['tieu_de_news']?>" class="carousel-item active ">
+                                    <a href="bai-viet?id=<?= $news_km['id_bai_viet'] ?>&title=<?= $news_km['tieu_de_news'] ?>" class="carousel-item active ">
                                         <img alt="<?= $news_km['tieu_de_news'] ?>" style="height:301px;" class="d-block w-100" src="<?= $CONTENT_UPLOAD ?>/<?= $news_km['img_news'] ?>" alt="First slide">
                                     </a>
                                 <?php
                                 } else { ?>
-                                    <a href="bai-viet?id=<?=$news_km['id_bai_viet']?>&title=<?=$news_km['tieu_de_news']?>" class="carousel-item ">
+                                    <a href="bai-viet?id=<?= $news_km['id_bai_viet'] ?>&title=<?= $news_km['tieu_de_news'] ?>" class="carousel-item ">
                                         <img alt="<?= $news_km['tieu_de_news'] ?>" style="height:301px;" class="d-block w-100" src="<?= $CONTENT_UPLOAD ?>/<?= $news_km['img_news'] ?>" alt="First slide">
                                     </a>
                             <?php
@@ -51,7 +50,7 @@
                                 <?php
                                 $top_2_news_km = bai_viet_Query_Top2_Km();
                                 foreach ($top_2_news_km as $top_2_km) { ?>
-                                    <a href="bai-viet?id=<?=$top_2_km['id_bai_viet']?>&title=<?=$top_2_km['tieu_de_news']?>" class="banner__right-promotion-body-content  d-flex align-items-center">
+                                    <a href="bai-viet?id=<?= $top_2_km['id_bai_viet'] ?>&title=<?= $top_2_km['tieu_de_news'] ?>" class="banner__right-promotion-body-content  d-flex align-items-center">
                                         <div class="banner__right-promotion-body-img">
                                             <img style="width:100%;min-height:60px;" src="<?= $CONTENT_UPLOAD ?>/<?= $top_2_km['img_news'] ?>" alt="">
                                         </div>
@@ -122,11 +121,11 @@
                                     <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in </span> -->
 
                                     <!-- Nhãn trả góp -->
-                                    <span class="tab__menu-product-content-newproduct-installment-label ">Trả góp 0%</span>
+                                    <!-- <span class="tab__menu-product-content-newproduct-installment-label ">Trả góp 0%</span> -->
                                 </div>
                                 <div class="px-4 pt-1 pb-5">
                                     <div class="tab__menu-product-newproduct-rate">
-                                        
+
                                         <?php
                                         $rating = rating_Avg($sp_BestSeller['id_sp']);
                                         for ($i = 1; $i <= 5; $i++) {
@@ -162,10 +161,24 @@
                                     <?php
                                             }
                                         }
+                                        if (count($list_giam_gia) > 2) {
+                                            echo "<br>";
+                                        }
                                     }
                                     ?>
                                     <!-- Nhãn deal sốc -->
-                                    <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                                    <?php
+                                    $list_deal_soc = deal_soc_Query_All_Sp_Chinh();
+                                    if (count($list_deal_soc) > 0) {
+                                        foreach ($list_deal_soc as $deal_soc) {
+                                            if ($deal_soc['id_sp_chinh'] == $sp_BestSeller['id_sp']) { ?>
+                                                <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
+
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <div class="tab__menu-product-newproduct-price d-flex">
                                         <b class="tab__menu-product-newproduct-newprice pt-2">
                                             <?php
@@ -340,6 +353,19 @@
                                     <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
                                     <!-- Nhãn deal sốc -->
                                     <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                                    <!-- Nhãn deal sốc -->
+                                    <?php
+                                    $list_deal_soc = deal_soc_Query_All_Sp_Chinh();
+                                    if (count($list_deal_soc) > 0) {
+                                        foreach ($list_deal_soc as $deal_soc) {
+                                            if ($deal_soc['id_sp_chinh'] == $sp_flash_sale['id_sp']) { ?>
+                                                <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
+
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <div class="tab__menu-product-newproduct-price d-flex">
                                         <b class="tab__menu-product-newproduct-newprice pt-2">
                                             <?php
@@ -393,11 +419,11 @@
                                     </div>
                                     <div class="product__flash-sale-sold my-2">
                                         <?php
-                                          echo   $da_ban= san_pham_Count_Da_Ban($sp_flash_sale['id_sp']);
-                                            $tong_kho=$sp_flash_sale['so_luong'];
-                                            $phan_tram= ($da_ban / $tong_kho) * 100;
+                                        echo   $da_ban = san_pham_Count_Da_Ban($sp_flash_sale['id_sp']);
+                                        $tong_kho = $sp_flash_sale['so_luong'];
+                                        $phan_tram = ($da_ban / $tong_kho) * 100;
                                         ?>
-                                        <span class="product__flash-sale-sold-count" style="width:<?=$phan_tram?>%;"></span>
+                                        <span class="product__flash-sale-sold-count" style="width:<?= $phan_tram ?>%;"></span>
                                     </div>
                                 </div>
                             </a>
@@ -456,7 +482,7 @@
                                         ?>
                                         <!-- <span class="tab__menu-product-content-newproduct-checkin-label">Giảm 300k - Check in
                           </span> -->
-                                        <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span>
+                                        <!-- <span class="tab__menu-product-content-newproduct-installment-label">Trả góp 0%</span> -->
                                     </div>
                                     <div class="px-4 pt-1 pb-2">
                                         <!-- <div class="tab__menu-product-newproduct-rate">
@@ -488,9 +514,24 @@
                                         <?php
                                                 }
                                             }
+                                            if (count($list_giam_gia) > 2) {
+                                                echo "<br>";
+                                            }
                                         }
                                         ?>
                                         <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                                        <?php
+                                        $list_deal_soc = deal_soc_Query_All_Sp_Chinh();
+                                        if (count($list_deal_soc) > 0) {
+                                            foreach ($list_deal_soc as $deal_soc) {
+                                                if ($deal_soc['id_sp_chinh'] == $sp_feature['id_sp']) { ?>
+                                                    <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
+
+                                        <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
                                         <div class="tab__menu-product-newproduct-price d-flex">
                                             <b class="tab__menu-product-newproduct-newprice pt-2">
                                                 <?php
@@ -708,36 +749,6 @@
 </div>
 <!-- Sản phẩm đã xem -->
 <!-- Lấy title của phone... dùng chung -->
-<h3 class="phone-features-heading">Sản phẩm bạn vừa xem</h3>
-<div class="viewed__product">
-    <!-- sản phẩm dùng chung tab__menu-product- -->
-    <div class="owl-carousel owl-theme owl-product_viewed">
-        <!-- dùng tạm sp querry one -->
-        <?php
-        $sp_all = san_pham_QueryAll();
-        foreach ($sp_all as $sp) { ?>
-            <div class="item">
-                <a href="san-pham?id=<?= $sp['id_sp'] ?>&name=<?= $sp['ten_sp'] ?>" class="tab__menu-product-content-newproduct">
-                    <div class="tab__menu-product-content-newproduct-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $sp['hinh_anh'] ?>')">
-                    </div>
-                    <div class="px-4 pt-1 pb-2">
-
-                        <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
-                            <?= $sp['ten_sp'] ?>
-                        </p>
-                        <div class="tab__menu-product-newproduct-price d-flex">
-                            <b class="tab__menu-product-newproduct-newprice pt-2">
-                                <?= number_format($sp['don_gia'], 0, ',', '.') . 'đ' ?>
-                            </b>
-
-                        </div>
-                    </div>
-                </a>
-            </div>
-        <?php
-        }
-        ?>
-
-
-    </div>
+<div class="load_sp_vua_xem">
+    
 </div>

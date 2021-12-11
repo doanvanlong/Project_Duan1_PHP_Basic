@@ -10,12 +10,23 @@ if (!sessionLogin_Isset()) {
             <aside class="account__sidebar ">
                 <div class="account__avatar d-flex align-items-center">
                     <?php
-                    if ($info_kh['hinh_anh'] == '') { ?>
+                    if ($info_kh['hinh_anh'] == '') {
+
+                    ?>
                         <img class="account__avatar-img" src="<?= $CONTENT_CLIENT_URL ?>/img/avatar.png" alt="">
+                        <?php
+                    } else {
+                        if ($_SESSION['login']['id_fb'] == "") {
+                            //upload
+                        ?>
+                            <img class="account__avatar-img" src="<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>" alt="">
+                        <?php
+                        } else {
+                            //link
+                        ?>
+                            <img class="account__avatar-img" src="<?= $info_kh['hinh_anh'] ?>" alt="">
                     <?php
-                    } else { ?>
-                        <img class="account__avatar-img" src="<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>" alt="">
-                    <?php
+                        }
                     }
                     ?>
                     <div class="account__avatar-info px-3">

@@ -113,12 +113,16 @@ input[type="email"] {
   display: flex;
   gap: 0.8em;
 }
+.loginWidthSocial a:hover{
+  color:white !important;
+}
 .loginWidthSocial__inline {
   display: flex;
   gap: 1em;
   text-align: center;
   text-transform: capitalize;
 }
+
 .facebook {
   background-color: #1877f2 !important;
 }

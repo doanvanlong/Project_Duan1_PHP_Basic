@@ -129,16 +129,19 @@
     background-color: transparent;
     width: 50%;
     height: 60px;
+    z-index: -20000;
 }
 
 .header__right-user-dropdown:before {
     content: "";
     position: absolute;
-    top: -16%;
+    top: -20%;
     left: 20%;
     border-style: solid;
     border-color: transparent transparent #fff transparent;
     border-width: 20px 30px;
+    z-index: -20000;
+
 }
 
 .header__right-user-dropdown ul li {

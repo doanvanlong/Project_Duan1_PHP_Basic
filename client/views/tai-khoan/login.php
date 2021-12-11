@@ -1,7 +1,15 @@
 <?php
 require_once '../../../global.php';
-session_start();
-if (!sessionLogin_Isset()) {
+require_once "config.php";
+if (isset($_SESSION['access_token']) || isset($_SESSION['login'])) {
+    header('Location:'.$ROOT_URL);//login fb
+    exit();
+}
+
+$redirectURL = "http://localhost/Duan1/client/views/tai-khoan/fb-callback.php";
+$permissions = ['email'];
+$loginURL = $helper->getLoginUrl($redirectURL, $permissions);
+if (!sessionLogin_Isset()) {//login username
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -79,10 +87,10 @@ if (!sessionLogin_Isset()) {
                             <span>Hoặc</span>
                         </div>
                         <div class="loginWidthSocial">
-                            <button type="submit" class="loginWidthSocial__inline facebook login">
+                            <a href="<?=$loginURL;?>"  class="loginWidthSocial__inline facebook login">
                                 <div><i class="icofont-facebook"></i></div>
                                 <div>Facebook</div>
-                            </button>
+                            </a>
                             <button type="submit" class="loginWidthSocial__inline google login">
                                 <div><i class="icofont-google-plus"></i></div>
                                 <div>Google</div>
@@ -210,7 +218,7 @@ if (!sessionLogin_Isset()) {
 
     </html>
 <?php
-}else{
-    header('location:'.$ROOT_URL);
+} else {
+    header('location:' . $ROOT_URL);
 }
 ?>

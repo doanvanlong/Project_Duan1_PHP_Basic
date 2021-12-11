@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-12">
         <div class="menu-danh-muc-tin-tuc">
             <?php
@@ -27,13 +27,13 @@
             ?>
         </div>
     </div>
-</div>
+</div> -->
 <div class="row">
     <div class="col-8">
         <?php
         $top1_bai_viet_km = bai_viet_Query_Top1_Danh_Muc_KM();
         ?>
-        <div class="banner_tin-khuyen_mai my-5 " style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $top1_bai_viet_km['img_news'] ?>')">
+        <div class="banner_tin-khuyen_mai  " style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $top1_bai_viet_km['img_news'] ?>')">
             <a href="bai-viet?id=<?=$top1_bai_viet_km['id_bai_viet']?>&title=<?=$top1_bai_viet_km['tieu_de_news']?>" class="banner_tin_tin_khuyen_mai-title">
                 <div class="title"> <?= $top1_bai_viet_km['tieu_de_news'] ?></div>
                 <div class="text-secondary" style="font-size:1.2rem;font-style:italic">
@@ -59,7 +59,7 @@
             <?php
             $list_top_bai_viet_km = bai_viet_Query_Top3_Danh_Muc_KM();
             foreach ($list_top_bai_viet_km as $bai_viet) { ?>
-                <div class="col-4">
+                <div class="col-4 my-4">
                     <a href="bai-viet?id=<?=$bai_viet['id_bai_viet']?>&title=<?=$bai_viet['tieu_de_news']?>"" class="tin-khuyen-mai-items text-dark">
                         <div class="tin-khuyen-mai-items-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $bai_viet['img_news'] ?>')">
                         </div>
@@ -93,7 +93,7 @@
 
         </div>
     </div>
-    <div class="col-4 my-5">
+    <div class="col-4 ">
 
         <div class="list-tin-tuc-noi-bat">
             <div class="list-tin-tuc-noi-bat-title">Tin tức nổi bật</div>

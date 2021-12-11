@@ -228,6 +228,10 @@
   background-color: #ec6538;
   color: white;
 }
+.product-detail-mua-kem-deal-main-items-add-cart.active .btn {
+  background-color: #ec6538;
+  color: white;
+}
 .btn-total-mua-kem-deal-soc {
   color: white;
   border-radius: 7px;
@@ -543,3 +547,37 @@ color:white;
    color: #fff;
  }
  
+.san-pham-tuong-tu{
+  position: relative;
+}
+.san-pham-tuong-tu:hover .owl-san-pham-tuong-tu .owl-nav button i{
+  opacity: .5;
+  color:var(--secondary);
+
+
+}
+ .owl-san-pham-tuong-tu .owl-nav .owl-prev{
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0;
+ }
+ .owl-san-pham-tuong-tu .owl-nav .owl-next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+.owl-san-pham-tuong-tu .owl-nav button{
+}
+.owl-san-pham-tuong-tu .owl-nav button i{
+  font-size: 3rem;
+  padding:7px !important;
+  color:var(--secondary);
+  opacity: 0;
+
+}
+.owl-san-pham-tuong-tu .owl-nav button i:hover{
+  color:white !important;
+  opacity: .9;
+}

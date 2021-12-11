@@ -40,9 +40,10 @@ function san_pham_Insert_Img_Detail($id_sp, $images)
 //hàm truy vấn tất cả sản phẩm
 function san_pham_QueryAll()
 {
-    $sql = "SELECT * FROM san_pham";
+    $sql = "SELECT * FROM san_pham order by id_sp desc";
     return pdo_query($sql);
 }
+
 //hàm truy vấn all sp , có 2 ct khuyến mãi với điều kiện chưa tham gia 1 chương trình khuyến mãi chi tiết nào đó ,
 //và sp đó không đc tham gia deal sốc
 
@@ -51,7 +52,7 @@ function san_pham_QueryAll()
 function san_pham_Query_Danh_Muc_Con($id_sub_dm_pro)
 {
     $sql = "SELECT * FROM san_pham where id_sub_dm_pro =?";
-    return pdo_query($sql,$id_sub_dm_pro);
+    return pdo_query($sql, $id_sub_dm_pro);
 }
 
 // hàm truy vấn 1 sản phẩm
@@ -94,9 +95,10 @@ function san_pham_Query_Images_Pro($id_sp)
     return pdo_query($sql, $id_sp);
 }
 // hàm update  images pro 
-function san_pham_Update_Images($id_sp,$id_images_pro,$images){
-    $sql="UPDATE images SET images=? where id_sp=? and id_images_pro=?";
-    return pdo_execute($sql, $images,$id_sp,$id_images_pro);
+function san_pham_Update_Images($id_sp, $id_images_pro, $images)
+{
+    $sql = "UPDATE images SET images=? where id_sp=? and id_images_pro=?";
+    return pdo_execute($sql, $images, $id_sp, $id_images_pro);
 }
 // hàm truy vấn cấu Hình
 function san_pham_Query_Cau_Hinh($id_sp)
@@ -225,34 +227,60 @@ function del_multi_san_pham($list_san_pham)
     return pdo_execute($sql, $list_san_pham);
 }
 // Trang ADMin
-//hàm truy vấn top 10 sản phẩm mới Nhất
-function san_pham_Query_Top4_New(){
-    $sql="SELECT * FROM `san_pham`  order by id_sp desc limit 4";
+
+//hàm truy vấn top 4 sản phẩm mới Nhất
+function san_pham_Query_Top4_New()
+{
+    $sql = "SELECT * FROM `san_pham`  order by id_sp desc limit 4";
+    return pdo_query($sql);
+}
+//hàm truy vấn top 4 sản phẩm thuộc điện thoại mới Nhất
+function san_pham_Query_Dien_Thoai_Top4_New()
+{
+    $sql = "SELECT * FROM `san_pham` where id_dm_pro=47  order by id_sp desc limit 4";
+    return pdo_query($sql);
+}
+//hàm truy vấn tất sản phẩm thuộc điện thoại 
+function san_pham_Query_All_Dien_Thoai()
+{
+    $sql = "SELECT * FROM `san_pham` where id_dm_pro=47  order by id_sp desc ";
+    return pdo_query($sql);
+}
+//hàm truy vấn tất sản phẩm thuộc phụ kiện để tạo deal sốc
+function san_pham_Query_Top4_Phu_Kien()
+{
+    $sql = "SELECT * FROM `san_pham` where id_dm_pro=48 order by id_sp desc limit 4 ";
+    return pdo_query($sql);
+}
+//hàm truy vấn tất sản phẩm thuộc phụ kiện để tạo deal sốc
+function san_pham_Query_All_Phu_Kien()
+{
+    $sql = "SELECT * FROM `san_pham` where id_dm_pro=48 order by id_sp desc ";
     return pdo_query($sql);
 }
 //hàm đếm sản phẩm đã bán , có trong hoá đơn là đếm
-function san_pham_Count_Da_Ban($id_sp){
-    $sql="SELECT * FROM `san_pham` INNER JOIN hoa_don_chi_tiet ON san_pham.id_sp =hoa_don_chi_tiet.id_sp where san_pham.id_sp=?";
-    $arr=pdo_query($sql,$id_sp);
-    $sum=0;
-    foreach($arr as $count){
-        $sum+=$count['so_luong_mua'];
+function san_pham_Count_Da_Ban($id_sp)
+{
+    $sql = "SELECT * FROM `san_pham` INNER JOIN hoa_don_chi_tiet ON san_pham.id_sp =hoa_don_chi_tiet.id_sp where san_pham.id_sp=?";
+    $arr = pdo_query($sql, $id_sp);
+    $sum = 0;
+    foreach ($arr as $count) {
+        $sum += $count['so_luong_mua'];
     }
     return $sum;
-
 }
 
 // hàm truy vấn sản phẩm theo id 
-function san_pham_Query_One($id_sp){
-    $sql="SELECT * FROM san_pham WHERE id_sp=?";
+function san_pham_Query_One($id_sp)
+{
+    $sql = "SELECT * FROM san_pham WHERE id_sp=?";
     return pdo_query_one($sql, $id_sp);
 }
 
 //Hàm truy vấn tất cả điện thoại bán chạy nhất có hoá đơn đặt hàng nhiều nhất
-// dùng tạm truy vấn all sp
 function san_pham_Query_All_BestSeller()
 {
-    $sql = "SELECT * FROM san_pham WHERE id_dm_pro = 47 limit 5";
+    $sql = "SELECT DISTINCT san_pham.id_sp,san_pham.ten_sp,hoa_don_chi_tiet.so_luong_mua,san_pham.don_gia,san_pham.hinh_anh FROM `hoa_don_chi_tiet` inner JOIN san_pham on san_pham.id_sp =hoa_don_chi_tiet.id_sp where san_pham.id_dm_pro=47 order by hoa_don_chi_tiet.so_luong_mua desc limit 5";
     return pdo_query($sql);
 }
 // Hàm truy vấn tất cả điện thoại mới thêm
@@ -262,16 +290,17 @@ function san_pham_Query_All_NewAdd()
     return pdo_query($sql);
 }
 //hàm truy vấn all sp có giảm giá 
-// dùng tạm truy vấn all sp 
 function san_pham_Query_All_Flash_Sale()
 {
-    $sql = "SELECT * FROM san_pham WHERE id_dm_pro = 47 limit 5";
+    $sql = "SELECT * FROM `san_pham` INNER JOIN giam_gia 
+    on san_pham.id_sp=giam_gia.id_sp WHERE id_dm_pro = 47 limit 5";
     return pdo_query($sql);
 }
 
 // hàm truy vấn sản phẩm điện thoại
-function san_pham_Query_By_DM_Dien_Thoai(){
-    $sql="SELECT * FROM san_pham where id_dm_pro =47";
+function san_pham_Query_By_DM_Dien_Thoai()
+{
+    $sql = "SELECT * FROM san_pham where id_dm_pro =47";
     return pdo_query($sql);
 }
 
@@ -286,7 +315,7 @@ function san_pham_Query_Dien_Thoai_Feature()
 // hàm truy vấn phụ kiện có nhiều lượt xem nhiều
 function san_pham_Phu_kien_Query_Feature()
 {
-    $sql = "SELECT * FROM san_pham where id_dm_pro =48  and so_luot_xem >0 order by so_luot_xem desc limit 6";
+    $sql = "SELECT * FROM san_pham where id_dm_pro =48  and so_luot_xem >=0 order by so_luot_xem desc limit 6";
     return pdo_query($sql);
 }
 
@@ -332,44 +361,51 @@ function dien_thoai_Iphone_Query_9()
     return pdo_query($sql);
 }
 //hàm update số lượt xem sp khi clcik vào 
-function san_pham_Update_So_Luot_Xem($id_sp){
-    $sql="UPDATE san_pham SET so_luot_xem = so_luot_xem + 1 where id_sp=?";
+function san_pham_Update_So_Luot_Xem($id_sp)
+{
+    $sql = "UPDATE san_pham SET so_luot_xem = so_luot_xem + 1 where id_sp=?";
     return pdo_execute($sql, $id_sp);
 }
 //hàm truy vấn hình ảnh chi tiết của 1 sản phẩm
-function san_pham_Query_Imgs_Detail($id_sp){
-    $sql="SELECT * FROM images_pro where id_sp =?";
+function san_pham_Query_Imgs_Detail($id_sp)
+{
+    $sql = "SELECT * FROM images_pro where id_sp =?";
     return pdo_query($sql, $id_sp);
 }
 //hàm truy vấn tất cả màu sắc của 1 sản phẩm
-function san_pham_Query_Color($id_sp){
-    $sql="SELECT * FROM mau_sac_phone where id_sp=?";
+function san_pham_Query_Color($id_sp)
+{
+    $sql = "SELECT * FROM mau_sac_phone where id_sp=?";
     return pdo_query($sql, $id_sp);
 }
 //hàm truy vấn tất cả dung lượng sản phẩm
-function san_pham_Query_Dung_Luong($id_sp){
-    $sql="SELECT * FROM dung_luong_phone where id_sp=?";
+function san_pham_Query_Dung_Luong($id_sp)
+{
+    $sql = "SELECT * FROM dung_luong_phone where id_sp=?";
     return pdo_query($sql, $id_sp);
 }
 // hàm truy vấn dung lượng 1 sp theo id dung lượng riêng
-function san_pham_Query_One_ID_Dung_Luong($id_dl_phone){
-    $sql="SELECT * FROM dung_luong_phone where id_dl_phone =?";
+function san_pham_Query_One_ID_Dung_Luong($id_dl_phone)
+{
+    $sql = "SELECT * FROM dung_luong_phone where id_dl_phone =?";
     return pdo_query_one($sql, $id_dl_phone);
 }
 //hàm truy vấn cấu hình theo san_pham
-function san_pham_Query_One_Cau_hinh($id_sp){
-    $sql="SELECT * FROM cau_hinh_phone where id_sp =?";
+function san_pham_Query_One_Cau_hinh($id_sp)
+{
+    $sql = "SELECT * FROM cau_hinh_phone where id_sp =?";
     return pdo_query($sql, $id_sp);
 }
 //hàm xoá 1 màu sắc more add theo id ms 
-function san_pham_Delete_One_MS_phone($id_ms_phone) {
-    $sql="DELETE FROM mau_sac_phone where id_ms_phone =?";
+function san_pham_Delete_One_MS_phone($id_ms_phone)
+{
+    $sql = "DELETE FROM mau_sac_phone where id_ms_phone =?";
     return pdo_execute($sql, $id_ms_phone);
-    
 }
 //hàm xoá 1 dung lượng more add theo id dung_luong_phone
-function san_pham_Delete_One_DL_phone($id_dl_phone){
-    $sql="DELETE FROM dung_luong_phone where id_dl_phone =?";
+function san_pham_Delete_One_DL_phone($id_dl_phone)
+{
+    $sql = "DELETE FROM dung_luong_phone where id_dl_phone =?";
     return pdo_execute($sql, $id_dl_phone);
 }
 
@@ -385,7 +421,18 @@ function san_pham_Search($keyword)
     or sub_danh_muc_pro.ten_sub_dm_pro like ? limit 5";
     return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%', '%' . $keyword . '%');
 }
-
+//tìm kiếm sản phẩm và danh mục
+function san_pham_Search_Limit25($keyword)
+{
+    $sql = "SELECT * FROM `san_pham` 
+    inner JOIN danh_muc_pro 
+    on san_pham.id_dm_pro =danh_muc_pro.id_dm_pro
+    INNER JOIN sub_danh_muc_pro 
+    on san_pham.id_sub_dm_pro=sub_danh_muc_pro.id_sub_dm_pro
+    where san_pham.ten_sp like ? or danh_muc_pro.ten_dm_pro like ? 
+    or sub_danh_muc_pro.ten_sub_dm_pro like ? limit 25";
+    return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%', '%' . $keyword . '%');
+}
 //trang samsung 
 
 // hàm đếm tất cả sản phẩm samsung
@@ -405,29 +452,32 @@ function dien_thoai_Samsung_Query_9()
 
 // Trang sản phẩm chi tiết
 // hàm tính số tiền sau giảm giá của san_pham phần trăm
-function So_Tien_Giam_Phan_Tram($so_phan_tram,$money){
-    $sum= (((100 - $so_phan_tram)/100) * $money);
-    return number_format($sum,0,',', '.') .'&nbsp;đ';
+function So_Tien_Giam_Phan_Tram($so_phan_tram, $money)
+{
+    $sum = (((100 - $so_phan_tram) / 100) * $money);
+    return number_format($sum, 0, ',', '.') . '&nbsp;đ';
 }
 // hàm tính số tiền sau giảm giá của san_pham giá tiền
-function So_Tien_Giam_Gia_Tien($money,$muc_giam){
-    $sum=($money - $muc_giam);
-    return number_format($sum,0,',','.').'&nbsp;đ';
+function So_Tien_Giam_Gia_Tien($money, $muc_giam)
+{
+    $sum = ($money - $muc_giam);
+    return number_format($sum, 0, ',', '.') . '&nbsp;đ';
 }
 
 
 //trang cart , 
 
 //hàm đếm số lượng tồn kho của 1sp
-function san_pham_Count_Ton_Kho($id_sp){
-    $sql="SELECT * FROM san_pham where id_sp=?";
-    $info_sp=pdo_query_one($sql,$id_sp);
-    $so_luong=$info_sp['so_luong'];
-    $sql="SELECT * FROM hoa_don_chi_tiet where id_sp=?";
-    $list_sp_cart=pdo_query($sql,$id_sp);
-    $sum=0;
-    foreach($list_sp_cart as $sp){
-       $sum+= $sp['so_luong_mua'];
+function san_pham_Count_Ton_Kho($id_sp)
+{
+    $sql = "SELECT * FROM san_pham where id_sp=?";
+    $info_sp = pdo_query_one($sql, $id_sp);
+    $so_luong = $info_sp['so_luong'];
+    $sql = "SELECT * FROM hoa_don_chi_tiet where id_sp=?";
+    $list_sp_cart = pdo_query($sql, $id_sp);
+    $sum = 0;
+    foreach ($list_sp_cart as $sp) {
+        $sum += $sp['so_luong_mua'];
     }
     return $so_luong - $sum;
 }

@@ -106,6 +106,20 @@ a:hover {
   padding-right: 15px;
   padding-left: 15px;
 }
+.col-1-7 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 14.28%;
+  flex: 0 0 14.28%;
+  max-width: 14.28%;
+}
+.col-1-7 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .primary{
   background-color: #f15a29;
 }
@@ -177,4 +191,44 @@ padding:8px 5px;
 }
 .thong_bao_user-content-text{
   color:var(--secondary);
+}
+
+/* chi tiết sp mua kèm deal sốc label */
+.label_deal_soc{
+  background-color: #fbebed !important;
+  color: var(--primary-color);
+}
+
+.box-sp_search{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 2px;
+}
+
+.page-link.active{
+  background-color: var(--primary-color);
+  color:white;
+}
+.box-icon_dm-pk{
+  width:60px;
+  
+  border-radius:50%;
+  height:60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color:#f8f9fa ;
+}
+.box-icon_dm-pk i{
+  font-size: 4rem;
+}
+
+.box-dm-pk{
+  cursor: pointer;
+}
+.box-dm-pk:hover .box-icon_dm-pk{
+  background-color: #f15b294d;
+}
+.active_phu_kien.active .box-icon_dm-pk{
+  background-color: #f15b294d;
 }

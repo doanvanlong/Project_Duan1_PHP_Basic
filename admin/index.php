@@ -191,9 +191,20 @@ if (sessionLogin_Isset() || !sessionLogin_Isset()) {
                     $title = "Cập nhật chương trình  mã giảm giá ";
                     break;
                 case 'deal-soc':
-                    $view = "views/khuyen-mai/giam-gia/list-giam-gia.php";
-                    $title = "Chương trình giảm giá";
+                    $view = "views/khuyen-mai/deal-soc/list-deal-soc.php";
+                    $title = "Chương trình tạo giảm giá mua kèm deal sốc";
                     break;
+                case 'add-deal-soc':
+                    $view = "views/khuyen-mai/deal-soc/add-deal-soc.php";
+                    $title = "Tạo chương trình  mua kèm deal sốc mới";
+                    break;
+                // case 'edit-deal-soc':
+                //     $id_km = $_GET["id_km"];
+                //     $info_km = khuyen_mai_Query_One_By_Id_Km($id_km);
+                //     $info_deal_soc = deal_soc_Query_By_Id_Km_Dang_Dien_Ra($id_km);
+                //     $view = "views/khuyen-mai/deal-soc/edit-deal-soc.php";
+                //     $title = "Cập nhật chương trình  deal sốc";
+                //     break;
                 case 'order-new':
                     $view = "views/don-hang/order-new.php";
                     $title = "Đơn Hàng Mới";

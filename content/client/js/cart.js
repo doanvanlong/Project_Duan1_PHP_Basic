@@ -51,22 +51,50 @@ $(document).ready(function () {
     });
   });
 
-  //add cart mua deal sốc
+  //add cart  mua deal sốc
   // kiểm tra có thêm sp vào deal sốc ko
+  $('.product-detail-mua-kem-deal-main-items-add-cart').click(function (){
+    if(!$(this).hasClass('active')){
+      $('.product-detail-mua-kem-deal-main-items-add-cart').removeClass('active');
+      $('.product-detail-mua-kem-deal-main-items-add-cart').children('.add-deal').children('span').text('Thêm vào');
+      $(this).addClass('active');
+      $(this).children(".add-deal").children('span').text('Đã thêm');
+    }
+
+  })
   $(".add-deal").click(function () {
+  
     $('[name*="mua-deal"]').removeAttr("disabled");
     $('[name*="mua-deal"]').removeAttr("title");
+    var gia_sp_mua_kem=($(this).parent().parent().parent().children('.col-7').children().children('.product-detail-mua-kem-deal-main-items-content-price').children('.product-detail-mua-kem-deal-main-items-content-price-new').children('input').val());
+    var gia_sp_mua_kem_old=$(this).parent().parent().parent().children('.col-7').children().children('.product-detail-mua-kem-deal-main-items-content-price').children('.product-detail-mua-kem-deal-main-items-content-price-old').children('input').val();
+    var gia_sp_chinh=$('[name*="gia_sp_chinh"]').val();
+    gia_sp_chinh=new Number(gia_sp_chinh);
+    gia_sp_mua_kem_old=new Number(gia_sp_mua_kem_old);
+    gia_sp_mua_kem=new Number(gia_sp_mua_kem);
+    var tiet_kiem_duoc= gia_sp_mua_kem_old - gia_sp_mua_kem;
+    tiet_kiem_duoc=tiet_kiem_duoc.toLocaleString('vi',{style:'currency',currency:'VND'});
+    var gia_chua_giam_deal=gia_sp_chinh + gia_sp_mua_kem_old;
+    gia_chua_giam_deal=gia_chua_giam_deal.toLocaleString('vi',{style:'currency',currency:'VND'});
+    var tong_cong_deal=gia_sp_chinh + gia_sp_mua_kem;
+    $('[name*="tong_cong_deal"]').val(tong_cong_deal);//gán vào input hidden tổng tiền cart
+    // gán lại tổng deal VND
+    tong_cong_deal=tong_cong_deal.toLocaleString('vi',{style:'currency',currency:'VND'});
+    $('.tong_cong_deal_vnd').text(tong_cong_deal);
+   
+    $('.gia_chua_giam_deal').text(gia_chua_giam_deal);
+    $('.tiet_kiem_duoc').text(tiet_kiem_duoc);
     $('[name*="mua-deal"]').click(function (e) {
       $("#add-cart").submit(function (e) {
         e.preventDefault();
         var url_session = $('[name*="url_session"]').val();
         var ten_sp_chinh = $('[name*="ten_sp_chinh"]').val();
         var id_sp_chinh = $('[name*="id_sp_chinh"]').val();
+        var id_sp_mua_kem = $('[name*="id_sp_deal"]').val();
         var gia_sp_chinh = $('[name*="gia_sp_chinh"]').val();
         var ten_sp_deal = $('[name*="ten_sp_deal"]').val();
-        var gia_sp_deal = $('[name*="gia_sp_deal"]').val();
+        var hinh_anh_sp_deal = $('[name*="hinh_anh_sp_deal"]').val();
         var tong_cong_deal = $('[name*="tong_cong_deal"]').val();
-        var hinh_anh_deal = $('[name*="hinh-anh-deal"]').val();
         $.ajax({
           url: "../client/xu-ly/cart/cart.php",
           type: "POST",
@@ -78,17 +106,17 @@ $(document).ready(function () {
             dung_luong_chinh: dung_luong_chinh,
             mau_sac_chinh: mau_sac_chinh,
             ten_sp_deal: ten_sp_deal,
-            gia_sp_deal: gia_sp_deal,
+            id_sp_deal:id_sp_mua_kem,
+            gia_sp_deal: gia_sp_mua_kem,
             hinh_anh_chinh: hinh_anh_chinh,
-            hinh_anh_deal: hinh_anh_deal,
+            hinh_anh_deal: hinh_anh_sp_deal,
             tong_cong_deal: tong_cong_deal,
           },
           success: function (data) {
             if (data == 0) {
               window.location.href = "tai-khoan/login";
             } else {
-              // window.location.href = "cart";
-              console.log(data);
+              window.location.href = "cart";
             }
           },
         });
@@ -448,7 +476,7 @@ $(document).ready(function () {
       { load_tong_tien_checkout: "load_tong_tien_checkout" },
       function (data) {
         var data = JSON.parse(data);
-        if (data.so_dien_thoai != null || data.dia_chi != null) {
+        if (data.so_dien_thoai != null && data.dia_chi != null ) {
           var str = `
           <div class="cart__total-prices ">
           <div class="cart__total-prices-shipAddress">

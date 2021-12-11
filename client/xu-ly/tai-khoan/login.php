@@ -7,7 +7,8 @@ if (isset($_POST['username-login'])) {
     // lưu id,username,mat_khau
     $info = (khach_hang_Isset_DB($username, $password));
     if (is_array($info)) {
-        $_SESSION['login'] = array('id_kh' => $info['id_kh'], 'ho_ten' => $info['ho_ten']);
+        //nếu login fb thì có id_fb còn login username thì id_fb =""
+        $_SESSION['login'] = array('id_fb'=>'','id_kh' => $info['id_kh'], 'ho_ten' => $info['ho_ten']);
         if (isset($_SESSION['url-session'])) {
             echo $_SESSION['url-session'];
         }else{

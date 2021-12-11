@@ -59,6 +59,7 @@ if (isset($_POST['checkout_success'])) {
                 khuyen_mai_Update_So_Luot_SD($info['id_khuyen_mai']);
             }
         }
+        
         unset($_SESSION['cart']);
         echo 1;
     } catch (Exception $e) {

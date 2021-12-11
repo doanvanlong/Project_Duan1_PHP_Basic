@@ -57,8 +57,17 @@ switch ($url) {
         header('Location: ' . $CLIENT_URL . '/views/tai-khoan/login.php');
         break;
     case 'tai-khoan/logout':
-        unset($_SESSION['login']);
+        session_destroy();
         header('Location: ' . $CLIENT_URL);
+        break;
+    case 'search':
+        $view = 'xu-ly/home/search.php';
+        $title = "Tìm kiếm";
+        if (isset($_POST['search'])) {
+            $keyword = $_POST['search'];
+        
+            
+        }
         break;
     case 'dien-thoai':
         $view = "views/dien-thoai/dien-thoai.php";

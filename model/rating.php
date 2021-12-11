@@ -4,7 +4,7 @@ require_once 'pdo.php'; //gọi thư viện pdo
 function rating_Insert($id_sp, $id_kh, $rating, $noi_dung, $date)
 {
     $sql = "INSERT INTO rating_sp(id_sp,id_kh,rating,noi_dung,ngay_rating) values(?,?,?,?,?)";
-    return pdo_execute($sql, $id_sp, $id_kh, $rating, $noi_dung, $date);
+    return pdo_execute2($sql, $id_sp, $id_kh, $rating, $noi_dung, $date);
 }
 // hàm truy vấn tất cả đánh giá theo 1 sản phẩm
 function rating_Query_Top5_By_Id_Sp($id_sp)

@@ -13,7 +13,7 @@
             <form action="" method="POST" id="add-cart" class="product-detail p-3">
                 <input type="hidden" name="ten_sp_chinh" value="<?= $info_sp['ten_sp'] ?>">
                 <div class="product-detail-heading d-flex justify-content-between align-items-center">
-                    <h2 class="product-detail-title py-2 text-overflow"><?= $info_sp['ten_sp']; ?></h2>
+                    <h2 class="product-detail-title py-2 " style="max-width: 70%;"><?= $info_sp['ten_sp']; ?></h2>
                     <div class="product-detail-rating d-flex ">
                         <div class="product-detail-rating-star px-1 load_rating_avg_title">
                             <?php
@@ -42,7 +42,7 @@
                     <div class="col-6  ">
                         <div class="porsition-sticky">
                             <div class="product-deltai-img mt-5 " style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
-
+                            <input type="hidden" name="hinh_anh_sp_chinh" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>">
                                 <!-- <img src="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>" alt=""> -->
                             </div>
 
@@ -343,7 +343,7 @@
 
                             }
                             if (count($list_mau_sac) == 0) { ?>
-                            <input type="hidden" name="hinh-anh-chinh" value="<?=$CONTENT_UPLOAD?>/<?=$info_sp['hinh_anh']?>">
+                                <input type="hidden" name="hinh-anh-chinh" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>">
                             <?php
                             }
                             ?>
@@ -426,16 +426,36 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <div class="product-detail-voucher">
-                            <ul>
-                                <li>Nhận ngay khuyến mãi đặc biệt</li>
-                                <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Trả góp 0%</li>
-                                <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Thu cũ đổi mới trợ giá 20% đến 3 triệu</li>
-                                <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Giảm 100.000đ khi check in tại cửa hàng</li>
-                                <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Tặng bảo hành 2 năm</li>
+                        <?php
+                        $list_deal_soc = deal_soc_Query_All_Sp_Chinh();
+                        if (count($list_deal_soc) > 0) {
+                            foreach ($list_deal_soc as $deal_soc) {
+                                if ($deal_soc['id_sp_chinh'] == $info_sp['id_sp']) { ?>
+                                    <div class="d-flex mb-4">
+                                        <div class="text-gray " style="width:93px">Deal Sốc</div>
+                                        <span class="label_deal_soc px-2 text-capitalize">Mua kèm deal sốc</span>
+                                    </div>
+                        <?php
+                                }
+                            }
+                        }
+                        ?>
+                        <?php
+                        if ($info_sp['id_dm_pro'] == 47) { ?>
 
-                            </ul>
-                        </div>
+                            <div class="product-detail-voucher">
+                                <ul>
+                                    <li>Nhận ngay khuyến mãi đặc biệt</li>
+                                    <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Trả góp 0%</li>
+                                    <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Thu cũ đổi mới trợ giá 20% đến 3 triệu</li>
+                                    <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Giảm 100.000đ khi check in tại cửa hàng</li>
+                                    <li><i style="color:#48bb78;" class="fas fa-check-circle icon pr-2"></i>Tặng bảo hành 2 năm</li>
+
+                                </ul>
+                            </div>
+                        <?php
+                        }
+                        ?>
                         <div class="product-detail-buy">
                             <button type="submit" name="mua-ngay" class="product-detail-buy-now btn primary text-white my-3 ">
                                 <div>
@@ -443,117 +463,218 @@
                                     <p class="font-size mb-1">Giao hàng miễn phí hoặc nhận tại shop</p>
                                 </div>
                             </button>
-                            <div class="row ">
-                                <div class="col-6">
-                                    <button class="product-detail-buy-tra-gop btn btn-primary ">
-                                        <div>
-                                            <strong>Trả góp 0%</strong>
-                                            <p class="font-size mb-1">Duyệt nhanh qua điện thoại</p>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="product-detail-buy-trade-in btn btn-primary">
-                                        <div>
-                                            <strong>Trade-in thu cũ lên đời</strong>
-                                            <p class="font-size mb-1">Click vào để định giá lên đời</p>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-detail-mua-kem-deal">
-                            <div class="product-detail-mua-kem-deal-title mt-4 pb-2 text-dark">
-                                <strong>Mua kèm sản phẩm với deal sốc</strong>
-                            </div>
-                            <div class="product-detail-mua-kem-deal-main-pro">
-                                <div class="row align-items-center">
-                                    <div class="col-2">
-                                        <input type="hidden" name="hinh-anh-deal[]" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>">
-                                        <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
-                                        </div>
-
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="product-detail-mua-kem-deal-main-pro-content mb-4">
-                                            <p class="product-detail-mua-kem-deal-main-pro-content-title text-ellip"><?= $info_sp['ten_sp'] ?> </p>
-                                            <div class="product-detail-mua-kem-deal-main-pro-content-price d-flex">
-                                                <div class="product-detail-mua-kem-deal-main-pro-content-price-new">
-                                                    <?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?>
-                                                </div>
-                                                <strike class="product-detail-mua-kem-deal-main-pro-content-price-old text-secondary">
-                                                    <?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?>
-                                                </strike>
+                            <?php
+                            if ($info_sp['id_dm_pro'] == 47) {
+                            ?>
+                                <div class="row ">
+                                    <div class="col-6">
+                                        <button class="product-detail-buy-tra-gop btn btn-primary ">
+                                            <div>
+                                                <strong>Trả góp 0%</strong>
+                                                <p class="font-size mb-1">Duyệt nhanh qua điện thoại</p>
                                             </div>
-
-                                        </div>
-
+                                        </button>
                                     </div>
-                                    <div class="col-3">
-                                        <div class="product-detail-mua-kem-deal-main-pro-add-cart">
-                                            <p class="btn font-size" disable> Thêm vào</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center ">
-                                <i class="fas fa-plus text-dark"></i>
-                            </div>
-                            <div class="product-detail-mua-kem-deal-main-items my-3">
-                                <div class="row align-items-center">
-                                    <div class="col-2 ">
-                                        <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
-                                        </div>
-
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="product-detail-mua-kem-deal-main-items-content mb-4">
-                                            <p class="product-detail-mua-kem-deal-main-items-content-title text-ellip">Loa blu </p>
-                                            <!-- Nhãn deal sốc add cart -->
-                                            <span class="label-deal-soc-add-cart">
-                                                Deal sốc
-                                            </span>
-                                            <input type="hidden" name="ten_sp_deal" value="loa blu">
-                                            <input type="hidden" name="gia_sp_deal" value="5000000">
-                                            <div class="product-detail-mua-kem-deal-main-items-content-price d-flex">
-                                                <div class="product-detail-mua-kem-deal-main-items-content-price-new">
-                                                    5.000.000đ
-                                                </div>
-                                                <strike class="product-detail-mua-kem-deal-main-items-content-price-old text-secondary">
-                                                    10.000.000đ
-                                                </strike>
+                                    <div class="col-6">
+                                        <button class="product-detail-buy-trade-in btn btn-primary">
+                                            <div>
+                                                <strong>Trade-in thu cũ lên đời</strong>
+                                                <p class="font-size mb-1">Click vào để định giá lên đời</p>
                                             </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="product-detail-mua-kem-deal-main-items-add-cart">
-                                            <p class="btn font-size add-deal"> Thêm vào</p>
-                                        </div>
-
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="box-total-mua-kem-deal-soc py-4 pl-4">
-                                <div class="row">
-
-                                    <button type="submit" name="mua-deal" title="Bạn chưa thêm deal " disabled="true" class="col-4 btn primary btn-total-mua-kem-deal-soc d-flex justify-content-center align-items-center "><i class="icofont-cart font-size-2-5 pr-2"></i>
-                                        <p class="font-size mb-0 ">Mua deal sốc</p>
-                                    </button>
-                                    <div class="col-8 total-mua-kem-deal-soc">
-                                        <input type="hidden" name="tong_cong_deal" value="32.400.000">
-                                        <p class="mb-0"><b class="text-dark pr-2">Tổng cộng:</b> <span class="font-weight-5 text-dark">32.400.000đ</span>
-                                            <strike class="pl-3 text-secondary">10.000.000đ</strike>
-                                        </p>
-                                        <p class="text-primary-color mb-0">Tiết kiệm : <?= number_format($info_sp['don_gia'], 0, ',', '.') . 'đ' ?></p>
-                                    </div>
-
-                                </div>
-                            </div>
+                            <?php
+                            }
+                            ?>
                         </div>
+                        <?php
+                        $list_deal_soc = deal_soc_Query_All_Sp_Chinh();
+                        if (count($list_deal_soc) > 0) {
+                            foreach ($list_deal_soc as $deal_soc) {
+                                if ($deal_soc['id_sp_chinh'] == $info_sp['id_sp']) { ?>
+                                    <div class="product-detail-mua-kem-deal">
+                                        <div class="product-detail-mua-kem-deal-title mt-4 pb-2 text-dark">
+                                            <strong>Mua kèm sản phẩm với deal sốc</strong>
+                                        </div>
+                                        <div class="product-detail-mua-kem-deal-main-pro">
+                                            <div class="row align-items-center">
+                                                <div class="col-2">
+                                                    <input type="hidden" name="" value="<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>">
+                                                    <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $info_sp['hinh_anh'] ?>')">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-7">
+                                                    <div class="product-detail-mua-kem-deal-main-pro-content mb-4">
+                                                        <p class="product-detail-mua-kem-deal-main-pro-content-title text-ellip"><?= $info_sp['ten_sp'] ?> </p>
+                                                        <div class="product-detail-mua-kem-deal-main-pro-content-price d-flex">
+
+                                                            <div class="product-detail-mua-kem-deal-main-pro-content-price-new">
+                                                                <?php
+                                                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                                                if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                                    //id sp nằm trong giảm giá
+                                                                    if (count($list_giam_gia) > 0) {
+                                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                                            if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                                                if ($giam_gia['id_loai_giam_gia_tien'] == 1) {
+                                                                                    // %
+                                                                                    echo So_Tien_Giam_Phan_Tram($giam_gia['muc_giam'], $info_sp['don_gia']);
+                                                                ?>
+                                                                                <?php
+                                                                                } else {
+                                                                                    //số tiền
+                                                                                    echo So_Tien_Giam_Gia_Tien($info_sp['don_gia'], $giam_gia['muc_giam']);
+                                                                                ?>
+
+                                                                <?php
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    //id sp ko nằm trong gg
+                                                                    echo number_format($info_sp['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                                                }
+                                                                ?>
+
+                                                            </div>
+                                                            <strike class="product-detail-mua-kem-deal-main-pro-content-price-old text-secondary">
+                                                                <?php
+                                                                $list_giam_gia = giam_gia_Query_All_Sp();
+                                                                if (in_array($info_sp['id_sp'], array_column($list_giam_gia, 'id_sp')) == true) {
+                                                                    //id sp nằm trong giảm giá
+                                                                    if (count($list_giam_gia) > 0) {
+                                                                        foreach ($list_giam_gia as $giam_gia) {
+                                                                            if ($giam_gia['id_sp'] == $info_sp['id_sp']) {
+                                                                                // nếu sp có giảm giá mới in ra giá củ 
+                                                                                echo number_format($info_sp['don_gia'], 0, ',', '.') . '&nbsp;đ';
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    //ko có giảm giá 
+                                                                }
+                                                                ?>
+                                                            </strike>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-3">
+                                                    <div class="product-detail-mua-kem-deal-main-pro-add-cart">
+                                                        <p class="btn font-size" disable> Thêm vào</p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-center ">
+                                            <i class="fas fa-plus text-dark"></i>
+                                        </div>
+
+                                        <?php
+                                        $list_sp_mua_kem = deal_soc_Query_All_Sp_Mua_Kem();
+                                        if (count($list_sp_mua_kem) > 0) {
+                                            foreach ($list_sp_mua_kem as $sp_mua_kem) {
+                                                if ($sp_mua_kem['id_sp_chinh'] == $info_sp['id_sp']) {
+                                                    // mỗi thèn id_sp_mua kèm sẻ mang theo id_sp_chính,nên lấy thèn nào có trùng id_sp_chính
+                                        ?>
+                                                    <div class="product-detail-mua-kem-deal-main-items my-3">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-2 ">
+                                                                <div class="product-detail-mua-kem-deal-main-pro-img" style="background-image: url('<?= $CONTENT_UPLOAD ?>/<?= $sp_mua_kem['hinh_anh'] ?>')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <div class="product-detail-mua-kem-deal-main-items-content mb-4">
+                                                                    <p class="product-detail-mua-kem-deal-main-items-content-title text-ellip"><?= $sp_mua_kem['ten_sp'] ?> </p>
+                                                                    <!-- Nhãn deal sốc add cart -->
+                                                                    <span class="label-deal-soc-add-cart">
+                                                                        <?php
+                                                                        if ($sp_mua_kem['id_loai_giam_gia_tien'] == 1) {
+                                                                            echo "Giảm&nbsp;" . $sp_mua_kem['muc_giam'] . '%';
+                                                                        } else {
+                                                                            echo "Giảm&nbsp;" . number_format($sp_mua_kem['muc_giam'], 0, ',', '.') . 'đ';
+                                                                        }
+                                                                        ?>
+                                                                    </span>
+
+                                                                    <input type="hidden" name="ten_sp_deal[]" value="<?= $sp_mua_kem['ten_sp'] ?>">
+                                                                    <input type="hidden" name="gia_sp_deal[]" value="<?= $sp_mua_kem['don_gia'] ?>">
+                                                                    <input type="hidden" name="id_sp_deal[]" value="<?= $sp_mua_kem['id_sp_mua_kem'] ?>">
+                                                                    <input type="hidden" name="hinh_anh_sp_deal[]" value="<?= $CONTENT_UPLOAD ?>/<?= $sp_mua_kem['hinh_anh'] ?>">
+                                                                    <div class="product-detail-mua-kem-deal-main-items-content-price d-flex">
+                                                                        <div class="product-detail-mua-kem-deal-main-items-content-price-new">
+                                                                            <?php
+                                                                            if ($sp_mua_kem['id_loai_giam_gia_tien'] == 1) {
+                                                                                // %
+                                                                                echo So_Tien_Giam_Phan_Tram($sp_mua_kem['muc_giam'], $sp_mua_kem['don_gia']);
+                                                                                echo "<input hidden name='gia_sp_mua_kem' value='" . ((100 - $sp_mua_kem['muc_giam']) / 100) * $sp_mua_kem['don_gia'] . "'>";
+                                                                            } else {
+                                                                                //tiền
+                                                                                echo So_Tien_Giam_Gia_Tien($sp_mua_kem['don_gia'], $sp_mua_kem['muc_giam']);
+                                                                                echo "<input hidden name='gia_sp_mua_kem' value='" . $sp_mua_kem['don_gia'] - $sp_mua_kem['muc_giam'] . "'>";
+                                                                            }
+
+                                                                            ?>
+                                                                        </div>
+                                                                        <strike class="product-detail-mua-kem-deal-main-items-content-price-old text-secondary">
+                                                                            <input type="number" hidden value="<?= $sp_mua_kem['don_gia'] ?>" name="gia_sp_mua_kem_old">
+                                                                            <?= number_format($sp_mua_kem['don_gia'], 0, ',', '.') . 'đ' ?>
+                                                                        </strike>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-3">
+                                                                <div class="product-detail-mua-kem-deal-main-items-add-cart  cursor-pointer">
+                                                                    <label for="add-deal<?= $sp_mua_kem['id_sp_mua_kem'] ?>" class="btn font-size add-deal cursor-pointer">
+                                                                        <span>Thêm vào</span>
+                                                                        <input type="radio" hidden id="add-deal<?= $sp_mua_kem['id_sp_mua_kem'] ?>" name="add-deal">
+                                                                    </label>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        <?php
+                                                }
+                                            }
+                                        }
+
+                                        ?>
+
+                                        <div>
+                                            <small class="text-info">Lưu ý: Chỉ được mua kèm tối đa 1 sản phẩm </small>
+                                        </div>
+                                        <div class="box-total-mua-kem-deal-soc py-4 pl-4">
+                                            <div class="row">
+
+                                                <button type="submit" name="mua-deal" title="Bạn chưa thêm deal " disabled="true" class="col-4 btn primary btn-total-mua-kem-deal-soc d-flex justify-content-center align-items-center "><i class="icofont-cart font-size-2-5 pr-2"></i>
+                                                    <p class="font-size mb-0 ">Mua deal sốc</p>
+                                                </button>
+                                                <div class="col-8 total-mua-kem-deal-soc">
+                                                    <input type="hidden" name="tong_cong_deal" value="">
+                                                    <p class="mb-0"><b class="text-dark pr-2">Tổng cộng:</b> <span class="font-weight-5 text-dark tong_cong_deal_vnd"></span>
+                                                        <strike class="pl-3 text-secondary gia_chua_giam_deal"></strike>
+                                                    </p>
+                                                    <p class="text-primary-color mb-0">Tiết kiệm : <span class="tiet_kiem_duoc"></span></p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                        <?php
+                                }
+                            }
+                        }
+                        ?>
+
                     </div>
                 </div>
 
@@ -598,8 +719,20 @@
                                     <p class="tab__menu-product-newproduct-name text-overflow  mb-2">
                                         <?= $sp_cung_dm['ten_sp'] ?>
                                     </p>
-                                    <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span>
+                                    <!-- <span class="tab__menu-product-newproduct-code-label">Giảm 100K</span> -->
                                     <!-- <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span> -->
+                                    <?php
+                                    $list_deal_soc = deal_soc_Query_All_Sp_Chinh();
+                                    if (count($list_deal_soc) > 0) {
+                                        foreach ($list_deal_soc as $deal_soc) {
+                                            if ($deal_soc['id_sp_chinh'] == $sp_cung_dm['id_sp']) {  ?>
+                                                <span class="tab__menu-product-newproduct-deal-label">Mua kèm Deal sốc</span>
+
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
                                     <div class="tab__menu-product-newproduct-price d-flex">
                                         <b class="tab__menu-product-newproduct-newprice pt-2">
                                             <?= number_format($sp_cung_dm['don_gia'], 0, ',', '.') . 'đ' ?>

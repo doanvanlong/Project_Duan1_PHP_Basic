@@ -79,17 +79,20 @@
             <div class="row g-3 align-items-center box-form-giam-gia add-them-san-pham">
                 <div class="col-8">
                     <label for="" class="col-form-label pr-4">Sản phẩm</label>
-                    <small class="text-secondary"><span class="text-danger">
+                    <small class="text-secondary">
+                        <span class="text-danger">
                             <?php if (isset($_SESSION['add-giam-gia']) && count($_SESSION['add-giam-gia']) > 0) {
                                 echo count($_SESSION['add-giam-gia']) + count($list_info_all_sp);
                             }
-<<<<<<< HEAD
                             if (!isset($_SESSION['add-giam-gia'])) {
-=======
->>>>>>> 13a134285c0f23305cc49bc7a7b48b674ae4eed0
                                 echo count($list_info_all_sp);
+                            }
                             ?>
-                        </span>&nbsp;sản phẩm tham gia chương trình giảm giá này</small>
+                        </span>
+                        &nbsp;sản phẩm tham gia chương trình giảm giá này
+
+                    </small>
+
                 </div>
                 <div class="col-4 text-right">
                     <div class="btn btn-outline-dark unremove-lai-modal " data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-plus"></i> Thêm sản phẩm</div>
@@ -100,7 +103,7 @@
                 <!-- load ajjax -->
                 <!-- khi click vào xoá ,hoặc thêm lần thứ 2 vào session  -->
                 <div class="col-12">
-                    <table id="" class="table table-striped table-bordered" style="width:100%">
+                    <table id="" class="table table-striped " style="width:100%">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -588,20 +591,20 @@
                         type: "POST",
                         data: $("#form_update_giam_gia").serializeArray(),
                         success: function(data) {
-                              if (data == 1) {
+                            if (data == 1) {
                                 toast({
-                                  title: "Thành công",
-                                  msg: "Cập nhật giảm giá thành công !",
-                                  type: "success",
-                                  duration: 5000,
-                                  link: "add-giam-gia",
+                                    title: "Thành công",
+                                    msg: "Cập nhật giảm giá thành công !",
+                                    type: "success",
+                                    duration: 5000,
+                                    link: "add-giam-gia",
                                 });
-                                setTimeout(function () {
-                                  window.location.href = "giam-gia";
+                                setTimeout(function() {
+                                    window.location.href = "giam-gia";
                                 }, 1200);
                                 //khi add thành công,và xoá session done thì reload về
                                 // trang list giảm giá
-                              }
+                            }
                         },
                     });
 

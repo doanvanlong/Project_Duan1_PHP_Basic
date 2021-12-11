@@ -113,3 +113,27 @@ switch ($list_orders['ngay_giao_hang']) {
         </div>
     </div>
 </div>
+<style>
+    
+.bold-red {
+    font-weight: bolder;
+    color: red;
+}
+
+.bold>p>span {
+    font-weight: bolder;
+}
+
+.bold {
+    width: 97%;
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 2em 2em;
+    padding: 1em 1em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+
+.content-detail {
+    text-align: center;
+}
+</style>

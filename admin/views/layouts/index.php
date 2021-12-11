@@ -228,6 +228,7 @@
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/giam-gia.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/don-hang.js"></script>
     <script src="<?= $CONTENT_ADMIN_URL ?>/js/ma-giam-gia.js"></script>
+    <script src="<?= $CONTENT_ADMIN_URL ?>/js/deal-soc.js"></script>
 
 
 

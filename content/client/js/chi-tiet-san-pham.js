@@ -46,6 +46,7 @@ $(document).ready(function () {
     margin: 10,
     nav: true,
     autoPlay: true,
+    dots: false,
     navText: [
       '<i class="fas fa-chevron-left"></i>',
       '<i class="fas fa-chevron-right"></i>',

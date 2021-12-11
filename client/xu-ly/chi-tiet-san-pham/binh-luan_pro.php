@@ -186,7 +186,7 @@ if (isset($_POST['id_sp_comment'])) {
     <?php
     } ?>
     <!-- phân trang -->
-    <div class="phan-trang-comment mt-5 mb-2 d-flex justify-content-center">
+    <!-- <div class="phan-trang-comment mt-5 mb-2 d-flex justify-content-center">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
@@ -206,7 +206,7 @@ if (isset($_POST['id_sp_comment'])) {
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> -->
     <script>
         $(document).ready(function() {
             //xử lý reply comment

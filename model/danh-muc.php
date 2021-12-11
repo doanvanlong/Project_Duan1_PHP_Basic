@@ -35,7 +35,12 @@ function danh_muc_con_QueryOne($id_sub_dm_pro)
     $sql = "SELECT * FROM sub_danh_muc_pro where id_sub_dm_pro = ?";
     return pdo_query_one($sql,$id_sub_dm_pro);
 }
-
+// hàm truy vấn all danh mục phụ kiện
+function danh_muc_con_Query_Phu_Kien()
+{
+    $sql = "SELECT * FROM sub_danh_muc_pro where id_dm_pro = 48";
+    return pdo_query($sql);
+}
 // hàm thêm mới danh mục con
 function danh_muc_con_Insert($ten_sub_dm_pro, $id_dm_pro)
 {

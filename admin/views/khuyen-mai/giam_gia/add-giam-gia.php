@@ -7,7 +7,7 @@
                 <label for="" class="col-form-label">Tên chương trình giảm giá</label>
             </div>
             <div class="col-5">
-                <input type="text" class="form-control" name="ten_ct_giam_gia" aria-describedby="">
+                <input type="text" class="form-control" autocomplete="off" name="ten_ct_giam_gia" aria-describedby="">
                 <small class="text-danger error-ten_ct_giam_gia"></small>
             </div>
 

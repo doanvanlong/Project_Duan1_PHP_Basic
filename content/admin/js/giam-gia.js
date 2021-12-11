@@ -225,7 +225,7 @@ $(document).ready(function () {
     }
   });
   //kiểm tra mới insert vào DB
-  
+
   $("#form_add_giam_gia").submit(function (e) {
     e.preventDefault();
     if (
@@ -342,6 +342,8 @@ $(document).ready(function () {
       }
     );
   });
+
+  
 
   // Click vào kết thúc để đóng chương trình giảm giá
   $(".ket_thuc_km").click(function () {
