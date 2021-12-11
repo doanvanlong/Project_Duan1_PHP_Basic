@@ -64,7 +64,7 @@ if (isset($_POST['id_sp_comment'])) {
                     </div>
                 <?php
                 } else { ?>
-                    <div class="comment-render-avatar" style="background-image:url('<?= $AVTUSER_UPLOAD?>/<?= $info_kh_db['hinh_anh'] ?>')">
+                    <div class="comment-render-avatar" style="background-image:url('<?= $AVTUSER_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
                     </div>
                 <?php
                 }
@@ -111,17 +111,17 @@ if (isset($_POST['id_sp_comment'])) {
                 foreach ($list_bl_reply as $bl_reply) {
                     if ($bl_reply['id_bl_pro'] == $bl['id_bl_pro']) {
 
-                        $info_kh_db = khach_hang_Query_One($bl_reply['id_kh']) ?>
+                        $info_kh_db = khach_hang_Query_One($bl_reply['id_kh']);
+                ?>
                         <div class="comment-render-content chia-nhanh-reply pl-2 col-11 my-3 d-flex">
                             <div>
                                 <?php
-                                $info_kh_db = khach_hang_Query_One($bl['id_kh']);
                                 if ($info_kh_db['hinh_anh'] == "") { ?>
                                     <div class="comment-render-avatar" style="background-image:url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png')">
                                     </div>
                                 <?php
                                 } else { ?>
-                                    <div class="comment-render-avatar" style="background-image:url('<?= $AVTUSER_UPLOAD?>/<?= $info_kh_db['hinh_anh'] ?>')">
+                                    <div class="comment-render-avatar" style="background-image:url('<?= $AVTUSER_UPLOAD ?>/<?= $info_kh_db['hinh_anh'] ?>')">
                                     </div>
                                 <?php
                                 }

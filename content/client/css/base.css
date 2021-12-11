@@ -136,7 +136,6 @@ a:hover {
     padding-right: 15px;
     padding-left: 15px;
 }
-<<<<<<< HEAD
 .col-1-7 {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 14.28%;
@@ -153,11 +152,6 @@ a:hover {
 
 .primary{
   background-color: #f15a29;
-=======
-
-.primary {
-    background-color: #f15a29;
->>>>>>> a476c713fb1bd3c94c48c64095f1e6101811774e
 }
 
 button:disabled:hover {
@@ -238,7 +232,6 @@ input[type="checkbox"] {
     color: var(--dark);
 }
 
-<<<<<<< HEAD
 /* chi tiết sp mua kèm deal sốc label */
 .label_deal_soc{
   background-color: #fbebed !important;
@@ -277,8 +270,7 @@ input[type="checkbox"] {
 }
 .active_phu_kien.active .box-icon_dm-pk{
   background-color: #f15b294d;
-=======
+}
 .thong_bao_user-content-text {
     color: var(--secondary);
->>>>>>> a476c713fb1bd3c94c48c64095f1e6101811774e
 }
