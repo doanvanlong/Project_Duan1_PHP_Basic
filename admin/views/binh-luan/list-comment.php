@@ -29,7 +29,7 @@
                         <td class="align-middle">' . $Content . '</td>
                         <td class="align-middle">' . $Date . '</td>
                         <td class="align-middle">
-                        <a href="' . $CLIENT_URL . '/san-pham?id=' . $ID_Product . '&name=' . $Name_Product . '" class="btn btn-outline-primary">Xem</a>
+                        <a target="_blank" href="' . $CLIENT_URL . '/san-pham?id=' . $ID_Product . '&name=' . $Name_Product . '" class="btn btn-outline-primary">Xem</a>
                         <a href="reply-comment?ID_Comment='.$ID_CMT.'" class="btn btn-outline-success" >Trả lời</a>
                         <span class="btn btn-outline-danger delete-cmt-product" data-id_comment_product='.$ID_CMT.'>Xoá</span>
                         </td>

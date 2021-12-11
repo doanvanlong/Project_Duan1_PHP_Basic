@@ -38,15 +38,9 @@
                                 echo '<td class="align-middle"><span style="font-weight:bold; color: var(--primary);">Chưa Xác Nhận</span></td>
                                     <td class="align-middle">
                                         <div class="btn-control">
-<<<<<<< HEAD
-                                            <button type="button" class="btn btn-success" value="daxacnhan" id="confirm" data-id_hoa_don=' . $id_hoa_don . '>Xác Nhận</button>
-                                            <button type="input" class="btn btn-danger" value="dahuy" id="cancelled" data-id_hoa_don=' . $id_hoa_don . '>Huỷ Đơn</button>
-                                            <button type="input" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $id_hoa_don . '" style="color: white;">Xem Chi Tiết</a></button>
-=======
                                             <div type="submit" class="btn btn-success confirmOrder" data-toggle="modal" data-target="#confirmOrder" data-id_hoa_don_confirm=' . $id_hoa_don . '>Xác Nhận</div>
                                             <div type="submit" class="btn btn-danger confirmCancelled" data-toggle="modal" data-target="#confirmCancelled" data-id_hoa_don_cancelled=' . $id_hoa_don . '>Huỷ Đơn</div>
                                             <div type="button" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $id_hoa_don . '" style="color: white;">Xem Chi Tiết</a></div>
->>>>>>> a476c713fb1bd3c94c48c64095f1e6101811774e
                                         </div>
                                     </td>
                                     </tr>';

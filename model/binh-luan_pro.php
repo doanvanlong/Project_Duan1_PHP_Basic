@@ -33,7 +33,7 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
     // hàm truy vấn tất cả bình luận reply theo 1 sp và 1 id khách hàng
     function binh_luan_pro_Reply_Query_Top5_By_Id_Blpro($id_bl_pro){
-        $sql="SELECT * FROM reply_binh_luan_pro where   id_bl_pro=? ";
+        $sql="SELECT * FROM reply_binh_luan_pro where id_bl_pro=? ";
         return pdo_query($sql,$id_bl_pro);
     }
     // hàm xoá comment reply
