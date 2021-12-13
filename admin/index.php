@@ -13,6 +13,7 @@ require_once '../model/index-admin.php';
 require_once '../model/comment.php';
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $date_now = date('Y-m-d H:i:s');
+
 // kết thúc km nếu ngày hiện tại > ngày kết thúc
 $list_km = khuyen_mai_Query_Id_KM_Date_End(); //nếu bảng km có dữ liệu
 if (count($list_km) > 0 && is_array($list_km)) {

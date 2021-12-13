@@ -3,9 +3,9 @@ $(document).ready(function () {
 
   var mau_sac_chinh = $('[name*="mau_sac_chinh"]:checked').val();
   var hinh_anh_chinh = $('[name*="hinh-anh-chinh"]:checked').val();
-    if(hinh_anh_chinh == undefined){
-      hinh_anh_chinh = $('[name*="hinh-anh-chinh"]').val();
-    }
+  if (hinh_anh_chinh == undefined) {
+    hinh_anh_chinh = $('[name*="hinh-anh-chinh"]').val();
+  }
   $(".box-items-mau").click(function () {
     mau_sac_chinh = $(this).children("input").val();
   });
@@ -53,37 +53,67 @@ $(document).ready(function () {
 
   //add cart  mua deal sốc
   // kiểm tra có thêm sp vào deal sốc ko
-  $('.product-detail-mua-kem-deal-main-items-add-cart').click(function (){
-    if(!$(this).hasClass('active')){
-      $('.product-detail-mua-kem-deal-main-items-add-cart').removeClass('active');
-      $('.product-detail-mua-kem-deal-main-items-add-cart').children('.add-deal').children('span').text('Thêm vào');
-      $(this).addClass('active');
-      $(this).children(".add-deal").children('span').text('Đã thêm');
+  $(".product-detail-mua-kem-deal-main-items-add-cart").click(function () {
+    if (!$(this).hasClass("active")) {
+      $(".product-detail-mua-kem-deal-main-items-add-cart").removeClass(
+        "active"
+      );
+      $(".product-detail-mua-kem-deal-main-items-add-cart")
+        .children(".add-deal")
+        .children("span")
+        .text("Thêm vào");
+      $(this).addClass("active");
+      $(this).children(".add-deal").children("span").text("Đã thêm");
     }
-
-  })
+  });
   $(".add-deal").click(function () {
-  
     $('[name*="mua-deal"]').removeAttr("disabled");
     $('[name*="mua-deal"]').removeAttr("title");
-    var gia_sp_mua_kem=($(this).parent().parent().parent().children('.col-7').children().children('.product-detail-mua-kem-deal-main-items-content-price').children('.product-detail-mua-kem-deal-main-items-content-price-new').children('input').val());
-    var gia_sp_mua_kem_old=$(this).parent().parent().parent().children('.col-7').children().children('.product-detail-mua-kem-deal-main-items-content-price').children('.product-detail-mua-kem-deal-main-items-content-price-old').children('input').val();
-    var gia_sp_chinh=$('[name*="gia_sp_chinh"]').val();
-    gia_sp_chinh=new Number(gia_sp_chinh);
-    gia_sp_mua_kem_old=new Number(gia_sp_mua_kem_old);
-    gia_sp_mua_kem=new Number(gia_sp_mua_kem);
-    var tiet_kiem_duoc= gia_sp_mua_kem_old - gia_sp_mua_kem;
-    tiet_kiem_duoc=tiet_kiem_duoc.toLocaleString('vi',{style:'currency',currency:'VND'});
-    var gia_chua_giam_deal=gia_sp_chinh + gia_sp_mua_kem_old;
-    gia_chua_giam_deal=gia_chua_giam_deal.toLocaleString('vi',{style:'currency',currency:'VND'});
-    var tong_cong_deal=gia_sp_chinh + gia_sp_mua_kem;
-    $('[name*="tong_cong_deal"]').val(tong_cong_deal);//gán vào input hidden tổng tiền cart
+    var gia_sp_mua_kem = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .children(".col-7")
+      .children()
+      .children(".product-detail-mua-kem-deal-main-items-content-price")
+      .children(".product-detail-mua-kem-deal-main-items-content-price-new")
+      .children("input")
+      .val();
+    var gia_sp_mua_kem_old = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .children(".col-7")
+      .children()
+      .children(".product-detail-mua-kem-deal-main-items-content-price")
+      .children(".product-detail-mua-kem-deal-main-items-content-price-old")
+      .children("input")
+      .val();
+    var gia_sp_chinh = $('[name*="gia_sp_chinh"]').val();
+    gia_sp_chinh = new Number(gia_sp_chinh);
+    gia_sp_mua_kem_old = new Number(gia_sp_mua_kem_old);
+    gia_sp_mua_kem = new Number(gia_sp_mua_kem);
+    var tiet_kiem_duoc = gia_sp_mua_kem_old - gia_sp_mua_kem;
+    tiet_kiem_duoc = tiet_kiem_duoc.toLocaleString("vi", {
+      style: "currency",
+      currency: "VND",
+    });
+    var gia_chua_giam_deal = gia_sp_chinh + gia_sp_mua_kem_old;
+    gia_chua_giam_deal = gia_chua_giam_deal.toLocaleString("vi", {
+      style: "currency",
+      currency: "VND",
+    });
+    var tong_cong_deal = gia_sp_chinh + gia_sp_mua_kem;
+    $('[name*="tong_cong_deal"]').val(tong_cong_deal); //gán vào input hidden tổng tiền cart
     // gán lại tổng deal VND
-    tong_cong_deal=tong_cong_deal.toLocaleString('vi',{style:'currency',currency:'VND'});
-    $('.tong_cong_deal_vnd').text(tong_cong_deal);
-   
-    $('.gia_chua_giam_deal').text(gia_chua_giam_deal);
-    $('.tiet_kiem_duoc').text(tiet_kiem_duoc);
+    tong_cong_deal = tong_cong_deal.toLocaleString("vi", {
+      style: "currency",
+      currency: "VND",
+    });
+    $(".tong_cong_deal_vnd").text(tong_cong_deal);
+
+    $(".gia_chua_giam_deal").text(gia_chua_giam_deal);
+    $(".tiet_kiem_duoc").text(tiet_kiem_duoc);
     $('[name*="mua-deal"]').click(function (e) {
       $("#add-cart").submit(function (e) {
         e.preventDefault();
@@ -106,7 +136,7 @@ $(document).ready(function () {
             dung_luong_chinh: dung_luong_chinh,
             mau_sac_chinh: mau_sac_chinh,
             ten_sp_deal: ten_sp_deal,
-            id_sp_deal:id_sp_mua_kem,
+            id_sp_deal: id_sp_mua_kem,
             gia_sp_deal: gia_sp_mua_kem,
             hinh_anh_chinh: hinh_anh_chinh,
             hinh_anh_deal: hinh_anh_sp_deal,
@@ -179,11 +209,11 @@ $(document).ready(function () {
               style: "currency",
               currency: "VND",
             });
-            var  dung_luong=item.dung_luong;
-            if(dung_luong !=""){
-              dung_luong=dung_luong + "GB";
-            }else{
-              dung_luong="";
+            var dung_luong = item.dung_luong;
+            if (dung_luong != "") {
+              dung_luong = dung_luong + "GB";
+            } else {
+              dung_luong = "";
             }
             var thanh_tien = item.thanh_tien;
             thanh_tien = new Number(thanh_tien);
@@ -458,9 +488,7 @@ $(document).ready(function () {
           $("body").attr("style", "");
           $(".fade").removeClass("modal-backdrop");
           // khi xoá cart thì xoá storage ko thì User quay lại mua hang 100k vẫn đc giảm tiền
-          window.localStorage.removeItem(
-            "so_tien_duoc_giam_ap_ma_giam_gia"
-          );
+          window.localStorage.removeItem("so_tien_duoc_giam_ap_ma_giam_gia");
           window.localStorage.removeItem("id_ma_giam_gia");
           window.localStorage.removeItem("id_kh");
           load_tong_tien_checkout();
@@ -476,7 +504,7 @@ $(document).ready(function () {
       { load_tong_tien_checkout: "load_tong_tien_checkout" },
       function (data) {
         var data = JSON.parse(data);
-        if (data.so_dien_thoai != null && data.dia_chi != null ) {
+        if (data.so_dien_thoai != null && data.dia_chi != null) {
           var str = `
           <div class="cart__total-prices ">
           <div class="cart__total-prices-shipAddress">
@@ -628,7 +656,7 @@ $(document).ready(function () {
       </div>
       <a href="checkout" class="cart__total-price-btnCheckout">
       
-          <button class="btn primary btnCheckout">Thanh toán</button>
+          <button disabled class="btn primary btnCheckout">Thanh toán</button>
       </a>
       `;
         }
@@ -772,10 +800,10 @@ $(document).ready(function () {
             </div>
         
         </div>
-        <a href="success" id="checkout_success" class="cart__total-price-btnCheckout">
+        <p href="success" id="checkout_success" class="cart__total-price-btnCheckout">
         
             <button class="btn primary btnCheckout">Thanh toán</button>
-        </a>
+        </p>
       `;
         }
         $(".load_tong_tien_checkout-done").html(str);
@@ -821,96 +849,106 @@ $(document).ready(function () {
         var tong_tien_all = tong_tien_all.replace(/\D/g, "");
         var tien_duoc_giam = tien_duoc_giam.replace(/\D/g, "");
         var id_ma_giam_gia = window.localStorage.getItem("id_ma_giam_gia");
-       
+
         if (id_ma_giam_gia == "") {
           id_ma_giam_gia = "";
         }
+       
+        $('#checkout_success .btnCheckout').attr("disabled",true);
         var id_kh_ds = window.localStorage.getItem("id_kh");
         // window.localStorage.removeItem("id_kh");
         // click vào checkout success để ADD cart vào DB
-        $("#checkout_success").click(function (e) {
-          e.preventDefault();
-          var hinh_thuc_thanh_toan = $('[name*="checkout"]').val();
-          $.post(
-            "../client/xu-ly/cart/success.php",
-            {
-              checkout_success: tien_duoc_giam,
-              hinh_thuc_thanh_toan: hinh_thuc_thanh_toan,
-              tong_tien_all: tong_tien_all,
-              id_ma_giam_gia: id_ma_giam_gia,
-              id_kh_ds: id_kh_ds,
-            },
-            function (data) {
-             if (data == 1) {
-              //toast thông báo
-              function toast({
-                title = "",
-                msg = "",
-                link = "",
-                type = "success",
-                duration = 3000,
-              }) {
-                const main = document.getElementById("toast");
-                if (main) {
-                  const toast = document.createElement("div");
-                  //auto remove
-                  const autoRemoveId = setTimeout(function () {
-                    //trả lại id settimeout
-                    main.removeChild(toast);
-                  }, duration + 1000); //2 animation = 4s , settime khi end 1 animation thi clear
-                  //remove khi click
-                  toast.onclick = function (e) {
-                    if (e.target.closest(".toast__close")) {
-                      main.removeChild(toast);
-                      clearTimeout(autoRemoveId);
+        $('[name*="checkout"]').click(function () {
+        $('#checkout_success .btnCheckout').attr("disabled",false);
+          var hinh_thuc_thanh_toan = $(this).val();
+          $("#checkout_success").click(function (e) {
+            e.preventDefault();
+            if (hinh_thuc_thanh_toan == 0) {
+              //offline
+              $.post(
+                "../client/xu-ly/cart/success.php",
+                {
+                  checkout_success: tien_duoc_giam,
+                  hinh_thuc_thanh_toan: hinh_thuc_thanh_toan,
+                  tong_tien_all: tong_tien_all,
+                  id_ma_giam_gia: id_ma_giam_gia,
+                  id_kh_ds: id_kh_ds,
+                },
+                function (data) {
+                  if (data == 1) {
+                    //toast thông báo
+                    function toast({
+                      title = "",
+                      msg = "",
+                      link = "",
+                      type = "success",
+                      duration = 3000,
+                    }) {
+                      const main = document.getElementById("toast");
+                      if (main) {
+                        const toast = document.createElement("div");
+                        //auto remove
+                        const autoRemoveId = setTimeout(function () {
+                          //trả lại id settimeout
+                          main.removeChild(toast);
+                        }, duration + 1000); //2 animation = 4s , settime khi end 1 animation thi clear
+                        //remove khi click
+                        toast.onclick = function (e) {
+                          if (e.target.closest(".toast__close")) {
+                            main.removeChild(toast);
+                            clearTimeout(autoRemoveId);
+                          }
+                        };
+                        const icons = {
+                          success: "fas fa-check-circle",
+                          error: "fas fa-exclamation-circle",
+                        };
+                        const icon = icons[type];
+                        const delay = (duration / 1000).toFixed(2);
+                        toast.classList.add("toast", `toast--${type}`);
+                        toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
+
+                        toast.innerHTML = `
+
+                              <div class="toast__icon">
+                              <i class="${icon}"></i>
+                          </div>
+                          <div class="toast__body">
+                          <a href="${link}">
+                              <h4 class="toast__title">${title}</h4>
+                              <p class="toast__msg">${msg}</p>
+                          </a>
+                          </div>
+                          <div class="toast__close">
+                              <i class="fas fa-times"></i>
+                          </div>
+                              `;
+
+                        main.appendChild(toast);
+                      }
                     }
-                  };
-                  const icons = {
-                    success: "fas fa-check-circle",
-                    error: "fas fa-exclamation-circle",
-                  };
-                  const icon = icons[type];
-                  const delay = (duration / 1000).toFixed(2);
-                  toast.classList.add("toast", `toast--${type}`);
-                  toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
-
-                  toast.innerHTML = `
-                      
-                          <div class="toast__icon">
-                          <i class="${icon}"></i>
-                      </div>
-                      <div class="toast__body">
-                      <a href="${link}">
-                          <h4 class="toast__title">${title}</h4>
-                          <p class="toast__msg">${msg}</p>
-                      </a>
-                      </div>
-                      <div class="toast__close">
-                          <i class="fas fa-times"></i>
-                      </div>
-                          `;
-
-                  main.appendChild(toast);
+                    toast({
+                      title: "Thành công",
+                      msg: "Thanh toán thành công!",
+                      type: "success",
+                      duration: 5000,
+                      link: "#",
+                    });
+                    window.localStorage.removeItem(
+                      "so_tien_duoc_giam_ap_ma_giam_gia"
+                    );
+                    window.localStorage.removeItem("id_ma_giam_gia");
+                    window.localStorage.removeItem("id_kh");
+                    setTimeout(function () {
+                      window.location.href = "success";
+                    }, 1000);
+                  }
                 }
-              }
-              toast({
-                title: "Thành công",
-                msg: "Thanh toán thành công!",
-                type: "success",
-                duration: 5000,
-                link: "#",
-              });
-              window.localStorage.removeItem(
-                "so_tien_duoc_giam_ap_ma_giam_gia"
               );
-              window.localStorage.removeItem("id_ma_giam_gia");
-              window.localStorage.removeItem("id_kh");
-              setTimeout(function () {
-                window.location.href = "success";
-              }, 1000);
+            } else {
+              // online
             }
-            }
-          );
+          });
         });
       }
     );

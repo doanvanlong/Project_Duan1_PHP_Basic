@@ -285,3 +285,9 @@ input[type="checkbox"] {
 .thong_bao_user-content-text {
     color: var(--secondary);
 }
+.box-lien-he input{
+    font-size: 1.4rem;
+}
+.box-lien-he textarea{
+    font-size: 1.4rem;
+}

@@ -23,6 +23,7 @@ if (isset($_POST['checkout_success'])) {
 
     try {
         $id_hoa_don = cart_Add_DB($id_kh, $tinh_trang, $trang_thai, $hinh_thuc_thanh_toan, $tong_tien, $date, $giam_gia);
+        $_SESSION['id_hoa_don']=$id_hoa_don;
         foreach ($_SESSION['cart'] as $cart) {
             $id_sp = $cart['id_sp'];
             $so_luong_mua = $cart['so_luong'];

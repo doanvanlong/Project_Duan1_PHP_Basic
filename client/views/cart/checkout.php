@@ -47,11 +47,11 @@
                     </li>
                     <li class="px-4">
                         <h3 class="py-3">2. Chọn hình thức thanh toán</h3>
-                        <div class="lua_chon_checkout">
+                        <div class="lua_chon_checkout my-3">
                             <ul>
                                 <li >
                                     <label for="check1" class="d-flex align-items-center cursor-pointer">
-                                        <input type="radio" value="0" checked id="check1" name="checkout">
+                                        <input type="radio" value="0"  id="check1" name="checkout">
                                         <img class="px-3" src="<?= $CONTENT_CLIENT_URL ?>/img/icon-payment-method-cod.svg" alt="">
                                         <div>Thanh toán tiền mặt khi nhận hàng</div>
                                     </label>

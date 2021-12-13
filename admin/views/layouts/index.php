@@ -144,14 +144,6 @@
                             sách</a>
                     </div>
                 </li>
-                <li class="navigation__items">
-                    <div class="navigation__link d-flex align-items-center cursor-pointer">
-                        <span><i class="far fa-images"></i></span>
-                        <span style="white-space: nowrap;">Banner
-                        </span>
-                    </div>
-
-                </li>
 
                 <li class="navigation__items">
                     <div class="navigation__link d-flex align-items-center cursor-pointer">

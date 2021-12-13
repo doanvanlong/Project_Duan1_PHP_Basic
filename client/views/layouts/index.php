@@ -99,7 +99,7 @@
                                         </ul>
                                     </div>
                                     <?php
-                                    
+
                                     if ($info_kh['hinh_anh'] != "") {
                                         if ($_SESSION['login']['id_fb'] == "") {
                                             //login = username lấy ảnh từ Thư mục upload
@@ -110,73 +110,73 @@
                                         } else {
                                             // login = fb lấy ảnh = link website
                                             ?>
-                                            <!-- lấy ảnh DB ra -->
-                                            <div class="header__right-user-avatar mr-2" style="background-image: url('<?=$info_kh['hinh_anh'] ?>');">
-                                            <?php
-                                        }
-                                    } else {
-                                            ?>
-                                            <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png');">
-                                            <?php
-                                        }
-                                            ?>
-                                            </div>
-                                            <div class="header__right-user-login-text ">
-                                                <span class="header__right-user-login-title">
-                                                    Tài khoản
-                                                </span>
-                                                <p class="header__right-user-login-name"><?= $info_kh['ho_ten']; ?> <i class="fas fa-caret-down"></i></p>
-                                            </div>
-                                            </div>
-                                        <?php
-                                    } else { ?>
-                                            <!-- chưa đăng nhập -->
-                                            <a href="tai-khoan/login" class="header__right-user text-dark"><i class="icofont-user"></i></a>
-                                        <?php
-
-                                    }
-                                        ?>
-                                        <a href="" class="header__right-notification dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <!-- đếm thông báo dùng chung với đếm cart -->
-                                            <i class="far fa-bell"></i>
-                                            <div class="header__right-cart-count__items count_thong_bao_new text-dark d-flex justify-content-center align-items-center"></div>
-
-                                            <div class="dropdown-menu load_thong_bao_user" aria-labelledby="dropdownMenuLink">
-                                                <h5 class="thong_bao_user-title text-secondary my-2">Thông báo mới nhận</h5>
-                                                <div class="thong_bao_user-content ">
-
-                                                </div>
-                                                <div class="thong_bao_user-footer d-flex justify-content-center font-size-1-2">
-                                                    <a href="">Xem tất cả</a>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="cart" class="header__right-cart ">
-                                            <i class="icofont-cart-alt"></i>
-                                            <div class="load_count_cart_index">
+                                                <!-- lấy ảnh DB ra -->
+                                                <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $info_kh['hinh_anh'] ?>');">
                                                 <?php
-                                                if (sessionLogin_Isset()) {
-                                                    if (sessionCart_Isset()) {
-                                                        if (count($_SESSION['cart']) > 0) { ?>
-                                                            <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
-                                                                <?php echo count($_SESSION['cart']); ?>
-                                                            </div>
-                                                        <?php
-                                                        }
-                                                        ?>
-
-                                                <?php
-                                                    }
-                                                }
+                                            }
+                                        } else {
                                                 ?>
+                                                <div class="header__right-user-avatar mr-2" style="background-image: url('<?= $CONTENT_CLIENT_URL ?>/img/avatar.png');">
+                                                <?php
+                                            }
+                                                ?>
+                                                </div>
+                                                <div class="header__right-user-login-text ">
+                                                    <span class="header__right-user-login-title">
+                                                        Tài khoản
+                                                    </span>
+                                                    <p class="header__right-user-login-name"><?= $info_kh['ho_ten']; ?> <i class="fas fa-caret-down"></i></p>
+                                                </div>
+                                                </div>
+                                            <?php
+                                        } else { ?>
+                                                <!-- chưa đăng nhập -->
+                                                <a href="tai-khoan/login" class="header__right-user text-dark"><i class="icofont-user"></i></a>
+                                            <?php
+
+                                        }
+                                            ?>
+                                            <a href="" class="header__right-notification dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <!-- đếm thông báo dùng chung với đếm cart -->
+                                                <i class="far fa-bell"></i>
+                                                <div class="header__right-cart-count__items count_thong_bao_new text-dark d-flex justify-content-center align-items-center"></div>
+
+                                                <div class="dropdown-menu load_thong_bao_user" aria-labelledby="dropdownMenuLink">
+                                                    <h5 class="thong_bao_user-title text-secondary my-2">Thông báo mới nhận</h5>
+                                                    <div class="thong_bao_user-content ">
+
+                                                    </div>
+                                                    <div class="thong_bao_user-footer d-flex justify-content-center font-size-1-2">
+                                                        <a href="">Xem tất cả</a>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="cart" class="header__right-cart ">
+                                                <i class="icofont-cart-alt"></i>
+                                                <div class="load_count_cart_index">
+                                                    <?php
+                                                    if (sessionLogin_Isset()) {
+                                                        if (sessionCart_Isset()) {
+                                                            if (count($_SESSION['cart']) > 0) { ?>
+                                                                <div class="header__right-cart-count__items text-dark d-flex justify-content-center align-items-center">
+                                                                    <?php echo count($_SESSION['cart']); ?>
+                                                                </div>
+                                                            <?php
+                                                            }
+                                                            ?>
+
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </div>
+
+                                            </a>
                                             </div>
 
-                                        </a>
                                 </div>
-
                         </div>
                     </div>
-                </div>
 
         </header>
         <!-- end header -->
@@ -280,43 +280,44 @@
                     <div class="row">
                         <div class="col-12 d-flex">
                             <div class="footer__socical">
-                                <a href="" class="footer__socical-link">
+                                <a target="_blank" href="https://www.facebook.com/LTsmart-100568199007047/?ref=pages_you_manage" class="footer__socical-link">
                                     <div class="footer__socical-btn">
                                         <i class="icofont-facebook"></i>
                                     </div>
                                     <span>Facebook</span>
                                 </a>
-                                <a href="" class="footer__socical-link">
+                                <a href="#" class="footer__socical-link">
                                     <div class="footer__socical-btn">
                                         <i class="icofont-twitter"></i>
                                     </div>
                                     <span>Twitter</span>
                                 </a>
-                                <a href="" class="footer__socical-link">
+                                <a href="#" class="footer__socical-link">
                                     <div class="footer__socical-btn">
                                         <i class="icofont-google-plus"></i>
                                     </div>
                                     <span>Google++</span>
                                 </a>
-                                <a href="" class="footer__socical-link">
+                                <a href="#" class="footer__socical-link">
                                     <div class="footer__socical-btn">
                                         <i class="icofont-instagram"></i>
                                     </div>
                                     <span>Instagram</span>
                                 </a>
-                                <a href="" class="footer__socical-link">
+                                <a href="#" class="footer__socical-link">
                                     <div class="footer__socical-btn">
                                         <i class="icofont-youtube-play"></i>
                                     </div>
                                     <span>Youtube</span>
                                 </a>
                             </div>
-                            <form action="" method="post" class="footer__form">
+                            <form action="" id="lien_he"  method="post" class="footer__form">
                                 <h2 class="footer__form-heading">
                                     Đăng ký nhận khuyến mãi <span>20%</span>
                                 </h2>
-                                <input autocomplete="off" class="footer__form-input" type="text" name="tenkh" placeholder="Nhập Họ Tên...">
-                                <input autocomplete="off" class="footer__form-input" type="email" name="emailkh" placeholder="Nhập Email...">
+                                <input type="hidden" name="noidung_lh">
+                                <input autocomplete="off" class="footer__form-input" type="text" name="ho_ten_kh_lh" placeholder="Nhập Họ Tên...">
+                                <input autocomplete="off" class="footer__form-input" type="email" name="email_kh_lh" placeholder="Nhập Email...">
                                 <button type="" name="phanhoi" class="footer__form-btn">
                                     <i class="icofont-paper-plane"></i>
                                 </button>
@@ -335,16 +336,16 @@
                                 </h3>
                                 <ul class="footer__contact-list">
                                     <li class="footer__contact-items">
-                                        <a href=""><i class="icofont-home"></i>137 Nguyễn Thị Thập, Liên Chiểu ,Tp Đà Nẵng</a>
+                                        <a href="#"><i class="icofont-home"></i>137 Nguyễn Thị Thập, Liên Chiểu ,Tp Đà Nẵng</a>
                                     </li>
                                     <li class="footer__contact-items">
-                                        <a href=""><i class="icofont-phone"></i>0888999888</a>
+                                        <a href="#"><i class="icofont-phone"></i>0888999888</a>
                                     </li>
                                     <li class="footer__contact-items">
-                                        <a href=""><i class="icofont-email"></i>contact.ltsmart@gmail.com</a>
+                                        <a href="#"><i class="icofont-email"></i>contact.ltsmart@gmail.com</a>
                                     </li>
                                     <li class="footer__contact-items">
-                                        <a href=""><i class="icofont-clock-time"></i>7 ngày trong tuần từ 8:00 sáng đến 9:00 tối</a>
+                                        <a href="#"><i class="icofont-clock-time"></i>7 ngày trong tuần từ 8:00 sáng đến 9:00 tối</a>
                                     </li>
                                 </ul>
                             </div>
@@ -354,16 +355,16 @@
                                 </h3>
                                 <ul class="footer__local-list">
                                     <li class="footer__local-items">
-                                        <a href=""> Đà Nẵng - Việt Nam</a>
+                                        <a href="#"> Đà Nẵng - Việt Nam</a>
                                     </li>
                                     <li class="footer__local-items">
-                                        <a href="">Cần Thơ - Việt Nam</a>
+                                        <a href="#">Cần Thơ - Việt Nam</a>
                                     </li>
                                     <li class="footer__local-items">
-                                        <a href="">HCM - Việt Nam</a>
+                                        <a href="#">HCM - Việt Nam</a>
                                     </li>
                                     <li class="footer__local-items">
-                                        <a href="">Hà Nội - Việt Nam</a>
+                                        <a href="#">Hà Nội - Việt Nam</a>
                                     </li>
                                 </ul>
                             </div>
@@ -373,16 +374,16 @@
                                 </h3>
                                 <ul class="footer__service-list">
                                     <li class="footer__service-items">
-                                        <a href=""> Về chúng tôi</a>
+                                        <a href="lien-he"> Về chúng tôi</a>
                                     </li>
                                     <li class="footer__service-items">
-                                        <a href="">Dịch vụ khách hàng</a>
+                                        <a href="#">Dịch vụ khách hàng</a>
                                     </li>
                                     <li class="footer__service-items">
-                                        <a href="">Chính sách bảo mật</a>
+                                        <a href="#">Chính sách bảo mật</a>
                                     </li>
                                     <li class="footer__service-items">
-                                        <a href="">Tìm kiếm nâng cao</a>
+                                        <a href="#">Tìm kiếm nâng cao</a>
                                     </li>
                                 </ul>
                             </div>
@@ -391,36 +392,34 @@
                                     Tag
                                 </h3>
                                 <ul class="footer__tag-list">
-                                    <li class="footer__tag-items">
-                                        <a href="index.php?page_layout=danhmucsanpham&id=8" class="footer__tag-link">
-                                            Iphone
-                                        </a>
-                                    </li>
-                                    <li class="footer__tag-items">
-                                        <a href="index.php?page_layout=danhmucsanpham&id=5" class="footer__tag-link">
-                                            Samsung
-                                        </a>
-                                    </li>
-                                    <li class="footer__tag-items">
-                                        <a href="index.php?page_layout=danhmucsanpham&id=13" class="footer__tag-link">
-                                            Oppo
-                                        </a>
-                                    </li>
-                                    <li class="footer__tag-items">
-                                        <a href="index.php?page_layout=nhucau&id=1" class="footer__tag-link">
-                                            Vivo
-                                        </a>
-                                    </li>
-                                    <li class="footer__tag-items">
-                                        <a href="#" class="footer__tag-link">
-                                            Realme
-                                        </a>
-                                    </li>
-                                    <li class="footer__tag-items">
-                                        <a href="index.php?page_layout=danhmucsanpham&id=12" class="footer__tag-link">
-                                            Xiaomi
-                                        </a>
-                                    </li>
+                                    <?php
+                                    $list_dm_con = danh_muc_con_QueryAll();
+                                    if (count($list_dm_con) > 0) {
+                                        foreach ($list_dm_con as $dm_con) { ?>
+                                            <li class="footer__tag-items">
+                                                <?php
+                                                if ($dm_con['id_dm_pro'] == 47) { ?>
+                                                    <a href="dien-thoai" class="footer__tag-link">
+                                                        <?= $dm_con['ten_sub_dm_pro'] ?>
+                                                    </a>
+                                                <?php
+                                                } else { ?>
+                                                    <a href="phu-kien" class="footer__tag-link">
+                                                        <?= $dm_con['ten_sub_dm_pro'] ?>
+                                                    </a>
+                                                <?php
+                                                }
+
+                                                ?>
+                                            </li>
+
+                                    <?php
+
+                                        }
+                                    }
+                                    ?>
+
+
 
 
                                 </ul>
@@ -432,6 +431,37 @@
         </footer>
         <!-- end footer -->
     </div>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "100568199007047");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/main.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/home.js"> </script>
     <script src="<?= $CONTENT_CLIENT_URL ?>/js/chi-tiet-san-pham.js"> </script>
