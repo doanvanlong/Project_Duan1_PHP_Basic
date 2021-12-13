@@ -54,7 +54,7 @@
       <div class="my-4">
         <div class="btn btn-success" id="checkall-san-pham">Chọn tất cả</div>
         <div class="btn btn-success" id="uncheck-san-pham">Bỏ chọn</div>
-        <button type="submit" onclick="return confirm('Bạn có muốn xoá sản phẩm  này không?')" class="btn btn-success">Xoá mục đã chọn</button>
+        <button type="submit" onclick="return confirm('Bạn có muốn xoá sản phẩm này không?')" class="btn btn-success">Xoá mục đã chọn</button>
       </div>
     </form>
   <?php

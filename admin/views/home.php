@@ -96,7 +96,7 @@ foreach ($new_sales as $sales) {
                                                             src="' . $CONTENT_UPLOAD . '/' . $IMG . '"
                                                             alt="Ảnh sản phẩm bán chạy"></td>
                                                     <td class="text-overflow middle">' . $Name_Product . '</td>
-                                                    <td class="middle"><a href="' . $CLIENT_URL . '/san-pham?id=' . $ID_Product . '&name=' . $Name_Product . '"><i class="far fa-eye"></i></a></td>
+                                                    <td class="middle"><a target="_blank" href="' . $CLIENT_URL . '/san-pham?id=' . $ID_Product . '&name=' . $Name_Product . '"><i class="far fa-eye"></i></a></td>
                                                 </tr>
                                             </tbody>';
                             $i++;
@@ -158,7 +158,7 @@ foreach ($new_sales as $sales) {
                                 extract($product);
                                 if ($id_product == $ID_Pro) {
                                     echo '<td class="middle">
-                                    <a href="' . $CLIENT_URL . '/san-pham?id=' . $id_product . '&name=' . $name_product . '"> <i class="far fa-eye"></i></a>
+                                    <a target="_blank" href="' . $CLIENT_URL . '/san-pham?id=' . $id_product . '&name=' . $name_product . '"> <i class="far fa-eye"></i></a>
                                 </td>
                             </tr>
                         </tbody>';

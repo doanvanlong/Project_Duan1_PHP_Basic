@@ -156,7 +156,7 @@
                 <li class="navigation__items">
                     <div class="navigation__link d-flex align-items-center cursor-pointer">
                         <span><i class="fas fa-chart-pie"></i></span>
-                        <span style="white-space: nowrap;">Thống kê</span>
+                        <a href="statistical"><span style="white-space: nowrap; color:var(--dark);">Thống kê</span></a>
                     </div>
                 </li>
 

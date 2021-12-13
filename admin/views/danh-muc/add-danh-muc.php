@@ -5,7 +5,7 @@
         <form action="" id="add-danh-muc-chinh" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tên danh mục</label>
-                <input type="text" autocomplete="off" class="form-control" name="ten-danh-muc-chinh" id="" aria-describedby="" placeholder="Ví dụ : Điện thoai,Phụ kiện...">
+                <input type="text" autocomplete="off" class="form-control" name="ten-danh-muc-chinh" id="" aria-describedby="" placeholder="Ví dụ : Điện thoại, Phụ kiện...">
                 <small id="error-danh-muc-chinh" class="form-text text-danger "></small>
             </div>
             <button type="submit" name="submit-danh-muc-chinh" class="btn btn-success">Thêm mới</button>
@@ -17,7 +17,7 @@
         <form action="" id="add-danh-muc-con" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">Tên danh mục</label>
-                <input type="text" autocomplete="off" class="form-control" name="ten-danh-muc-con" id="" aria-describedby="" placeholder="Ví dụ : Oppo,Samsung,Tai nghe,Sạc...">
+                <input type="text" autocomplete="off" class="form-control" name="ten-danh-muc-con" id="" aria-describedby="" placeholder="Ví dụ : Oppo, Samsung, Tai nghe, Sạc...">
                 <small id="error-danh-muc-con" class="form-text text-danger "></small>
             </div>
             <div class="form-group">

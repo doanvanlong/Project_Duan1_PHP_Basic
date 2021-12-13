@@ -42,3 +42,20 @@
         $sql = "SELECT DISTINCT(san_pham.id_sp) AS id_product, san_pham.ten_sp AS name_product FROM san_pham INNER JOIN binh_luan_pro ON san_pham.id_sp = binh_luan_pro.id_sp;";
         return pdo_query($sql);
     }
+    //Thống kê danh mục chính
+    function main_category_statistics(){
+        $sql = "SELECT danh_muc_pro.ten_dm_pro AS Ten_Danh_Muc, COUNT(san_pham.ten_sp) AS San_Pham FROM `danh_muc_pro` INNER JOIN san_pham ON danh_muc_pro.id_dm_pro = san_pham.id_dm_pro GROUP BY Ten_Danh_Muc ORDER BY Ten_Danh_Muc DESC;";
+         return pdo_query($sql);
+    }
+    //Thống kê danh mục con
+    function subcategory_statistics(){
+        $sql = "SELECT sub_danh_muc_pro.ten_sub_dm_pro AS Ten_Danh_Muc_Con, COUNT(san_pham.ten_sp) AS So_Luong_San_Pham FROM sub_danh_muc_pro INNER JOIN san_pham ON sub_danh_muc_pro.id_sub_dm_pro = san_pham.id_sub_dm_pro GROUP BY Ten_Danh_Muc_Con;";
+        return pdo_query($sql);
+    }
+    //phân loại, giá cao nhất, giá thấp nhất...
+    function list_statistics(){
+        $sql = "SELECT sub_danh_muc_pro.id_sub_dm_pro AS ID, sub_danh_muc_pro.ten_sub_dm_pro AS Ten_Danh_Muc_Con, COUNT(san_pham.ten_sp) AS So_Luong_San_Pham, MAX(san_pham.don_gia) AS giaCaoNhat, MIN(san_pham.don_gia) AS giaThapNhat, AVG(san_pham.don_gia) AS giaTrungBinh FROM sub_danh_muc_pro";
+        $sql .= " INNER JOIN san_pham ON sub_danh_muc_pro.id_sub_dm_pro = san_pham.id_sub_dm_pro";
+        $sql .= " GROUP BY ID ORDER BY ID;";
+        return pdo_query($sql);
+    }
