@@ -19,10 +19,11 @@
                     </thead>
                     <tbody>
                         <?php
+                                                        
                         $i = 1;
                         if (!empty($list_user)) {
                             foreach ($list_user as $list) {
-                                extract($list);
+                                extract($list);                                
                                 echo '<tr style="text-align:center;">';
                                     if ($vai_tro == 1) {
                                         echo '<td class="align-middle"><span style="font-weight: bolder;color: red;">ADMIN</span></td>';
@@ -35,11 +36,16 @@
                                     <td class="align-middle">' . $username . '</td>
                                     <td class="align-middle">' . $ho_ten . '</td>';
                                 if ($hinh_anh != "") {
-                                    
-                                    echo '<td class="align-middle"><img style="width:30%;" src="' . $AVTUSER_UPLOAD . '/' . $hinh_anh . '" alt="Ảnh đại diện"></td>';
+                                    $sub = "http";
+                                    if (strpos($hinh_anh, $sub) !== false) {
+                                        echo '<td class="align-middle"><img style="width:30%;" src="'. $hinh_anh . '" alt="Ảnh đại diện Facebook"></td>';
+                                    } else {
+                                        echo '<td class="align-middle"><img style="width:30%;" src="' . $AVTUSER_UPLOAD . '/' . $hinh_anh . '" alt="Ảnh đại diện"></td>';
+                                    }
                                 } else {
                                     echo '<td class="align-middle"><img style="width:30%;" src="' . $CONTENT_CLIENT_URL . '/img/avatar.png" alt="Không có ảnh đại diện"></td>';
                                 }
+                                
                                 echo '
                                     <td class="align-middle">' . $so_dien_thoai . '</td>
                                     <td class="align-middle">' . $email . '</td>';

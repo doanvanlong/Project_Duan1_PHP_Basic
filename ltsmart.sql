@@ -452,7 +452,7 @@ CREATE TABLE `khach_hang` (
 
 INSERT INTO `khach_hang` (`id_kh`, `username`, `mat_khau`, `ho_ten`, `hinh_anh`, `so_dien_thoai`, `email`, `dia_chi`, `vai_tro`) VALUES
 (13, 'longdv', '87654321', 'Long Đoàn', 'Đoàn Văn Long PD05236 (2).jpg', '0378854216', '22@gmail.com', '214 Âu Cơ - Hoà Khánh Bắc - Liên Chiểu - Tp Đà Nẵng', 1),
-(14, 'thangpham', '12345678', 'Thắng Phạm', NULL, '', '', NULL, 0),
+(14, 'thangpham', '12345678', 'Thắng Phạm', NULL, '', '', NULL, 1),
 (15, 'longdv1', '12345678', 'Long', NULL, NULL, NULL, NULL, 0),
 (26, 'bglight', '12345678', 'Bg Light', NULL, '0333333333', 'ngukudu@gmail.com', 'Đà Nẵng', 0),
 (30, NULL, NULL, 'Long Đoàn', 'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=3237155579861475&height=200&width=200&ext=1641741014&hash=AeQJItwovxNbaqR_utk', '0333333333', 'longlongdoan1998@gmail.com', 'Quảng Nam', 0);
