@@ -15,38 +15,38 @@ require_once '../model/binh_luan_news.php';
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $date_now = date('Y-m-d H:i:s');
-// kết thúc km nếu ngày hiện tại > ngày kết thúc
-$list_km = khuyen_mai_Query_Id_KM_Date_End(); //nếu bảng km có dữ liệu
-if (count($list_km) > 0 && is_array($list_km)) {
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
-    $date_now = date('Y-m-d H:i:s');
-    //khuyến mãi
-    foreach ($list_km as $km) {
-        if ($date_now >= $km['ngay_ket_thuc']) {
-            //    đã kết thúc 
-            // update lại thành 0
-            $id_km = $km['id_khuyen_mai'];
-            khuyen_mai_Update_Ket_Thuc_KM($id_km, $date_now);
-        } else {
-            // echo 1;
-        }
-    }
-}
-//kết thúc km nếu số lượt sử dụng < số lươt đã sử Dụng
-$list_km_sd = khuyen_mai_Query_Id_KM_So_Luot_SD();
-if (count($list_km_sd) > 0 && is_array($list_km_sd)) {
-    //khuyến mãi
-    foreach ($list_km_sd as $km_sd) {
-        if ($km_sd['so_luot_su_dung'] <= $km_sd['da_su_dung']) {
-            //    đã kết thúc 
-            // update lại thành 0
-            $id_km = $km_sd['id_khuyen_mai'];
-            khuyen_mai_Update_Ket_Thuc_KM($id_km, $date_now);
-        } else {
-            // echo 1;
-        }
-    }
-}
+// // kết thúc km nếu ngày hiện tại > ngày kết thúc
+// $list_km = khuyen_mai_Query_Id_KM_Date_End(); //nếu bảng km có dữ liệu
+// if (is_array($list_km) && count($list_km) > 0 ) {
+//     date_default_timezone_set('Asia/Ho_Chi_Minh');
+//     $date_now = date('Y-m-d H:i:s');
+//     //khuyến mãi
+//     foreach ($list_km as $km) {
+//         if ($date_now >= $km['ngay_ket_thuc']) {
+//             //    đã kết thúc 
+//             // update lại thành 0
+//             $id_km = $km['id_khuyen_mai'];
+//             khuyen_mai_Update_Ket_Thuc_KM($id_km, $date_now);
+//         } else {
+//             // echo 1;
+//         }
+//     }
+// }
+// //kết thúc km nếu số lượt sử dụng < số lươt đã sử Dụng
+// $list_km_sd = khuyen_mai_Query_Id_KM_So_Luot_SD();
+// if (is_array($list_km_sd) &&  count($list_km_sd) > 0) {
+//     //khuyến mãi
+//     foreach ($list_km_sd as $km_sd) {
+//         if ($km_sd['so_luot_su_dung'] <= $km_sd['da_su_dung']) {
+//             //    đã kết thúc 
+//             // update lại thành 0
+//             $id_km = $km_sd['id_khuyen_mai'];
+//             khuyen_mai_Update_Ket_Thuc_KM($id_km, $date_now);
+//         } else {
+//             // echo 1;
+//         }
+//     }
+// }
 // info kh
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 switch ($url) {
@@ -65,8 +65,6 @@ switch ($url) {
         $title = "Tìm kiếm";
         if (isset($_POST['search'])) {
             $keyword = $_POST['search'];
-        
-            
         }
         break;
     case 'dien-thoai':
@@ -151,9 +149,101 @@ switch ($url) {
         $view = 'views/home.php';
         $title = 'LTsmart | Hệ thống bán lẻ điện thoại chính hãng giá rẻ tại Đà Nẵng ';
         break;
+    case 'lien-he':
+        $view = 'views/lien-he.php';
+        $title = 'LTsmart | Liên hệ ';
+        break;
     default:
         $view = 'views/home.php';
         $title = 'LTsmart | Hệ thống bán lẻ điện thoại chính hãng giá rẻ tại Đà Nẵng ';
         break;
 }
 require_once 'views/layouts/index.php';
+?>
+<script>
+     $('#lien_he').submit(function(e) {
+        e.preventDefault();
+        if ($('[name*="ho_ten_kh_lh"]').val() == "" || $('[name*="email_kh_lh"]').val() == "") {
+            if ($('[name*="ho_ten_kh_lh"]').val() == "") {
+                $('.error_ho_ten_lh').text('Họ tên không được rỗng');
+            } else {
+                $('.error_ho_ten_lh').text('');
+            }
+            if ($('[name*="email_kh_lh"]').val() == "") {
+                $('.error_email_lh').text('Email không được rỗng');
+            } else {
+                $('.error_email_lh').text('');
+            }
+        } else {
+
+        }
+        $.ajax({
+            url: 'xu-ly/lien-he/lien-he.php',
+            type: 'post',
+            data: $(this).serializeArray(),
+            success: function(data) {
+                if (data == 1) {
+                    //toast thông báo
+                    function toast({
+                        title = "",
+                        msg = "",
+                        link = "",
+                        type = "success",
+                        duration = 3000,
+                    }) {
+                        const main = document.getElementById("toast");
+                        if (main) {
+                            const toast = document.createElement("div");
+                            //auto remove
+                            const autoRemoveId = setTimeout(function() {
+                                //trả lại id settimeout
+                                main.removeChild(toast);
+                            }, duration + 1000); //2 animation = 4s , settime khi end 1 animation thi clear
+                            //remove khi click
+                            toast.onclick = function(e) {
+                                if (e.target.closest(".toast__close")) {
+                                    main.removeChild(toast);
+                                    clearTimeout(autoRemoveId);
+                                }
+                            };
+                            const icons = {
+                                success: "fas fa-check-circle",
+                                error: "fas fa-exclamation-circle",
+                            };
+                            const icon = icons[type];
+                            const delay = (duration / 1000).toFixed(2);
+                            toast.classList.add("toast", `toast--${type}`);
+                            toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
+
+                            toast.innerHTML = `
+
+                              <div class="toast__icon">
+                              <i class="${icon}"></i>
+                          </div>
+                          <div class="toast__body">
+                          <a href="${link}">
+                              <h4 class="toast__title">${title}</h4>
+                              <p class="toast__msg">${msg}</p>
+                          </a>
+                          </div>
+                          <div class="toast__close">
+                              <i class="fas fa-times"></i>
+                          </div>
+                              `;
+
+                            main.appendChild(toast);
+                        }
+                    }
+                    toast({
+                        title: "Thành công",
+                        msg: "Phản hồi của bạn đã được gửi!",
+                        type: "success",
+                        duration: 5000,
+                        link: "#",
+                    });
+                    $('#lien_he')[0].reset();
+                }
+            }
+        })
+    })  
+</script>

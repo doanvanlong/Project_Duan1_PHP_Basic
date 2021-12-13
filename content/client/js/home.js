@@ -1,6 +1,5 @@
 $(document).ready(function () {
-  // hàm load thông báo
-
+  // hàm load thông báo 
   function load_thong_bao_user() {
     $.ajax({
       url: "xu-ly/home/load-thong-bao.php",
@@ -160,4 +159,7 @@ $(document).ready(function () {
       })
       $('.owl-product_viewed').html(str);
   }
+
+ 
 });
+

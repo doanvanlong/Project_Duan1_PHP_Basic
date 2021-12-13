@@ -25,7 +25,7 @@
     }
     //Doanh thu tính theo đơn hàng đã giao thành công trong 30 ngày
     function sales($dateNow){
-        $sql = "SELECT SUM(tong_tien) AS Doanh_Thu FROM hoa_don WHERE ngay_giao_hang BETWEEN (SELECT SUBDATE('$dateNow', INTERVAL 30 DAY)) AND '$dateNow' AND trang_thai_don_hang = 'dagiaohang';;";
+        $sql = "SELECT SUM(tong_tien) AS Doanh_Thu FROM hoa_don WHERE ngay_giao_hang BETWEEN (SELECT SUBDATE('$dateNow', INTERVAL 30 DAY)) AND '$dateNow' AND trang_thai_don_hang = 'dagiaohang';";
        return pdo_query($sql);
     }
     //List sản phẩm bán chạy

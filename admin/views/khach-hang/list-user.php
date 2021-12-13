@@ -35,6 +35,7 @@
                                     <td class="align-middle">' . $username . '</td>
                                     <td class="align-middle">' . $ho_ten . '</td>';
                                 if ($hinh_anh != "") {
+                                    
                                     echo '<td class="align-middle"><img style="width:30%;" src="' . $AVTUSER_UPLOAD . '/' . $hinh_anh . '" alt="Ảnh đại diện"></td>';
                                 } else {
                                     echo '<td class="align-middle"><img style="width:30%;" src="' . $CONTENT_CLIENT_URL . '/img/avatar.png" alt="Không có ảnh đại diện"></td>';

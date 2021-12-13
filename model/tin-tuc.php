@@ -12,7 +12,7 @@ function check_category_news($keyup_ten_dm_tin_tuc)
     $sql = "SELECT count(*) FROM danh_muc_news WHERE ten_dm_news =?";
     return pdo_query_value($sql, $keyup_ten_dm_tin_tuc)[0];
 }
-
+//hàm thêm danh mục tin tức
 function insert_news_category($name_dm_tin_tuc)
 {
     $sql = ("INSERT INTO `danh_muc_news`( `ten_dm_news`) VALUES ('$name_dm_tin_tuc')");
@@ -28,11 +28,13 @@ function list_category_news()
     $sql = "SELECT * FROM `danh_muc_news` ORDER BY `danh_muc_news`.`id_dm_news` ASC";
     return pdo_query($sql);
 }
+//hàm update danh mục tin tức
 function update_news_category($id, $name_update_news_category)
 {
     $sql = "UPDATE `danh_muc_news` SET `ten_dm_news`= '$name_update_news_category' WHERE `id_dm_news` = '$id'";
     pdo_execute($sql);
 }
+//hàm xoá danh mục tin tức
 function delete_one_news_category($id)
 {
     $sql = "DELETE FROM `danh_muc_news` WHERE `id_dm_news` = '$id'";

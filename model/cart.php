@@ -15,7 +15,7 @@
     function cart_Query_One_Kh($id_kh){
         $sql="SELECT * FROM `hoa_don`  INNER JOIN hoa_don_chi_tiet ON
         hoa_don.id_hoa_don= hoa_don_chi_tiet.id_hoa_don
-        INNER JOIN san_pham ON san_pham.id_sp =hoa_don_chi_tiet.id_sp where id_kh=?";
+        INNER JOIN san_pham ON san_pham.id_sp =hoa_don_chi_tiet.id_sp where id_kh=? order by hoa_don_chi_tiet.id_hoa_don desc";
         return pdo_query($sql,$id_kh);
     }
     //hàm huỷ đơn hàng theo id hoá đơn
