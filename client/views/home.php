@@ -444,11 +444,11 @@
     <div class="phone-features-product">
         <!-- lượt xem nhiều -->
         <div class="row">
-            <div class="col-4">
+            <div class="col-5">
                 <!-- banner điện thoại nỗi bật -->
                 <img style="width:100%;height:100%;" src="<?= $CONTENT_CLIENT_URL ?>/img/banner noi bat.jpg" alt="Điện thoại nổi bật">
             </div>
-            <div class="col-8">
+            <div class="col-7">
                 <div class="phone-features-product">
                     <div class="row">
                         <!-- Sản phẩm dùng chung với tab menu -->
@@ -606,11 +606,11 @@
     <div class="phone-features-product">
 
         <div class="row">
-            <div class="col-4">
+            <div class="col-5">
                 <!-- banner phụ kiện giá rẻ -->
                 <img style="width:100%;height:100%;" src="<?= $CONTENT_CLIENT_URL ?>/img/banner phu kien.jpg" alt="Phụ kiện giá rẻ">
             </div>
-            <div class="col-8">
+            <div class="col-7">
                 <div class="phone-features-product">
                     <div class="row">
                         <!-- Sản phẩm dùng chung với tab menu -->

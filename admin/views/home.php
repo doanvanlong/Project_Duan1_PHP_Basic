@@ -76,7 +76,7 @@ foreach ($new_sales as $sales) {
                 <div class="product-selling-table my-4">
                     <?php
                     if (!empty($list_product_best_selling)) {
-                        echo '<table class="table table-striped">
+                        echo '<table class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="middle">#</th>
@@ -122,7 +122,7 @@ foreach ($new_sales as $sales) {
                 <div class="comment-new-table">
                     <?php
                     if (!empty($list_comment_news)) {
-                        echo '<table class="table table-striped">
+                        echo '<table class="table">
                        <thead>
                            <tr>
                                <th scope="col" class="middle">#</th>
