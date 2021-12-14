@@ -14,7 +14,7 @@ require_once 'pdo.php';
     //hàm truy vấn tất cả bảng thông báo theo id_kh  detail,còn chiện status 0 ,1 tính sau
     function thong_bao_detail_Query_All($id_kh){
         $sql="SELECT * FROM `thong_bao_user_detail` INNER JOIN thong_bao_user
-        ON thong_bao_user.id_thong_bao=thong_bao_user_detail.id_thong_bao where id_kh=?";
+        ON thong_bao_user.id_thong_bao=thong_bao_user_detail.id_thong_bao where id_kh=? order by thong_bao_user.id_thong_bao desc";
         return pdo_query($sql,$id_kh);
 
     }

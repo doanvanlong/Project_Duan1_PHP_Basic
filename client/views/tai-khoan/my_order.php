@@ -13,18 +13,19 @@ if (!sessionLogin_Isset()) {
                     <?php
                     if ($info_kh['hinh_anh'] == '') { ?>
                         <img class="account__avatar-img" src="<?= $CONTENT_CLIENT_URL ?>/img/avatar.png" alt="">
-                    <?php
-                    } else { if ($_SESSION['login']['id_fb'] == "") {
-                        //upload
-                    ?>
-                        <img class="account__avatar-img" src="<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>" alt="">
-                    <?php
+                        <?php
                     } else {
-                        //link
-                    ?>
-                        <img class="account__avatar-img" src="<?= $info_kh['hinh_anh'] ?>" alt="">
-                <?php
-                    }
+                        if ($_SESSION['login']['id_fb'] == "") {
+                            //upload
+                        ?>
+                            <img class="account__avatar-img" src="<?= $AVTUSER_UPLOAD ?>/<?= $info_kh['hinh_anh'] ?>" alt="">
+                        <?php
+                        } else {
+                            //link
+                        ?>
+                            <img class="account__avatar-img" src="<?= $info_kh['hinh_anh'] ?>" alt="">
+                    <?php
+                        }
                     }
                     ?>
                     <div class="account__avatar-info px-3">
@@ -93,7 +94,7 @@ if (!sessionLogin_Isset()) {
                                         <td><?= $cart['ten_sp'] ?></td>
                                         <td><?= number_format($cart['tong_tien'], 0, ',', '.') . 'đ'; ?></td>
                                         <?php if ($cart['trang_thai_don_hang'] == 'daxacnhan') { ?>
-                                            <td class="text-danger">Đã xác nhận</td>
+                                            <td class="text-info">Đang giao hàng</td>
 
                                         <?php
                                         } else if ($cart['trang_thai_don_hang'] == 'dahuy') { ?>
@@ -101,16 +102,24 @@ if (!sessionLogin_Isset()) {
 
                                         <?php
                                         } else if ($cart['trang_thai_don_hang'] == 'dagiaohang') { ?>
-                                            <td class="text-danger">Giao hàng thành công</td>
+                                            <td class="text-success">Giao hàng thành công</td>
 
+                                            <?php
+                                        } else {
+                                            if ($cart['tinh_trang_thanh_toan'] == 'chuathanhtoan' && $cart['hinh_thuc_thanh_toan'] == 1) {
+                                                //cho thanh toán lại khi online 
+                                            ?>
+                                                <td class="text-danger">
+                                                    <a href="pay-back?id-hoa-don=<?=$cart['id_hoa_don']?>" class="btn btn-primary font-size">Thanh toán lại</a>
+                                                </td>
+                                            <?php
+                                            } else { ?>
+                                                <td class="text-warning">
+                                                    <p>Đang xử lý</p>
+                                                    <p class="btn btn-danger huy_order font-size" data-toggle="modal" data-target="#modal_huy_order" data-id_hoa_don="<?= $cart['id_hoa_don'] ?>">Huỷ đơn hàng</p>
+                                                </td>
                                         <?php
-                                        } else { ?>
-                                            <td class="text-danger">
-                                                <p>Chưa xác nhận</p>
-                                                <p class="btn btn-primary huy_order" data-toggle="modal" data-target="#modal_huy_order" data-id_hoa_don="<?= $cart['id_hoa_don'] ?>">Huỷ</p>
-                                            </td>
-
-                                        <?php
+                                            }
                                         }
                                         ?>
                                     </tr>

@@ -31,23 +31,27 @@ foreach ($new_sales as $sales) {
     <div class="overview__box d-flex">
         <div class="overview__icon"><i class="fas fa-comment-alt"></i></div>
         <div class="overview__content">
-            <div class="overview__text">
-                Bình luận mới
-            </div>
-            <div class="overview__count">
-                <?= $comment ?>
-            </div>
+            <a href="list-comment">
+                <div class="overview__text">
+                    Bình luận mới
+                </div>
+                <div class="overview__count">
+                    <?= $comment ?>
+                </div>
+            </a>
         </div>
     </div>
     <div class="overview__box d-flex">
         <div class="overview__icon"><i class="fas fa-users"></i></div>
         <div class="overview__content">
-            <div class="overview__text">
-                Khách hàng
-            </div>
-            <div class="overview__count">
-                <?= $User ?>
-            </div>
+            <a href="">
+                <div class="overview__text">
+                    Khách hàng
+                </div>
+                <div class="overview__count">
+                    <?= $User ?>
+                </div>
+            </a>
         </div>
     </div>
     <div class="overview__box d-flex">
@@ -62,10 +66,7 @@ foreach ($new_sales as $sales) {
         </div>
     </div>
 </div>
-<!-- biểu đồ thống kê doanh thu tháng -->
-<div class="chart__monthl-revenu ">
-    <div id="top_x_div" class="d-flex justify-content-center" style="width: 100%; height: 410px;"></div>
-</div>
+
 <!-- sản phẩm mới,comment mới -->
 <div class="product-selling__comment-new ">
     <div class="row">

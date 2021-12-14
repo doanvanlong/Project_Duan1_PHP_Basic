@@ -291,3 +291,30 @@ input[type="checkbox"] {
 .box-lien-he textarea{
     font-size: 1.4rem;
 }
+
+/* vnpay */
+.chon_thanh_toan input,.chon_thanh_toan select,.chon_thanh_toan button,.chon_thanh_toan textarea{
+    font-size: 1.4rem;
+}
+.chon_thanh_toan select{
+    height:30px !important;
+}
+.chon_thanh_toan  .box-ngan_hang{
+    cursor: pointer;
+}
+.ngan_hang{
+    border: 1px dashed #eaeaea;
+    padding:20px;
+}
+.chon_thanh_toan  .box-ngan_hang{
+    border: 1px dashed #eaeaea;
+
+}
+
+.chon_thanh_toan  .box-ngan_hang.active{
+    border: 1px dashed var(--primary-color);
+
+}
+.checkout_ngan_hang:hover{
+    background-color:var(--bg-primary-hover);
+}

@@ -269,7 +269,6 @@ background-color: #03a9f4;
 .overview__content {
     padding: 5%;
     flex: 1;
-    position: relative;
 }
 
 .overview__text {
@@ -314,20 +313,7 @@ background-color: #03a9f4;
     font-size: 3rem;
 }
 
-.overview__content:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.04);
-    transition: all 0.8s;
-}
 
-.overview__box:hover .overview__content:before {
-    width: 100%;
-}
 
 
 /* end overview */

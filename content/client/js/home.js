@@ -27,16 +27,20 @@ $(document).ready(function () {
               "xu-ly/home/update-thong-bao.php",
               { id_thong_bao_detail: id_thong_bao_detail },
               function (data) {
+                location.href = "my_notica";
                 if (data == 1) {
                   //thành công
                   // thì gở bỏ class active
                   // chỉ cần gọi lại nó
 
                   load_thong_bao_user();
+                    location.href = "my_notica";
                 }
               }
             );
           } else {
+            location.href = "my_notica";
+
           }
         });
       },
