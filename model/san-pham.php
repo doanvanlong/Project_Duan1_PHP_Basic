@@ -464,6 +464,20 @@ function So_Tien_Giam_Gia_Tien($money, $muc_giam)
     return number_format($sum, 0, ',', '.') . '&nbsp;đ';
 }
 
+// hàm tính số tiền sau giảm giá của san_pham phần trăm
+//ko return veef number format
+function So_Tien_Giam_Phan_Tram1($so_phan_tram, $money)
+{
+    $sum = (((100 - $so_phan_tram) / 100) * $money);
+   return $sum;
+}
+// hàm tính số tiền sau giảm giá của san_pham giá tiền
+function So_Tien_Giam_Gia_Tien1($money, $muc_giam)
+{
+    $sum = ($money - $muc_giam);
+   return $sum;
+    
+}
 
 //trang cart , 
 

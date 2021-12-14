@@ -662,6 +662,8 @@ $(document).ready(function () {
         }
 
         $(".load_tong_tien_checkout").html(str);
+        
+        // load dữ liệu mà giảm giá ,hiển thi ra html
         function load_du_lieu_ma_giam_gia() {
           // Gửi ajax qua PHP\
           var tong_tien = data.tong_tien;
@@ -675,6 +677,7 @@ $(document).ready(function () {
         }
         load_du_lieu_ma_giam_gia();
 
+        //load lại thông tin đã xử lý bên file load ma giảm giá ,đc lưu ở localStorage
         var muc_giam_gia = window.localStorage.getItem(
           "so_tien_duoc_giam_ap_ma_giam_gia"
         );
@@ -692,7 +695,7 @@ $(document).ready(function () {
         var tien_duoc_giam = 0;
         var tong = data.tong_tien;
         tong = new Number(tong);
-        // nếu mà có tiền giảm giá ,lấy từ DB php đưa lại đây
+        // nếu mà có tiền giảm giá ,lấy từ localStorage
         if (muc_giam_gia < 100) {
           // là %
           tien_duoc_giam = (muc_giam_gia / 100) * tong;
@@ -711,6 +714,7 @@ $(document).ready(function () {
           style: "currency",
           currency: "VND",
         });
+        //hiển thị lại số tiền ra
         $(".so_tien_giam_gia").text(tien_duoc_giam);
         $(".tong_tien_all").text(tong_tien_all);
       }

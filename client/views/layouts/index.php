@@ -147,7 +147,7 @@
 
                                                     </div>
                                                     <div class="thong_bao_user-footer d-flex justify-content-center font-size-1-2">
-                                                        <a href="my_order">Xem tất cả</a>
+                                                        <a href="my_notica">Xem tất cả</a>
                                                     </div>
                                                 </div>
                                             </a>
@@ -326,6 +326,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="container">
                 <div class="row">
                     <div class="col-12">

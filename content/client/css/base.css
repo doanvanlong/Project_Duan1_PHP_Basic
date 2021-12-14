@@ -318,3 +318,70 @@ input[type="checkbox"] {
 .checkout_ngan_hang:hover{
     background-color:var(--bg-primary-hover);
 }
+/* tạm progress */
+.progressbar {
+  counter-reset: step;
+  padding: 0;
+  
+  /* for demo */
+  /* margin: 100px auto 0; */
+  max-width: 800px;
+}
+
+.progressbar li {
+  float: left;
+  list-style: none;
+  position: relative;
+  text-align: center;
+  width: calc(100% / 3);
+}
+
+.progressbar li:before {
+  background: #fff;
+  border: 2px solid #bebebe;
+  border-radius: 50%;
+  color: #bebebe;
+  content: counter(step);
+  counter-increment: step;
+  display: block;
+  font-weight: 700;
+  height: 30px;
+  line-height: 27px;
+  margin: 0 auto 10px;
+  text-align: center;
+  width: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.progressbar li:after {
+  background: #979797;
+  content: '';
+  height: 3px;
+  left: -50%;
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  z-index:0;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.active:after,
+.progressbar li.complete:after {
+  background: #3aac5d;
+}
+
+.progressbar li.active:before,
+.progressbar li.complete:before {
+  background: #3aac5d;
+  border-color: #3aac5d;
+  color: #fff;
+}
+
+.progressbar li.active {
+  color: #3aac5d;
+  font-weight: 700;
+}
