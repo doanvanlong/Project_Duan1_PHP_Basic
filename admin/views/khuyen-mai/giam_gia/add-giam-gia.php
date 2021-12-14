@@ -135,7 +135,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col"><input type="checkbox" disabled="disabled"></th>
-                                            <th scope="col">Sản phẩm</th>
+                                            <th  scope="col">Sản phẩm</th>
                                             <th scope="col">Đã bán</th>
                                             <th scope="col">Giá</th>
                                             <th scope="col">Kho</th>

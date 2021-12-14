@@ -126,6 +126,10 @@ switch ($url) {
         $view = "views/cart/vnpay/index.php";
         $title = 'Thanh toán ';
         break;
+    case 'order_view':
+        $view = "views/tai-khoan/order-view.php";
+        $title = 'Đơn hàng của tôi ';
+        break;
 
     case 'profile':
         $view = "views/tai-khoan/profile.php";

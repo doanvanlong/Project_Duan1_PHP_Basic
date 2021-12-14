@@ -104,7 +104,7 @@
 
                     </label>
                 </div> 
-            <a class="btn btn-danger" href="<?=$ROOT_URL?>">Trang chủ</a>
+            <a class="btn btn-danger" href="../../../">Trang chủ</a>
             <a class="btn btn-info" href="../../../my_order">Xem đơn hàng</a>
 
             </div>

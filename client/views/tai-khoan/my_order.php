@@ -89,7 +89,7 @@ if (!sessionLogin_Isset()) {
                                 <?php
                                 foreach ($list_cart as $cart) { ?>
                                     <tr>
-                                        <td class="text-primary"><?= $cart['id_hoa_don'] ?></td>
+                                        <td class="text-primary"><a href="order_view?hoa_don=<?=$cart['id_hoa_don']?>"><?= $cart['id_hoa_don'] ?></a></td>
                                         <td><?= $cart['ngay_dat_hang'] ?></td>
                                         <td><?= $cart['ten_sp'] ?></td>
                                         <td><?= number_format($cart['tong_tien'], 0, ',', '.') . 'đ'; ?></td>

@@ -87,7 +87,7 @@ if (!sessionLogin_Isset()) {
                             </div>
                         </div>
 
-
+                       
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-2 col-form-label">Địa chỉ</label>
                             <div class="col-sm-10 ">
@@ -115,6 +115,8 @@ if (!sessionLogin_Isset()) {
 ?>
 <script>
     $(document).ready(function() {
+      
+
         //check reg so_dien_thoai
         $(".error-sdt").focus(function() {
             $(".error-sdt").text("");

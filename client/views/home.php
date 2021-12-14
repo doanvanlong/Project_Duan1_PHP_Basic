@@ -145,7 +145,7 @@
                                     <!-- Nhãn Mã giảm giá -->
                                     <?php
                                     $list_ma_giam_gia = ma_giam_gia_Query_All();
-                                    if (count($list_ma_giam_gia) > 0) {
+                                    if (count($list_ma_giam_gia) > 0 ) {
                                         foreach ($list_ma_giam_gia as $ma_giam_gia) {
                                             if ($ma_giam_gia['id_loai_giam_gia_tien'] == 1) {
                                                 // %
