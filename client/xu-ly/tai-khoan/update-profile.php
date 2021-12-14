@@ -1,7 +1,7 @@
 <?php
 require_once '../../../model/tai-khoan.php';
 require_once '../../../global.php';
-if (isset($_POST['ho_ten'])) {
+if (isset($_POST['ho_ten']) && isset($_POST['username'])) {
     $ho_ten = $_POST['ho_ten'];
     $username = $_POST['username'];
     $id_kh = $_POST['id_kh'];
@@ -50,7 +50,7 @@ if (isset($_POST['ho_ten'])) {
     } else {
         // /có ảnh
         $hinh_anh = $_FILES['hinh_anh']['name'];
-        move_uploaded_file($_FILES['hinh_anh']['tmp_name'],'../../../admin/xu-ly/khach-hang/uploads/'.$hinh_anh);
+        move_uploaded_file($_FILES['hinh_anh']['tmp_name'], '../../../admin/xu-ly/khach-hang/uploads/' . $hinh_anh);
         if (isset($_POST['hidden_changePass']) && $_POST['hidden_changePass'] == "on") {
             // echo 1; có đổi pass
             // echo 1; có đổi pass
@@ -68,7 +68,7 @@ if (isset($_POST['ho_ten'])) {
                 } else {
                     if ($mat_khau_moi == $mat_khau_moi2) {
                         // ok
-                       
+
                         $dia_chi = $info_kh['dia_chi'];
                         khach_hang_Update_profile($id_kh, $mat_khau_moi, $ho_ten, $hinh_anh, $so_dien_thoai, $email, $dia_chi);
                         echo 1;
@@ -89,4 +89,12 @@ if (isset($_POST['ho_ten'])) {
             echo 1;
         }
     }
+}
+if (isset($_POST['ho_ten'])) {
+    $ho_ten = $_POST['ho_ten'];
+    $id_kh = $_POST['id_kh'];
+    $so_dien_thoai = $_POST['so_dien_thoai'];
+    $sql="UPDATE khach_hang SET ho_ten =? ,so_dien_thoai =? where id_kh=?";
+    pdo_execute($sql,$ho_ten,$so_dien_thoai,$id_kh);    
+   echo 1;
 }

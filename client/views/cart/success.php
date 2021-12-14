@@ -5,8 +5,12 @@
             <div class="">
                 <div class="cart__inner-product-heading p-5">
                     <h4>Đơn hàng của bạn đã đặt thành công ! </h4>
-                    <?php if (isset($_SESSION['id_hoa_don'])) { ?>
-                        <p>Mã đơn hàng của bạn là <b class="alert alert-success py-2 px-4"><?php echo $_SESSION['id_hoa_don']; ?></b></p>
+                    <?php if (isset($_SESSION['id_hoa_don'])) 
+                        $info_hoa_don = $_SESSION['id_hoa_don'];
+                        unset($_SESSION['id_hoa_don']);
+                    
+                    { ?>
+                        <p>Mã đơn hàng của bạn là <b class="alert alert-success py-2 px-4"><?php echo $info_hoa_don ?></b></p>
                         <a class="btn btn-outline-info" style="font-size:1.3rem" href="<?=$CLIENT_URL?>/my_order">Xem đơn hàng</a>
                     <?php
                     }

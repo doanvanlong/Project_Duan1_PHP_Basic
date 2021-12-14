@@ -66,7 +66,7 @@ if (!sessionLogin_Isset()) {
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Họ tên</label>
                             <div class="col-sm-10">
-                                <input type="text" name="ho_ten" value="<?= $info_kh['ho_ten'] ?>" class="form-control">
+                                <input type="text" name="ho_ten" autocomplete="off" value="<?= $info_kh['ho_ten'] ?>" class="form-control">
                             </div>
                         </div>
                         <?php
@@ -74,7 +74,7 @@ if (!sessionLogin_Isset()) {
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Tên đăng nhập</label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly name="username" value="<?= $info_kh['username'] ?>" class="form-control">
+                                    <input type="text" readonly name="username" autocomplete="off" value="<?= $info_kh['username'] ?>" class="form-control">
                                 </div>
                             </div>
                         <?php
@@ -86,15 +86,26 @@ if (!sessionLogin_Isset()) {
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Số điện thoại</label>
                             <div class="col-sm-10">
-                                <input type="text" name="so_dien_thoai" value="<?= $info_kh['so_dien_thoai'] ?>" class="form-control">
+                                <input type="text" autocomplete="off" name="so_dien_thoai" value="<?= $info_kh['so_dien_thoai'] ?>" class="form-control">
                                 <small class="text-danger error-sdt"></small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input type="text" name="email" value="<?= $info_kh['email'] ?>" class="form-control">
-                                <small class="text-danger error-email"></small>
+                                <?php
+                                if ($_SESSION['login']['id_fb'] == "") { ?>
+                                    <input type="text" autocomplete="off" name="email" value="<?= $info_kh['email'] ?>" class="form-control">
+                                    <small class="text-danger error-email"></small>
+                                <?php
+                                } else { ?>
+                                    <input type="text" disabled autocomplete="off" name="email" value="<?= $info_kh['email'] ?>" class="form-control">
+                                    <small class="text-danger error-email"></small>
+                                <?php
+                                }
+
+                                ?>
+
                             </div>
                         </div>
                         <?php
@@ -184,3 +195,107 @@ if (!sessionLogin_Isset()) {
 <?php
 }
 ?>
+<script>
+    //check reg so_dien_thoai
+    $(".error-sdt").focus(function() {
+        $(".error-sdt").text("");
+    });
+
+    $('[name*="so_dien_thoai"]').keyup(function(e) {
+        var phone_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+        var phone = $('[name*="so_dien_thoai"]').val();
+        if (phone_regex.test(phone)) {
+            $(".error-sdt").text("");
+        } else {
+            $(".error-sdt").text("Vui lòng nhập đúng định dạng số điện thoại");
+        }
+    });
+    //check reg so_dien_thoai
+    $(".error-email").focus(function() {
+        $(".error-email").text("");
+    });
+    $('[name*="email"]').keyup(function(e) {
+        var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        var email = $('[name*="email"]').val();
+        if (email_regex.test(email)) {
+            $(".error-email").text("");
+        } else {
+            $(".error-email").text("Vui lòng nhập đúng định dạng email");
+        }
+    });
+    $('#form_update_profile').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "xu-ly/tai-khoan/update-profile.php",
+            type: "POST",
+            contentType: false,
+            processData: false,
+            data: new FormData(this),
+            success: function(data) {
+                if (data == 1) {
+                    //toast thông báo
+                    function toast({
+                        title = "",
+                        msg = "",
+                        link = "",
+                        type = "success",
+                        duration = 3000,
+                    }) {
+                        const main = document.getElementById("toast");
+                        if (main) {
+                            const toast = document.createElement("div");
+                            //auto remove
+                            const autoRemoveId = setTimeout(function() {
+                                //trả lại id settimeout
+                                main.removeChild(toast);
+                            }, duration + 1000); //2 animation = 4s , settime khi end 1 animation thi clear
+                            //remove khi click
+                            toast.onclick = function(e) {
+                                if (e.target.closest(".toast__close")) {
+                                    main.removeChild(toast);
+                                    clearTimeout(autoRemoveId);
+                                }
+                            };
+                            const icons = {
+                                success: "fas fa-check-circle",
+                                error: "fas fa-exclamation-circle",
+                            };
+                            const icon = icons[type];
+                            const delay = (duration / 1000).toFixed(2);
+                            toast.classList.add("toast", `toast--${type}`);
+                            toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
+
+                            toast.innerHTML = `
+       
+        <div class="toast__icon">
+        <i class="${icon}"></i>
+    </div>
+    <div class="toast__body">
+    <a href="${link}">
+        <h4 class="toast__title">${title}</h4>
+        <p class="toast__msg">${msg}</p>
+    </a>
+    </div>
+    <div class="toast__close">
+        <i class="fas fa-times"></i>
+    </div>
+        `;
+
+                            main.appendChild(toast);
+                        }
+                    }
+                    toast({
+                        title: "Thành công",
+                        msg: "Cập nhật thành công!",
+                        type: "success",
+                        duration: 5000,
+                        link: "#",
+                    });
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1300);
+                }
+            },
+        });
+    })
+</script>

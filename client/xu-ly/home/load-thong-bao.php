@@ -50,3 +50,4 @@ $list_thong_bao_new = thong_bao_user_detail_Query_New($id_kh);
  );
  echo json_encode($data);
 ?>
+

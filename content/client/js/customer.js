@@ -84,9 +84,10 @@ $(document).ready(function () {
     }
   });
   // Update tài khoản ,thay đổi tên ,mật khẩu
+  
   $("#form_update_profile").submit(function (e) {
     e.preventDefault();
-
+    
     $.ajax({
       url: "../client/xu-ly/tai-khoan/update-profile.php",
       type: "POST",

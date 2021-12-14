@@ -67,7 +67,7 @@ if (!sessionLogin_Isset()) {
                             if (is_array($list_thong_bao) && count($list_thong_bao) > 0) {
                                 foreach ($list_thong_bao as $thong_bao) { ?>
                                     <tr>
-                                        <td><?= $thong_bao['ngay_thong_bao'] ?></td>
+                                        <td style="width:130px;" class="text-info"><?= $thong_bao['ngay_thong_bao'] ?></td>
                                         <td><?= $thong_bao['noi_dung'] ?></td>
                                         <td>
                                             <p class="text-primary xoa_notica cursor-pointer" data-id_notica="<?= $thong_bao['id_thong_bao_detail'] ?>">Xoá</p>

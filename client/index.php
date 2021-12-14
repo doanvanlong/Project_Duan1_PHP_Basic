@@ -106,6 +106,10 @@ switch ($url) {
         $view = "views/cart/cart.php";
         $title = 'Giỏ hàng ';
         break;
+    case 'vnpay':
+        $view = "views/cart/vnpay/index.php";
+        $title = 'Thanh toán';
+        break;
     case 'checkout':
         $view = "views/cart/checkout.php";
         $title = 'Thông tin thanh toán ';
@@ -118,6 +122,11 @@ switch ($url) {
         $view = "views/tai-khoan/address.php";
         $title = 'Sổ địa chỉ ';
         break;
+    case 'pay-back':
+        $view = "views/cart/vnpay/index.php";
+        $title = 'Thanh toán ';
+        break;
+
     case 'profile':
         $view = "views/tai-khoan/profile.php";
         $title = 'Tài khoản của tôi';
@@ -161,7 +170,7 @@ switch ($url) {
 require_once 'views/layouts/index.php';
 ?>
 <script>
-     $('#lien_he').submit(function(e) {
+    $('#lien_he').submit(function(e) {
         e.preventDefault();
         if ($('[name*="ho_ten_kh_lh"]').val() == "" || $('[name*="email_kh_lh"]').val() == "") {
             if ($('[name*="ho_ten_kh_lh"]').val() == "") {
@@ -245,5 +254,5 @@ require_once 'views/layouts/index.php';
                 }
             }
         })
-    })  
+    })
 </script>

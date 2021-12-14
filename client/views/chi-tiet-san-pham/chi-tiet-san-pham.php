@@ -780,7 +780,7 @@
                                     <?php
                                     foreach ($list_bai_viet as $bai_viet) { ?>
                                         <!-- dùng chung của banner tin tức đầu trang -->
-                                        <a href="#" class="banner__right-promotion-body-content  d-flex align-items-center">
+                                        <a href="bai-viet?id=<?=$bai_viet['id_bai_viet']?>&title=<?=$bai_viet['tieu_de_news']?>" class="banner__right-promotion-body-content  d-flex align-items-center">
                                             <div class="banner__right-promotion-body-img">
                                                 <img style="width:100%;min-height:60px;" src="<?= $CONTENT_UPLOAD ?>/<?= $bai_viet['img_news'] ?>" alt="">
                                             </div>

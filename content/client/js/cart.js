@@ -853,13 +853,13 @@ $(document).ready(function () {
         if (id_ma_giam_gia == "") {
           id_ma_giam_gia = "";
         }
-       
-        $('#checkout_success .btnCheckout').attr("disabled",true);
+
+        $("#checkout_success .btnCheckout").attr("disabled", true);
         var id_kh_ds = window.localStorage.getItem("id_kh");
         // window.localStorage.removeItem("id_kh");
         // click vào checkout success để ADD cart vào DB
         $('[name*="checkout"]').click(function () {
-        $('#checkout_success .btnCheckout').attr("disabled",false);
+          $("#checkout_success .btnCheckout").attr("disabled", false);
           var hinh_thuc_thanh_toan = $(this).val();
           $("#checkout_success").click(function (e) {
             e.preventDefault();
@@ -947,6 +947,28 @@ $(document).ready(function () {
               );
             } else {
               // online
+              $.post(
+                "../client/xu-ly/cart/vnpay/add-cart.php",
+                {
+                  checkout_success: tien_duoc_giam,
+                  hinh_thuc_thanh_toan: hinh_thuc_thanh_toan,
+                  tong_tien_all: tong_tien_all,
+                  id_ma_giam_gia: id_ma_giam_gia,
+                  id_kh_ds: id_kh_ds,
+                },
+                function (data) {
+                  if (data == 1) {
+                    window.localStorage.removeItem(
+                      "so_tien_duoc_giam_ap_ma_giam_gia"
+                    );
+                    window.localStorage.removeItem("id_ma_giam_gia");
+                    window.localStorage.removeItem("id_kh");
+                    setTimeout(function () {
+                      location.href = "vnpay";
+                    }, 1000);
+                  }
+                }
+              );
             }
           });
         });
