@@ -5,7 +5,7 @@
         <?php
         if (!empty($list_orders_confirm)) {
             echo '<div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table">
                             <thead>
                                 <tr style="text-align: center;">
                                     <th scope="col" class="table-dark">ID Hoá Đơn</th>
@@ -24,23 +24,23 @@
                 extract($list);
                 echo '<tbody>
                                 <tr style="text-align:center;">
-                                <td class="align-middle">' . $id_hoa_don . '</td>
-                                <td class="align-middle">' . $id_kh . '</td>
-                                <td class="align-middle">' . $ho_ten . '</td>';
-                if ($hinh_thuc_thanh_toan == 0) {
+                                <td class="align-middle">' . $idHoaDon . '</td>
+                                <td class="align-middle">' . $idKhachHang . '</td>
+                                <td class="align-middle">' . $hoTen . '</td>';
+                if ($hinhThucThanhToan == 0) {
                     echo '<td class="align-middle">Thanh toán khi nhận hàng</td>';
-                } else if ($hinh_thuc_thanh_toan == 1) {
+                } else if ($hinhThucThanhToan == 1) {
                     echo '<td class="align-middle">Thanh toán online</td>';
                 }
-                echo '<td class="align-middle">' . $ngay_dat_hang . '</td>';
-                echo '<td class="align-middle"><span style="font-weight:bolder;">' . number_format($khuyen_mai) . '</span></td>';
-                echo '<td class="align-middle"><span style="font-weight:bolder; color: red;">' . number_format($tong_tien) . '</span></td>';
-                if ($trang_thai_don_hang == "daxacnhan") {
+                echo '<td class="align-middle">' . date_create($ngayDatHang) -> format('d-m-Y') . '</td>';
+                echo '<td class="align-middle"><span style="font-weight:bolder;">' . number_format($khuyenMai) . '</span></td>';
+                echo '<td class="align-middle"><span style="font-weight:bolder; color: red;">' . number_format($tongTien) . '</span></td>';
+                if ($trangThai == "daxacnhan") {
                     echo '<td class="align-middle"><span style="font-weight:bold; color: var(--success);">Đã Xác Nhận</span></td>
                                     <td class="align-middle">
                                         <div style="display: flex; flex-direction: column; align-content: stretch; align-items: stretch;gap: .5em;">
-                                        <div type="button" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $id_hoa_don . '" style="color: white;">Xem Chi Tiết</a></div>
-                                            <div type="submit" class="btn btn-success confirmDelivery" data-toggle="modal" data-target="#confirmDelivery" data-id_hoa_don_delivery=' . $id_hoa_don . '>Xác Nhận Đã Giao</div>
+                                        <div type="button" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $idHoaDon . '" style="color: white;">Xem Chi Tiết</a></div>
+                                            <div type="submit" class="btn btn-success confirmDelivery" data-toggle="modal" data-target="#confirmDelivery" data-id_hoa_don_delivery=' . $idHoaDon . '>Xác Nhận Đã Giao</div>
                                         </div>
                                     </td>
                                     </tr>
@@ -69,14 +69,14 @@
                         <?php
                         if (!empty($list_orders_delivery_confirm)) {
                             echo '<div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-hover">
                             <thead>
                                 <tr style="text-align: center;">
                                     <th scope="col" class="table-dark">ID Hoá Đơn</th>
                                     <th scope="col" class="table-dark">ID Khách Hàng</th>
-                                    <th scope="col" class="table-dark" style="width:11%;">Họ Tên</th>
+                                    <th scope="col" class="table-dark" style="width:12%;">Họ Tên</th>
                                     <th scope="col" class="table-dark">Trạng Thái Thanh Toán</th>
-                                    <th scope="col" class="table-dark">Hình Thức Thanh Toán</th>
+                                    <th scope="col" class="table-dark" style="width:15%;">Hình Thức Thanh Toán</th>
                                     <th scope="col" class="table-dark">Ngày Đặt Hàng</th>
                                     <th scope="col" class="table-dark">Ngày Giao Hàng</th>
                                     <th scope="col" class="table-dark">Khuyến Mãi</th>
@@ -89,28 +89,28 @@
                                 extract($list2);
                                 echo '<tbody>
                                 <tr style="text-align:center;">
-                                <td class="align-middle">' . $id_hoa_don . '</td>
-                                <td class="align-middle">' . $id_kh . '</td>
-                                <td class="align-middle">' . $ho_ten . '</td>';
-                                if ($tinh_trang_thanh_toan == "dathanhtoan") {
+                                <td class="align-middle">' . $idHoaDon . '</td>
+                                <td class="align-middle">' . $idKhachHang . '</td>
+                                <td class="align-middle">' . $hoTen . '</td>';
+                                if ($thanhToan == "dathanhtoan") {
                                     echo '<td class="align-middle">Đã thanh toán</td>';
                                 } else {
                                     echo '<td class="align-middle">Chưa thanh toán</td>';
                                 }
-                                if ($hinh_thuc_thanh_toan == 0) {
+                                if ($hinhThucThanhToan == 0) {
                                     echo '<td class="align-middle">Thanh toán khi nhận hàng</td>';
-                                } else if ($hinh_thuc_thanh_toan == 1) {
+                                } else if ($hinhThucThanhToan == 1) {
                                     echo '<td class="align-middle">Thanh toán online</td>';
                                 }
-                                echo '<td class="align-middle">' . $ngay_dat_hang . '</td>';
-                                echo '<td class="align-middle">' . $ngay_giao_hang . '</td>';
-                                echo '<td class="align-middle"><span style="font-weight:bolder;">' . number_format($khuyen_mai) . '</span></td>';
-                                echo '<td class="align-middle"><span style="font-weight:bolder; color: red;">' . number_format($tong_tien) . '</span></td>';
-                                if ($trang_thai_don_hang == "dagiaohang") {
+                                echo '<td class="align-middle">' . date_create($ngayDatHang) -> format('d-m-Y') . '</td>';
+                                echo '<td class="align-middle">' . date_create($ngayGiaoHang) -> format('d-m-Y') . '</td>';
+                                echo '<td class="align-middle"><span style="font-weight:bolder;">' . number_format($khuyenMai) . '</span></td>';
+                                echo '<td class="align-middle"><span style="font-weight:bolder; color: red;">' . number_format($tongTien) . '</span></td>';
+                                if ($trangThai == "dagiaohang") {
                                     echo '<td class="align-middle"><span style="font-weight:bold; color: var(--primary);">Đã Giao Hàng</span></td>
                                     <td class="align-middle">
                                         <div style="display: flex; flex-direction: column; align-content: stretch; align-items: stretch;gap: .5em;">
-                                            <div type="button" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $id_hoa_don . '" style="color: white;">Xem Chi Tiết</a></div>
+                                            <div type="button" class="btn btn-primary" id="order-details"><a href="order-details?ID=' . $idHoaDon . '" style="color: white;">Xem Chi Tiết</a></div>
                                         </div>
                                     </td>
                                     </tr>

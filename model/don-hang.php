@@ -2,22 +2,23 @@
     require_once 'pdo.php';
     //DS ĐƠN HÀNG CHỜ XÁC NHẬN
     function list_orders_news() {
-        $sql = "SELECT hoa_don.id_hoa_don, hoa_don.trang_thai_don_hang, hoa_don.hinh_thuc_thanh_toan, hoa_don.tong_tien, hoa_don.ngay_dat_hang, hoa_don.khuyen_mai, khach_hang.ho_ten, khach_hang.so_dien_thoai, khach_hang.dia_chi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'chuaxacnhan';";
+        $sql = "SELECT hoa_don.id_hoa_don AS idHoaDon, hoa_don.trang_thai_don_hang AS trangThai, hoa_don.hinh_thuc_thanh_toan AS hinhThucThanhToan, hoa_don.tong_tien AS tongTien, hoa_don.ngay_dat_hang AS ngayDatHang, hoa_don.khuyen_mai AS khuyenMai,khach_hang.id_kh AS idKhachHang, khach_hang.ho_ten AS hoTen, khach_hang.so_dien_thoai AS soDienThoai, khach_hang.dia_chi AS diaChi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'chuaxacnhan' ORDER BY idHoaDon DESC;";
         return pdo_query($sql);
     }
     //DS ĐƠN HÀNG ĐÃ XÁC NHẬN
     function list_orders_confirm() {
-        $sql = "SELECT hoa_don.id_hoa_don, hoa_don.trang_thai_don_hang, hoa_don.hinh_thuc_thanh_toan, hoa_don.tong_tien, hoa_don.ngay_dat_hang, hoa_don.khuyen_mai, khach_hang.ho_ten, khach_hang.so_dien_thoai, khach_hang.dia_chi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'daxacnhan';";
+        $sql = "SELECT hoa_don.id_hoa_don AS idHoaDon, hoa_don.trang_thai_don_hang AS trangThai, hoa_don.hinh_thuc_thanh_toan AS hinhThucThanhToan, hoa_don.tong_tien AS tongTien, hoa_don.ngay_dat_hang AS ngayDatHang, hoa_don.khuyen_mai AS khuyenMai,khach_hang.id_kh AS idKhachHang, khach_hang.ho_ten AS hoTen, khach_hang.so_dien_thoai AS soDienThoai, khach_hang.dia_chi AS diaChi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'daxacnhan' ORDER BY idHoaDon DESC;";
         return pdo_query($sql);
     }
     //DS ĐƠN HÀNG ĐÃ GIAO THÀNH CÔNG
     function list_orders_delivery_confirm() {
-        $sql = "SELECT hoa_don.id_hoa_don, hoa_don.tinh_trang_thanh_toan, hoa_don.trang_thai_don_hang, hoa_don.hinh_thuc_thanh_toan, hoa_don.ngay_giao_hang, hoa_don.tong_tien, hoa_don.ngay_dat_hang, hoa_don.khuyen_mai, khach_hang.ho_ten, khach_hang.so_dien_thoai, khach_hang.dia_chi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'dagiaohang';";
+        // $sql = "SELECT hoa_don.id_hoa_don, hoa_don.tinh_trang_thanh_toan, hoa_don.trang_thai_don_hang, hoa_don.hinh_thuc_thanh_toan, hoa_don.ngay_giao_hang, hoa_don.tong_tien, hoa_don.ngay_dat_hang, hoa_don.khuyen_mai, khach_hang.ho_ten, khach_hang.so_dien_thoai, khach_hang.dia_chi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'dagiaohang';";
+        $sql = "SELECT hoa_don.id_hoa_don AS idHoaDon, hoa_don.tinh_trang_thanh_toan AS thanhToan, hoa_don.trang_thai_don_hang AS trangThai, hoa_don.hinh_thuc_thanh_toan AS hinhThucThanhToan, hoa_don.ngay_giao_hang AS ngayGiaoHang, hoa_don.tong_tien AS tongTien, hoa_don.ngay_dat_hang AS ngayDatHang, hoa_don.khuyen_mai AS khuyenMai,khach_hang.id_kh AS idKhachHang, khach_hang.ho_ten AS hoTen, khach_hang.so_dien_thoai AS soDienThoai, khach_hang.dia_chi AS diaChi FROM hoa_don INNER JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'dagiaohang' ORDER BY idHoaDon;";
         return pdo_query($sql);
     }
     //DS ĐƠN HÀNG ĐÃ HUỶ
     function list_orders_cancelled() {
-        $sql = "SELECT hoa_don.id_hoa_don, hoa_don.trang_thai_don_hang, hoa_don.hinh_thuc_thanh_toan, hoa_don.tong_tien, hoa_don.ngay_dat_hang, hoa_don.khuyen_mai, khach_hang.ho_ten, khach_hang.so_dien_thoai, khach_hang.dia_chi  FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'dahuy';";
+        $sql = "SELECT hoa_don.id_hoa_don AS idHoaDon, hoa_don.trang_thai_don_hang AS trangThai, hoa_don.hinh_thuc_thanh_toan AS hinhThucThanhToan, hoa_don.tong_tien AS tongTien, hoa_don.ngay_dat_hang AS ngayDatHang, hoa_don.khuyen_mai AS khuyenMai,khach_hang.id_kh AS idKhachHang, khach_hang.ho_ten AS hoTen, khach_hang.so_dien_thoai AS soDienThoai, khach_hang.dia_chi AS diaChi FROM hoa_don LEFT JOIN khach_hang ON hoa_don.id_kh = khach_hang.id_kh WHERE hoa_don.trang_thai_don_hang = 'dahuy' ORDER BY idHoaDon DESC;";
         return pdo_query($sql);
     }
     //DS CHI TIẾT SẢN PHẨM
