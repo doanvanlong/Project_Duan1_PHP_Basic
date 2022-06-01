@@ -2,11 +2,11 @@
 // hàm kết nối csdl
 function pdo_get_connection()
 {
-    $severname = "localhost";
-    $username = "root";
-    $password = "";
+    $severname = "remotemysql.com";
+    $username = "dNffOkbioi";
+    $password = "QeWexVEqIR";
     try {
-        $conn = new PDO("mysql:host=$severname;dbname=ltsmart;charset=utf8", $username, $password);
+        $conn = new PDO("mysql:host=$severname;dbname=dNffOkbioi;charset=utf8", $username, $password);
         // khai báo phương thức và kiểu trả về kq lỗi
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // echo "kết nối thành công";
